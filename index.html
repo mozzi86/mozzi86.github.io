@@ -122,6 +122,9 @@
                 <a href="#werkzeuge" class="hover:text-brand-teal transition-colors">Werkzeuge</a>
                 <a href="#erfahrung" class="hover:text-brand-teal transition-colors">Erfahrung</a>
                 <a href="#kontakt" class="px-4 py-1.5 bg-brand-teal text-brand-slate rounded font-bold hover:bg-white transition-colors">Kontakt</a>
+                <span class="w-px h-5 bg-white/20 self-center" aria-hidden="true"></span>
+                <button onclick="showAppModal()" class="hover:text-brand-teal transition-colors">Anmelden</button>
+                <button onclick="showAppModal()" class="px-4 py-1.5 border border-brand-teal text-brand-teal rounded font-bold hover:bg-brand-teal hover:text-brand-slate transition-colors">Registrieren</button>
             </div>
             <button id="mobile-menu-btn" class="md:hidden text-brand-teal text-xl" aria-label="Menü">
                 <i class="fas fa-bars"></i>
@@ -130,10 +133,14 @@
         <div id="mobile-menu" class="hidden md:hidden bg-brand-slate border-t border-white/10 p-4">
             <a href="#profil" class="block py-2 hover:text-brand-teal">Profil</a>
             <a href="#leistungen" class="block py-2 hover:text-brand-teal">Leistungen</a>
-                <a href="#pakete" class="hover:text-brand-teal transition-colors">Pakete</a>
-                <a href="#werkzeuge" class="hover:text-brand-teal transition-colors">Werkzeuge</a>
+            <a href="#pakete" class="block py-2 hover:text-brand-teal">Pakete</a>
+            <a href="#werkzeuge" class="block py-2 hover:text-brand-teal">Werkzeuge</a>
             <a href="#erfahrung" class="block py-2 hover:text-brand-teal">Erfahrung</a>
             <a href="#kontakt" class="block py-2 text-brand-teal font-bold">Kontakt</a>
+            <div class="flex gap-3 mt-3 pt-3 border-t border-white/10">
+                <button onclick="showAppModal()" class="flex-1 py-2 border border-brand-teal text-brand-teal rounded font-bold">Anmelden</button>
+                <button onclick="showAppModal()" class="flex-1 py-2 bg-brand-teal text-brand-slate rounded font-bold">Registrieren</button>
+            </div>
         </div>
     </nav>
     <header id="top" class="relative min-h-screen flex items-center justify-center bg-brand-slate text-white overflow-hidden pt-20">
@@ -593,9 +600,35 @@
             </div>
         </div>
     </section>
+    <!-- App-Modal: Anmelden/Registrieren – Plattform startet in Kürze -->
+    <div id="app-modal" class="hidden fixed inset-0 z-[60] flex items-center justify-center p-6" role="dialog" aria-modal="true" aria-labelledby="app-modal-title">
+        <div class="absolute inset-0 bg-black/70" onclick="closeAppModal()"></div>
+        <div class="relative bg-brand-slate text-white border border-brand-teal/40 rounded-lg max-w-md w-full p-8 shadow-2xl">
+            <button onclick="closeAppModal()" class="absolute top-3 right-4 text-2xl text-slate-400 hover:text-white" aria-label="Schließen">&times;</button>
+            <svg class="w-10 h-10 text-brand-teal mb-4" aria-hidden="true"><use href="#logo-mark"></use></svg>
+            <h3 id="app-modal-title" class="text-xl font-bold mb-2">Die BIT-Atelier-Plattform startet in Kürze</h3>
+            <p class="text-sm text-slate-300 leading-relaxed mb-6">
+                Anmeldung und Registrierung werden freigeschaltet, sobald die Plattform online geht &ndash;
+                IFC-Modellprüfung, Mengenermittlung und AIA-Konformität direkt im Browser.
+                Bis dahin erreichen Sie mich jederzeit persönlich.
+            </p>
+            <a href="#kontakt" onclick="closeAppModal()" class="inline-block px-6 py-2.5 bg-brand-teal text-brand-slate font-bold rounded hover:bg-white transition-colors">Kontakt aufnehmen</a>
+        </div>
+    </div>
+
     <script>
         // Jahr im Footer
         document.getElementById('year').textContent = new Date().getFullYear();
+
+        // App-Modal (Plattform-Teaser)
+        function showAppModal() {
+            document.getElementById('app-modal').classList.remove('hidden');
+            document.getElementById('mobile-menu').classList.add('hidden');
+        }
+        function closeAppModal() {
+            document.getElementById('app-modal').classList.add('hidden');
+        }
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeAppModal(); });
 
         // Mobile Menu
         document.getElementById('mobile-menu-btn').addEventListener('click', () => {
