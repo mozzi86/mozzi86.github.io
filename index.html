@@ -116,6 +116,7 @@
                 </span>
             </a>
             <div class="hidden md:flex gap-8 text-sm font-medium">
+                <a href="#atelier" class="hover:text-brand-teal transition-colors">Digital-Atelier</a>
                 <a href="#profil" class="hover:text-brand-teal transition-colors">Profil</a>
                 <a href="#leistungen" class="hover:text-brand-teal transition-colors">Leistungen</a>
                 <a href="#pakete" class="hover:text-brand-teal transition-colors">Pakete</a>
@@ -131,6 +132,7 @@
             </button>
         </div>
         <div id="mobile-menu" class="hidden md:hidden bg-brand-slate border-t border-white/10 p-4">
+            <a href="#atelier" class="block py-2 hover:text-brand-teal">Digital-Atelier</a>
             <a href="#profil" class="block py-2 hover:text-brand-teal">Profil</a>
             <a href="#leistungen" class="block py-2 hover:text-brand-teal">Leistungen</a>
             <a href="#pakete" class="block py-2 hover:text-brand-teal">Pakete</a>
@@ -146,6 +148,8 @@
     <header id="top" class="relative min-h-screen flex items-center justify-center bg-brand-slate text-white overflow-hidden pt-24 pb-16">
         <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-bl from-brand-teal/5 to-transparent skew-x-12 transform origin-top pointer-events-none"></div>
         <div class="absolute inset-0" style="background-image: radial-gradient(#2dd4bf 1px, transparent 1px); background-size: 36px 36px; opacity: 0.05;"></div>
+        <div id="hero-glow" class="absolute inset-0 pointer-events-none" style="background: radial-gradient(640px circle at var(--mx, 70%) var(--my, 35%), rgba(45,212,191,0.13), transparent 70%);"></div>
+        <canvas id="hero-canvas" class="absolute inset-0 w-full h-full pointer-events-none opacity-60 md:opacity-80" aria-hidden="true"></canvas>
 
         <div class="container mx-auto px-6 relative z-10 text-center fade-in-up">
             <div class="flex justify-center mb-8">
@@ -171,6 +175,10 @@
                 <p class="font-serif italic text-2xl md:text-3xl leading-relaxed text-slate-200">
                     „Planung ohne Präzision ist teurer Zufall."
                 </p>
+                <p class="text-sm md:text-base text-slate-400 mt-5 max-w-2xl mx-auto">
+                    Automatisierte Modellprüfung findet Konflikte, bevor sie auf der Baustelle teuer werden &ndash;
+                    weniger Fehlplanungskosten, kürzere Abstimmungszyklen, belegte Planungsstände.
+                </p>
             </div>
 
             <div class="mt-12 flex flex-col sm:flex-row gap-4 justify-center">
@@ -189,7 +197,60 @@
                 <span><i class="fas fa-layer-group text-brand-teal mr-2"></i>HOAI Leistungsphasen 1–9</span>
             </div>
         </div>
+        <a href="#atelier" class="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 text-brand-teal/70 hover:text-brand-teal transition-colors" aria-label="Zum Digitalen Atelier scrollen">
+            <i class="fas fa-chevron-down text-xl animate-bounce block"></i>
+        </a>
     </header>
+
+    <!-- Das Digitale Atelier: scrollgesteuerter Prüflauf am 3D-Modell -->
+    <section id="atelier" class="relative bg-brand-slate text-white">
+        <style>
+            .atelier-step { opacity: .4; border: 1px solid rgba(255,255,255,.08); transition: opacity .35s, border-color .35s, background-color .35s; }
+            .atelier-step-active { opacity: 1; border-color: rgba(45,212,191,.7); background: rgba(45,212,191,.06); }
+        </style>
+        <div id="atelier-track" class="h-[400vh]">
+            <div class="sticky top-0 h-screen overflow-hidden flex flex-col">
+                <div class="container mx-auto px-6 pt-24 pb-2 text-center relative z-10">
+                    <p class="text-xs tracking-[0.2em] text-brand-teal uppercase mb-2">Das Digitale Atelier</p>
+                    <h2 class="text-3xl md:text-5xl font-bold">Erleben Sie einen Prüflauf<span class="text-brand-teal">.</span></h2>
+                    <p class="text-slate-400 text-sm mt-2">Einfach weiterscrollen &ndash; das Modell reagiert in Echtzeit.</p>
+                </div>
+                <div class="relative flex-1">
+                    <canvas id="atelier-canvas" class="absolute inset-0 w-full h-full pointer-events-none" aria-hidden="true"></canvas>
+                    <div class="absolute inset-x-0 bottom-0 z-10 pb-8">
+                        <div class="container mx-auto px-6">
+                            <div id="atelier-steps" class="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-5xl mx-auto text-left">
+                                <div class="atelier-step rounded-lg p-4" data-step="0">
+                                    <p class="text-brand-teal font-bold text-xs mb-1">01</p>
+                                    <p class="font-bold text-sm mb-1">Architekturmodell</p>
+                                    <p class="text-xs text-slate-400">IFC direkt aus dem openBIM-Format &ndash; Geschosse, Bauteile, Eigenschaften.</p>
+                                </div>
+                                <div class="atelier-step rounded-lg p-4" data-step="1">
+                                    <p class="text-brand-teal font-bold text-xs mb-1">02</p>
+                                    <p class="font-bold text-sm mb-1">Fachmodelle</p>
+                                    <p class="text-xs text-slate-400">Tragwerk und TGA legen sich über die Architektur.</p>
+                                </div>
+                                <div class="atelier-step rounded-lg p-4" data-step="2">
+                                    <p class="text-brand-teal font-bold text-xs mb-1">03</p>
+                                    <p class="font-bold text-sm mb-1">Kollision erkannt</p>
+                                    <p class="text-xs text-slate-400">Lüftungskanal trifft Unterzug &ndash; gefunden in Sekunden, nicht auf der Baustelle.</p>
+                                </div>
+                                <div class="atelier-step rounded-lg p-4" data-step="3">
+                                    <p class="text-brand-teal font-bold text-xs mb-1">04</p>
+                                    <p class="font-bold text-sm mb-1">Geprüft &amp; dokumentiert</p>
+                                    <p class="text-xs text-slate-400">Befunde als BCF an die Fachplaner, Bericht als PDF.</p>
+                                </div>
+                            </div>
+                            <div class="max-w-5xl mx-auto mt-3 h-0.5 bg-white/10 rounded">
+                                <div id="atelier-progress" class="h-full w-0 bg-brand-teal rounded"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="profil" class="py-20 md:py-28 bg-white">
         <div class="container mx-auto px-6">
             <div class="grid md:grid-cols-2 gap-16 items-center">
@@ -372,6 +433,17 @@
                     <div class="bg-white border border-slate-200 rounded-lg p-5"><i class="fas fa-clipboard-check text-brand-teal text-xl mb-3"></i><p class="font-bold text-sm mb-1">IDS-Prüfung</p><p class="text-xs text-brand-muted">AIA-Anforderungen maschinell prüfbar nach buildingSMART IDS</p></div>
                     <div class="bg-white border border-slate-200 rounded-lg p-5"><i class="fas fa-reply text-brand-teal text-xl mb-3"></i><p class="font-bold text-sm mb-1">BCF-Rückgabe</p><p class="text-xs text-brand-muted">Befunde landen als offene Issues direkt bei den Fachplanern</p></div>
                 </div>
+            </div>
+
+            <!-- Live-Terminal: Beispiel-Prüflauf der Prüf-Engine -->
+            <div class="mt-14 max-w-3xl mx-auto rounded-lg overflow-hidden border border-slate-700 bg-[#0b1220] shadow-2xl font-mono text-[13px] leading-relaxed">
+                <div class="flex items-center gap-2 px-4 py-2.5 bg-slate-800/80 border-b border-slate-700">
+                    <span class="w-3 h-3 rounded-full bg-red-400/80"></span>
+                    <span class="w-3 h-3 rounded-full bg-amber-400/80"></span>
+                    <span class="w-3 h-3 rounded-full bg-emerald-400/80"></span>
+                    <span class="ml-3 text-slate-400 text-xs">bit-atelier · prüf-engine &ndash; Beispiel-Prüflauf</span>
+                </div>
+                <div id="pruef-terminal" class="px-5 py-4 text-slate-300 min-h-[250px] whitespace-pre-wrap" aria-live="off"></div>
             </div>
 
             <div class="mt-12 text-center">
@@ -673,6 +745,244 @@
             a.className = 'text-lg text-brand-teal hover:text-white transition-colors';
             btn.replaceWith(a);
         }
+
+        /* ---- Hero-Glow folgt der Maus ---- */
+        (function () {
+            const kopf = document.getElementById('top');
+            const glow = document.getElementById('hero-glow');
+            if (!kopf || !glow) return;
+            kopf.addEventListener('pointermove', (e) => {
+                const r = kopf.getBoundingClientRect();
+                glow.style.setProperty('--mx', ((e.clientX - r.left) / r.width * 100) + '%');
+                glow.style.setProperty('--my', ((e.clientY - r.top) / r.height * 100) + '%');
+            }, { passive: true });
+        })();
+
+        /* ---- Prüf-Engine-Terminal: getippter Beispiel-Prüflauf (Demo-Werte) ---- */
+        (function () {
+            const el = document.getElementById('pruef-terminal');
+            if (!el) return;
+            const ZEILEN = [
+                { t: '> modelle einlesen — architektur.ifc · tragwerk.ifc · tga.ifc', c: 'text-slate-400', tippen: true },
+                { t: '✓ 3 Fachmodelle geladen · IFC4 · 4.812 Bauteile', c: 'text-emerald-400' },
+                { t: '> kollisionsprüfung — regelmatrix ARC × TWP × TGA · toleranz 20 mm', c: 'text-slate-400', tippen: true },
+                { t: '⚠ K-102 · Lüftungskanal ⨯ Unterzug · 2. OG, Achse C/3', c: 'text-amber-400' },
+                { t: '⚠ K-114 · Sprinklerleitung ⨯ Kabeltrasse · EG, Flur', c: 'text-amber-400' },
+                { t: '> ids-prüfung gegen AIA (buildingSMART IDS)', c: 'text-slate-400', tippen: true },
+                { t: '✓ 97,4 % konform · 12 fehlende Attribute markiert', c: 'text-emerald-400' },
+                { t: '> export — prüfbericht.pdf · befunde.bcf an fachplaner', c: 'text-slate-400', tippen: true },
+                { t: '✓ prüflauf abgeschlossen — 38 s', c: 'text-teal-300 font-bold' },
+            ];
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                el.innerHTML = ZEILEN.map(z => `<div class="${z.c}"></div>`).join('');
+                [...el.children].forEach((d, i) => d.textContent = ZEILEN[i].t);
+                return;
+            }
+            let aktiv = false, gestartet = false;
+            const warte = (ms) => new Promise(r => setTimeout(r, ms));
+            async function bisSichtbar() { while (!aktiv) await warte(300); }
+            async function lauf() {
+                if (gestartet) return; gestartet = true;
+                const cursor = document.createElement('span');
+                cursor.className = 'text-brand-teal';
+                cursor.textContent = '▌';
+                setInterval(() => { cursor.style.visibility = cursor.style.visibility === 'hidden' ? 'visible' : 'hidden'; }, 480);
+                while (true) {
+                    el.innerHTML = '';
+                    el.appendChild(cursor);
+                    for (const z of ZEILEN) {
+                        await bisSichtbar();
+                        const div = document.createElement('div');
+                        div.className = z.c;
+                        el.insertBefore(div, cursor);
+                        if (z.tippen) {
+                            for (const zeichen of z.t) { div.textContent += zeichen; await warte(13); }
+                        } else {
+                            await warte(360);
+                            div.textContent = z.t;
+                        }
+                        await warte(150);
+                    }
+                    await warte(6500);
+                }
+            }
+            new IntersectionObserver((es) => {
+                aktiv = es[0].isIntersecting;
+                if (aktiv) lauf();
+            }, { threshold: 0.2 }).observe(el);
+        })();
+    </script>
+
+    <script type="importmap">
+    { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.161.0/build/three.module.js" } }
+    </script>
+    <script type="module">
+        /* ---- 3D-Gebäudemodell: Hero-Ansicht + scrollgesteuerter Prüflauf ---- */
+        import * as THREE from 'three';
+
+        const reduziert = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const clamp01 = v => Math.max(0, Math.min(1, v));
+        const easeOut = t => 1 - Math.pow(1 - t, 3);
+        const lerp = (a, b, t) => a + (b - a) * t;
+        const FARBEN = { linie: 0x2dd4bf, decke: 0x14233c, stahl: 0x94a3b8, kanal: 0xf59e0b, rohr: 0x38bdf8, konflikt: 0xef4444, ok: 0x34d399 };
+
+        function bauModell() {
+            const G = 5, B = 4, T = 2.6, H = 0.55, FUGE = 0.1;
+            const gesamt = G * (H + FUGE);
+            const gruppe = new THREE.Group();
+            const matLinie = new THREE.LineBasicMaterial({ color: FARBEN.linie, transparent: true, opacity: 0.85 });
+            const matDecke = new THREE.MeshBasicMaterial({ color: FARBEN.decke, transparent: true, opacity: 0.92 });
+            const geschosse = [];
+            for (let i = 0; i < G; i++) {
+                const ebene = new THREE.Group();
+                const y = i * (H + FUGE);
+                const decke = new THREE.Mesh(new THREE.BoxGeometry(B, 0.06, T), matDecke);
+                decke.position.y = y;
+                const kanten = new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.BoxGeometry(B, H, T)), matLinie);
+                kanten.position.y = y + H / 2 + 0.03;
+                ebene.add(decke, kanten);
+                if (i === G - 1) { const dach = decke.clone(); dach.position.y = y + H + 0.09; ebene.add(dach); }
+                gruppe.add(ebene); geschosse.push(ebene);
+            }
+            const matStahl = new THREE.MeshBasicMaterial({ color: FARBEN.stahl, transparent: true, opacity: 0 });
+            const tragwerk = new THREE.Group();
+            [[-B/2+0.15,-T/2+0.15],[B/2-0.15,-T/2+0.15],[-B/2+0.15,T/2-0.15],[B/2-0.15,T/2-0.15],[0,-T/2+0.15],[0,T/2-0.15]].forEach(([x, z]) => {
+                const stuetze = new THREE.Mesh(new THREE.CylinderGeometry(0.05, 0.05, gesamt, 8), matStahl);
+                stuetze.position.set(x, gesamt / 2, z);
+                tragwerk.add(stuetze);
+            });
+            const traegerY = 2 * (H + FUGE) - 0.1;
+            const traeger = new THREE.Mesh(new THREE.BoxGeometry(B - 0.3, 0.14, 0.16), matStahl);
+            traeger.position.set(0, traegerY, 0.5);
+            tragwerk.add(traeger);
+            gruppe.add(tragwerk);
+            const matKanal = new THREE.MeshBasicMaterial({ color: FARBEN.kanal, transparent: true, opacity: 0 });
+            const matRohr = new THREE.MeshBasicMaterial({ color: FARBEN.rohr, transparent: true, opacity: 0 });
+            const tga = new THREE.Group();
+            tga.add(new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3([
+                new THREE.Vector3(-B/2+0.35, 0.25, 0.5),
+                new THREE.Vector3(-B/2+0.35, traegerY, 0.5),
+                new THREE.Vector3(0, traegerY, 0.5),
+                new THREE.Vector3(B/2-0.45, traegerY, 0.5),
+                new THREE.Vector3(B/2-0.45, gesamt-0.35, 0.5),
+            ]), 64, 0.09, 10), matKanal));
+            tga.add(new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3([
+                new THREE.Vector3(-B/2+0.7, 0.25, -0.7),
+                new THREE.Vector3(-B/2+0.7, gesamt-0.55, -0.7),
+                new THREE.Vector3(B/2-0.7, gesamt-0.55, -0.7),
+            ]), 48, 0.05, 8), matRohr));
+            gruppe.add(tga);
+            const matKonflikt = new THREE.MeshBasicMaterial({ color: FARBEN.konflikt, transparent: true, opacity: 0 });
+            const konflikt = new THREE.Mesh(new THREE.SphereGeometry(0.17, 16, 16), matKonflikt);
+            konflikt.position.set(0, traegerY, 0.5);
+            gruppe.add(konflikt);
+            return { gruppe, geschosse, gesamt, konflikt, mats: { stahl: matStahl, kanal: matKanal, rohr: matRohr, konflikt: matKonflikt } };
+        }
+
+        function bauSzene(canvas) {
+            const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.75));
+            const szene = new THREE.Scene();
+            const kamera = new THREE.PerspectiveCamera(38, 1, 0.1, 100);
+            const raster = new THREE.GridHelper(16, 16, 0x1e3a5f, 0x122238);
+            raster.material.transparent = true;
+            raster.material.opacity = 0.35;
+            szene.add(raster);
+            const modell = bauModell();
+            szene.add(modell.gruppe);
+            return { renderer, szene, kamera, modell, canvas, _w: 0, _h: 0 };
+        }
+
+        function passeAn(k) {
+            const w = k.canvas.clientWidth, h = k.canvas.clientHeight;
+            if (!w || !h) return false;
+            if (k._w !== w || k._h !== h) {
+                k._w = w; k._h = h;
+                k.renderer.setSize(w, h, false);
+                k.kamera.aspect = w / h;
+                k.kamera.updateProjectionMatrix();
+            }
+            return true;
+        }
+
+        const maus = { x: 0, y: 0 };
+        window.addEventListener('pointermove', (e) => {
+            maus.x = (e.clientX / window.innerWidth) * 2 - 1;
+            maus.y = (e.clientY / window.innerHeight) * 2 - 1;
+        }, { passive: true });
+
+        const sichtbar = new WeakMap();
+        const io = new IntersectionObserver((es) => es.forEach(e => sichtbar.set(e.target, e.isIntersecting)), { threshold: 0 });
+
+        let hero = null, atelier = null;
+        try {
+            const hc = document.getElementById('hero-canvas');
+            const ac = document.getElementById('atelier-canvas');
+            if (hc) { hero = bauSzene(hc); io.observe(hc); hero.modell.geschosse.forEach(g => g.scale.setScalar(reduziert ? 1 : 0.001)); }
+            if (ac) { atelier = bauSzene(ac); io.observe(ac); }
+        } catch (fehler) {
+            console.warn('3D deaktiviert:', fehler);
+        }
+
+        function zeichneHero(k, t) {
+            const m = k.modell;
+            m.geschosse.forEach((g, i) => {
+                const z = reduziert ? 1 : easeOut(clamp01((t - 0.25 - i * 0.18) / 0.8));
+                g.scale.setScalar(Math.max(0.001, z));
+            });
+            const ein = reduziert ? 1 : clamp01((t - 1.7) / 1.3);
+            m.mats.stahl.opacity = 0.5 * ein;
+            m.mats.kanal.opacity = 0.9 * ein;
+            m.mats.rohr.opacity = 0.85 * ein;
+            const zielDreh = (reduziert ? 0 : t * 0.12) + maus.x * 0.35 - 0.5;
+            m.gruppe.rotation.y += (zielDreh - m.gruppe.rotation.y) * 0.05;
+            const r = 8.2;
+            k.kamera.position.set(Math.sin(0.55) * r, m.gesamt * 0.55 + 1.1 - maus.y * 0.35, Math.cos(0.55) * r);
+            k.kamera.lookAt(0, m.gesamt * 0.42, 0);
+            k.renderer.render(k.szene, k.kamera);
+        }
+
+        const spur = document.getElementById('atelier-track');
+        const balken = document.getElementById('atelier-progress');
+        const karten = [...document.querySelectorAll('.atelier-step')];
+        const okFarbe = new THREE.Color(FARBEN.ok);
+
+        function zeichneAtelier(k, t) {
+            const m = k.modell;
+            const r0 = spur.getBoundingClientRect();
+            const p = clamp01(-r0.top / Math.max(1, r0.height - window.innerHeight));
+            m.geschosse.forEach((g, i) => {
+                const z = easeOut(clamp01((p - 0.02 - i * 0.03) / 0.11));
+                g.scale.setScalar(Math.max(0.001, z));
+            });
+            const s2 = clamp01((p - 0.28) / 0.14);
+            m.mats.stahl.opacity = 0.55 * s2;
+            m.mats.kanal.opacity = 0.92 * s2;
+            m.mats.rohr.opacity = 0.85 * s2;
+            const s3 = clamp01((p - 0.52) / 0.07);
+            const s4 = clamp01((p - 0.80) / 0.10);
+            m.mats.konflikt.opacity = s3 * (0.75 + 0.25 * Math.sin(t * 6));
+            m.mats.konflikt.color.set(FARBEN.konflikt).lerp(okFarbe, s4);
+            m.konflikt.scale.setScalar(1 + (reduziert ? 0 : 0.3 * Math.sin(t * 5) * s3 * (1 - s4)));
+            const zoom = clamp01((p - 0.5) / 0.16) * clamp01((0.88 - p) / 0.10);
+            const winkel = -0.7 + p * 2.2 + maus.x * 0.12;
+            const radius = lerp(8.8, 4.6, zoom);
+            k.kamera.position.set(Math.sin(winkel) * radius, lerp(m.gesamt * 0.6 + 1, m.konflikt.position.y + 0.8, zoom), Math.cos(winkel) * radius);
+            k.kamera.lookAt(0, lerp(m.gesamt * 0.42, m.konflikt.position.y, zoom), 0.5 * zoom);
+            if (balken) balken.style.width = (p * 100).toFixed(1) + '%';
+            const idx = Math.min(3, Math.floor(p * 4));
+            karten.forEach((c, i) => c.classList.toggle('atelier-step-active', i === idx));
+            k.renderer.render(k.szene, k.kamera);
+        }
+
+        const start = performance.now();
+        function tick(jetzt) {
+            requestAnimationFrame(tick);
+            const t = (jetzt - start) / 1000;
+            if (hero && sichtbar.get(hero.canvas) !== false && passeAn(hero)) zeichneHero(hero, t);
+            if (atelier && spur && sichtbar.get(atelier.canvas) !== false && passeAn(atelier)) zeichneAtelier(atelier, t);
+        }
+        requestAnimationFrame(tick);
     </script>
 </body>
 </html>
