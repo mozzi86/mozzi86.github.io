@@ -149,7 +149,7 @@
         <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-bl from-brand-teal/5 to-transparent skew-x-12 transform origin-top pointer-events-none"></div>
         <div class="absolute inset-0" style="background-image: radial-gradient(#2dd4bf 1px, transparent 1px); background-size: 36px 36px; opacity: 0.05;"></div>
         <div id="hero-glow" class="absolute inset-0 pointer-events-none" style="background: radial-gradient(640px circle at var(--mx, 70%) var(--my, 35%), rgba(45,212,191,0.13), transparent 70%);"></div>
-        <canvas id="hero-canvas" class="absolute inset-0 w-full h-full pointer-events-none opacity-60 md:opacity-80" aria-hidden="true"></canvas>
+        <canvas id="hero-canvas" class="absolute inset-0 w-full h-full pointer-events-none opacity-40 md:opacity-60" aria-hidden="true"></canvas>
 
         <div class="container mx-auto px-6 relative z-10 text-center fade-in-up">
             <div class="flex justify-center mb-8">
@@ -826,6 +826,13 @@
         const lerp = (a, b, t) => a + (b - a) * t;
         const FARBEN = { linie: 0x2dd4bf, decke: 0x14233c, stahl: 0x94a3b8, kanal: 0xf59e0b, rohr: 0x38bdf8, konflikt: 0xef4444, ok: 0x34d399 };
 
+        // Orthogonale Leitungsführung: gerade Segmente statt geglätteter Kurve
+        function pfad(punkte) {
+            const p = new THREE.CurvePath();
+            for (let i = 0; i < punkte.length - 1; i++) p.add(new THREE.LineCurve3(punkte[i], punkte[i + 1]));
+            return p;
+        }
+
         function bauModell() {
             const G = 5, B = 4, T = 2.6, H = 0.55, FUGE = 0.1;
             const gesamt = G * (H + FUGE);
@@ -859,24 +866,27 @@
             const matKanal = new THREE.MeshBasicMaterial({ color: FARBEN.kanal, transparent: true, opacity: 0 });
             const matRohr = new THREE.MeshBasicMaterial({ color: FARBEN.rohr, transparent: true, opacity: 0 });
             const tga = new THREE.Group();
-            tga.add(new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3([
+            tga.add(new THREE.Mesh(new THREE.TubeGeometry(pfad([
                 new THREE.Vector3(-B/2+0.35, 0.25, 0.5),
                 new THREE.Vector3(-B/2+0.35, traegerY, 0.5),
-                new THREE.Vector3(0, traegerY, 0.5),
                 new THREE.Vector3(B/2-0.45, traegerY, 0.5),
                 new THREE.Vector3(B/2-0.45, gesamt-0.35, 0.5),
-            ]), 64, 0.09, 10), matKanal));
-            tga.add(new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3([
+            ]), 96, 0.08, 8), matKanal));
+            tga.add(new THREE.Mesh(new THREE.TubeGeometry(pfad([
                 new THREE.Vector3(-B/2+0.7, 0.25, -0.7),
                 new THREE.Vector3(-B/2+0.7, gesamt-0.55, -0.7),
                 new THREE.Vector3(B/2-0.7, gesamt-0.55, -0.7),
-            ]), 48, 0.05, 8), matRohr));
+            ]), 64, 0.045, 8), matRohr));
             gruppe.add(tga);
             const matKonflikt = new THREE.MeshBasicMaterial({ color: FARBEN.konflikt, transparent: true, opacity: 0 });
-            const konflikt = new THREE.Mesh(new THREE.SphereGeometry(0.17, 16, 16), matKonflikt);
+            const konflikt = new THREE.Mesh(new THREE.SphereGeometry(0.22, 16, 16), matKonflikt);
             konflikt.position.set(0, traegerY, 0.5);
             gruppe.add(konflikt);
-            return { gruppe, geschosse, gesamt, konflikt, mats: { stahl: matStahl, kanal: matKanal, rohr: matRohr, konflikt: matKonflikt } };
+            const matPing = new THREE.MeshBasicMaterial({ color: FARBEN.konflikt, transparent: true, opacity: 0, wireframe: true });
+            const ping = new THREE.Mesh(new THREE.SphereGeometry(0.22, 12, 12), matPing);
+            ping.position.copy(konflikt.position);
+            gruppe.add(ping);
+            return { gruppe, geschosse, gesamt, konflikt, ping, mats: { stahl: matStahl, kanal: matKanal, rohr: matRohr, konflikt: matKonflikt, ping: matPing } };
         }
 
         function bauSzene(canvas) {
@@ -936,9 +946,9 @@
             m.mats.rohr.opacity = 0.85 * ein;
             const zielDreh = (reduziert ? 0 : t * 0.12) + maus.x * 0.35 - 0.5;
             m.gruppe.rotation.y += (zielDreh - m.gruppe.rotation.y) * 0.05;
-            const r = 8.2;
-            k.kamera.position.set(Math.sin(0.55) * r, m.gesamt * 0.55 + 1.1 - maus.y * 0.35, Math.cos(0.55) * r);
-            k.kamera.lookAt(0, m.gesamt * 0.42, 0);
+            const r = 11.0;
+            k.kamera.position.set(Math.sin(0.55) * r, m.gesamt * 0.6 + 1.4 - maus.y * 0.35, Math.cos(0.55) * r);
+            k.kamera.lookAt(0, m.gesamt * 0.5, 0);
             k.renderer.render(k.szene, k.kamera);
         }
 
@@ -964,9 +974,14 @@
             m.mats.konflikt.opacity = s3 * (0.75 + 0.25 * Math.sin(t * 6));
             m.mats.konflikt.color.set(FARBEN.konflikt).lerp(okFarbe, s4);
             m.konflikt.scale.setScalar(1 + (reduziert ? 0 : 0.3 * Math.sin(t * 5) * s3 * (1 - s4)));
+            // Sonar-Ping um den Konfliktpunkt
+            const pingT = reduziert ? 0.5 : (t % 1.4) / 1.4;
+            m.ping.scale.setScalar(1 + pingT * 2.2);
+            m.mats.ping.opacity = s3 * (1 - pingT) * 0.45 * (1 - s4);
+            m.mats.ping.color.copy(m.mats.konflikt.color);
             const zoom = clamp01((p - 0.5) / 0.16) * clamp01((0.88 - p) / 0.10);
             const winkel = -0.7 + p * 2.2 + maus.x * 0.12;
-            const radius = lerp(8.8, 4.6, zoom);
+            const radius = lerp(8.8, 3.6, zoom);
             k.kamera.position.set(Math.sin(winkel) * radius, lerp(m.gesamt * 0.6 + 1, m.konflikt.position.y + 0.8, zoom), Math.cos(winkel) * radius);
             k.kamera.lookAt(0, lerp(m.gesamt * 0.42, m.konflikt.position.y, zoom), 0.5 * zoom);
             if (balken) balken.style.width = (p * 100).toFixed(1) + '%';
