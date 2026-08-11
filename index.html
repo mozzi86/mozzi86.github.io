@@ -593,9 +593,9 @@
                     <p>Mohamed Elmokadem<br>
                     Freiberuflicher Architekt<br>
                     BIT-ATELIER (Geschäftsbezeichnung dieser Webseite)<br>
-                    Am Röthenbacher Landgraben 36<br>
-                    90451 Nürnberg<br>
+                    <span id="imp-adresse"><button onclick="revealAdresse(this)" class="text-brand-teal underline">Anschrift anzeigen</button></span><br>
                     Deutschland</p>
+                    <noscript><p>Am Röthenbacher Landgraben 36, 90451 Nürnberg</p></noscript>
                     <p class="mt-2">Es handelt sich um eine freiberufliche Tätigkeit; eine Eintragung im Handelsregister besteht nicht.</p>
                 </div>
 
@@ -618,6 +618,7 @@
                         Telefon: <span id="imp-phone"><button onclick="revealPhone(this)" class="text-brand-teal underline">anzeigen</button></span><br>
                         E-Mail: <span id="imp-email"><button onclick="revealEmail(this)" class="text-brand-teal underline">anzeigen</button></span>
                     </p>
+                    <noscript><p>Telefon: 0176 74554989 &middot; E-Mail: me@bit-atelier.de</p></noscript>
                 </div>
 
                 <div>
@@ -633,6 +634,11 @@
                 <div>
                     <h3 class="text-white font-bold mb-1">Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h3>
                     <p>Mohamed Elmokadem (Anschrift wie oben)</p>
+                </div>
+
+                <div>
+                    <h3 class="text-white font-bold mb-1">Verbraucherstreitbeilegung</h3>
+                    <p>Ich bin nicht bereit und nicht verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen (§ 36 VSBG).</p>
                 </div>
 
                 <div>
@@ -701,6 +707,8 @@
         const _eu = 'em';               // Nutzername
         const _ed = 'ed.reileta-tib';   // Domain
         const _p2 = '98945547';         // Rufnummern-Block
+        const _a1 = '63 nebargdnaL rehcabnehtöR mA';  // Straße
+        const _a2 = 'grebnrüN 15409';                 // PLZ/Ort
 
         function buildEmail() { return rev(_eu) + String.fromCharCode(64) + rev(_ed); }
         function buildPhoneDisplay() { return '0176 ' + rev(_p2); }
@@ -713,6 +721,12 @@
             a.textContent = mail;
             a.className = 'text-lg text-brand-teal hover:text-white transition-colors break-all';
             btn.replaceWith(a);
+        }
+
+        function revealAdresse(btn) {
+            const span = document.createElement('span');
+            span.textContent = rev(_a1) + ', ' + rev(_a2);
+            btn.replaceWith(span);
         }
 
         function revealPhone(btn) {
