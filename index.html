@@ -6,35 +6,12 @@
     <title>BIT-ATELIER | Architekt & BIM-Consulting Nürnberg · HOAI 1–9 · BIM-Management</title>
     <meta name="description" content="BIT-ATELIER – Mohamed Elmokadem, freiberuflicher Architekt in Nürnberg (Bayerische Architektenkammer, M.Sc. ClimaDesign TUM). Planung nach HOAI 1–9 und BIM-Generalkoordination für Großprojekte: AIA/BAP, automatisierte Modellprüfung mit eigener Prüf-Engine (IFC, IDS, BCF), Festpreis-Pakete." data-id="th-modified">
 
-    <!-- Tailwind CSS (CDN – zählt nicht zur 3-MB-Grenze des Hostings) -->
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- FontAwesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:ital,wght@1,400;1,600&display=swap" rel="stylesheet">
-
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        brand: {
-                            slate: '#0f172a',
-                            teal: '#2dd4bf',
-                            light: '#f1f5f9',
-                            muted: '#64748b'
-                        }
-                    },
-                    fontFamily: {
-                        sans: ['Montserrat', 'sans-serif'],
-                        serif: ['Playfair Display', 'serif']
-                    }
-                }
-            }
-        }
-    </script>
+    <!-- Alle Assets selbst gehostet: keine Anfragen an Drittserver (DSGVO).
+         Tailwind-Rebuild bei HTML-Änderungen mit neuen Klassen:
+         npx tailwindcss@3.4.15 -c tailwind.config.js -i tailwind-input.css -o assets/css/tailwind.css --minify -->
+    <link rel="stylesheet" href="assets/css/tailwind.css">
+    <link rel="stylesheet" href="assets/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/fonts.css">
 
     <style>
         ::-webkit-scrollbar { width: 8px; }
@@ -665,7 +642,7 @@
 
                 <div>
                     <h3 class="text-white font-bold mb-1">Datenschutz</h3>
-                    <p>Diese Website erhebt keine personenbezogenen Daten aktiv über Formulare und setzt keine eigenen Tracking-Cookies. Beim Aufruf werden technisch notwendige Inhalte (Schriftarten, Stylesheets, Icons) von externen Anbietern (Google Fonts, jsDelivr/Cloudflare) geladen; dabei kann Ihre IP-Adresse an diese Anbieter übermittelt werden. Eine Kontaktaufnahme erfolgt ausschließlich auf Ihre Initiative per Telefon oder E-Mail; die dabei übermittelten Daten verwende ich nur zur Bearbeitung Ihrer Anfrage.</p>
+                    <p>Diese Website setzt keine Cookies und verwendet keine Tracking- oder Analyse-Dienste. Sämtliche Inhalte (Schriftarten, Stylesheets, Icons, Skripte) werden direkt von dieser Domain ausgeliefert &ndash; es werden keine Inhalte von Drittanbietern nachgeladen und keine Besucherdaten an Dritte übermittelt. Beim Aufruf verarbeitet der Hosting-Anbieter (GitHub Pages) die zur Auslieferung technisch notwendigen Verbindungsdaten (insbesondere die IP-Adresse) in seinen Server-Logs. Eine Kontaktaufnahme erfolgt ausschließlich auf Ihre Initiative per Telefon oder E-Mail; die dabei übermittelten Daten verwende ich nur zur Bearbeitung Ihrer Anfrage.</p>
                 </div>
             </div>
         </div>
@@ -814,7 +791,7 @@
     </script>
 
     <script type="importmap">
-    { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.161.0/build/three.module.js" } }
+    { "imports": { "three": "./assets/js/three.module.js" } }
     </script>
     <script type="module">
         /* ---- 3D-Gebäudemodell: Hero-Ansicht + scrollgesteuerter Prüflauf ---- */
