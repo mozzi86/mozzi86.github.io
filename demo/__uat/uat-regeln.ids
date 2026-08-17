@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ids xmlns="http://standards.buildingsmart.org/IDS">
+  <info>
+    <title>UAT Phase 29 — BIT-Atelier Prüf-Suite</title>
+  </info>
+  <specifications>
+    <specification name="Wände haben einen Namen" ifcVersion="IFC2X3 IFC4" description="Jede Wand (IfcWallStandardCase) muss ein gefülltes Name-Attribut haben.">
+      <applicability minOccurs="1" maxOccurs="unbounded">
+        <entity>
+          <name><simpleValue>IFCWALLSTANDARDCASE</simpleValue></name>
+        </entity>
+      </applicability>
+      <requirements>
+        <attribute>
+          <name><simpleValue>Name</simpleValue></name>
+        </attribute>
+      </requirements>
+    </specification>
+    <specification name="Wände: Feuerwiderstand dokumentiert" ifcVersion="IFC2X3 IFC4" description="Jede Wand braucht Pset_WallCommon.FireRating.">
+      <applicability minOccurs="1" maxOccurs="unbounded">
+        <entity>
+          <name><simpleValue>IFCWALLSTANDARDCASE</simpleValue></name>
+        </entity>
+      </applicability>
+      <requirements>
+        <property>
+          <propertySet><simpleValue>Pset_WallCommon</simpleValue></propertySet>
+          <baseName><simpleValue>FireRating</simpleValue></baseName>
+        </property>
+      </requirements>
+    </specification>
+  </specifications>
+</ids>
