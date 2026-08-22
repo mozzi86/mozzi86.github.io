@@ -481,7 +481,7 @@
                     <i class="fab fa-windows text-brand-teal text-4xl mb-4" aria-hidden="true"></i>
                     <p class="font-bold mb-1">Windows</p>
                     <p class="text-xs text-brand-muted mb-6">Portable .exe &ndash; keine Installation, auch vom USB-Stick</p>
-                    <a id="dl-win" href="https://github.com/mozzi86/NovaPDF/releases/latest/download/BIT-Nova-PDF-1.1.0-portable.exe"
+                    <a href="https://github.com/mozzi86/NovaPDF/releases/latest/download/BIT-Nova-PDF-portable.exe"
                        class="mt-auto inline-block px-8 py-3 bg-brand-teal text-brand-slate font-bold rounded hover:bg-brand-slate hover:text-white transition-all">
                         <i class="fas fa-download mr-2" aria-hidden="true"></i>Download f&uuml;r Windows
                     </a>
@@ -489,8 +489,8 @@
                 <div class="bg-slate-50 border border-slate-200 rounded-lg p-8 text-center flex flex-col items-center">
                     <i class="fab fa-apple text-brand-teal text-4xl mb-4" aria-hidden="true"></i>
                     <p class="font-bold mb-1">macOS</p>
-                    <p class="text-xs text-brand-muted mb-6">DMG f&uuml;r Apple Silicon &ndash; <a id="dl-mac-x64" href="https://github.com/mozzi86/NovaPDF/releases/latest/download/BIT-Nova-PDF-1.1.0-x64.dmg" class="underline hover:text-brand-teal">Intel-Version hier</a></p>
-                    <a id="dl-mac" href="https://github.com/mozzi86/NovaPDF/releases/latest/download/BIT-Nova-PDF-1.1.0-arm64.dmg"
+                    <p class="text-xs text-brand-muted mb-6">DMG f&uuml;r Apple Silicon &ndash; <a href="https://github.com/mozzi86/NovaPDF/releases/latest/download/BIT-Nova-PDF-x64.dmg" class="underline hover:text-brand-teal">Intel-Version hier</a></p>
+                    <a href="https://github.com/mozzi86/NovaPDF/releases/latest/download/BIT-Nova-PDF-arm64.dmg"
                        class="mt-auto inline-block px-8 py-3 bg-brand-teal text-brand-slate font-bold rounded hover:bg-brand-slate hover:text-white transition-all">
                         <i class="fas fa-download mr-2" aria-hidden="true"></i>Download f&uuml;r macOS
                     </a>
@@ -502,27 +502,9 @@
                 Die Apps sind nicht signiert/notarisiert &ndash; Windows SmartScreen bzw. macOS Gatekeeper beim ersten Start &uuml;ber &bdquo;Trotzdem ausf&uuml;hren&ldquo; / Rechtsklick&nbsp;&rarr;&nbsp;&bdquo;&Ouml;ffnen&ldquo; best&auml;tigen.
             </p>
         </div>
-        <script>
-        // Download-Links auf das jeweils neueste Release zeigen lassen (Fallback: statische URLs oben)
-        (function () {
-            fetch('https://api.github.com/repos/mozzi86/NovaPDF/releases/latest')
-                .then(function (r) { return r.ok ? r.json() : null; })
-                .then(function (rel) {
-                    if (!rel || !rel.assets) return;
-                    var pick = function (test) {
-                        var a = rel.assets.find(test);
-                        return a ? a.browser_download_url : null;
-                    };
-                    var win = pick(function (a) { return /portable\.exe$/i.test(a.name); });
-                    var arm = pick(function (a) { return /arm64\.dmg$/i.test(a.name); });
-                    var x64 = pick(function (a) { return /x64\.dmg$/i.test(a.name); });
-                    if (win) document.getElementById('dl-win').href = win;
-                    if (arm) document.getElementById('dl-mac').href = arm;
-                    if (x64) document.getElementById('dl-mac-x64').href = x64;
-                })
-                .catch(function () { /* statische Links bleiben */ });
-        })();
-        </script>
+        <!-- Die Release-Artefakte tragen keine Versionsnummer im Dateinamen, deshalb
+             zeigen die /releases/latest/download/-Links dauerhaft auf die neueste
+             Fassung — kein Skript und kein GitHub-API-Aufruf nötig. -->
     </section>
 
     <section id="erfahrung" class="py-20 md:py-28 bg-slate-50">
