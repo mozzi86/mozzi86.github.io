@@ -99,6 +99,7 @@
                 <a href="#pakete" class="hover:text-brand-teal transition-colors">Pakete</a>
                 <a href="#werkzeuge" class="hover:text-brand-teal transition-colors">Werkzeuge</a>
                 <a href="#erfahrung" class="hover:text-brand-teal transition-colors">Erfahrung</a>
+                <a href="#downloads" class="hover:text-brand-teal transition-colors">Downloads</a>
                 <a href="#kontakt" class="px-4 py-1.5 bg-brand-teal text-brand-slate rounded font-bold hover:bg-white transition-colors">Kontakt</a>
                 <span class="w-px h-5 bg-white/20 self-center" aria-hidden="true"></span>
                 <button onclick="showAppModal()" class="hover:text-brand-teal transition-colors">Anmelden</button>
@@ -115,6 +116,7 @@
             <a href="#pakete" class="block py-2 hover:text-brand-teal">Pakete</a>
             <a href="#werkzeuge" class="block py-2 hover:text-brand-teal">Werkzeuge</a>
             <a href="#erfahrung" class="block py-2 hover:text-brand-teal">Erfahrung</a>
+            <a href="#downloads" class="block py-2 hover:text-brand-teal">Downloads</a>
             <a href="#kontakt" class="block py-2 text-brand-teal font-bold">Kontakt</a>
             <div class="flex gap-3 mt-3 pt-3 border-t border-white/10">
                 <button onclick="showAppModal()" class="flex-1 py-2 border border-brand-teal text-brand-teal rounded font-bold">Anmelden</button>
@@ -460,6 +462,67 @@
                 </p>
             </div>
         </div>
+    </section>
+
+    <!-- Downloads: BIT-Nova PDF -->
+    <section id="downloads" class="py-20 bg-white">
+        <div class="container mx-auto px-6 max-w-5xl">
+            <div class="text-center mb-12 fade-in-up">
+                <p class="text-xs tracking-[0.2em] text-brand-teal uppercase mb-3">Downloads</p>
+                <h2 class="text-3xl font-bold mb-4">BIT-Nova <span class="text-brand-teal">PDF</span></h2>
+                <p class="text-brand-muted max-w-2xl mx-auto leading-relaxed">
+                    Der portable PDF-Editor aus dem BIT-Atelier &ndash; bearbeiten, organisieren, konvertieren,
+                    signieren und forensisch schw&auml;rzen. L&auml;uft <strong class="text-brand-slate">vollst&auml;ndig lokal</strong>:
+                    keine Cloud, keine Uploads, keine Telemetrie &ndash; inklusive Offline-OCR (Deutsch/Englisch).
+                </p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+                <div class="bg-slate-50 border border-slate-200 rounded-lg p-8 text-center flex flex-col items-center">
+                    <i class="fab fa-windows text-brand-teal text-4xl mb-4" aria-hidden="true"></i>
+                    <p class="font-bold mb-1">Windows</p>
+                    <p class="text-xs text-brand-muted mb-6">Portable .exe &ndash; keine Installation, auch vom USB-Stick</p>
+                    <a id="dl-win" href="https://github.com/mozzi86/NovaPDF/releases/latest/download/BIT-Nova-PDF-1.1.0-portable.exe"
+                       class="mt-auto inline-block px-8 py-3 bg-brand-teal text-brand-slate font-bold rounded hover:bg-brand-slate hover:text-white transition-all">
+                        <i class="fas fa-download mr-2" aria-hidden="true"></i>Download f&uuml;r Windows
+                    </a>
+                </div>
+                <div class="bg-slate-50 border border-slate-200 rounded-lg p-8 text-center flex flex-col items-center">
+                    <i class="fab fa-apple text-brand-teal text-4xl mb-4" aria-hidden="true"></i>
+                    <p class="font-bold mb-1">macOS</p>
+                    <p class="text-xs text-brand-muted mb-6">DMG f&uuml;r Apple Silicon &ndash; <a id="dl-mac-x64" href="https://github.com/mozzi86/NovaPDF/releases/latest/download/BIT-Nova-PDF-1.1.0-x64.dmg" class="underline hover:text-brand-teal">Intel-Version hier</a></p>
+                    <a id="dl-mac" href="https://github.com/mozzi86/NovaPDF/releases/latest/download/BIT-Nova-PDF-1.1.0-arm64.dmg"
+                       class="mt-auto inline-block px-8 py-3 bg-brand-teal text-brand-slate font-bold rounded hover:bg-brand-slate hover:text-white transition-all">
+                        <i class="fas fa-download mr-2" aria-hidden="true"></i>Download f&uuml;r macOS
+                    </a>
+                </div>
+            </div>
+            <p class="text-xs text-brand-muted text-center mt-6 max-w-2xl mx-auto">
+                Kostenlos &middot; Quelloffen entwickelt im BIT-Atelier &middot;
+                <a href="https://github.com/mozzi86/NovaPDF/releases" class="underline hover:text-brand-teal" rel="noopener">alle Versionen auf GitHub</a>.
+                Die Apps sind nicht signiert/notarisiert &ndash; Windows SmartScreen bzw. macOS Gatekeeper beim ersten Start &uuml;ber &bdquo;Trotzdem ausf&uuml;hren&ldquo; / Rechtsklick&nbsp;&rarr;&nbsp;&bdquo;&Ouml;ffnen&ldquo; best&auml;tigen.
+            </p>
+        </div>
+        <script>
+        // Download-Links auf das jeweils neueste Release zeigen lassen (Fallback: statische URLs oben)
+        (function () {
+            fetch('https://api.github.com/repos/mozzi86/NovaPDF/releases/latest')
+                .then(function (r) { return r.ok ? r.json() : null; })
+                .then(function (rel) {
+                    if (!rel || !rel.assets) return;
+                    var pick = function (test) {
+                        var a = rel.assets.find(test);
+                        return a ? a.browser_download_url : null;
+                    };
+                    var win = pick(function (a) { return /portable\.exe$/i.test(a.name); });
+                    var arm = pick(function (a) { return /arm64\.dmg$/i.test(a.name); });
+                    var x64 = pick(function (a) { return /x64\.dmg$/i.test(a.name); });
+                    if (win) document.getElementById('dl-win').href = win;
+                    if (arm) document.getElementById('dl-mac').href = arm;
+                    if (x64) document.getElementById('dl-mac-x64').href = x64;
+                })
+                .catch(function () { /* statische Links bleiben */ });
+        })();
+        </script>
     </section>
 
     <section id="erfahrung" class="py-20 md:py-28 bg-slate-50">
