@@ -56,6 +56,15 @@
   unicode-range:U+0100-024F,U+1E00-1EFF,U+2020,U+20A0-20AB}
 @font-face{font-family:"IBM Plex Mono";font-style:normal;font-weight:600;font-display:swap;
   src:url(assets/fonts/ibmplexmono-600-normal-latin.woff2) format("woff2")}
+/* Arabisch — Montserrat, Space Grotesk und IBM Plex Mono haben keine
+   arabischen Glyphen. Ohne eigene Schrift fällt der Browser auf eine
+   Systemschrift zurück und der Satz bricht optisch aus dem Auftritt aus. */
+@font-face{font-family:"IBM Plex Sans Arabic";font-style:normal;font-weight:400;font-display:swap;
+  src:url(assets/fonts/ibmplexsansarabic-400-normal-arabic.woff2) format("woff2")}
+@font-face{font-family:"IBM Plex Sans Arabic";font-style:normal;font-weight:600;font-display:swap;
+  src:url(assets/fonts/ibmplexsansarabic-600-normal-arabic.woff2) format("woff2")}
+@font-face{font-family:"IBM Plex Sans Arabic";font-style:normal;font-weight:700;font-display:swap;
+  src:url(assets/fonts/ibmplexsansarabic-700-normal-arabic.woff2) format("woff2")}
 
 :root{
   --bg:#0c1117; --bg-raise:#111a22; --bg-deep:#070b0f;
@@ -113,6 +122,9 @@ p{margin:0}
   transition:color .18s}
 .navi a:hover{color:var(--ink)}
 .kopf__tun{display:flex;align-items:center;gap:.5rem}
+/* Ohne Umbruchsperre wachsen die Schaltflaechen zweizeilig und ziehen die
+   Kopfzeile mit — auf Englisch besonders, weil die Beschriftungen laenger sind. */
+.kopf__tun .btn{white-space:nowrap}
 .menue-knopf{display:inline-flex;flex-direction:column;justify-content:center;align-items:center;
   gap:.28rem;min-width:2.75rem;min-height:2.75rem;   /* 44 px Mindestmass fuer Finger */
   background:transparent;border:1px solid var(--line-strong);cursor:pointer}
@@ -261,7 +273,26 @@ p{margin:0}
   font-size:.72rem;letter-spacing:.05em;color:var(--ink-dim)}
 
 /* Stationen */
-.stationen{margin-top:2.6rem;padding:0;list-style:none;position:relative}
+/* Gründer-Block: Text links, Portrait rechts und bewusst größer als die
+   Textspalte — nach den am Vorbild gemessenen Verhältnissen (502 zu 679 px,
+   72 px Abstand, mittig ausgerichtet). */
+.gruender{display:grid;gap:2.5rem;align-items:center;margin-top:.5rem}
+@media(min-width:64rem){
+  .gruender{grid-template-columns:minmax(0,.44fr) minmax(0,.56fr);gap:4.5rem}
+}
+/* Zwei Klassen, damit die Regel gegen .abschnitt h2 gewinnt (Spezifität) */
+.gruender .gruender__name{font-size:clamp(2rem,4.6vw,3.5rem);margin:.6rem 0 1.5rem;line-height:1.02}
+.gruender__text p:not(.auge){color:var(--ink-dim);font-weight:300;font-size:1.06rem;
+  max-width:52ch;line-height:1.7}
+.gruender__text p:not(.auge)+p{margin-top:1.1rem}
+.gruender__text b{color:var(--ink);font-weight:600}
+.gruender__bild{margin:0}
+.gruender__bild img{width:100%;border:1px solid var(--line);filter:saturate(.94) contrast(1.02)}
+.gruender__bild figcaption{margin-top:.9rem;font-family:var(--mono);font-size:.72rem;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--muted);line-height:1.9}
+.nachweis{opacity:.72;font-size:.66rem;letter-spacing:.1em}
+
+.stationen{margin-top:2.2rem;padding:0;list-style:none;position:relative}
 .stationen::before{content:"";position:absolute;left:.36rem;top:.5rem;bottom:.5rem;
   width:1px;background:var(--line)}
 .station{position:relative;padding:0 0 1.9rem 2rem}
@@ -321,6 +352,48 @@ p{margin:0}
   .buehne__anzeige,.buehne__wink{display:none}
 }
 
+/* ---------------- Sprachwahl ---------------- */
+.sprachwahl{display:flex;border:1px solid var(--line-strong)}
+.sprachwahl button{min-height:2.75rem;padding:.5rem .7rem;background:transparent;border:0;
+  color:var(--muted);font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;
+  cursor:pointer;transition:color .18s,background .18s}
+.sprachwahl button+button{border-inline-start:1px solid var(--line-strong)}
+.sprachwahl button:hover{color:var(--ink)}
+.sprachwahl button[aria-pressed="true"]{color:var(--accent-ink);background:var(--accent)}
+.sprachwahl button[lang="ar"]{font-family:"IBM Plex Sans Arabic",var(--mono);letter-spacing:0}
+@media(max-width:40rem){ .sprachwahl button{padding:.5rem .5rem;font-size:.66rem} }
+
+/* ---------------- Arabisch: Schrift und Leserichtung ---------------- */
+:root[lang="ar"]{
+  --display:"IBM Plex Sans Arabic",Montserrat,system-ui,sans-serif;
+  --body:"IBM Plex Sans Arabic",Montserrat,system-ui,sans-serif;
+  --mono:"IBM Plex Sans Arabic",ui-monospace,monospace;
+}
+:root[lang="ar"] h1,:root[lang="ar"] h2,:root[lang="ar"] h3,:root[lang="ar"] h4{
+  letter-spacing:0;line-height:1.25}          /* enges Tracking passt nicht zur arabischen Schrift */
+:root[lang="ar"] .mono,:root[lang="ar"] .auge,:root[lang="ar"] .satz__auge,
+:root[lang="ar"] .karte__nr,:root[lang="ar"] .station__zeit,
+:root[lang="ar"] .chips li,:root[lang="ar"] .satz__marken li,
+:root[lang="ar"] .navi a,:root[lang="ar"] .btn,:root[lang="ar"] .menue a,
+:root[lang="ar"] .gruender__bild figcaption,:root[lang="ar"] .fenster__leiste span,
+:root[lang="ar"] .buehne__anzeige,:root[lang="ar"] .buehne__route button{
+  letter-spacing:0;text-transform:none}       /* Kapitälchen gibt es im Arabischen nicht */
+:root[lang="ar"] .satz__text,:root[lang="ar"] .unter,:root[lang="ar"] .gruender__text p{
+  font-weight:400}                            /* Strichstärke 300 wirkt arabisch zu dünn */
+
+/* Physische Ränder spiegeln — was in der Grundfassung links steht, muss
+   rechts stehen. Flexbox und Grid drehen von selbst, diese Stellen nicht. */
+[dir="rtl"] .buehne__anzeige{left:auto;right:var(--pad)}
+[dir="rtl"] .buehne__wink{right:auto;left:var(--pad)}
+[dir="rtl"] .liste li{padding-left:0;padding-right:1.15rem}
+[dir="rtl"] .liste li::before{left:auto;right:0}
+[dir="rtl"] .stationen::before{left:auto;right:.36rem}
+[dir="rtl"] .station{padding:0 2rem 1.9rem 0}
+[dir="rtl"] .station::before{left:auto;right:0}
+[dir="rtl"] .fenster__leiste span{margin-left:0;margin-right:.5rem}
+[dir="rtl"] .btn--geist.btn--klein[style*="margin-left"]{margin-left:0 !important;margin-right:.5rem}
+[dir="rtl"] .terminal{direction:ltr;text-align:left}   /* Protokollzeilen bleiben lateinisch */
+
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   .buehne__wink{animation:none}
@@ -364,7 +437,7 @@ p{margin:0}
 
 <header class="kopf">
   <div class="kopf__zeile">
-    <a class="marke" href="#top" aria-label="BIT-ATELIER, zur Startseite">
+    <a class="marke" href="#top" aria-label="BIT-ATELIER, zur Startseite" data-nicht-uebersetzen>
       <svg aria-hidden="true"><use href="#logo-mark"></use></svg>
       <span class="marke__name">BIT<span>·</span>ATELIER</span>
     </a>
@@ -378,6 +451,11 @@ p{margin:0}
       <a href="#kontakt">Kontakt</a>
     </nav>
     <div class="kopf__tun">
+      <div class="sprachwahl" data-sprachwahl role="group" aria-label="Sprache wählen">
+        <button type="button" data-sprache="de" aria-pressed="true" lang="de">DE</button>
+        <button type="button" data-sprache="en" aria-pressed="false" lang="en">EN</button>
+        <button type="button" data-sprache="ar" aria-pressed="false" lang="ar">عربي</button>
+      </div>
       <a class="btn btn--geist btn--klein" href="demo/">Demo starten</a>
       <a class="btn btn--klein" href="#kontakt">Projekt anfragen</a>
       <button class="menue-knopf" id="menue-knopf" type="button"
@@ -464,9 +542,9 @@ p{margin:0}
       <div class="buehne__fortschritt" aria-hidden="true"><span id="fortschritt-balken"></span></div>
       <nav class="buehne__route" id="route" aria-label="Kapitel der Bauablauf-Ansicht"></nav>
       <div class="buehne__anzeige" aria-hidden="true">
-        <div><b id="anzeige-lph">LPH 1</b>Leistungsphase</div>
-        <div><b id="anzeige-teile">0</b>Bauteile im Modell</div>
-        <div><b id="anzeige-stand">Baufeld</b>Modellstand</div>
+        <div><b id="anzeige-lph">LPH 1</b><span>Leistungsphase</span></div>
+        <div><b id="anzeige-teile">0</b><span>Bauteile im Modell</span></div>
+        <div><b id="anzeige-stand">Baufeld</b><span>Modellstand</span></div>
       </div>
       <p class="buehne__wink" id="wink">Scrollen ↓</p>
     </div>
@@ -754,7 +832,33 @@ p{margin:0}
   <!-- ==================== ERFAHRUNG ==================== -->
   <section class="abschnitt" id="erfahrung">
     <div class="mitte">
-      <div class="kopfzeile">
+
+      <div class="gruender">
+        <div class="gruender__text">
+          <p class="auge">Über den Gründer</p>
+          <h2 class="gruender__name">Mohamed Elmokadem</h2>
+          <p>Das BIT-Atelier wurde von Mohamed Elmokadem gegründet. In über 15 Jahren Planung
+            und Projektleitung hat er Wohnungs-, Schul- und Laborbauten durch alle
+            Leistungsphasen geführt — vom geförderten Wohnungsbau in Nürnberg bis zur
+            Sanierung deutscher Institutionen in Kairo.</p>
+          <p>Heute verbindet er die Handschrift des Architekten mit eigener Prüftechnik.
+            Sie arbeiten direkt mit ihm, ohne Zwischenebene. Was ein großes Büro über Personal
+            löst, löst das BIT-Atelier über Werkzeuge: eine im Haus entwickelte Prüf-Engine für
+            Kollisionen und AIA-Konformität — statt zugekaufter Lizenzsoftware.</p>
+        </div>
+        <figure class="gruender__bild">
+          <img src="assets/img/mohamed-elmokadem-800.jpg"
+               srcset="assets/img/mohamed-elmokadem-800.jpg 800w, assets/img/mohamed-elmokadem-1200.jpg 1200w"
+               sizes="(min-width:64rem) 52vw, 92vw"
+               width="800" height="1200" loading="lazy" decoding="async"
+               alt="Mohamed Elmokadem, eingetragener Architekt und Gründer des BIT-Atelier"
+               onerror="this.closest('figure').style.display='none'">
+          <figcaption>Mohamed Elmokadem · Architekt, M.Sc. (TUM) ClimaDesign<br>
+            <span class="nachweis">Foto: Anna Seibel</span></figcaption>
+        </figure>
+      </div>
+
+      <div class="kopfzeile" style="margin-top:clamp(3.5rem,7vw,6rem)">
         <p class="auge">Ausgewählte Stationen</p>
         <h2>Über <em>15 Jahre</em> Planung und Projektleitung.</h2>
         <p class="unter">Vom geförderten Wohnungsbau in Nürnberg bis zu Sanierungsprojekten
@@ -774,7 +878,7 @@ p{margin:0}
         <li class="station">
           <p class="station__zeit">2020 – 2025 · Nürnberg</p>
           <h4>Architekt / Planer · Schultheiß Projektentwicklung AG</h4>
-          <p>Geförderter Wohnungsbau, u. a. Lichtenreutherzeile WA 19/20 · Werkplanung, KfW-55</p>
+          <p>Geförderter Wohnungsbau, u.&nbsp;a. Lichtenreutherzeile WA 19/20 · Werkplanung, KfW-55</p>
         </li>
         <li class="station">
           <p class="station__zeit">2019 · Wendelstein</p>
@@ -797,6 +901,7 @@ p{margin:0}
           <p>Climate Responsive Design · ganzheitliche Gebäudeoptimierung (Konzept, Fassade, Gebäudetechnik)</p>
         </li>
       </ul>
+
     </div>
   </section>
 
@@ -849,7 +954,8 @@ p{margin:0}
   </section>
 
   <footer class="fuss">
-    <span>BIT-ATELIER Architekturbüro · © <span id="jahr">2026</span> Mohamed Elmokadem. Alle Rechte vorbehalten.</span>
+    <span data-nicht-uebersetzen>BIT-ATELIER · © <span id="jahr">2026</span> Mohamed Elmokadem.</span>
+    <span>Alle Rechte vorbehalten.</span>
     <button type="button" onclick="toggleImpressum()">Impressum &amp; Datenschutz</button>
   </footer>
 
@@ -919,6 +1025,9 @@ p{margin:0}
       <p>Als Diensteanbieter bin ich für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Ich bin jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen. Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt.</p>
       </div>
       <div>
+      <h3>Bildnachweis</h3>
+      <p>Portraitfotografie: Anna Seibel.</p>
+
       <h3>Datenschutz</h3>
       <p>Diese Website setzt keine Cookies und verwendet keine Tracking- oder Analyse-Dienste. Sämtliche Inhalte (Schriftarten, Stylesheets, Icons, Skripte) werden direkt von dieser Domain ausgeliefert &ndash; es werden keine Inhalte von Drittanbietern nachgeladen und keine Besucherdaten an Dritte übermittelt. Beim Aufruf verarbeitet der Hosting-Anbieter (GitHub Pages) die zur Auslieferung technisch notwendigen Verbindungsdaten (insbesondere die IP-Adresse) in seinen Server-Logs. Eine Kontaktaufnahme erfolgt ausschließlich auf Ihre Initiative per Telefon oder E-Mail; die dabei übermittelten Daten verwende ich nur zur Bearbeitung Ihrer Anfrage.</p>
       </div>
@@ -1080,6 +1189,7 @@ p{margin:0}
             }, { threshold: 0.2 }).observe(el);
         })();
 </script>
+<script src="assets/js/sprachen.js" defer></script>
 <script type="module">
 import * as THREE from 'three';
 
@@ -1106,7 +1216,10 @@ const KAPITEL = [
 const route = document.getElementById('route');
 KAPITEL.forEach((k,i)=>{
   const b = document.createElement('button');
-  b.type='button'; b.textContent = String(i+1).padStart(2,'0')+' '+k.label;
+  b.type='button';
+  b.dataset.nr = String(i+1).padStart(2,'0');
+  b.dataset.label = k.label;          /* deutsches Original, fuer die Sprachumschaltung */
+  b.textContent = b.dataset.nr + ' ' + ((window.bitHud && window.bitHud(k.label)) || k.label);
   b.addEventListener('click',()=>document.getElementById(k.id).scrollIntoView({behavior:'smooth',block:'start'}));
   route.appendChild(b);
 });
@@ -1774,8 +1887,10 @@ function anwenden(p, zeit){
 
   /* HUD */
   const kap = Math.min(KAPITEL.length-1, Math.floor(p*KAPITEL.length));
-  hudPhase.textContent = KAPITEL[kap].lph;
-  hudStand.textContent = KAPITEL[kap].stand;
+  /* Über die Sprachtabelle, falls geladen — sonst deutsch */
+  const uebs = (t) => (window.bitHud && window.bitHud(t)) || t;
+  hudPhase.textContent = uebs(KAPITEL[kap].lph);
+  hudStand.textContent = uebs(KAPITEL[kap].stand);
   hudCount.textContent = String(Math.round(zaehler*11)).replace(/\B(?=(\d{3})+(?!\d))/g,'.');
   routeBtns.forEach((b,i)=> i===kap ? b.setAttribute('aria-current','step') : b.removeAttribute('aria-current'));
   balken.style.setProperty('--p', p.toFixed(4));
