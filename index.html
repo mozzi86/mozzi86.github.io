@@ -151,7 +151,7 @@ p{margin:0}
 }
 /* "Projekt anfragen" braucht neben Sprachwahl und Menueknopf zu viel Platz,
    sobald das Fenster unter 64rem faellt. Kontakt steht im Menue. */
-@media(max-width:64rem){ .kopf__tun .btn:not(.btn--geist){display:none} }
+@media(max-width:63.99rem){ .kopf__tun .btn:not(.btn--geist){display:none} }
 /* Auf dem Handy bleiben Logo, Sprachwahl und Menueknopf. Beide
    Schaltflaechen wuerden den Menueknopf aus dem Bild schieben. */
 @media(max-width:34rem){ .kopf__tun .btn{display:none} }
@@ -408,12 +408,17 @@ p{margin:0}
 /* Gilt ueberall, wo der Menueknopf steht — also auf allen Tippgeraeten
    einschliesslich Tablet, nicht nur auf dem Handy. Sonst faellt die Breite
    bei 641 px wieder auf 33 px zurueck. */
-@media(max-width:78rem){
+/* 77.99, nicht 78: bei exakt 78rem greift sonst auch der
+   min-width:78rem-Block der Desktop-Navigation — Doppel-Match. */
+@media(max-width:77.99rem){
   /* Der freie Platz liegt in .kopf__zeile, nicht in .kopf__tun — ohne dieses
      Mitwachsen hat flex-grow an der Gruppe keine Wirkung. flex-end haelt
      Knoepfe und Menue weiter am Rand (und spiegelt sich in RTL von selbst). */
   .kopf__tun{flex:1 1 auto;justify-content:flex-end}
-  .sprachwahl{flex:1 1 auto;max-width:8.4rem}
+  .sprachwahl{flex:1 1 auto;
+    /* 3 = Anzahl der Sprachknoepfe (DE/EN/AR) — bei einer vierten
+       Sprache hier mitzaehlen, sonst sinkt die Tippflaeche unter 44 px */
+    max-width:calc(3 * 2.75rem + 2px)}
   .sprachwahl button{flex:1 1 auto;min-width:2rem;max-width:2.75rem}
 }
 @media(max-width:40rem){ .sprachwahl button{padding:.5rem .2rem;font-size:.66rem} }
