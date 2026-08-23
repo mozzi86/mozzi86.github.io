@@ -151,7 +151,7 @@ p{margin:0}
 }
 /* "Projekt anfragen" braucht neben Sprachwahl und Menueknopf zu viel Platz,
    sobald das Fenster unter 64rem faellt. Kontakt steht im Menue. */
-@media(max-width:63.99rem){ .kopf__tun .btn:not(.btn--geist){display:none} }
+@media not all and (min-width:64rem){ .kopf__tun .btn:not(.btn--geist){display:none} }
 /* Auf dem Handy bleiben Logo, Sprachwahl und Menueknopf. Beide
    Schaltflaechen wuerden den Menueknopf aus dem Bild schieben. */
 @media(max-width:34rem){ .kopf__tun .btn{display:none} }
@@ -203,12 +203,13 @@ p{margin:0}
 .buehne__text{position:relative;z-index:5;margin-top:calc(-1 * var(--bh,100lvh));pointer-events:none}
 .kapitel{position:relative}
 .kapitel__halt{position:sticky;top:0;display:flex;align-items:center;min-height:var(--bh,100lvh);
-  padding:clamp(5rem,8vw,7rem) var(--pad);pointer-events:none}
+  --kpad:var(--pad);   /* der Abdunkler .satz::before liest das mit — beide muessen gleich sein */
+  padding:clamp(5rem,8vw,7rem) var(--kpad);pointer-events:none}
 .kapitel[data-lage="rechts"] .kapitel__halt{justify-content:flex-end}
 .kapitel[data-lage="mitte"] .kapitel__halt{justify-content:center;text-align:center}
 .satz{position:relative;width:min(36rem,54vw);pointer-events:auto}
 .satz::before{content:"";position:absolute;z-index:-1;
-  inset:-2.6rem calc(-1 * min(4.5rem, var(--pad)));   /* nie ueber den Seitenrand hinaus */
+  inset:-2.6rem calc(-1 * min(4.5rem, var(--kpad, var(--pad))));   /* nie ueber den Seitenrand hinaus */
   background:radial-gradient(ellipse at center,rgba(7,11,15,.93) 0%,rgba(7,11,15,.7) 54%,transparent 82%)}
 .satz::after{content:attr(data-nr);position:absolute;z-index:-2;top:50%;left:50%;
   transform:translate(-50%,-50%);font-family:var(--display);font-weight:700;line-height:1;
@@ -231,7 +232,7 @@ p{margin:0}
   /* Anzeige und Scroll-Hinweis wuerden sich mit dem Kapiteltext ueberlagern —
      auf schmalen Schirmen hat der Text Vorrang. */
   .buehne__anzeige,.buehne__wink{display:none}
-  .kapitel__halt{padding-left:1.15rem;padding-right:1.15rem}
+  .kapitel__halt{--kpad:1.15rem;padding-left:var(--kpad);padding-right:var(--kpad)}
   .satz::after{font-size:clamp(9rem,52vw,15rem);opacity:.07}
 }
 
@@ -272,7 +273,9 @@ p{margin:0}
 @media(min-width:60rem){.prinzip{grid-template-columns:1.15fr .85fr;gap:4rem}}
 .prinzip p+p{margin-top:1.1rem}
 .prinzip p{color:var(--ink-dim);font-weight:300}
-.nachweise{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line)}
+.nachweise{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line)}
+@media(max-width:30rem){ .nachweise{grid-template-columns:1fr} }
+.nachweis span{overflow-wrap:anywhere}   /* "Architektenkammer," sprengte sonst die Spalte */
 .nachweis{background:var(--bg);padding:1.15rem}
 .abschnitt--hoch .nachweis{background:var(--bg-raise)}
 .nachweis h4{font-size:1.05rem;color:var(--accent)}
@@ -410,7 +413,7 @@ p{margin:0}
    bei 641 px wieder auf 33 px zurueck. */
 /* 77.99, nicht 78: bei exakt 78rem greift sonst auch der
    min-width:78rem-Block der Desktop-Navigation — Doppel-Match. */
-@media(max-width:77.99rem){
+@media not all and (min-width:78rem){
   /* Der freie Platz liegt in .kopf__zeile, nicht in .kopf__tun — ohne dieses
      Mitwachsen hat flex-grow an der Gruppe keine Wirkung. flex-end haelt
      Knoepfe und Menue weiter am Rand (und spiegelt sich in RTL von selbst). */
@@ -438,6 +441,7 @@ p{margin:0}
 :root[lang="ar"] .gruender__bild figcaption,:root[lang="ar"] .fenster__leiste span,
 :root[lang="ar"] .buehne__anzeige,:root[lang="ar"] .buehne__route button{
   letter-spacing:0;text-transform:none}       /* Kapitälchen gibt es im Arabischen nicht */
+:root[lang="ar"] .marke__name{font-size:.88rem}   /* sonst frisst der Schriftzug die Tippflaeche der Sprachknoepfe */
 :root[lang="ar"] .satz__text,:root[lang="ar"] .unter,:root[lang="ar"] .gruender__text p{
   font-weight:400}                            /* Strichstärke 300 wirkt arabisch zu dünn */
 
