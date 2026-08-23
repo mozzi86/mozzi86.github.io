@@ -112,19 +112,24 @@ p{margin:0}
 .kopf{position:fixed;z-index:70;inset:0 0 auto 0;
   background:linear-gradient(rgba(7,11,15,.92),rgba(7,11,15,0));
   backdrop-filter:blur(8px)}
-.kopf__zeile{display:flex;align-items:center;justify-content:space-between;gap:1rem;
-  padding:.85rem var(--pad);max-width:var(--breit);margin:0 auto}
+.kopf__zeile{display:flex;align-items:center;justify-content:space-between;gap:.7rem;
+  padding:.85rem var(--pad);margin:0 auto;
+  /* NICHT max-width:var(--breit) — die Polsterung liegt hier am selben
+     Element, die Abschnitte legen sie eine Ebene darueber. Ohne das
+     Aufaddieren ist die Kopfzeile 2x --pad schmaler als der Inhalt und
+     laeuft bei jeder Fensterbreite rechts heraus. */
+  max-width:calc(var(--breit) + 2 * var(--pad))}
 .marke{display:flex;align-items:center;gap:.7rem;text-decoration:none;flex:none}
 .marke svg{width:2.6rem;height:1.8rem;color:var(--accent)}
 .marke__name{font-family:var(--display);font-weight:700;letter-spacing:.02em;
   font-size:.95rem;text-transform:uppercase}
 .marke__name span{color:var(--accent)}
-.navi{display:none;align-items:center;gap:.1rem}
-.navi a{padding:.55rem .7rem;text-decoration:none;color:var(--muted);
+.navi{display:none;align-items:center;gap:0}
+.navi a{padding:.55rem .5rem;text-decoration:none;color:var(--muted);
   font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;
   transition:color .18s}
 .navi a:hover{color:var(--ink)}
-.kopf__tun{display:flex;align-items:center;gap:.5rem}
+.kopf__tun{display:flex;align-items:center;gap:.45rem}
 /* Ohne Umbruchsperre wachsen die Schaltflaechen zweizeilig und ziehen die
    Kopfzeile mit — auf Englisch besonders, weil die Beschriftungen laenger sind. */
 .kopf__tun .btn{white-space:nowrap}
@@ -136,10 +141,25 @@ p{margin:0}
 .menue a{display:block;padding:.7rem .2rem;text-decoration:none;color:var(--ink-dim);
   font-family:var(--mono);font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;
   border-bottom:1px solid var(--line)}
-@media(min-width:64rem){
+/* Volle Navigation erst, wenn das Fenster mindestens so breit ist wie die
+   Inhaltsspalte. Darunter uebernimmt das Menue — es enthaelt alle sieben
+   Punkte und Demo, es geht also nichts verloren. */
+@media(min-width:78rem){
   .navi{display:flex}
   .menue-knopf{display:none}
   .menue{display:none !important}
+}
+/* "Projekt anfragen" braucht neben Sprachwahl und Menueknopf zu viel Platz,
+   sobald das Fenster unter 64rem faellt. Kontakt steht im Menue. */
+@media(max-width:64rem){ .kopf__tun .btn:not(.btn--geist){display:none} }
+/* Auf dem Handy bleiben Logo, Sprachwahl und Menueknopf. Beide
+   Schaltflaechen wuerden den Menueknopf aus dem Bild schieben. */
+@media(max-width:34rem){ .kopf__tun .btn{display:none} }
+/* Sehr schmale Geraete (320 px): Bildmarke und Schriftzug kleiner. */
+@media(max-width:22rem){
+  .marke{gap:.5rem}
+  .marke svg{width:2.15rem;height:1.5rem}
+  .marke__name{font-size:.85rem}
 }
 
 /* ---------------- Bühne ---------------- */
@@ -372,7 +392,7 @@ p{margin:0}
 
 /* ---------------- Sprachwahl ---------------- */
 .sprachwahl{display:flex;border:1px solid var(--line-strong)}
-.sprachwahl button{min-height:2.75rem;padding:.5rem .7rem;background:transparent;border:0;
+.sprachwahl button{min-height:2.75rem;padding:.5rem .58rem;background:transparent;border:0;
   color:var(--muted);font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;
   cursor:pointer;transition:color .18s,background .18s}
 .sprachwahl button+button{border-inline-start:1px solid var(--line-strong)}
