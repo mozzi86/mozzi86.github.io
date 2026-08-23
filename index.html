@@ -94,7 +94,7 @@ p{margin:0}
 .btn:hover{transform:translateY(-2px);filter:brightness(1.08)}
 .btn--geist{background:transparent;color:var(--ink);border-color:var(--line-strong)}
 .btn--geist:hover{border-color:var(--accent);color:var(--accent)}
-.btn--klein{padding:.6rem .9rem;font-size:.7rem}
+.btn--klein{padding:.6rem .9rem;font-size:.7rem;min-height:2.75rem}
 
 /* ---------------- Kopfzeile ---------------- */
 .kopf{position:fixed;z-index:70;inset:0 0 auto 0;
@@ -113,7 +113,8 @@ p{margin:0}
   transition:color .18s}
 .navi a:hover{color:var(--ink)}
 .kopf__tun{display:flex;align-items:center;gap:.5rem}
-.menue-knopf{display:inline-flex;flex-direction:column;gap:.28rem;padding:.6rem;
+.menue-knopf{display:inline-flex;flex-direction:column;justify-content:center;align-items:center;
+  gap:.28rem;min-width:2.75rem;min-height:2.75rem;   /* 44 px Mindestmass fuer Finger */
   background:transparent;border:1px solid var(--line-strong);cursor:pointer}
 .menue-knopf i{display:block;width:1.05rem;height:1.5px;background:var(--ink)}
 .menue{border-top:1px solid var(--line);background:var(--bg-deep);padding:.6rem var(--pad) 1rem}
@@ -128,7 +129,7 @@ p{margin:0}
 
 /* ---------------- Bühne ---------------- */
 .buehne{position:relative;isolation:isolate;background:var(--bg)}
-.buehne__fix{position:sticky;top:0;z-index:0;width:100%;height:100dvh;overflow:hidden;
+.buehne__fix{position:sticky;top:0;z-index:0;width:100%;height:var(--bh,100lvh);overflow:hidden;
   background:radial-gradient(125% 85% at 50% 8%,#1b2a35 0%,#101a22 42%,var(--bg-deep) 100%)}
 .buehne__medien{position:absolute;inset:0;z-index:1}
 .ebene{position:absolute;inset:0;margin:0;opacity:0;will-change:opacity}
@@ -164,9 +165,9 @@ p{margin:0}
   animation:wippen 2.4s ease-in-out infinite;transition:opacity .4s}
 @keyframes wippen{0%,100%{transform:translateY(0);opacity:.5}50%{transform:translateY(5px);opacity:1}}
 
-.buehne__text{position:relative;z-index:5;margin-top:-100dvh;pointer-events:none}
+.buehne__text{position:relative;z-index:5;margin-top:calc(-1 * var(--bh,100lvh));pointer-events:none}
 .kapitel{position:relative}
-.kapitel__halt{position:sticky;top:0;display:flex;align-items:center;min-height:100dvh;
+.kapitel__halt{position:sticky;top:0;display:flex;align-items:center;min-height:var(--bh,100lvh);
   padding:clamp(5rem,8vw,7rem) var(--pad);pointer-events:none}
 .kapitel[data-lage="rechts"] .kapitel__halt{justify-content:flex-end}
 .kapitel[data-lage="mitte"] .kapitel__halt{justify-content:center;text-align:center}
@@ -290,7 +291,8 @@ p{margin:0}
   display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;align-items:center;
   color:var(--muted);font-size:.85rem}
 .fuss button{background:none;border:0;color:var(--muted);font:inherit;cursor:pointer;
-  text-decoration:underline;text-underline-offset:.25em}
+  text-decoration:underline;text-underline-offset:.25em;
+  min-height:2.75rem;padding:.5rem 0}
 .fuss button:hover{color:var(--accent)}
 .rechtstext{padding:clamp(3rem,6vw,5rem) var(--pad);background:var(--bg-deep);scroll-margin-top:5rem;
   border-top:1px solid var(--line)}
@@ -396,6 +398,32 @@ p{margin:0}
   </nav>
 </header>
 
+<script>
+  /* Buehnenhoehe festschreiben.
+     Viewport-Einheiten taugen auf dem Handy nicht: beim ersten Scrollen faehrt
+     die Adressleiste ein, das Fenster waechst — dvh zieht verzoegert nach und
+     hinterlaesst einen dunklen Streifen unter der klebenden Buehne.
+     Gemessen wird ein LAUFENDES MAXIMUM: die Buehne darf zu hoch sein (man
+     sieht es nicht, das Bild ist auf Fuellen gestellt), aber nie zu niedrig.
+     Beim Drehen wird das Maximum zurueckgesetzt. */
+  (function(){
+    var wurzel = document.documentElement, maxH = 0, warten = false;
+    function messen(){
+      warten = false;
+      var h = window.innerHeight || 0;
+      if (window.visualViewport && visualViewport.height > h) h = visualViewport.height;
+      if (h > maxH) { maxH = h; wurzel.style.setProperty('--bh', Math.round(h) + 'px'); }
+    }
+    function anstossen(){ if (!warten) { warten = true; requestAnimationFrame(messen); } }
+    function neuBeginnen(){ maxH = 0; setTimeout(messen, 240); }
+    messen();
+    addEventListener('load', messen);
+    addEventListener('resize', anstossen, {passive:true});
+    addEventListener('scroll', anstossen, {passive:true});   /* faengt die einfahrende Adressleiste */
+    addEventListener('orientationchange', neuBeginnen);
+    if (window.visualViewport) visualViewport.addEventListener('resize', anstossen, {passive:true});
+  })();
+</script>
 <main id="top">
 
   <!-- ==================== BÜHNE: VOM BAUFELD ZUM HAUS ==================== -->
@@ -405,20 +433,30 @@ p{margin:0}
         <video class="buehne__video" id="buehne-video" muted playsinline preload="none"
                disablepictureinpicture disableremoteplayback></video>
         <figure class="ebene" data-von="0.00" data-bis="0.115">
-          <img src="assets/img/bauablauf/phase-1-baufeld.jpg" alt="" width="1600" height="900"
+          <img src="assets/img/bauablauf/phase-1-baufeld-800.jpg"
+               srcset="assets/img/bauablauf/phase-1-baufeld-800.jpg 800w, assets/img/bauablauf/phase-1-baufeld.jpg 1600w"
+               sizes="100vw" alt="" width="1600" height="900"
                loading="eager" decoding="async" fetchpriority="high">
         </figure>
         <figure class="ebene" data-von="0.115" data-bis="0.235">
-          <img src="assets/img/bauablauf/phase-2-gruendung.jpg" alt="" width="1600" height="900" loading="lazy" decoding="async">
+          <img src="assets/img/bauablauf/phase-2-gruendung-800.jpg"
+               srcset="assets/img/bauablauf/phase-2-gruendung-800.jpg 800w, assets/img/bauablauf/phase-2-gruendung.jpg 1600w"
+               sizes="100vw" alt="" width="1600" height="900" loading="lazy" decoding="async">
         </figure>
         <figure class="ebene" data-von="0.235" data-bis="0.45">
-          <img src="assets/img/bauablauf/phase-3-tragwerk.jpg" alt="" width="1600" height="900" loading="lazy" decoding="async">
+          <img src="assets/img/bauablauf/phase-3-tragwerk-800.jpg"
+               srcset="assets/img/bauablauf/phase-3-tragwerk-800.jpg 800w, assets/img/bauablauf/phase-3-tragwerk.jpg 1600w"
+               sizes="100vw" alt="" width="1600" height="900" loading="lazy" decoding="async">
         </figure>
         <figure class="ebene" data-von="0.45" data-bis="0.635">
-          <img src="assets/img/bauablauf/phase-4-huelle.jpg" alt="" width="1600" height="900" loading="lazy" decoding="async">
+          <img src="assets/img/bauablauf/phase-4-huelle-800.jpg"
+               srcset="assets/img/bauablauf/phase-4-huelle-800.jpg 800w, assets/img/bauablauf/phase-4-huelle.jpg 1600w"
+               sizes="100vw" alt="" width="1600" height="900" loading="lazy" decoding="async">
         </figure>
         <figure class="ebene" data-von="0.855" data-bis="1.001">
-          <img src="assets/img/bauablauf/phase-6-uebergabe.jpg" alt="" width="1600" height="900" loading="lazy" decoding="async">
+          <img src="assets/img/bauablauf/phase-6-uebergabe-800.jpg"
+               srcset="assets/img/bauablauf/phase-6-uebergabe-800.jpg 800w, assets/img/bauablauf/phase-6-uebergabe.jpg 1600w"
+               sizes="100vw" alt="" width="1600" height="900" loading="lazy" decoding="async">
         </figure>
       </div>
       <canvas class="buehne__leinwand" id="buehne-leinwand" aria-hidden="true"></canvas>
@@ -434,7 +472,7 @@ p{margin:0}
     </div>
 
     <div class="buehne__text">
-      <article class="kapitel" id="kap-1" style="min-height:130dvh">
+      <article class="kapitel" id="kap-1" style="min-height:calc(1.30 * var(--bh,100lvh))">
         <div class="kapitel__halt"><div class="satz" data-nr="1">
           <p class="satz__auge">Kapitel 01 · Baufeld</p>
           <h1 class="satz__titel">Architektur trifft <em>Digitalisierung</em>.</h1>
@@ -446,7 +484,7 @@ p{margin:0}
         </div></div>
       </article>
 
-      <article class="kapitel" id="kap-2" data-lage="rechts" style="min-height:120dvh">
+      <article class="kapitel" id="kap-2" data-lage="rechts" style="min-height:calc(1.20 * var(--bh,100lvh))">
         <div class="kapitel__halt"><div class="satz" data-nr="2">
           <p class="satz__auge">Kapitel 02 · Gründung</p>
           <h2 class="satz__titel">Alles Gute steht auf <em>Millimetern</em>.</h2>
@@ -457,7 +495,7 @@ p{margin:0}
         </div></div>
       </article>
 
-      <article class="kapitel" id="kap-3" style="min-height:135dvh">
+      <article class="kapitel" id="kap-3" style="min-height:calc(1.35 * var(--bh,100lvh))">
         <div class="kapitel__halt"><div class="satz" data-nr="3">
           <p class="satz__auge">Kapitel 03 · Tragwerk</p>
           <h2 class="satz__titel">Das Haus wächst <em>zuerst im Modell</em>.</h2>
@@ -468,7 +506,7 @@ p{margin:0}
         </div></div>
       </article>
 
-      <article class="kapitel" id="kap-4" data-lage="rechts" style="min-height:120dvh">
+      <article class="kapitel" id="kap-4" data-lage="rechts" style="min-height:calc(1.20 * var(--bh,100lvh))">
         <div class="kapitel__halt"><div class="satz" data-nr="4">
           <p class="satz__auge">Kapitel 04 · Hülle</p>
           <h2 class="satz__titel">Fassade, Fenster, <em>Licht</em>.</h2>
@@ -479,7 +517,7 @@ p{margin:0}
         </div></div>
       </article>
 
-      <article class="kapitel" id="kap-5" style="min-height:140dvh">
+      <article class="kapitel" id="kap-5" style="min-height:calc(1.40 * var(--bh,100lvh))">
         <div class="kapitel__halt"><div class="satz" data-nr="5">
           <p class="satz__auge">Kapitel 05 · Technik &amp; Prüfung</p>
           <h2 class="satz__titel">Der Fehler wird gefunden, <em>bevor er teuer wird</em>.</h2>
@@ -491,7 +529,7 @@ p{margin:0}
         </div></div>
       </article>
 
-      <article class="kapitel" id="kap-6" data-lage="mitte" style="min-height:130dvh">
+      <article class="kapitel" id="kap-6" data-lage="mitte" style="min-height:calc(1.30 * var(--bh,100lvh))">
         <div class="kapitel__halt"><div class="satz" data-nr="6">
           <p class="satz__auge">Kapitel 06 · Übergabe</p>
           <h2 class="satz__titel">Fertig ist erst, wenn es <em>stimmt</em>.</h2>
