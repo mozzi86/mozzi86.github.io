@@ -80,6 +80,9 @@
   --ease:cubic-bezier(.16,1,.3,1);
 }
 *,*::before,*::after{box-sizing:border-box}
+/* KEIN overflow-x hier! Jeder Wert ausser visible macht das html-Element zum
+   Scrollcontainer und zerstoert damit position:sticky der Buehne. Der Querlauf
+   wird stattdessen an der Ursache behoben (Abdunkler-Inset unten). */
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);
   font-size:1rem;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
@@ -184,7 +187,8 @@ p{margin:0}
 .kapitel[data-lage="rechts"] .kapitel__halt{justify-content:flex-end}
 .kapitel[data-lage="mitte"] .kapitel__halt{justify-content:center;text-align:center}
 .satz{position:relative;width:min(36rem,54vw);pointer-events:auto}
-.satz::before{content:"";position:absolute;z-index:-1;inset:-2.6rem -4.5rem;
+.satz::before{content:"";position:absolute;z-index:-1;
+  inset:-2.6rem calc(-1 * min(4.5rem, var(--pad)));   /* nie ueber den Seitenrand hinaus */
   background:radial-gradient(ellipse at center,rgba(7,11,15,.93) 0%,rgba(7,11,15,.7) 54%,transparent 82%)}
 .satz::after{content:attr(data-nr);position:absolute;z-index:-2;top:50%;left:50%;
   transform:translate(-50%,-50%);font-family:var(--display);font-weight:700;line-height:1;
@@ -347,9 +351,23 @@ p{margin:0}
 .modal__kasten p{color:var(--muted);font-weight:300}
 .modal__tun{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.6rem}
 
-/* Flache Fenster: die Anzeige unten würde in den Kapiteltitel laufen. */
+/* Flache Fenster (Tablet und Handy quer). Der Kapiteltext hatte bei 560 px
+   Höhe nur noch 21 px Luft, auf Arabisch 12 px — jede knappere Höhe schneidet ab.
+   Deshalb hier weniger Polsterung, kleinere Schrift, und die Schlagwort-Marken
+   weichen als erstes, weil sie Dekor sind. */
 @media(max-height:46rem){
   .buehne__anzeige,.buehne__wink{display:none}
+  .kapitel__halt{padding-top:4.2rem;padding-bottom:2.4rem}
+  .satz__auge{margin-bottom:.5rem}
+  .satz__titel{font-size:clamp(1.7rem,3.6vw,2.7rem)}
+  .satz__text{font-size:.96rem;line-height:1.5;margin-top:.9rem}
+  .satz__marken{display:none}
+  .satz::after{font-size:clamp(8rem,20vw,14rem)}
+}
+@media(max-height:34rem){
+  .kapitel__halt{padding-top:3.6rem;padding-bottom:1.6rem}
+  .satz__titel{font-size:clamp(1.4rem,3vw,2rem)}
+  .satz__text{font-size:.9rem;line-height:1.45;margin-top:.7rem}
 }
 
 /* ---------------- Sprachwahl ---------------- */
