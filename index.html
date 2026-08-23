@@ -399,7 +399,24 @@ p{margin:0}
 .sprachwahl button:hover{color:var(--ink)}
 .sprachwahl button[aria-pressed="true"]{color:var(--accent-ink);background:var(--accent)}
 .sprachwahl button[lang="ar"]{font-family:"IBM Plex Sans Arabic",var(--mono);letter-spacing:0}
-@media(max-width:40rem){ .sprachwahl button{padding:.5rem .5rem;font-size:.66rem} }
+/* Sprachknoepfe auf dem Handy: 31 px waren zum Tippen zu schmal, die Hoehe
+   war mit 44 px schon richtig. Feste Breite geht nicht — bei 320 px muessen
+   Logo und Menueknopf daneben passen. Die Gruppe nimmt sich daher den freien
+   Platz der Kopfzeile bis 44 px je Knopf und schrumpft nur so weit, wie es
+   die Nachbarn erzwingen. Ergebnis: 44 px ab 390 px Geraetebreite, 39 px bei
+   360, 32 px bei 320 — statt ueberall 31. */
+/* Gilt ueberall, wo der Menueknopf steht — also auf allen Tippgeraeten
+   einschliesslich Tablet, nicht nur auf dem Handy. Sonst faellt die Breite
+   bei 641 px wieder auf 33 px zurueck. */
+@media(max-width:78rem){
+  /* Der freie Platz liegt in .kopf__zeile, nicht in .kopf__tun — ohne dieses
+     Mitwachsen hat flex-grow an der Gruppe keine Wirkung. flex-end haelt
+     Knoepfe und Menue weiter am Rand (und spiegelt sich in RTL von selbst). */
+  .kopf__tun{flex:1 1 auto;justify-content:flex-end}
+  .sprachwahl{flex:1 1 auto;max-width:8.4rem}
+  .sprachwahl button{flex:1 1 auto;min-width:2rem;max-width:2.75rem}
+}
+@media(max-width:40rem){ .sprachwahl button{padding:.5rem .2rem;font-size:.66rem} }
 
 /* ---------------- Arabisch: Schrift und Leserichtung ---------------- */
 :root[lang="ar"]{
