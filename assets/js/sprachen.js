@@ -194,7 +194,6 @@
       'Heute verbindet er die Handschrift des Architekten mit eigener Prüftechnik. Sie arbeiten direkt mit ihm, ohne Zwischenebene. Was ein großes Büro über Personal löst, löst das BIT-Atelier über Werkzeuge: eine im Haus entwickelte Prüf-Engine für Kollisionen und AIA-Konformität — statt zugekaufter Lizenzsoftware.':
         'Today he combines the hand of the architect with his own checking technology. You work with him directly, with no layer in between. What a large practice solves with staff, BIT-Atelier solves with tools: an in-house checking engine for clashes and requirements compliance — instead of bought-in licensed software.',
       'Mohamed Elmokadem · Architekt, M.Sc. (TUM) ClimaDesign': 'Mohamed Elmokadem · Architect, M.Sc. (TUM) ClimaDesign',
-      'Foto: Anna Seibel': 'Photo: Anna Seibel',
       'Ausgewählte Stationen': 'Selected positions',
       'Über <em>15 Jahre</em> Planung und Projektleitung.': 'More than <em>15 years</em> of design and project management.',
       'Vom geförderten Wohnungsbau in Nürnberg bis zu Sanierungsprojekten deutscher Institutionen in Kairo.':
@@ -265,9 +264,7 @@
       'Intel-Version <a href="https://github.com/mozzi86/NovaPDF/releases/latest/download/BIT-Nova-PDF-x64.dmg" style="color:var(--accent)">hier</a>.':
         'Intel version <a href="https://github.com/mozzi86/NovaPDF/releases/latest/download/BIT-Nova-PDF-x64.dmg" style="color:var(--accent)">here</a>.',
       'Kostenlos · quelloffen entwickelt im BIT-Atelier · alle Versionen <a href="https://github.com/mozzi86/NovaPDF/releases" style="color:var(--accent)">auf GitHub</a>. Die Apps sind nicht signiert bzw. notarisiert — Windows SmartScreen bzw. macOS Gatekeeper beim ersten Start über „Trotzdem ausführen" / Rechtsklick → „Öffnen" bestätigen.':
-        'Free · developed openly at BIT-Atelier · all releases <a href="https://github.com/mozzi86/NovaPDF/releases" style="color:var(--accent)">on GitHub</a>. The apps are not code-signed or notarised — on first launch confirm through Windows SmartScreen (“Run anyway”) or macOS Gatekeeper (right-click → “Open”).',
-      'Mohamed Elmokadem · Architekt, M.Sc. (TUM) ClimaDesign<br> <span class="nachweis">Foto: Anna Seibel</span>':
-        'Mohamed Elmokadem · Architect, M.Sc. (TUM) ClimaDesign<br> <span class="nachweis">Photo: Anna Seibel</span>'
+        'Free · developed openly at BIT-Atelier · all releases <a href="https://github.com/mozzi86/NovaPDF/releases" style="color:var(--accent)">on GitHub</a>. The apps are not code-signed or notarised — on first launch confirm through Windows SmartScreen (“Run anyway”) or macOS Gatekeeper (right-click → “Open”).'
     },
 
     ar: {
@@ -453,7 +450,6 @@
         'اليوم يجمع بين بصمة المعماري وتقنية تدقيق طوَّرها بنفسه. تعملون معه مباشرة، بلا وسيط. وما يحلُّه مكتب كبير بالكوادر، يحلُّه BIT-Atelier بالأدوات: محرِّك تدقيق مُطوَّر داخلياً للتعارضات ومطابقة المتطلبات — بدلاً من برامج مُرخَّصة مُشتراة.',
       'Mohamed Elmokadem · Architekt, M.Sc. (TUM) ClimaDesign': 'محمد المقدم · مهندس معماري، ماجستير (جامعة ميونخ التقنية) ClimaDesign',
       'Mohamed Elmokadem': 'محمد المقدم',
-      'Foto: Anna Seibel': 'تصوير: Anna Seibel',
       'Ausgewählte Stationen': 'محطات مختارة',
       'Über <em>15 Jahre</em> Planung und Projektleitung.': 'أكثر من <em>15 عاماً</em> في التصميم وإدارة المشاريع.',
       'Vom geförderten Wohnungsbau in Nürnberg bis zu Sanierungsprojekten deutscher Institutionen in Kairo.':
@@ -523,9 +519,7 @@
       'Intel-Version <a href="https://github.com/mozzi86/NovaPDF/releases/latest/download/BIT-Nova-PDF-x64.dmg" style="color:var(--accent)">hier</a>.':
         'نسخة Intel <a href="https://github.com/mozzi86/NovaPDF/releases/latest/download/BIT-Nova-PDF-x64.dmg" style="color:var(--accent)">من هنا</a>.',
       'Kostenlos · quelloffen entwickelt im BIT-Atelier · alle Versionen <a href="https://github.com/mozzi86/NovaPDF/releases" style="color:var(--accent)">auf GitHub</a>. Die Apps sind nicht signiert bzw. notarisiert — Windows SmartScreen bzw. macOS Gatekeeper beim ersten Start über „Trotzdem ausführen" / Rechtsklick → „Öffnen" bestätigen.':
-        'مجاني · مُطوَّر بشكل مفتوح في BIT-Atelier · جميع الإصدارات <a href="https://github.com/mozzi86/NovaPDF/releases" style="color:var(--accent)">على GitHub</a>. التطبيقات غير موقَّعة رقمياً — عند أول تشغيل أكِّد عبر Windows SmartScreen («تشغيل على أي حال») أو macOS Gatekeeper (نقر بالزر الأيمن ← «فتح»).',
-      'Mohamed Elmokadem · Architekt, M.Sc. (TUM) ClimaDesign<br> <span class="nachweis">Foto: Anna Seibel</span>':
-        'محمد المقدم · مهندس معماري، ماجستير (جامعة ميونخ التقنية) ClimaDesign<br> <span class="nachweis">تصوير: Anna Seibel</span>'
+        'مجاني · مُطوَّر بشكل مفتوح في BIT-Atelier · جميع الإصدارات <a href="https://github.com/mozzi86/NovaPDF/releases" style="color:var(--accent)">على GitHub</a>. التطبيقات غير موقَّعة رقمياً — عند أول تشغيل أكِّد عبر Windows SmartScreen («تشغيل على أي حال») أو macOS Gatekeeper (نقر بالزر الأيمن ← «فتح»).'
     }
   };
 
