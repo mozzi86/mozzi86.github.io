@@ -1,18 +1,17 @@
 <!DOCTYPE html>
-<html lang="de">
-<head>
+<html lang="en" dir="ltr" style="--bh: 900px;"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>BIT-ATELIER — Architektur trifft Digitalisierung</title>
+<title>BIT-ATELIER — where architecture meets data</title>
 <meta name="description" content="BIT-ATELIER, Architekturbüro von Mohamed Elmokadem: BIM-Koordination und Modellprüfung mit eigener Prüf-Engine, dazu Planung und Architektur über alle Leistungsphasen. Raum Nürnberg, Projekte bundesweit.">
 <meta name="theme-color" content="#0c1117">
-<link rel="canonical" href="https://bit-atelier.de/">
+<link rel="canonical" href="https://bit-atelier.de/en/">
 <meta property="og:title" content="BIT-ATELIER — Architektur trifft Digitalisierung">
 <meta property="og:description" content="BIM-Koordination, Modellprüfung mit eigener Prüf-Engine, Planung über alle Leistungsphasen.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://bit-atelier.de/">
+<meta property="og:url" content="https://bit-atelier.de/en/">
 <meta property="og:image" content="https://bit-atelier.de/assets/img/og-bit-atelier.png">
-<meta property="og:locale" content="de_DE">
+<meta property="og:locale" content="en_US">
 <meta property="og:locale:alternate" content="en_US">
 <meta property="og:locale:alternate" content="ar_AR">
 <meta property="og:image:alt" content="BIT-ATELIER — Architektur trifft Digitalisierung. BIM-Koordination und Modellprüfung mit eigener Prüf-Engine.">
@@ -131,7 +130,7 @@
 }
 </script>
 <script type="importmap">
-{ "imports": { "three": "./assets/js/three.module.min.js" } }
+{ "imports": { "three": "../assets/js/three.module.min.js" } }
 </script>
 <!-- three.module.min.js ist die mit esbuild minifizierte Fassung derselben
      Revision r161 (erzeugt aus three.module.js, siehe tools/README-bilder.md):
@@ -140,16 +139,14 @@
      zwischen r161 und r17x haben sich Farbverwaltung und Renderer-Optionen
      geaendert. -->
 <style>
-/* --- Beleg-Kasten unter dem Pruefergebnis (Phase 65-06) -------------------
+/* --- Nachweis-Kasten unter dem Pruefergebnis (Phase 65-06) ----------------
    Beide Dateien stammen aus dem Beispiel-Pruflauf der Demo, den der Besucher
-   selbst ausloesen kann — derselbe Lauf, dieselben Zahlen.
-   Klassenname bewusst NICHT .nachweis: den gibt es auf der Seite schon vierfach
-   (Kammer, Master, BIM, Jahre) — die haetten mein CSS sonst mitbekommen. */
-.beleg{margin-top:1rem;border:1px solid rgba(255,255,255,.10);border-radius:12px;
+   selbst ausloesen kann — derselbe Lauf, dieselben Zahlen. */
+.nachweis{margin-top:1rem;border:1px solid rgba(255,255,255,.10);border-radius:12px;
   padding:1rem 1.15rem;background:rgba(255,255,255,.02)}
-.beleg__titel{font-weight:600;margin:0 0 .3rem}
-.beleg__unter{color:var(--muted);font-size:.88rem;margin:0 0 .9rem}
-.beleg__links{display:flex;gap:.6rem;flex-wrap:wrap}
+.nachweis__titel{font-weight:600;margin:0 0 .3rem}
+.nachweis__unter{color:var(--muted);font-size:.88rem;margin:0 0 .9rem}
+.nachweis__links{display:flex;gap:.6rem;flex-wrap:wrap}
 
 /* --- Anfrage-Baukasten (Phase 65-06) --------------------------------------
    Kein Formular-Versand: die Felder bauen im Browser eine vorformulierte
@@ -180,46 +177,46 @@
    Tailwind wird nicht mehr gebraucht — diese Datei bringt ihr CSS selbst mit.
 =========================================================================== */
 @font-face{font-family:Montserrat;font-style:normal;font-weight:300;font-display:swap;
-  src:url(assets/fonts/montserrat-300-normal-latin.woff2) format("woff2")}
+  src:url(../assets/fonts/montserrat-300-normal-latin.woff2) format("woff2")}
 @font-face{font-family:Montserrat;font-style:normal;font-weight:400;font-display:swap;
-  src:url(assets/fonts/montserrat-400-normal-latin.woff2) format("woff2");
+  src:url(../assets/fonts/montserrat-400-normal-latin.woff2) format("woff2");
   unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215}
 @font-face{font-family:Montserrat;font-style:normal;font-weight:400;font-display:swap;
-  src:url(assets/fonts/montserrat-400-normal-latin-ext.woff2) format("woff2");
+  src:url(../assets/fonts/montserrat-400-normal-latin-ext.woff2) format("woff2");
   unicode-range:U+0100-024F,U+1E00-1EFF,U+2020,U+20A0-20AB}
 @font-face{font-family:Montserrat;font-style:normal;font-weight:600;font-display:swap;
-  src:url(assets/fonts/montserrat-600-normal-latin.woff2) format("woff2")}
+  src:url(../assets/fonts/montserrat-600-normal-latin.woff2) format("woff2")}
 @font-face{font-family:Montserrat;font-style:normal;font-weight:700;font-display:swap;
-  src:url(assets/fonts/montserrat-700-normal-latin.woff2) format("woff2")}
+  src:url(../assets/fonts/montserrat-700-normal-latin.woff2) format("woff2")}
 @font-face{font-family:"Space Grotesk";font-style:normal;font-weight:500;font-display:swap;
-  src:url(assets/fonts/spacegrotesk-500-normal-latin.woff2) format("woff2");
+  src:url(../assets/fonts/spacegrotesk-500-normal-latin.woff2) format("woff2");
   unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215}
 @font-face{font-family:"Space Grotesk";font-style:normal;font-weight:500;font-display:swap;
-  src:url(assets/fonts/spacegrotesk-500-normal-latin-ext.woff2) format("woff2");
+  src:url(../assets/fonts/spacegrotesk-500-normal-latin-ext.woff2) format("woff2");
   unicode-range:U+0100-024F,U+1E00-1EFF,U+2020,U+20A0-20AB}
 @font-face{font-family:"Space Grotesk";font-style:normal;font-weight:700;font-display:swap;
-  src:url(assets/fonts/spacegrotesk-700-normal-latin.woff2) format("woff2");
+  src:url(../assets/fonts/spacegrotesk-700-normal-latin.woff2) format("woff2");
   unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215}
 @font-face{font-family:"Space Grotesk";font-style:normal;font-weight:700;font-display:swap;
-  src:url(assets/fonts/spacegrotesk-700-normal-latin-ext.woff2) format("woff2");
+  src:url(../assets/fonts/spacegrotesk-700-normal-latin-ext.woff2) format("woff2");
   unicode-range:U+0100-024F,U+1E00-1EFF,U+2020,U+20A0-20AB}
 @font-face{font-family:"IBM Plex Mono";font-style:normal;font-weight:400;font-display:swap;
-  src:url(assets/fonts/ibmplexmono-400-normal-latin.woff2) format("woff2");
+  src:url(../assets/fonts/ibmplexmono-400-normal-latin.woff2) format("woff2");
   unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215}
 @font-face{font-family:"IBM Plex Mono";font-style:normal;font-weight:400;font-display:swap;
-  src:url(assets/fonts/ibmplexmono-400-normal-latin-ext.woff2) format("woff2");
+  src:url(../assets/fonts/ibmplexmono-400-normal-latin-ext.woff2) format("woff2");
   unicode-range:U+0100-024F,U+1E00-1EFF,U+2020,U+20A0-20AB}
 @font-face{font-family:"IBM Plex Mono";font-style:normal;font-weight:600;font-display:swap;
-  src:url(assets/fonts/ibmplexmono-600-normal-latin.woff2) format("woff2")}
+  src:url(../assets/fonts/ibmplexmono-600-normal-latin.woff2) format("woff2")}
 /* Arabisch — Montserrat, Space Grotesk und IBM Plex Mono haben keine
    arabischen Glyphen. Ohne eigene Schrift fällt der Browser auf eine
    Systemschrift zurück und der Satz bricht optisch aus dem Auftritt aus. */
 @font-face{font-family:"IBM Plex Sans Arabic";font-style:normal;font-weight:400;font-display:swap;
-  src:url(assets/fonts/ibmplexsansarabic-400-normal-arabic.woff2) format("woff2")}
+  src:url(../assets/fonts/ibmplexsansarabic-400-normal-arabic.woff2) format("woff2")}
 @font-face{font-family:"IBM Plex Sans Arabic";font-style:normal;font-weight:600;font-display:swap;
-  src:url(assets/fonts/ibmplexsansarabic-600-normal-arabic.woff2) format("woff2")}
+  src:url(../assets/fonts/ibmplexsansarabic-600-normal-arabic.woff2) format("woff2")}
 @font-face{font-family:"IBM Plex Sans Arabic";font-style:normal;font-weight:700;font-display:swap;
-  src:url(assets/fonts/ibmplexsansarabic-700-normal-arabic.woff2) format("woff2")}
+  src:url(../assets/fonts/ibmplexsansarabic-700-normal-arabic.woff2) format("woff2")}
 
 :root{
   --bg:#0c1117; --bg-raise:#111a22; --bg-deep:#070b0f;
@@ -656,42 +653,41 @@ p{margin:0}
 
 <header class="kopf">
   <div class="kopf__zeile">
-    <a class="marke" href="#top" aria-label="BIT-ATELIER, zur Startseite" data-nicht-uebersetzen>
+    <a class="marke" href="#top" aria-label="BIT-ATELIER, zur Startseite" data-nicht-uebersetzen="">
       <svg aria-hidden="true"><use href="#logo-mark"></use></svg>
       <span class="marke__name">BIT<span>·</span>ATELIER</span>
     </a>
     <nav class="navi" aria-label="Hauptnavigation">
-      <a href="#prinzip">Prinzip</a>
-      <a href="#leistungen">Leistungen</a>
-      <a href="#pakete">Pakete</a>
-      <a href="#werkzeuge">Werkzeuge</a>
+      <a href="#prinzip">Approach</a>
+      <a href="#leistungen">Services</a>
+      <a href="#pakete">Packages</a>
+      <a href="#werkzeuge">Tools</a>
       <a href="#downloads">Downloads</a>
-      <a href="#erfahrung">Erfahrung</a>
-      <a href="#kontakt">Kontakt</a>
+      <a href="#erfahrung">Experience</a>
+      <a href="#kontakt">Contact</a>
     </nav>
     <div class="kopf__tun">
-      <div class="sprachwahl" data-sprachwahl role="group" aria-label="Sprache wählen">
-        <button type="button" data-sprache="de" aria-pressed="true" lang="de">DE</button>
-        <button type="button" data-sprache="en" aria-pressed="false" lang="en">EN</button>
+      <div class="sprachwahl" data-sprachwahl="" role="group" aria-label="Sprache wählen">
+        <button type="button" data-sprache="de" aria-pressed="false" lang="de">DE</button>
+        <button type="button" data-sprache="en" aria-pressed="true" lang="en">EN</button>
         <button type="button" data-sprache="ar" aria-pressed="false" lang="ar">عربي</button>
       </div>
-      <a class="btn btn--geist btn--klein" href="demo/">Demo starten</a>
-      <a class="btn btn--klein" href="#kontakt">Projekt anfragen</a>
-      <button class="menue-knopf" id="menue-knopf" type="button"
-              aria-label="Menü öffnen" aria-expanded="false" aria-controls="menue">
+      <a class="btn btn--geist btn--klein" href="../demo/">Live demo</a>
+      <a class="btn btn--klein" href="#kontakt">Start a project</a>
+      <button class="menue-knopf" id="menue-knopf" type="button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="menue">
         <i></i><i></i><i></i>
       </button>
     </div>
   </div>
   <nav class="menue verborgen" id="menue" aria-label="Menü">
-    <a href="#prinzip">Prinzip</a>
-    <a href="#leistungen">Leistungen</a>
-    <a href="#pakete">Leistungspakete</a>
-    <a href="#werkzeuge">Werkzeuge</a>
+    <a href="#prinzip">Approach</a>
+    <a href="#leistungen">Services</a>
+    <a href="#pakete">Service packages</a>
+    <a href="#werkzeuge">Tools</a>
     <a href="#downloads">Downloads</a>
-    <a href="#erfahrung">Erfahrung</a>
-    <a href="#kontakt">Kontakt</a>
-    <a href="demo/">Demo starten</a>
+    <a href="#erfahrung">Experience</a>
+    <a href="#kontakt">Contact</a>
+    <a href="../demo/">Live demo</a>
   </nav>
 </header>
 
@@ -727,113 +723,87 @@ p{margin:0}
   <section class="buehne" id="buehne" aria-label="Vom Baufeld zum fertigen Wohnhaus">
     <div class="buehne__fix">
       <div class="buehne__medien" id="medien" aria-hidden="true">
-        <video class="buehne__video" id="buehne-video" muted playsinline preload="none"
-               disablepictureinpicture disableremoteplayback></video>
-        <figure class="ebene" data-von="0.00" data-bis="0.115">
-          <img src="assets/img/bauablauf/phase-1-baufeld-800.jpg"
-               srcset="assets/img/bauablauf/phase-1-baufeld-800.jpg 800w, assets/img/bauablauf/phase-1-baufeld.jpg 1600w"
-               sizes="100vw" alt="" width="1600" height="900"
-               loading="eager" decoding="async" fetchpriority="high">
+        <video class="buehne__video" id="buehne-video" muted="" playsinline="" preload="auto" disablepictureinpicture="" disableremoteplayback="" style=""></video>
+        <figure class="ebene" data-von="0.00" data-bis="0.115" style="">
+          <img src="../assets/img/bauablauf/phase-1-baufeld-800.jpg" srcset="../assets/img/bauablauf/phase-1-baufeld-800.jpg 800w, ../assets/img/bauablauf/phase-1-baufeld.jpg 1600w" sizes="100vw" alt="" width="1600" height="900" loading="eager" decoding="async" fetchpriority="high">
         </figure>
-        <figure class="ebene" data-von="0.115" data-bis="0.235">
-          <img src="assets/img/bauablauf/phase-2-gruendung-800.jpg"
-               srcset="assets/img/bauablauf/phase-2-gruendung-800.jpg 800w, assets/img/bauablauf/phase-2-gruendung.jpg 1600w"
-               sizes="100vw" alt="" width="1600" height="900" loading="lazy" decoding="async">
+        <figure class="ebene" data-von="0.115" data-bis="0.235" style="">
+          <img src="../assets/img/bauablauf/phase-2-gruendung-800.jpg" srcset="../assets/img/bauablauf/phase-2-gruendung-800.jpg 800w, ../assets/img/bauablauf/phase-2-gruendung.jpg 1600w" sizes="100vw" alt="" width="1600" height="900" loading="lazy" decoding="async">
         </figure>
-        <figure class="ebene" data-von="0.235" data-bis="0.45">
-          <img src="assets/img/bauablauf/phase-3-tragwerk-800.jpg"
-               srcset="assets/img/bauablauf/phase-3-tragwerk-800.jpg 800w, assets/img/bauablauf/phase-3-tragwerk.jpg 1600w"
-               sizes="100vw" alt="" width="1600" height="900" loading="lazy" decoding="async">
+        <figure class="ebene" data-von="0.235" data-bis="0.45" style="">
+          <img src="../assets/img/bauablauf/phase-3-tragwerk-800.jpg" srcset="../assets/img/bauablauf/phase-3-tragwerk-800.jpg 800w, ../assets/img/bauablauf/phase-3-tragwerk.jpg 1600w" sizes="100vw" alt="" width="1600" height="900" loading="lazy" decoding="async">
         </figure>
-        <figure class="ebene" data-von="0.45" data-bis="0.635">
-          <img src="assets/img/bauablauf/phase-4-huelle-800.jpg"
-               srcset="assets/img/bauablauf/phase-4-huelle-800.jpg 800w, assets/img/bauablauf/phase-4-huelle.jpg 1600w"
-               sizes="100vw" alt="" width="1600" height="900" loading="lazy" decoding="async">
+        <figure class="ebene" data-von="0.45" data-bis="0.635" style="">
+          <img src="../assets/img/bauablauf/phase-4-huelle-800.jpg" srcset="../assets/img/bauablauf/phase-4-huelle-800.jpg 800w, ../assets/img/bauablauf/phase-4-huelle.jpg 1600w" sizes="100vw" alt="" width="1600" height="900" loading="lazy" decoding="async">
         </figure>
-        <figure class="ebene" data-von="0.855" data-bis="1.001">
-          <img src="assets/img/bauablauf/phase-6-uebergabe-800.jpg"
-               srcset="assets/img/bauablauf/phase-6-uebergabe-800.jpg 800w, assets/img/bauablauf/phase-6-uebergabe.jpg 1600w"
-               sizes="100vw" alt="" width="1600" height="900" loading="lazy" decoding="async">
+        <figure class="ebene" data-von="0.855" data-bis="1.001" style="">
+          <img src="../assets/img/bauablauf/phase-6-uebergabe-800.jpg" srcset="../assets/img/bauablauf/phase-6-uebergabe-800.jpg 800w, ../assets/img/bauablauf/phase-6-uebergabe.jpg 1600w" sizes="100vw" alt="" width="1600" height="900" loading="lazy" decoding="async">
         </figure>
       </div>
-      <canvas class="buehne__leinwand" id="buehne-leinwand" aria-hidden="true"></canvas>
+      <canvas class="buehne__leinwand" id="buehne-leinwand" aria-hidden="true" data-engine="three.js r161" width="1400" height="900" style=""></canvas>
       <div class="buehne__schleier" aria-hidden="true"></div>
-      <div class="buehne__fortschritt" aria-hidden="true"><span id="fortschritt-balken"></span></div>
+      <div class="buehne__fortschritt" aria-hidden="true"><span id="fortschritt-balken" style="--p: 0.0000;"></span></div>
       <nav class="buehne__route" id="route" aria-label="Kapitel der Bauablauf-Ansicht"></nav>
       <div class="buehne__anzeige" aria-hidden="true">
-        <div><b id="anzeige-lph">LPH 1</b><span>Leistungsphase</span></div>
-        <div><b id="anzeige-teile">0</b><span>Bauteile im Modell</span></div>
-        <div><b id="anzeige-stand">Baufeld</b><span>Modellstand</span></div>
+        <div><b id="anzeige-lph">LPH 1</b><span>Work stage</span></div>
+        <div><b id="anzeige-teile">0</b><span>Components in the model</span></div>
+        <div><b id="anzeige-stand">The site</b><span>Model status</span></div>
       </div>
-      <p class="buehne__wink" id="wink">Scrollen ↓</p>
+      <p class="buehne__wink" id="wink" style="transition: opacity 0.4s; opacity: 1;">Scroll ↓</p>
     </div>
 
     <div class="buehne__text">
       <article class="kapitel" id="kap-1" style="min-height:calc(1.30 * var(--bh,100lvh))">
         <div class="kapitel__halt"><div class="satz" data-nr="1">
-          <p class="satz__auge">Kapitel 01 · Baufeld</p>
-          <h1 class="satz__titel">Architektur trifft <em>Digitalisierung</em>.</h1>
-          <p class="satz__text">Jedes Projekt beginnt mit den Regeln des Ortes: Grenzen,
-            Himmelsrichtung, Sonnenlauf, Nachbarschaft. Ich halte sie im Modell fest, bevor
-            die erste Linie gezeichnet wird — als eingetragener Architekt mit einem Master
-            für klimaoptimiertes Bauen.</p>
-          <ul class="satz__marken"><li>Bestandsaufnahme</li><li>Baurecht</li><li>Sonnenstudie</li></ul>
+          <p class="satz__auge">Chapter 01 · The site</p>
+          <h1 class="satz__titel">Where architecture meets <em>data</em>.</h1>
+          <p class="satz__text">Every project starts with the rules of its place: boundaries, orientation, the path of the sun, the neighbourhood. I record them in the model before the first line is drawn — as a chartered architect holding a master’s degree in climate-responsive design.</p>
+          <ul class="satz__marken"><li>Site survey</li><li>Planning law</li><li>Solar study</li></ul>
         </div></div>
       </article>
 
       <article class="kapitel" id="kap-2" data-lage="rechts" style="min-height:calc(1.20 * var(--bh,100lvh))">
         <div class="kapitel__halt"><div class="satz" data-nr="2">
-          <p class="satz__auge">Kapitel 02 · Gründung</p>
-          <h2 class="satz__titel">Alles Gute steht auf <em>Millimetern</em>.</h2>
-          <p class="satz__text">Fundamente, Sohlplatte, Durchbrüche für die Technik — im
-            Modell verortet, bevor der erste Kubikmeter Beton fließt. Was hier stimmt,
-            kostet später nichts.</p>
-          <ul class="satz__marken"><li>Gründung</li><li>Durchbruchsplanung</li><li>Mengen</li></ul>
+          <p class="satz__auge">Chapter 02 · Foundations</p>
+          <h2 class="satz__titel">Everything good stands on <em>millimetres</em>.</h2>
+          <p class="satz__text">Footings, base slab, service penetrations — located in the model before the first cubic metre of concrete is poured. What is right here costs nothing later.</p>
+          <ul class="satz__marken"><li>Foundations</li><li>Penetration planning</li><li>Quantities</li></ul>
         </div></div>
       </article>
 
       <article class="kapitel" id="kap-3" style="min-height:calc(1.35 * var(--bh,100lvh))">
         <div class="kapitel__halt"><div class="satz" data-nr="3">
-          <p class="satz__auge">Kapitel 03 · Tragwerk</p>
-          <h2 class="satz__titel">Das Haus wächst <em>zuerst im Modell</em>.</h2>
-          <p class="satz__text">Decken, Stützen, Erschließungskern — Geschoss um Geschoss.
-            Jedes Bauteil trägt seine Daten mit: Material, Schicht, Brandschutz, Kosten.
-            Ein Bauteil, eine Wahrheit.</p>
-          <ul class="satz__marken"><li>Tragwerk</li><li>LOD / LOI</li><li>IFC-Struktur</li></ul>
+          <p class="satz__auge">Chapter 03 · Structure</p>
+          <h2 class="satz__titel">The building rises <em>in the model first</em>.</h2>
+          <p class="satz__text">Slabs, columns, circulation core — storey by storey. Every component carries its own data: material, layer, fire rating, cost. One component, one truth.</p>
+          <ul class="satz__marken"><li>Structure</li><li>LOD / LOI</li><li>IFC structure</li></ul>
         </div></div>
       </article>
 
       <article class="kapitel" id="kap-4" data-lage="rechts" style="min-height:calc(1.20 * var(--bh,100lvh))">
         <div class="kapitel__halt"><div class="satz" data-nr="4">
-          <p class="satz__auge">Kapitel 04 · Hülle</p>
-          <h2 class="satz__titel">Fassade, Fenster, <em>Licht</em>.</h2>
-          <p class="satz__text">Die Hülle entscheidet, wie sich ein Haus anfühlt — und was es
-            verbraucht. Öffnungen, Verschattung und Aufbau prüfe ich am Modell und rechne die
-            Energiebilanz mit, nicht hinterher.</p>
-          <ul class="satz__marken"><li>Fassadenaufbau</li><li>Verschattung</li><li>Energiebilanz</li></ul>
+          <p class="satz__auge">Chapter 04 · Envelope</p>
+          <h2 class="satz__titel">Facade, windows, <em>light</em>.</h2>
+          <p class="satz__text">The envelope decides how a building feels — and what it consumes. I test openings, shading and build-up on the model and calculate the energy balance alongside, not afterwards.</p>
+          <ul class="satz__marken"><li>Facade build-up</li><li>Shading</li><li>Energy balance</li></ul>
         </div></div>
       </article>
 
       <article class="kapitel" id="kap-5" style="min-height:calc(1.40 * var(--bh,100lvh))">
         <div class="kapitel__halt"><div class="satz" data-nr="5">
-          <p class="satz__auge">Kapitel 05 · Technik &amp; Prüfung</p>
-          <h2 class="satz__titel">Der Fehler wird gefunden, <em>bevor er teuer wird</em>.</h2>
-          <p class="satz__text">Röntgenblick auf Leitungen, Kanäle und Schächte. Meine eigene
-            Prüf-Engine fährt Kollisionsprüfung und IDS über das Modell und gibt die Befunde
-            als BCF an die Fachplaner zurück. Rot wird grün — im Rechner, nicht auf der
-            Baustelle.</p>
-          <ul class="satz__marken"><li>Kollisionsprüfung</li><li>IDS</li><li>BCF</li></ul>
+          <p class="satz__auge">Chapter 05 · Services &amp; checking</p>
+          <h2 class="satz__titel">The error is found <em>before it gets expensive</em>.</h2>
+          <p class="satz__text">An X-ray view of pipes, ducts and shafts. My own checking engine runs clash detection and IDS across the model and returns the findings to the specialist designers as BCF. Red turns green — in the computer, not on site.</p>
+          <ul class="satz__marken"><li>Clash detection</li><li>IDS</li><li>BCF</li></ul>
         </div></div>
       </article>
 
       <article class="kapitel" id="kap-6" data-lage="mitte" style="min-height:calc(1.30 * var(--bh,100lvh))">
         <div class="kapitel__halt"><div class="satz" data-nr="6">
-          <p class="satz__auge">Kapitel 06 · Übergabe</p>
-          <h2 class="satz__titel">Fertig ist erst, wenn es <em>stimmt</em>.</h2>
-          <p class="satz__text">Am Ende steht ein Haus — und ein Modell, das zu ihm passt.
-            Mengen, Kosten, Bauteile, Wartung: übergeben als offene Daten, nicht als
-            Aktenordner.</p>
-          <ul class="satz__marken"><li>Übergabemodell</li><li>openBIM</li><li>Betrieb</li></ul>
+          <p class="satz__auge">Chapter 06 · Handover</p>
+          <h2 class="satz__titel">It is only finished when it is <em>right</em>.</h2>
+          <p class="satz__text">At the end there is a building — and a model that matches it. Quantities, costs, components, maintenance: handed over as open data, not as ring binders.</p>
+          <ul class="satz__marken"><li>Handover model</li><li>openBIM</li><li>Operation</li></ul>
         </div></div>
       </article>
     </div>
@@ -843,23 +813,19 @@ p{margin:0}
   <section class="abschnitt abschnitt--hoch" id="prinzip">
     <div class="mitte">
       <div class="kopfzeile">
-        <p class="auge">Das BIT-Atelier Prinzip</p>
-        <h2>Präzision trifft <em>Ästhetik</em>.</h2>
+        <p class="auge">The BIT-Atelier approach</p>
+        <h2>Precision meets <em>design</em>.</h2>
       </div>
       <div class="prinzip">
         <div>
-          <p>Gutes Design allein reicht im Bauwesen nicht mehr. Mein Ansatz verbindet die
-            gestalterische Arbeit des Architekten mit der Präzision moderner Datenmethoden —
-            von BIM über Energiesimulation bis zur KI-gestützten Projektentwicklung.</p>
-          <p>Als eingetragener Architekt und Absolvent des Masters „Klimaoptimiertes Bauen /
-            ClimaDesign" an der TU München bringe ich wissenschaftliche Methodik in jedes
-            Projekt. Nachhaltigkeit ist dabei kein Schlagwort, sondern rechnerische Grundlage.</p>
+          <p>Good design alone is no longer enough in construction. My approach combines the architect’s design work with the precision of modern data methods — from BIM and energy simulation through to AI-assisted project development.</p>
+          <p>As a chartered architect and graduate of the master’s programme in climate-responsive design (ClimaDesign) at the Technical University of Munich, I bring scientific method to every project. Sustainability is not a slogan here but a basis for calculation.</p>
         </div>
         <div class="nachweise">
-          <div class="nachweis"><h4>Architekt</h4><span>Bayerische Architektenkammer, Listen-Nr. 192.197</span></div>
+          <div class="nachweis"><h4>Architect</h4><span>Bavarian Chamber of Architects, reg. no. 192.197</span></div>
           <div class="nachweis"><h4>M.Sc. TUM</h4><span>Climate Responsive Design</span></div>
-          <div class="nachweis"><h4>BIM &amp; Digital</h4><span>Management · Modeling · IFC</span></div>
-          <div class="nachweis"><h4>15+ Jahre</h4><span>Planung &amp; Projektleitung</span></div>
+          <div class="nachweis"><h4>BIM &amp; digital</h4><span>Management · Modeling · IFC</span></div>
+          <div class="nachweis"><h4>15+ years</h4><span>Design &amp; project management</span></div>
         </div>
       </div>
     </div>
@@ -869,40 +835,36 @@ p{margin:0}
   <section class="abschnitt" id="leistungen">
     <div class="mitte">
       <div class="kopfzeile">
-        <p class="auge">Leistungen</p>
-        <h2>Zwei Wege, <em>ein Anspruch</em>.</h2>
-        <p class="unter">Ob Sie bauen oder Ihr Großprojekt digital absichern möchten — beides
-          folgt demselben Prinzip: durchdachte, datengestützte Planung ohne Reibungsverluste.</p>
+        <p class="auge">Services</p>
+        <h2>Two routes, <em>one standard</em>.</h2>
+        <p class="unter">Whether you are building or want to secure a major project digitally — both follow the same principle: considered, data-driven design without friction.</p>
       </div>
       <div class="gitter gitter--2">
         <article class="karte">
-          <p class="karte__nr">Für Generalplaner, Büros &amp; Bauunternehmen</p>
-          <h3>BIM-Koordination &amp; Modellprüfung</h3>
-          <p>Externe BIM-Generalleitung für Großprojekte — von der BAP-Strukturierung bis zur
-            kollisionsfreien IFC-Übergabe. Ziel: Planungsfehler werden <em>vor</em> Baubeginn
-            gefunden, nicht auf der Baustelle bezahlt.</p>
+          <p class="karte__nr">For lead designers, practices &amp; contractors</p>
+          <h3>BIM coordination &amp; model checking</h3>
+          <p>External BIM management for major projects — from structuring the BIM execution plan to a clash-free IFC handover. The aim: design errors are found <em>before</em> construction starts, not paid for on site.</p>
           <ul class="liste">
-            <li>Kollisionsfreie IFC-Übergabe vor Ausführungsbeginn — eine verhinderte Rohbau-Kollision spart ein Vielfaches des Honorars</li>
-            <li>AIA &amp; BIM-Abwicklungsplan (BAP) — prüffähig strukturiert nach ISO 19650</li>
-            <li>Automatisierte Modell- und AIA-Konformitätsprüfung mit eigener Prüf-Engine (IFC/IDS), Befund-Rückgabe als BCF an die Fachplaner</li>
-            <li>Steuerung der Fachmodelle (Architektur, Tragwerk, TGA) inkl. LOD/LOI</li>
-            <li>Entlastung Ihrer internen Teams — ohne neue Software-Lizenzen</li>
+            <li>Clash-free IFC handover before construction begins — one avoided structural clash saves many times the fee</li>
+            <li>Employer’s information requirements &amp; BIM execution plan — structured for auditing to ISO 19650</li>
+            <li>Automated model and requirements compliance checking with my own engine (IFC/IDS), findings returned to the specialist designers as BCF</li>
+            <li>Coordination of the discipline models (architecture, structure, building services) including LOD/LOI</li>
+            <li>Relief for your in-house teams — without new software licences</li>
           </ul>
-          <div class="karte__fuss"><a class="btn btn--geist btn--klein" href="#pakete">Zu den Leistungspaketen</a></div>
+          <div class="karte__fuss"><a class="btn btn--geist btn--klein" href="#pakete">See the service packages</a></div>
         </article>
         <article class="karte">
-          <p class="karte__nr">Für Bauherren</p>
-          <h3>Planung &amp; Architektur</h3>
-          <p>Ganzheitliche Planung von Wohn- und Sanierungsprojekten über alle Leistungsphasen —
-            mit dem Blick fürs Detail und für die Energiebilanz.</p>
+          <p class="karte__nr">For clients</p>
+          <h3>Design &amp; architecture</h3>
+          <p>End-to-end design of residential and refurbishment projects across all work stages — with an eye for the detail and for the energy balance.</p>
           <ul class="liste">
-            <li>Entwurf &amp; Genehmigungsplanung (HOAI 1–4)</li>
-            <li>Werk-, Ausführungs- &amp; Detailplanung (HOAI 5)</li>
-            <li>Wohnungsbau, geförderter Wohnungsbau, KfW</li>
-            <li>Sanierung &amp; Denkmalpflege</li>
-            <li>Barrierefreies &amp; rollstuhlgerechtes Planen (DIN 18040)</li>
+            <li>Concept &amp; planning application design (HOAI stages 1–4)</li>
+            <li>Technical, construction &amp; detail design (HOAI stage 5)</li>
+            <li>Housing, subsidised housing, KfW standards</li>
+            <li>Refurbishment &amp; historic buildings</li>
+            <li>Accessible &amp; wheelchair-friendly design (DIN 18040)</li>
           </ul>
-          <div class="karte__fuss"><a class="btn btn--klein" href="#kontakt">Projekt anfragen</a></div>
+          <div class="karte__fuss"><a class="btn btn--klein" href="#kontakt">Start a project</a></div>
         </article>
       </div>
     </div>
@@ -912,55 +874,49 @@ p{margin:0}
   <section class="abschnitt abschnitt--hoch" id="pakete">
     <div class="mitte">
       <div class="kopfzeile">
-        <p class="auge">BIM-Leistungspakete</p>
-        <h2>Klarer Umfang. Klares Ergebnis. <em>Klarer Preis.</em></h2>
-        <p class="unter">Drei Pakete für Großprojekte ab ca. 10 Mio. € Bausumme — als Festpreis
-          oder monatliches Mandat, bepreist am Projektwert statt nach Stundenzetteln.</p>
+        <p class="auge">BIM service packages</p>
+        <h2>Clear scope. Clear result. <em>Clear price.</em></h2>
+        <p class="unter">Three packages for major projects from around €10 million construction value — as a fixed price or a monthly retainer, priced on project value rather than timesheets.</p>
       </div>
       <div class="gitter gitter--3">
         <article class="karte">
-          <p class="karte__nr">Paket 1 · Festpreis</p>
-          <h3>BIM-Quick-Check &amp; Setup</h3>
-          <p class="karte__preis">ab 8.500 € je Projekt</p>
-          <p>Der schnelle, prüffähige Einstieg: Ihr Projekt wird BIM-ablieferfähig — in 2–4 Wochen.</p>
+          <p class="karte__nr">Package 1 · Fixed price</p>
+          <h3>BIM quick check &amp; setup</h3>
+          <p class="karte__preis">from €8,500 per project</p>
+          <p>The fast, auditable start: your project becomes fit for BIM delivery — in two to four weeks.</p>
           <ul class="liste">
-            <li>AIA prüfen bzw. erstellen, BAP strukturieren</li>
-            <li>Koordinationsumgebung aufsetzen (IFC-/openBIM-Standards, Namenskonventionen)</li>
-            <li>Automatisierte Erstprüfung des Modells mit Prüfbericht</li>
+            <li>Review or draft the information requirements, structure the BIM execution plan</li>
+            <li>Set up the coordination environment (IFC/openBIM standards, naming conventions)</li>
+            <li>Automated initial model check with a written report</li>
           </ul>
-          <p class="ergebnis"><b>Ergebnis:</b> prüffähiger BAP + dokumentierter Modellstatus</p>
+          <p class="ergebnis"><b>Result:</b> an auditable BIM execution plan and a documented model status</p>
         </article>
         <article class="karte">
-          <p class="karte__nr">Paket 2 · Festpreis je Planungsstand · Kernleistung</p>
-          <h3>Automatisierte Modellprüfung &amp; QS</h3>
-          <p class="karte__preis">Festpreis je Prüflauf</p>
-          <p>Jeder Planungsstand wird maschinell geprüft, bevor er teuer wird — mit eigener
-            Prüf-Engine statt Lizenz-Software.</p>
+          <p class="karte__nr">Package 2 · Fixed price per design stage · Core service</p>
+          <h3>Automated model checking &amp; QA</h3>
+          <p class="karte__preis">Fixed price per checking run</p>
+          <p>Every design stage is checked by machine before it gets expensive — with my own engine instead of licensed software.</p>
           <ul class="liste">
-            <li>Kollisionsprüfung Architektur / Tragwerk / TGA mit Toleranz- und Duplikatregeln</li>
-            <li>IDS-Konformitätsprüfung gegen Ihre AIA (buildingSMART-Standard)</li>
-            <li>Befunde als BCF direkt zurück an die Fachplaner + Prüfbericht als PDF</li>
+            <li>Clash detection across architecture, structure and building services with tolerance and duplicate rules</li>
+            <li>IDS compliance checking against your information requirements (buildingSMART standard)</li>
+            <li>Findings returned directly to the specialist designers as BCF, plus a PDF report</li>
           </ul>
-          <p class="ergebnis"><b>Ergebnis:</b> dokumentiert kollisions- und regelgeprüfter Planungsstand</p>
+          <p class="ergebnis"><b>Result:</b> a design stage documented as clash-checked and rule-compliant</p>
         </article>
         <article class="karte">
-          <p class="karte__nr">Paket 3 · Monatliches Mandat</p>
-          <h3>BIM-Gesamtkoordination</h3>
-          <p class="karte__preis">ab 4.500 € / Monat</p>
-          <p>Die laufende externe BIM-Leitung über die Planungsphasen — Ihre Teams planen,
-            ich halte die Modelle zusammen.</p>
+          <p class="karte__nr">Package 3 · Monthly retainer</p>
+          <h3>Overall BIM coordination</h3>
+          <p class="karte__preis">from €4,500 per month</p>
+          <p>Ongoing external BIM management across the design stages — your teams design, I hold the models together.</p>
           <ul class="liste">
-            <li>Steuerung der Fachmodelle inkl. LOD/LOI-Vorgaben</li>
-            <li>Regelmäßige Prüfzyklen mit Koordinationssitzung und Maßnahmenliste</li>
-            <li>Berichtswesen für Bauherr und Projektsteuerung</li>
+            <li>Coordination of the discipline models including LOD/LOI requirements</li>
+            <li>Regular checking cycles with a coordination meeting and an action list</li>
+            <li>Reporting for the client and the project managers</li>
           </ul>
-          <p class="ergebnis"><b>Ergebnis:</b> ein koordiniertes Modell als verlässliche Ausführungsgrundlage</p>
+          <p class="ergebnis"><b>Result:</b> a coordinated model as a reliable basis for construction</p>
         </article>
       </div>
-      <p class="fussnote">Alle Preise netto zzgl. gesetzlicher Umsatzsteuer. Bepreisung
-        orientiert an den Vergütungsempfehlungen für BIM-Management (AHO/DVP: üblich 20–25 %
-        des Projektsteuerungshonorars). Konkretes Angebot nach kurzem Gespräch über
-        Projektgröße und Fachmodelle.</p>
+      <p class="fussnote">All prices are net, excluding statutory VAT. Pricing follows the German fee recommendations for BIM management (AHO/DVP: typically 20–25 % of the project management fee). A firm quotation follows a short conversation about project size and discipline models.</p>
     </div>
   </section>
 
@@ -968,71 +924,59 @@ p{margin:0}
   <section class="abschnitt" id="werkzeuge">
     <div class="mitte">
       <div class="kopfzeile">
-        <p class="auge">Der Unterschied</p>
-        <h2>Eigene Werkzeuge statt <em>Lizenz-Software</em>.</h2>
-        <p class="unter">Die Prüf- und Auswertungswerkzeuge hinter meinen Leistungen sind im
-          eigenen Haus entwickelt: die BIT-Atelier-Plattform liest IFC-Modelle direkt
-          (buildingSMART-Standards, ohne Cloud-Zwang), ermittelt Mengen filterbasiert nach dem
-          Prinzip WAS ∩ ZUSTAND und prüft Modelle auf Kollisionen und AIA-Konformität (IDS) —
-          mit Befund-Rückgabe als BCF.</p>
-        <p class="unter">Das heißt für Sie: Prüfregeln, die sich exakt an Ihr Projekt anpassen
-          lassen, keine Lizenzkosten, die auf Ihr Honorar umgelegt werden — und keine
-          Abhängigkeit von Software-Abos Dritter.</p>
+        <p class="auge">The difference</p>
+        <h2>Own tools instead of <em>licensed software</em>.</h2>
+        <p class="unter">The checking and evaluation tools behind my services are developed in house: the BIT-Atelier platform reads IFC models directly (buildingSMART standards, no cloud required), derives quantities by filter on a WHAT ∩ STATE principle, and checks models for clashes and requirements compliance (IDS) — returning findings as BCF.</p>
+        <p class="unter">For you that means checking rules tailored precisely to your project, no licence costs passed on through the fee — and no dependence on third-party software subscriptions.</p>
       </div>
 
       <div class="gitter gitter--2" style="margin-top:2.4rem">
-        <article class="karte"><h3>IFC-Import</h3><p>Geschosse, Bauteile, Eigenschaften, Klassifizierung — direkt aus dem openBIM-Format</p></article>
-        <article class="karte"><h3>Kollisionsprüfung</h3><p>Regel-Matrix je Gewerkepaar, Toleranzen, Duplikat-Erkennung</p></article>
-        <article class="karte"><h3>IDS-Prüfung</h3><p>AIA-Anforderungen maschinell prüfbar nach buildingSMART IDS</p></article>
-        <article class="karte"><h3>BCF-Rückgabe</h3><p>Befunde landen als offene Issues direkt bei den Fachplanern</p></article>
+        <article class="karte"><h3>IFC import</h3><p>Storeys, components, properties, classification — straight from the openBIM format</p></article>
+        <article class="karte"><h3>Clash detection</h3><p>Rule matrix per discipline pair, tolerances, duplicate detection</p></article>
+        <article class="karte"><h3>IDS checking</h3><p>Information requirements made machine-checkable to buildingSMART IDS</p></article>
+        <article class="karte"><h3>BCF return</h3><p>Findings arrive as open issues directly with the specialist designers</p></article>
       </div>
 
       <figure class="fenster">
-        <div class="fenster__leiste"><i></i><i></i><i></i><span>bit-atelier · prüf-suite — Prüfergebnis</span></div>
+        <div class="fenster__leiste"><i></i><i></i><i></i><span>bit-atelier · checking suite — result</span></div>
         <!-- Der Screenshot war bisher eine Behauptung ohne Weg dahin. Jetzt fuehrt
              er in die Demo, die denselben Lauf mit einem mitgelieferten
              Musterprojekt vorfuehrt (Phase 65-06, Paket W-4). -->
-        <a href="demo/#/ModelCheck?beispiel=1" title="Denselben Prüflauf in der Demo selbst starten">
-          <img src="assets/img/pruefsuite-ergebnis.webp" width="2048" height="1280" loading="lazy" decoding="async"
-               alt="Ergebnisansicht der Prüf-Suite mit Kollisions- und IDS-Befunden">
+        <a href="../demo/#/ModelCheck?beispiel=1" title="Denselben Prüflauf in der Demo selbst starten">
+          <img src="../assets/img/pruefsuite-ergebnis.webp" width="2048" height="1280" loading="lazy" decoding="async" alt="Ergebnisansicht der Prüf-Suite mit Kollisions- und IDS-Befunden">
         </a>
-        <figcaption>Echter Prüflauf: Werkplanungsmodell mit 4.185 Bauteil-Geometrien über
-          5 Geschosse, direkt im Browser geprüft — 1 harte Kollision gefunden,
-          AIA-Anforderungen per IDS kontrolliert, Befunde gehen als BCF zurück an die
-          Fachplaner (Projektdaten anonymisiert).</figcaption>
+        <figcaption>A real checking run: a construction-design model with 4,185 component geometries across five storeys, checked directly in the browser — one hard clash found, information requirements verified via IDS, findings returned to the specialist designers as BCF (project data anonymised).</figcaption>
       </figure>
 
-      <div class="beleg">
-        <p class="beleg__titel">So sieht Ihr Befund aus.</p>
-        <p class="beleg__unter">Prüfbericht und Befundliste aus einem Prüflauf über ein
+      <div class="nachweis">
+        <p class="nachweis__titel">So sieht Ihr Befund aus.</p>
+        <p class="nachweis__unter">Prüfbericht und Befundliste aus einem Prüflauf über ein
           mitgeliefertes Musterprojekt — synthetisch erzeugt, keine Projektdaten. Denselben
           Lauf können Sie in der Demo mit einem Klick selbst auslösen; das BCF öffnet sich
           in jeder gängigen Koordinationssoftware.</p>
-        <div class="beleg__links">
-          <a class="btn btn--klein" href="downloads/musterpruefbericht.pdf" download>
+        <div class="nachweis__links">
+          <a class="btn btn--klein" href="../downloads/musterpruefbericht.pdf" download="">
             Musterprüfbericht (PDF)
           </a>
-          <a class="btn btn--geist btn--klein" href="downloads/musterbefunde.bcf" download>
+          <a class="btn btn--geist btn--klein" href="../downloads/musterbefunde.bcf" download="">
             Befunde als BCF
           </a>
-          <a class="btn btn--geist btn--klein" href="demo/#/ModelCheck?beispiel=1">
+          <a class="btn btn--geist btn--klein" href="../demo/#/ModelCheck?beispiel=1">
             Prüflauf selbst starten
           </a>
         </div>
       </div>
 
       <figure class="fenster">
-        <div class="fenster__leiste"><i></i><i></i><i></i><span>bit-atelier · prüf-engine — Beispiel-Prüflauf</span></div>
-        <div class="terminal" id="pruef-terminal" role="img"
-             aria-label="Beispielhafter Ablauf eines Prüflaufs: Modelle einlesen, Kollisionsprüfung, IDS-Prüfung, Export von Prüfbericht und BCF"></div>
+        <div class="fenster__leiste"><i></i><i></i><i></i><span>bit-atelier · checking engine — sample run</span></div>
+        <div class="terminal" id="pruef-terminal" role="img" aria-label="Beispielhafter Ablauf eines Prüflaufs: Modelle einlesen, Kollisionsprüfung, IDS-Prüfung, Export von Prüfbericht und BCF"></div>
       </figure>
 
       <ul class="chips">
         <li>IFC / openBIM</li><li>buildingSMART IDS</li><li>BCF</li>
-        <li>Energiesimulation</li><li>AVA &amp; Kostenplanung</li><li>Python-Automatisierung</li>
+        <li>Energy simulation</li><li>Tendering &amp; cost planning</li><li>Python automation</li>
       </ul>
-      <p class="fussnote">Die Plattform ist als Online-Demo zum Ausprobieren freigegeben —
-        serverlos, alles bleibt im Browser. <a href="demo/" style="color:var(--accent)">Demo starten</a>.</p>
+      <p class="fussnote">The platform is open to try as an online demo — serverless, everything stays in your browser. <a href="../demo/" style="color:var(--accent)">Try the demo</a>.</p>
     </div>
   </section>
 
@@ -1042,33 +986,27 @@ p{margin:0}
       <div class="kopfzeile">
         <p class="auge">Downloads</p>
         <h2>BIT-Nova PDF</h2>
-        <p class="unter">Der portable PDF-Editor aus dem BIT-Atelier — bearbeiten, organisieren,
-          konvertieren, signieren und forensisch schwärzen. Läuft vollständig lokal: keine
-          Cloud, keine Uploads, keine Telemetrie — inklusive Offline-OCR (Deutsch/Englisch).</p>
+        <p class="unter">The portable PDF editor from BIT-Atelier — edit, organise, convert, sign and redact irreversibly. Runs entirely on your machine: no cloud, no uploads, no telemetry — including offline OCR (German and English).</p>
       </div>
       <div class="gitter gitter--2">
         <article class="karte">
           <p class="karte__nr">Windows</p>
           <h3>Portable .exe</h3>
-          <p>Keine Installation, läuft auch vom USB-Stick.</p>
+          <p>No installation, runs from a USB stick too.</p>
           <div class="karte__fuss">
-            <a class="btn btn--klein" href="https://github.com/mozzi86/NovaPDF/releases/latest/download/BIT-Nova-PDF-portable.exe">Download für Windows</a>
+            <a class="btn btn--klein" href="https://github.com/mozzi86/NovaPDF/releases/latest/download/BIT-Nova-PDF-portable.exe">Download for Windows</a>
           </div>
         </article>
         <article class="karte">
           <p class="karte__nr">macOS</p>
-          <h3>DMG für Apple Silicon</h3>
-          <p>Intel-Version <a href="https://github.com/mozzi86/NovaPDF/releases/latest/download/BIT-Nova-PDF-x64.dmg" style="color:var(--accent)">hier</a>.</p>
+          <h3>DMG for Apple silicon</h3>
+          <p>Intel version <a href="https://github.com/mozzi86/NovaPDF/releases/latest/download/BIT-Nova-PDF-x64.dmg" style="color:var(--accent)">here</a>.</p>
           <div class="karte__fuss">
-            <a class="btn btn--klein" href="https://github.com/mozzi86/NovaPDF/releases/latest/download/BIT-Nova-PDF-arm64.dmg">Download für macOS</a>
+            <a class="btn btn--klein" href="https://github.com/mozzi86/NovaPDF/releases/latest/download/BIT-Nova-PDF-arm64.dmg">Download for macOS</a>
           </div>
         </article>
       </div>
-      <p class="fussnote">Kostenlos · quelloffen entwickelt im BIT-Atelier · alle Versionen
-        <a href="https://github.com/mozzi86/NovaPDF/releases" style="color:var(--accent)">auf GitHub</a>.
-        Die Apps sind nicht signiert bzw. notarisiert — Windows SmartScreen bzw. macOS
-        Gatekeeper beim ersten Start über „Trotzdem ausführen" / Rechtsklick → „Öffnen"
-        bestätigen.</p>
+      <p class="fussnote">Free · developed openly at BIT-Atelier · all releases <a href="https://github.com/mozzi86/NovaPDF/releases" style="color:var(--accent)">on GitHub</a>. The apps are not code-signed or notarised — on first launch confirm through Windows SmartScreen (“Run anyway”) or macOS Gatekeeper (right-click → “Open”).</p>
     </div>
   </section>
 
@@ -1078,69 +1016,57 @@ p{margin:0}
 
       <div class="gruender">
         <div class="gruender__text">
-          <p class="auge">Über den Gründer</p>
+          <p class="auge">About the founder</p>
           <h2 class="gruender__name">Mohamed Elmokadem</h2>
-          <p>Das BIT-Atelier wurde von Mohamed Elmokadem gegründet. In über 15 Jahren Planung
-            und Projektleitung hat er Wohnungs-, Schul- und Laborbauten durch alle
-            Leistungsphasen geführt — vom geförderten Wohnungsbau in Nürnberg bis zur
-            Sanierung deutscher Institutionen in Kairo.</p>
-          <p>Heute verbindet er die Handschrift des Architekten mit eigener Prüftechnik.
-            Sie arbeiten direkt mit ihm, ohne Zwischenebene. Was ein großes Büro über Personal
-            löst, löst das BIT-Atelier über Werkzeuge: eine im Haus entwickelte Prüf-Engine für
-            Kollisionen und AIA-Konformität — statt zugekaufter Lizenzsoftware.</p>
+          <p>BIT-Atelier was founded by Mohamed Elmokadem. In more than fifteen years of design and project management he has taken housing, school and laboratory buildings through every work stage — from subsidised housing in Nuremberg to the refurbishment of German institutions in Cairo.</p>
+          <p>Today he combines the hand of the architect with his own checking technology. You work with him directly, with no layer in between. What a large practice solves with staff, BIT-Atelier solves with tools: an in-house checking engine for clashes and requirements compliance — instead of bought-in licensed software.</p>
         </div>
         <figure class="gruender__bild">
-          <img src="assets/img/mohamed-elmokadem-800.jpg"
-               srcset="assets/img/mohamed-elmokadem-800.jpg 800w, assets/img/mohamed-elmokadem-1200.jpg 1200w"
-               sizes="(min-width:64rem) 52vw, 92vw"
-               width="800" height="1200" loading="lazy" decoding="async"
-               alt="Mohamed Elmokadem, eingetragener Architekt und Gründer des BIT-Atelier"
-               onerror="this.closest('figure').style.display='none'">
-          <figcaption>Mohamed Elmokadem · Architekt, M.Sc. (TUM) ClimaDesign</figcaption>
+          <img src="../assets/img/mohamed-elmokadem-800.jpg" srcset="../assets/img/mohamed-elmokadem-800.jpg 800w, ../assets/img/mohamed-elmokadem-1200.jpg 1200w" sizes="(min-width:64rem) 52vw, 92vw" width="800" height="1200" loading="lazy" decoding="async" alt="Mohamed Elmokadem, eingetragener Architekt und Gründer des BIT-Atelier" onerror="this.closest('figure').style.display='none'">
+          <figcaption>Mohamed Elmokadem · Architect, M.Sc. (TUM) ClimaDesign</figcaption>
         </figure>
       </div>
 
       <div class="kopfzeile" style="margin-top:clamp(3.5rem,7vw,6rem)">
-        <p class="auge">Ausgewählte Stationen</p>
-        <h2>Über <em>15 Jahre</em> Planung und Projektleitung.</h2>
-        <p class="unter">Vom geförderten Wohnungsbau in Nürnberg bis zu Sanierungsprojekten
-          deutscher Institutionen in Kairo.</p>
+        <p class="auge">Selected positions</p>
+        <h2>More than <em>15 years</em> of design and project management.</h2>
+        <p class="unter">From subsidised housing in Nuremberg to refurbishment projects for German institutions in Cairo.</p>
       </div>
       <ul class="chips" style="margin-top:1.6rem">
-        <li>Volle Leistungsbreite über HOAI 1–9</li>
-        <li>Abstimmung mit Fachingenieuren, Herstellern &amp; Behörden</li>
-        <li>Dozent für 3D-/CAD-Planung</li>
+        <li>Full scope across HOAI work stages 1–9</li>
+        <li>Coordination with engineers, manufacturers &amp; authorities</li>
+        <li>Lecturer in 3D and CAD design</li>
       </ul>
       <ul class="stationen">
         <li class="station">
-          <p class="station__zeit">Seit 2025 · Nürnberg</p>
-          <h4>Projektleiter · BIM-Koordinator · Bauzeichner-Koordinator · Schwarz Architekturbüro</h4>
-          <p>Alle Projekte · HOAI 1–9</p>
+          <p class="station__zeit">Since 2025 · Nuremberg</p>
+          <h4>Project lead · BIM coordinator · drafting coordinator · Schwarz Architekturbüro</h4>
+          <p>All projects · HOAI stages 1–9</p>
         </li>
         <li class="station">
-          <p class="station__zeit">2020 – 2025 · Nürnberg</p>
-          <h4>Architekt / Planer · Schultheiß Projektentwicklung AG</h4>
-          <p>Geförderter Wohnungsbau, u.&nbsp;a. Lichtenreutherzeile WA 19/20 · Werkplanung, KfW-55</p>
+          <p class="station__zeit">2020 – 2025 · Nuremberg</p>
+          <h4>Architect / designer · Schultheiß Projektentwicklung AG</h4>
+          <p>Subsidised housing, including Lichtenreutherzeile WA 19/20 · construction design, KfW-55</p>
         </li>
         <li class="station">
           <p class="station__zeit">2019 · Wendelstein</p>
-          <h4>Projektleiter · Gömmel Wieland Architekten</h4>
-          <p>Bauhof Lauf a. d. Pegnitz, Laborgebäude (Pharma) · Vorentwurf bis Werkplanung</p>
+          <h4>Project lead · Gömmel Wieland Architekten</h4>
+          <p>Municipal depot in Lauf an der Pegnitz, pharmaceutical laboratory · concept through construction design</p>
         </li>
         <li class="station">
-          <p class="station__zeit">2018 – 2019 · Kairo</p>
-          <h4>Prokurist / Büroleitung · Bit-Design Architekturbüro</h4>
-          <p>Sanierung Deutsche Botschaft, DAAD &amp; Goethe-Institut · Brandschutz, Flucht- &amp; Rettungswege</p>
+          <p class="station__zeit">2018 – 2019 · Cairo</p>
+          <h4>Authorised officer / practice lead · Bit-Design Architekturbüro</h4>
+          <p>Refurbishment of the German Embassy, DAAD &amp; Goethe-Institut · fire safety, escape and rescue routes</p>
         </li>
         <li class="station">
-          <p class="station__zeit">2009 – 2017 · Bayern</p>
-          <h4>Architekt &amp; Werkplaner · diverse Büros</h4>
-          <p>Mehrfamilienhäuser mit Tiefgarage, Schulbau, Nutzungsänderungen · Detail- &amp; Ausführungsplanung</p>
+          <p class="station__zeit">2009 – 2017 · Bavaria</p>
+          <h4>Architect &amp; technical designer · various practices</h4>
+          <p>Apartment buildings with underground parking, school buildings, changes of use · detail and construction design</p>
         </li>
         <li class="station">
-          <p class="station__zeit">Ausbildung</p>
-          <h4>M.Sc. Klimaoptimiertes Bauen · TU München</h4>
-          <p>Climate Responsive Design · ganzheitliche Gebäudeoptimierung (Konzept, Fassade, Gebäudetechnik)</p>
+          <p class="station__zeit">Education</p>
+          <h4>M.Sc. Climate-Responsive Building · TU Munich</h4>
+          <p>Climate-responsive design · whole-building optimisation (concept, facade, building services)</p>
         </li>
       </ul>
 
@@ -1151,44 +1077,39 @@ p{margin:0}
   <section class="abschnitt abschnitt--hoch" id="kontakt">
     <div class="mitte">
       <div class="kopfzeile">
-        <p class="auge">Kontakt</p>
-        <h2>Lassen Sie uns <em>sprechen</em>.</h2>
-        <p class="unter">Ob Bauvorhaben oder Digitalisierungs-Projekt — schildern Sie kurz Ihre
-          Idee. Aus Spam-Schutz werden meine Kontaktdaten erst auf Klick angezeigt.</p>
+        <p class="auge">Contact</p>
+        <h2>Let’s <em>talk</em>.</h2>
+        <p class="unter">Whether it is a building project or a digitalisation project — tell me briefly what you have in mind. As protection against spam, my contact details only appear on click.</p>
       </div>
       <div class="kontakt">
         <div>
           <div class="kontakt__zeile">
             <div class="kontakt__feld">
-              <span class="mono">Telefon</span>
-              <button class="kontakt__knopf" type="button" id="telefon-slot" onclick="revealPhone(this)">
-                Telefon anzeigen<small>Klicken, um die Nummer einzublenden</small>
-              </button>
+              <span class="mono">Phone</span>
+              <button class="kontakt__knopf" type="button" id="telefon-slot" onclick="revealPhone(this)">Show phone<small>Click to reveal the number</small></button>
             </div>
             <div class="kontakt__feld">
-              <span class="mono">E-Mail</span>
-              <button class="kontakt__knopf" type="button" id="email-slot" onclick="revealEmail(this)">
-                E-Mail anzeigen<small>Klicken, um die Adresse einzublenden</small>
-              </button>
+              <span class="mono">Email</span>
+              <button class="kontakt__knopf" type="button" id="email-slot" onclick="revealEmail(this)">Show email<small>Click to reveal the address</small></button>
             </div>
             <div class="kontakt__feld">
               <span class="mono">Region</span>
-              <p>Raum Nürnberg / Mittelfranken · Projekte bundesweit</p>
+              <p>Nuremberg region · projects across Germany</p>
             </div>
           </div>
         </div>
         <div>
-          <h3 style="font-size:1.2rem;margin-bottom:1rem">Auf einen Blick</h3>
+          <h3 style="font-size:1.2rem;margin-bottom:1rem">At a glance</h3>
           <ul class="liste">
-            <li>Eingetragener Architekt — Bayerische Architektenkammer (Nr. 192.197)</li>
-            <li>M.Sc. ClimaDesign, TU München</li>
-            <li>Volle Planungsbreite HOAI 1–9</li>
-            <li>BIM · IFC · KI-gestützte Projektentwicklung</li>
-            <li>Raum Nürnberg / Mittelfranken</li>
+            <li>Chartered architect — Bavarian Chamber of Architects (no. 192.197)</li>
+            <li>M.Sc. ClimaDesign, TU Munich</li>
+            <li>Full design scope, HOAI stages 1–9</li>
+            <li>BIM · IFC · AI-assisted project development</li>
+            <li>Nuremberg region</li>
           </ul>
           <div style="margin-top:1.8rem;display:flex;gap:.6rem;flex-wrap:wrap">
-            <a class="btn btn--klein" href="#pakete">Leistungspakete ansehen</a>
-            <a class="btn btn--geist btn--klein" href="demo/">Plattform-Demo</a>
+            <a class="btn btn--klein" href="#pakete">See the service packages</a>
+            <a class="btn btn--geist btn--klein" href="../demo/">Platform demo</a>
           </div>
         </div>
       </div>
@@ -1271,13 +1192,13 @@ p{margin:0}
   </section>
 
   <footer class="fuss">
-    <span data-nicht-uebersetzen>BIT-ATELIER · © <span id="jahr">2026</span> Mohamed Elmokadem.</span>
-    <span>Alle Rechte vorbehalten.</span>
-    <button type="button" onclick="toggleImpressum()">Impressum &amp; Datenschutz</button>
+    <span data-nicht-uebersetzen="">BIT-ATELIER · © <span id="jahr">2026</span> Mohamed Elmokadem.</span>
+    <span>All rights reserved.</span>
+    <button type="button" onclick="toggleImpressum()">Legal notice &amp; privacy</button>
   </footer>
 
   <section class="rechtstext verborgen" id="impressum" aria-label="Impressum und Datenschutz">
-    <div class="mitte">
+    <div class="mitte"><p id="impressum-sprachhinweis" data-nicht-uebersetzen="" style="border: 1px solid var(--line-strong); padding: 0.8rem 1rem; margin-bottom: 1.6rem;">The legal notice and privacy statement below are given in German — they are the legally binding version under German law.</p>
       <div>
       <div>
       <h2>Impressum</h2>
@@ -1337,7 +1258,7 @@ p{margin:0}
       <p>Gründerportrait: KI-generiert (Grok, xAI).</p>
 
       <h3>Datenschutz</h3>
-      <p>Diese Website setzt keine Cookies und verwendet keine Tracking- oder Analyse-Dienste. Sämtliche Inhalte (Schriftarten, Stylesheets, Icons, Skripte) werden direkt von dieser Domain ausgeliefert &ndash; es werden keine Inhalte von Drittanbietern nachgeladen und keine Besucherdaten an Dritte übermittelt. Beim Aufruf verarbeitet der Hosting-Anbieter (GitHub Pages) die zur Auslieferung technisch notwendigen Verbindungsdaten (insbesondere die IP-Adresse) in seinen Server-Logs. Eine Kontaktaufnahme erfolgt ausschließlich auf Ihre Initiative per Telefon oder E-Mail; die dabei übermittelten Daten verwende ich nur zur Bearbeitung Ihrer Anfrage.</p>
+      <p>Diese Website setzt keine Cookies und verwendet keine Tracking- oder Analyse-Dienste. Sämtliche Inhalte (Schriftarten, Stylesheets, Icons, Skripte) werden direkt von dieser Domain ausgeliefert – es werden keine Inhalte von Drittanbietern nachgeladen und keine Besucherdaten an Dritte übermittelt. Beim Aufruf verarbeitet der Hosting-Anbieter (GitHub Pages) die zur Auslieferung technisch notwendigen Verbindungsdaten (insbesondere die IP-Adresse) in seinen Server-Logs. Eine Kontaktaufnahme erfolgt ausschließlich auf Ihre Initiative per Telefon oder E-Mail; die dabei übermittelten Daten verwende ich nur zur Bearbeitung Ihrer Anfrage.</p>
       </div>
       </div>
       </div>
@@ -1351,13 +1272,11 @@ p{margin:0}
 
 <div class="modal verborgen" id="app-modal" role="dialog" aria-modal="true" aria-labelledby="app-modal-title">
   <div class="modal__kasten">
-    <h3 id="app-modal-title">Die BIT-Atelier-Plattform startet in Kürze</h3>
-    <p>Konten für die Plattform sind noch nicht freigeschaltet. Die Prüf- und
-      Auswertungswerkzeuge können Sie aber schon jetzt als Online-Demo ausprobieren —
-      serverlos, alles bleibt in Ihrem Browser.</p>
+    <h3 id="app-modal-title">The BIT-Atelier platform launches shortly</h3>
+    <p>Accounts for the platform are not yet open. You can already try the checking and evaluation tools as an online demo — serverless, everything stays in your browser.</p>
     <div class="modal__tun">
-      <a class="btn btn--klein" href="demo/">Demo starten</a>
-      <button class="btn btn--geist btn--klein" type="button" onclick="closeAppModal()">Schließen</button>
+      <a class="btn btn--klein" href="../demo/">Live demo</a>
+      <button class="btn btn--geist btn--klein" type="button" onclick="closeAppModal()">Close</button>
     </div>
   </div>
 </div>
@@ -1528,7 +1447,7 @@ p{margin:0}
             }, { threshold: 0.2 }).observe(el);
         })();
 </script>
-<script src="assets/js/sprachen.js" defer></script>
+<script src="../assets/js/sprachen.js" defer=""></script>
 <script type="module">
 import * as THREE from 'three';
 
@@ -2293,5 +2212,6 @@ function leseAkzent(){
 groesse(); messen(); leseAkzent(); videoPruefen(); ebenenSetzen(0);
 requestAnimationFrame(schleife);
 </script>
-</body>
-</html>
+
+
+</body></html>

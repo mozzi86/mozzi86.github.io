@@ -604,15 +604,45 @@
 
     aktuell = sprache;
     try { localStorage.setItem('bit-sprache', sprache); } catch (e) { /* egal */ }
+
+    /* Die Wahl gehoert in die Adresse (Phase 65-06). Vorher aenderte sich die URL
+       nie: zwei Drittel der Uebersetzungsarbeit waren weder verlinkbar noch fuer
+       Suchmaschinen sichtbar. replaceState statt pushState — die Sprachwahl soll
+       den Zurueck-Knopf nicht mit Zwischenstaenden fuellen. */
+    try {
+      const u = new URL(location.href);
+      const aufKopie = /^\/(en|ar)\//.test(u.pathname);
+      /* Auf /en/ und /ar/ steht die Sprache schon im Pfad — ein zusaetzliches
+         ?lang waere Redundanz und wuerde den canonical-Link verwaessern. */
+      if (!aufKopie) {
+        if (sprache === 'de') u.searchParams.delete('lang');
+        else u.searchParams.set('lang', sprache);
+        history.replaceState(null, '', u.pathname + u.search + u.hash);
+      }
+    } catch (e) { /* aeltere Browser: dann eben ohne */ }
   }
 
   /* Knöpfe verdrahten */
   document.querySelectorAll('[data-sprache]').forEach(b =>
     b.addEventListener('click', () => setze(b.dataset.sprache)));
 
-  /* Gemerkte Wahl, sonst Browsersprache, sonst Deutsch */
-  let start = 'de';
-  try { start = localStorage.getItem('bit-sprache') || ''; } catch (e) { start = ''; }
+  /* Reihenfolge: ?lang= aus der Adresse, dann gemerkte Wahl, dann Browsersprache.
+     Die Adresse gewinnt, damit ein geteilter Link beim Empfaenger dieselbe
+     Sprache zeigt wie beim Absender — auch wenn dessen Browser anders steht. */
+  let start = '';
+  try {
+    const u = new URL(location.href);
+    /* Vorgerenderte Fassung: /en/ und /ar/ sind eigene Adressen und tragen ihre
+       Sprache im Pfad. Ohne diese Zeile wuerde sprachen.js die fertige Kopie
+       anhand von localStorage wieder zurueckuebersetzen — der Besucher landet
+       auf einer englischen URL und liest Deutsch. */
+    const ausPfad = (u.pathname.match(/^\/(en|ar)\//) || [])[1];
+    const wunsch = (u.searchParams.get('lang') || ausPfad || '').toLowerCase();
+    if (wunsch === 'en' || wunsch === 'ar' || wunsch === 'de') start = wunsch;
+  } catch (e) { /* egal */ }
+  if (!start) {
+    try { start = localStorage.getItem('bit-sprache') || ''; } catch (e) { start = ''; }
+  }
   if (!start) {
     const b = (navigator.language || 'de').slice(0, 2).toLowerCase();
     start = (b === 'ar' || b === 'en') ? b : 'de';

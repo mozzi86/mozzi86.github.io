@@ -1,0 +1,13 @@
+{
+  "name": "BIT-ATELIER — Architektur trifft Digitalisierung",
+  "short_name": "BIT-ATELIER",
+  "lang": "de",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#0c1117",
+  "theme_color": "#0c1117",
+  "icons": [
+    { "src": "/assets/img/favicon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/assets/img/favicon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
