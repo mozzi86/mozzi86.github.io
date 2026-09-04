@@ -1,0 +1,1 @@
+import{r as a}from"./vendor-yXl-1oZS.js";const o=new Map;function h(t,e){const[c,r]=a.useState(()=>o.has(t)?o.get(t):typeof e=="function"?e():e),u=a.useCallback(s=>{r(p=>{const n=typeof s=="function"?s(p):s;return o.set(t,n),n})},[t]);return[c,u]}export{h as u};

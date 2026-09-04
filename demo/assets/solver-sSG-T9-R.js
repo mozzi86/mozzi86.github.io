@@ -1,0 +1,1 @@
+import{M as t,w as l,G as o}from"./planegcs-BvUMQNZz.js";import"./vendor-yXl-1oZS.js";let e=null;function s(){return e||(e=t({locateFile:()=>l}).then(r=>new o(new r.GcsSystem)).catch(r=>{throw e=null,r})),e}export{s as getSolver};
