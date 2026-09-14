@@ -29,9 +29,15 @@ import { setTimeout as sleep } from 'node:timers/promises';
 import { createRequire } from 'node:module';
 
 // Playwright liegt im App-Repo; die Website bleibt abhaengigkeitsfrei.
-const APP_REPO = 'C:/Users/Asus TUF Z590 P Wifi/My Drive/bit-atelier-app';
+// Ausserhalb des eigenen Rechners (Cloud-Sitzung, CI) zeigt BIT_APP_REPO auf ein
+// beliebiges Verzeichnis mit installiertem playwright oder playwright-core, und
+// BIT_CHROMIUM auf eine feste Chromium-Datei, falls die Playwright-Fassung nicht
+// zum vorinstallierten Browser passt.
+const APP_REPO = process.env.BIT_APP_REPO || 'C:/Users/Asus TUF Z590 P Wifi/My Drive/bit-atelier-app';
 const require = createRequire(path.join(APP_REPO, 'package.json'));
-const { chromium } = require('playwright');
+let chromium;
+try { ({ chromium } = require('playwright')); }
+catch { ({ chromium } = require('playwright-core')); }
 
 const WURZEL = path.resolve(import.meta.dirname, '..');
 const PORT = 4188;
@@ -120,16 +126,27 @@ function kopfSetzen(html, code) {
 
 try {
   if (!(await warteAufServer())) throw new Error(`Server auf ${BASIS} nicht erreichbar`);
-  const browser = await chromium.launch();
+  const browser = await chromium.launch(
+    process.env.BIT_CHROMIUM ? { executablePath: process.env.BIT_CHROMIUM } : {},
+  );
 
   for (const s of SPRACHEN) {
     const seite = await browser.newPage({ viewport: { width: 1400, height: 900 } });
+    // Ein Skriptfehler auf der Seite wuerde sonst still in die Kopie eingefroren.
+    const skriptfehler = [];
+    seite.on('pageerror', (f) => skriptfehler.push(f.message));
     await seite.goto(`${BASIS}?lang=${s.code}`, { waitUntil: 'networkidle' });
     // sprachen.js laeuft ueber alle Blattknoten; kurz Luft lassen.
     await seite.waitForTimeout(1200);
+    if (skriptfehler.length) throw new Error(`Skriptfehler auf der Seite (${s.code}):\n  ${skriptfehler.join('\n  ')}`);
 
     const lang = await seite.evaluate(() => document.documentElement.getAttribute('lang'));
     if (lang !== s.code) throw new Error(`Umschaltung nach ${s.code} hat nicht gegriffen (lang=${lang})`);
+
+    // Unuebersetzte Textbloecke zaehlen — die Zahl steht im Protokoll, damit ein
+    // neuer Wortlaut ohne Woerterbucheintrag nicht unbemerkt deutsch bleibt.
+    const fehlend = await seite.evaluate((c) => window.bitSprache.fehlende(c), s.code);
+    if (fehlend.length) console.log(`  ${fehlend.length} ohne Übersetzung (${s.code}):\n    ${fehlend.map((t) => t.slice(0, 90)).join('\n    ')}`);
 
     // Laufzeit-Spuren entfernen: Kapitelknoepfe und Canvas-Zustand erzeugt das
     // Buehnen-Modul beim Laden selbst neu. Eingefroren waeren sie doppelt.
@@ -141,6 +158,12 @@ try {
       const video = document.getElementById('buehne-video');
       if (video) { video.removeAttribute('src'); video.removeAttribute('style'); }
       for (const el of document.querySelectorAll('.ebene')) el.removeAttribute('style');
+      // Paketfinder-Ergebnis und Anfrage-Vorschau schreibt das Skript beim Laden
+      // selbst; eingefroren staenden sie doppelt und in der Sprache des Laufs.
+      for (const id of ['finder-ergebnis', 'a-vorschau']) {
+        const el = document.getElementById(id);
+        if (el) el.innerHTML = '';
+      }
       return '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
     });
 
