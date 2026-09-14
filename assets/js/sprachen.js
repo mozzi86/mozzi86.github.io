@@ -264,7 +264,78 @@
       'Intel-Version <a href="https://github.com/mozzi86/NovaPDF/releases/latest/download/BIT-Nova-PDF-x64.dmg" style="color:var(--accent)">hier</a>.':
         'Intel version <a href="https://github.com/mozzi86/NovaPDF/releases/latest/download/BIT-Nova-PDF-x64.dmg" style="color:var(--accent)">here</a>.',
       'Kostenlos · quelloffen entwickelt im BIT-Atelier · alle Versionen <a href="https://github.com/mozzi86/NovaPDF/releases" style="color:var(--accent)">auf GitHub</a>. Die Apps sind nicht signiert bzw. notarisiert — Windows SmartScreen bzw. macOS Gatekeeper beim ersten Start über „Trotzdem ausführen" / Rechtsklick → „Öffnen" bestätigen.':
-        'Free · developed openly at BIT-Atelier · all releases <a href="https://github.com/mozzi86/NovaPDF/releases" style="color:var(--accent)">on GitHub</a>. The apps are not code-signed or notarised — on first launch confirm through Windows SmartScreen (“Run anyway”) or macOS Gatekeeper (right-click → “Open”).'
+        'Free · developed openly at BIT-Atelier · all releases <a href="https://github.com/mozzi86/NovaPDF/releases" style="color:var(--accent)">on GitHub</a>. The apps are not code-signed or notarised — on first launch confirm through Windows SmartScreen (“Run anyway”) or macOS Gatekeeper (right-click → “Open”).',
+
+      /* Paketfinder (#pakete) */
+      'Welches Paket passt zu Ihrem Projekt?': 'Which package fits your project?',
+      'Drei Angaben, keine Anmeldung. Die Einordnung folgt den Regeln, nach denen ich selbst sortiere — und nimmt Ihre Angaben gleich mit in die Anfrage.':
+        'Three answers, no sign-up. The result follows the same rules I use myself — and carries your answers straight into the enquiry.',
+      'Bausumme': 'Construction cost',
+      'Fachmodelle': 'Discipline models',
+      'Phase': 'Stage',
+      'unter 5 Mio. €': 'under €5 m',
+      '5–10 Mio. €': '€5–10 m',
+      '10–30 Mio. €': '€10–30 m',
+      'über 30 Mio. €': 'over €30 m',
+      'Architektur': 'Architecture',
+      'Architektur + Tragwerk': 'Architecture + structure',
+      'Architektur + Tragwerk + TGA': 'Architecture + structure + MEP',
+      'Bestandsmodell / Scan': 'As-built model / scan',
+      'noch keine': 'none yet',
+      'Vorplanung (LPH 2)': 'Concept design (LPH 2)',
+      'Entwurf (LPH 3)': 'Developed design (LPH 3)',
+      'Genehmigung (LPH 4)': 'Planning approval (LPH 4)',
+      'Ausführungsplanung (LPH 5)': 'Technical design (LPH 5)',
+      'Vergabe / Ausführung (LPH 6–8)': 'Tender / construction (LPH 6–8)',
+      'Empfehlung': 'Recommendation',
+      'Im Anschluss:': 'Afterwards:',
+      'Mit diesen Angaben anfragen': 'Enquire with these details',
+      'Zu Planung & Architektur': 'To design & architecture',
+      'Bausumme, Fachmodelle und Phase stehen dann schon im Anfrage-Baukasten.': 'Cost, models and stage are then pre-filled in the enquiry form.',
+      'Alle Leistungsphasen, auch Sanierung und geförderter Wohnungsbau.': 'All work stages, including refurbishment and subsidised housing.',
+      'Paket 1 · BIM-Quick-Check & Setup': 'Package 1 · BIM quick check & setup',
+      'Paket 2 · Automatisierte Modellprüfung & QS': 'Package 2 · Automated model checking & QA',
+      'Paket 3 · BIM-Gesamtkoordination': 'Package 3 · Overall BIM coordination',
+      'Unterhalb der Paketgröße — der Weg ist die Planung': 'Below the package range — the route is design',
+      'Die drei Pakete sind für Großprojekte ab etwa 10 Mio. € Bausumme geschnitten. Für Ihr Vorhaben ist der direkte Weg die Planung aus einer Hand: Entwurf, Genehmigung, Ausführung — mit Energiebilanz und Modell von Anfang an.':
+        'The three packages are cut for large projects from about €10 m construction cost. For your project the direct route is design from one hand: concept, approval, construction — with energy balance and model from day one.',
+      'Ohne Fachmodell beginnt jedes Projekt mit dem Setup: AIA und BAP, Koordinationsumgebung, Namenskonventionen — und der erste Prüflauf, sobald das erste Modell steht.':
+        'Without a discipline model every project starts with the setup: EIR and BEP, coordination environment, naming conventions — and the first checking run as soon as the first model exists.',
+      'Ein Bestandsmodell oder Scan ist eine Grundlage, noch keine Koordinationsbasis. Der Quick-Check legt fest, was die Fachmodelle liefern müssen, und prüft den Bestand gleich mit.':
+        'An as-built model or scan is a basis, not yet a coordination baseline. The quick check defines what the discipline models must deliver and checks the existing model on the way.',
+      'In Vorplanung und Entwurf entscheidet sich, ob das Projekt später prüffähig ist. Der Quick-Check schafft die Grundlage in 2–4 Wochen; über die Planungsphasen hinweg hält dann das Mandat die Fachmodelle zusammen.':
+        'Concept and developed design decide whether the project can be checked later. The quick check lays that foundation in 2–4 weeks; across the design stages the retainer then keeps the discipline models together.',
+      'Bei 5–10 Mio. € ist der Quick-Check die passende Einstiegsgröße. Ein laufendes Mandat lohnt sich hier meist erst, wenn drei Fachmodelle koordiniert werden müssen.':
+        'At €5–10 m the quick check is the right entry size. A running retainer usually pays off here only once three discipline models need coordinating.',
+      'Drei Fachmodelle in Genehmigung und Ausführungsplanung: Hier laufen die meisten Änderungen gleichzeitig. Das Mandat prüft jeden Stand, hält Koordinationssitzung und Maßnahmenliste — die Prüfläufe sind darin enthalten.':
+        'Three discipline models in approval and technical design: this is where most changes run in parallel. The retainer checks every issue, runs the coordination meeting and the action list — the checking runs are included.',
+      'Jeder Planungsstand wird geprüft, bevor er in die nächste Runde geht: Kollisionen, Duplikate, IDS-Konformität — mit Befunden als BCF zurück an die Fachplaner. Als Festpreis je Prüflauf, planbar je Meilenstein.':
+        'Every design issue is checked before it goes into the next round: clashes, duplicates, IDS conformity — with findings returned as BCF to the design teams. Fixed price per run, plannable per milestone.',
+      'Vor Vergabe und Ausführung zählt der dokumentierte Stand: ein Prüflauf mit Prüfbericht und BCF, bevor der erste Auftrag vergeben wird. Was hier gefunden wird, kostet noch keinen Nachtrag.':
+        'Before tender and construction the documented state counts: one checking run with report and BCF before the first contract is awarded. What is found here does not yet cost a variation.',
+
+      /* Anfrage-Baukasten (#kontakt) */
+      'Erstgespräch vorbereiten': 'Prepare a first conversation',
+      'Ein paar Angaben, dann steht Ihr Text fertig darunter — zum Absenden über Ihr Mailprogramm, zum Kopieren oder zum Drucken. Es wird nichts übertragen und nichts gespeichert.':
+        'A few details and your text is ready below — to send from your mail app, to copy, or to print. Nothing is transmitted and nothing is stored.',
+      'Projektart': 'Project type',
+      'Zeitrahmen': 'Timeframe',
+      'Rückmeldung bitte per': 'Reply preferred by',
+      'Kurz zum Vorhaben (freiwillig)': 'About the project (optional)',
+      'So geht Ihr Text ab': 'This is the text you send',
+      'Erstgespräch anfragen': 'Request a first conversation',
+      'Text kopieren': 'Copy text',
+      'Drucken / als PDF sichern': 'Print / save as PDF',
+      'Antwort in der Regel innerhalb von 24 Stunden.': 'Reply usually within 24 hours.',
+      'Guten Tag,': 'Dear Mr Elmokadem,',
+      'ich möchte ein Erstgespräch vereinbaren.': 'I would like to arrange a first conversation.',
+      '(offen)': '(open)',
+      'Zum Vorhaben:': 'About the project:',
+      'Mit freundlichen Grüßen': 'Kind regards',
+      'Erstgespräch BIT-ATELIER — ': 'First conversation BIT-ATELIER — ',
+      'Kopiert ✓': 'Copied ✓',
+      'Bitte den Text oben markieren und kopieren': 'Please select and copy the text above',
+      'An': 'To'
     },
 
     ar: {
@@ -519,7 +590,78 @@
       'Intel-Version <a href="https://github.com/mozzi86/NovaPDF/releases/latest/download/BIT-Nova-PDF-x64.dmg" style="color:var(--accent)">hier</a>.':
         'نسخة Intel <a href="https://github.com/mozzi86/NovaPDF/releases/latest/download/BIT-Nova-PDF-x64.dmg" style="color:var(--accent)">من هنا</a>.',
       'Kostenlos · quelloffen entwickelt im BIT-Atelier · alle Versionen <a href="https://github.com/mozzi86/NovaPDF/releases" style="color:var(--accent)">auf GitHub</a>. Die Apps sind nicht signiert bzw. notarisiert — Windows SmartScreen bzw. macOS Gatekeeper beim ersten Start über „Trotzdem ausführen" / Rechtsklick → „Öffnen" bestätigen.':
-        'مجاني · مُطوَّر بشكل مفتوح في BIT-Atelier · جميع الإصدارات <a href="https://github.com/mozzi86/NovaPDF/releases" style="color:var(--accent)">على GitHub</a>. التطبيقات غير موقَّعة رقمياً — عند أول تشغيل أكِّد عبر Windows SmartScreen («تشغيل على أي حال») أو macOS Gatekeeper (نقر بالزر الأيمن ← «فتح»).'
+        'مجاني · مُطوَّر بشكل مفتوح في BIT-Atelier · جميع الإصدارات <a href="https://github.com/mozzi86/NovaPDF/releases" style="color:var(--accent)">على GitHub</a>. التطبيقات غير موقَّعة رقمياً — عند أول تشغيل أكِّد عبر Windows SmartScreen («تشغيل على أي حال») أو macOS Gatekeeper (نقر بالزر الأيمن ← «فتح»).',
+
+      /* Paketfinder (#pakete) */
+      'Welches Paket passt zu Ihrem Projekt?': 'أي حزمة تناسب مشروعكم؟',
+      'Drei Angaben, keine Anmeldung. Die Einordnung folgt den Regeln, nach denen ich selbst sortiere — und nimmt Ihre Angaben gleich mit in die Anfrage.':
+        'ثلاث إجابات، دون تسجيل. يتبع التصنيف القواعد نفسها التي أعتمدها بنفسي — وينقل إجاباتكم مباشرةً إلى نموذج الطلب.',
+      'Bausumme': 'تكلفة البناء',
+      'Fachmodelle': 'النماذج التخصصية',
+      'Phase': 'المرحلة',
+      'unter 5 Mio. €': 'أقل من 5 ملايين يورو',
+      '5–10 Mio. €': '5–10 ملايين يورو',
+      '10–30 Mio. €': '10–30 مليون يورو',
+      'über 30 Mio. €': 'أكثر من 30 مليون يورو',
+      'Architektur': 'العمارة',
+      'Architektur + Tragwerk': 'العمارة + الإنشاء',
+      'Architektur + Tragwerk + TGA': 'العمارة + الإنشاء + التمديدات',
+      'Bestandsmodell / Scan': 'نموذج الوضع القائم / مسح',
+      'noch keine': 'لا يوجد بعد',
+      'Vorplanung (LPH 2)': 'التصميم الأولي (LPH 2)',
+      'Entwurf (LPH 3)': 'التصميم التطويري (LPH 3)',
+      'Genehmigung (LPH 4)': 'الترخيص (LPH 4)',
+      'Ausführungsplanung (LPH 5)': 'التصميم التنفيذي (LPH 5)',
+      'Vergabe / Ausführung (LPH 6–8)': 'الترسية / التنفيذ (LPH 6–8)',
+      'Empfehlung': 'التوصية',
+      'Im Anschluss:': 'بعد ذلك:',
+      'Mit diesen Angaben anfragen': 'إرسال طلب بهذه البيانات',
+      'Zu Planung & Architektur': 'إلى التصميم والعمارة',
+      'Bausumme, Fachmodelle und Phase stehen dann schon im Anfrage-Baukasten.': 'تكون التكلفة والنماذج والمرحلة مُدرجة مسبقاً في نموذج الطلب.',
+      'Alle Leistungsphasen, auch Sanierung und geförderter Wohnungsbau.': 'جميع مراحل الخدمة، بما فيها الترميم والإسكان المدعوم.',
+      'Paket 1 · BIM-Quick-Check & Setup': 'الحزمة 1 · فحص BIM السريع والإعداد',
+      'Paket 2 · Automatisierte Modellprüfung & QS': 'الحزمة 2 · تدقيق النماذج الآلي وضبط الجودة',
+      'Paket 3 · BIM-Gesamtkoordination': 'الحزمة 3 · التنسيق الشامل لـ BIM',
+      'Unterhalb der Paketgröße — der Weg ist die Planung': 'أقل من حجم الحزم — الطريق هو التصميم',
+      'Die drei Pakete sind für Großprojekte ab etwa 10 Mio. € Bausumme geschnitten. Für Ihr Vorhaben ist der direkte Weg die Planung aus einer Hand: Entwurf, Genehmigung, Ausführung — mit Energiebilanz und Modell von Anfang an.':
+        'الحزم الثلاث مُصمَّمة للمشاريع الكبرى بتكلفة بناء تبدأ من نحو 10 ملايين يورو. الطريق المباشر لمشروعكم هو التصميم من جهة واحدة: التصميم، الترخيص، التنفيذ — مع ميزان الطاقة والنموذج منذ البداية.',
+      'Ohne Fachmodell beginnt jedes Projekt mit dem Setup: AIA und BAP, Koordinationsumgebung, Namenskonventionen — und der erste Prüflauf, sobald das erste Modell steht.':
+        'من دون نموذج تخصصي يبدأ كل مشروع بالإعداد: متطلبات المعلومات (AIA) وخطة التنفيذ (BAP)، بيئة التنسيق، قواعد التسمية — ثم أول جولة تدقيق حين يتوفر أول نموذج.',
+      'Ein Bestandsmodell oder Scan ist eine Grundlage, noch keine Koordinationsbasis. Der Quick-Check legt fest, was die Fachmodelle liefern müssen, und prüft den Bestand gleich mit.':
+        'نموذج الوضع القائم أو المسح أساسٌ، لكنه ليس قاعدة تنسيق بعد. يحدد الفحص السريع ما يجب أن تقدمه النماذج التخصصية ويدقق الوضع القائم في الوقت نفسه.',
+      'In Vorplanung und Entwurf entscheidet sich, ob das Projekt später prüffähig ist. Der Quick-Check schafft die Grundlage in 2–4 Wochen; über die Planungsphasen hinweg hält dann das Mandat die Fachmodelle zusammen.':
+        'في التصميم الأولي والتطويري يتحدد ما إذا كان المشروع قابلاً للتدقيق لاحقاً. يضع الفحص السريع الأساس خلال 2–4 أسابيع؛ وعبر مراحل التصميم يحفظ التكليف الشهري تماسك النماذج التخصصية.',
+      'Bei 5–10 Mio. € ist der Quick-Check die passende Einstiegsgröße. Ein laufendes Mandat lohnt sich hier meist erst, wenn drei Fachmodelle koordiniert werden müssen.':
+        'عند 5–10 ملايين يورو يكون الفحص السريع هو حجم البداية المناسب. أما التكليف المستمر فلا يستحق عادةً إلا حين يلزم تنسيق ثلاثة نماذج تخصصية.',
+      'Drei Fachmodelle in Genehmigung und Ausführungsplanung: Hier laufen die meisten Änderungen gleichzeitig. Das Mandat prüft jeden Stand, hält Koordinationssitzung und Maßnahmenliste — die Prüfläufe sind darin enthalten.':
+        'ثلاثة نماذج تخصصية في مرحلتَي الترخيص والتصميم التنفيذي: هنا تجري أكثر التغييرات في وقت واحد. يدقق التكليف كل إصدار ويدير اجتماع التنسيق وقائمة الإجراءات — وجولات التدقيق مشمولة فيه.',
+      'Jeder Planungsstand wird geprüft, bevor er in die nächste Runde geht: Kollisionen, Duplikate, IDS-Konformität — mit Befunden als BCF zurück an die Fachplaner. Als Festpreis je Prüflauf, planbar je Meilenstein.':
+        'يُدقَّق كل إصدار تصميمي قبل انتقاله إلى الجولة التالية: التصادمات، التكرارات، مطابقة IDS — مع إعادة النتائج بصيغة BCF إلى المصممين. بسعر ثابت لكل جولة، قابل للتخطيط لكل مرحلة إنجاز.',
+      'Vor Vergabe und Ausführung zählt der dokumentierte Stand: ein Prüflauf mit Prüfbericht und BCF, bevor der erste Auftrag vergeben wird. Was hier gefunden wird, kostet noch keinen Nachtrag.':
+        'قبل الترسية والتنفيذ يهم الوضع الموثَّق: جولة تدقيق واحدة مع تقرير وملف BCF قبل ترسية أول عقد. ما يُكتشف هنا لا يكلف أمرَ تغيير بعد.',
+
+      /* Anfrage-Baukasten (#kontakt) */
+      'Erstgespräch vorbereiten': 'الإعداد للمحادثة الأولى',
+      'Ein paar Angaben, dann steht Ihr Text fertig darunter — zum Absenden über Ihr Mailprogramm, zum Kopieren oder zum Drucken. Es wird nichts übertragen und nichts gespeichert.':
+        'بضع بيانات ويكون نصكم جاهزاً أدناه — للإرسال عبر برنامج البريد، أو للنسخ، أو للطباعة. لا يُنقل شيء ولا يُخزَّن شيء.',
+      'Projektart': 'نوع المشروع',
+      'Zeitrahmen': 'الإطار الزمني',
+      'Rückmeldung bitte per': 'الرد المفضَّل عبر',
+      'Kurz zum Vorhaben (freiwillig)': 'نبذة عن المشروع (اختياري)',
+      'So geht Ihr Text ab': 'هذا هو النص الذي سترسلونه',
+      'Erstgespräch anfragen': 'طلب محادثة أولى',
+      'Text kopieren': 'نسخ النص',
+      'Drucken / als PDF sichern': 'طباعة / حفظ كـ PDF',
+      'Antwort in der Regel innerhalb von 24 Stunden.': 'الرد عادةً خلال 24 ساعة.',
+      'Guten Tag,': 'السيد المقدم المحترم،',
+      'ich möchte ein Erstgespräch vereinbaren.': 'أرغب في ترتيب محادثة أولى.',
+      '(offen)': '(غير محدد)',
+      'Zum Vorhaben:': 'عن المشروع:',
+      'Mit freundlichen Grüßen': 'مع أطيب التحيات',
+      'Erstgespräch BIT-ATELIER — ': 'محادثة أولى BIT-ATELIER — ',
+      'Kopiert ✓': 'تم النسخ ✓',
+      'Bitte den Text oben markieren und kopieren': 'يُرجى تحديد النص أعلاه ونسخه',
+      'An': 'إلى'
     }
   };
 
@@ -625,6 +767,19 @@
   /* Knöpfe verdrahten */
   document.querySelectorAll('[data-sprache]').forEach(b =>
     b.addEventListener('click', () => setze(b.dataset.sprache)));
+
+  /* Die Sprache geht mit in die Demo (Befund B-06). Website und Demo liegen auf
+     derselben Herkunft, und die Demo liest ihre Sprache aus localStorage["lang"]
+     — wer über /en/ kam, landete trotzdem auf Deutsch. Arabisch kennt die Demo
+     noch nicht; dann Englisch, die nächstliegende Fassung. */
+  document.addEventListener('click', (e) => {
+    const a = e.target && e.target.closest ? e.target.closest('a[href]') : null;
+    if (!a) return;
+    let ziel;
+    try { ziel = new URL(a.getAttribute('href'), location.href); } catch (err) { return; }
+    if (ziel.origin !== location.origin || !/^\/demo\/?$/.test(ziel.pathname)) return;
+    try { localStorage.setItem('lang', aktuell === 'ar' ? 'en' : aktuell); } catch (err) { /* egal */ }
+  });
 
   /* Reihenfolge: ?lang= aus der Adresse, dann gemerkte Wahl, dann Browsersprache.
      Die Adresse gewinnt, damit ein geteilter Link beim Empfaenger dieselbe

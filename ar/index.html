@@ -139,14 +139,16 @@
      zwischen r161 und r17x haben sich Farbverwaltung und Renderer-Optionen
      geaendert. -->
 <style>
-/* --- Nachweis-Kasten unter dem Pruefergebnis (Phase 65-06) ----------------
+/* --- Beleg-Kasten unter dem Pruefergebnis (Phase 65-06) -------------------
    Beide Dateien stammen aus dem Beispiel-Pruflauf der Demo, den der Besucher
-   selbst ausloesen kann — derselbe Lauf, dieselben Zahlen. */
-.nachweis{margin-top:1rem;border:1px solid rgba(255,255,255,.10);border-radius:12px;
+   selbst ausloesen kann — derselbe Lauf, dieselben Zahlen.
+   Klassenname bewusst NICHT .nachweis: den gibt es auf der Seite schon vierfach
+   (Kammer, Master, BIM, Jahre) — die haetten mein CSS sonst mitbekommen. */
+.beleg{margin-top:1rem;border:1px solid rgba(255,255,255,.10);border-radius:12px;
   padding:1rem 1.15rem;background:rgba(255,255,255,.02)}
-.nachweis__titel{font-weight:600;margin:0 0 .3rem}
-.nachweis__unter{color:var(--muted);font-size:.88rem;margin:0 0 .9rem}
-.nachweis__links{display:flex;gap:.6rem;flex-wrap:wrap}
+.beleg__titel{font-weight:600;margin:0 0 .3rem}
+.beleg__unter{color:var(--muted);font-size:.88rem;margin:0 0 .9rem}
+.beleg__links{display:flex;gap:.6rem;flex-wrap:wrap}
 
 /* --- Anfrage-Baukasten (Phase 65-06) --------------------------------------
    Kein Formular-Versand: die Felder bauen im Browser eine vorformulierte
@@ -168,6 +170,56 @@
 .anfrage__feld textarea:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
 .anfrage__fuss{margin-top:1.2rem;display:flex;gap:.8rem;align-items:center;flex-wrap:wrap}
 .anfrage__frist{color:var(--muted);font-size:.84rem}
+/* Vorschau des Anfragetexts (Befund B-05): Der Besucher sieht, was sein
+   Mailprogramm bekommt — und hat mit Kopieren und Drucken zwei Wege, falls auf
+   dem Geraet keines eingerichtet ist. Vorher endete der Baukasten dort im Nichts. */
+.anfrage__vorschau{margin-top:1.1rem}
+.anfrage__vorschau>span{font-size:.76rem;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);
+  display:block;margin-bottom:.35rem}
+.anfrage__text{margin:0;max-height:15rem;overflow:auto;white-space:pre-wrap;word-break:break-word;
+  background:var(--bg-deep);border:1px solid rgba(255,255,255,.10);border-radius:9px;padding:.8rem .9rem;
+  font-family:var(--mono);font-size:.8rem;line-height:1.55;color:var(--ink-dim)}
+#anfrage-druck{display:none}
+@media print{
+  body.druckt-anfrage>*:not(#anfrage-druck){display:none!important}
+  body.druckt-anfrage{background:#fff;color:#000}
+  #anfrage-druck{display:block;font:11pt/1.5 Montserrat,system-ui,sans-serif;color:#000}
+  #anfrage-druck h1{font-size:15pt;margin:0 0 .4rem}
+  #anfrage-druck p{margin:0 0 .25rem}
+  #anfrage-druck pre{white-space:pre-wrap;font:inherit;margin:1.2rem 0 0}
+}
+
+/* Paketfinder (#pakete): drei Angaben, eine begruendete Einordnung. Ersetzt
+   das eigene Rechnen des Lesers ("ist das eine Groessenordnung fuer uns?") und
+   traegt die Angaben in den Anfrage-Baukasten — die Felder sind dieselben. */
+.finder{margin-top:2.4rem;border:1px solid rgba(255,255,255,.10);border-radius:14px;
+  padding:1.4rem;background:rgba(255,255,255,.02)}
+.finder h3{font-size:1.05rem;margin:0 0 .3rem}
+.finder__unter{color:var(--muted);font-size:.9rem;margin:0 0 1.2rem;max-width:62ch}
+.finder__fragen{display:grid;gap:1rem}
+@media(min-width:60rem){.finder__fragen{grid-template-columns:repeat(3,1fr);gap:1.2rem}}
+.finder__frage{border:0;margin:0;padding:0;min-width:0}
+.finder__frage legend{padding:0;margin-bottom:.45rem}
+.finder__frage legend span{font-size:.76rem;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.finder__wahl{display:flex;flex-wrap:wrap;gap:.4rem}
+.finder__wahl button{font:inherit;font-size:.84rem;min-height:2.5rem;padding:.45rem .75rem;border-radius:9px;
+  cursor:pointer;background:var(--bg-deep);color:var(--ink-dim);border:1px solid rgba(255,255,255,.14)}
+.finder__wahl button:hover{border-color:var(--line-strong);color:var(--ink)}
+.finder__wahl button[aria-pressed="true"]{border-color:var(--accent);color:var(--accent);background:rgba(45,212,191,.08)}
+.finder__wahl button:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.finder__ergebnis{margin-top:1.3rem;border-top:1px solid var(--line);padding-top:1.2rem;display:grid;gap:.9rem}
+@media(min-width:60rem){.finder__ergebnis{grid-template-columns:1.2fr .8fr;gap:2rem;align-items:start}}
+.finder__auge{margin:0 0 .4rem;color:var(--accent);font-family:var(--mono);font-size:.72rem;
+  letter-spacing:.14em;text-transform:uppercase}
+.finder__paket{margin:0;font-size:1.25rem;font-weight:600;letter-spacing:-.01em}
+.finder__preis{margin:.25rem 0 .7rem;font-family:var(--display);font-weight:700;font-size:1.25rem;
+  color:var(--accent);letter-spacing:-.02em}
+.finder__grund{margin:0;color:var(--muted);font-weight:300;max-width:60ch}
+.finder__danach{margin:.8rem 0 0;font-size:.9rem;color:var(--ink-dim)}
+.finder__danach b{color:var(--ink)}
+.finder__tun{display:flex;flex-direction:column;gap:.6rem;align-items:flex-start}
+@media(min-width:60rem){.finder__tun{align-items:flex-end;text-align:right}}
+.finder__hinweis{margin:0;font-size:.8rem;color:var(--muted);max-width:32ch}
 
 /* ===========================================================================
    BIT-ATELIER — Startseite
@@ -320,6 +372,7 @@ p{margin:0}
   background:radial-gradient(125% 85% at 50% 8%,#1b2a35 0%,#101a22 42%,var(--bg-deep) 100%)}
 .buehne__medien{position:absolute;inset:0;z-index:1}
 .ebene{position:absolute;inset:0;margin:0;opacity:0;will-change:opacity}
+.ebene picture{display:block;width:100%;height:100%}
 .ebene img{width:100%;height:100%;object-fit:cover;object-position:center 62%}
 .buehne__video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
   object-position:center 58%;opacity:0;z-index:2;pointer-events:none}
@@ -723,21 +776,43 @@ p{margin:0}
   <section class="buehne" id="buehne" aria-label="Vom Baufeld zum fertigen Wohnhaus">
     <div class="buehne__fix">
       <div class="buehne__medien" id="medien" aria-hidden="true">
-        <video class="buehne__video" id="buehne-video" muted="" playsinline="" preload="auto" disablepictureinpicture="" disableremoteplayback="" style=""></video>
+        <video class="buehne__video" id="buehne-video" muted="" playsinline="" preload="none" disablepictureinpicture="" disableremoteplayback="" style=""></video>
         <figure class="ebene" data-von="0.00" data-bis="0.115" style="">
-          <img src="../assets/img/bauablauf/phase-1-baufeld-800.jpg" srcset="../assets/img/bauablauf/phase-1-baufeld-800.jpg 800w, ../assets/img/bauablauf/phase-1-baufeld.jpg 1600w" sizes="100vw" alt="" width="1600" height="900" loading="eager" decoding="async" fetchpriority="high">
+          <!-- AVIF/WebP zuerst (Befund B-03): unter 900 px traegt allein dieser
+               Bilderpfad die Buehne. Die JPEGs bleiben als Rueckfall. -->
+          <picture>
+            <source type="image/avif" sizes="100vw" srcset="../assets/img/bauablauf/phase-1-baufeld-800.avif 800w, ../assets/img/bauablauf/phase-1-baufeld.avif 1600w">
+            <source type="image/webp" sizes="100vw" srcset="../assets/img/bauablauf/phase-1-baufeld-800.webp 800w, ../assets/img/bauablauf/phase-1-baufeld.webp 1600w">
+            <img src="../assets/img/bauablauf/phase-1-baufeld-800.jpg" srcset="../assets/img/bauablauf/phase-1-baufeld-800.jpg 800w, ../assets/img/bauablauf/phase-1-baufeld.jpg 1600w" sizes="100vw" alt="" width="1600" height="900" loading="eager" decoding="async" fetchpriority="high">
+          </picture>
         </figure>
         <figure class="ebene" data-von="0.115" data-bis="0.235" style="">
-          <img src="../assets/img/bauablauf/phase-2-gruendung-800.jpg" srcset="../assets/img/bauablauf/phase-2-gruendung-800.jpg 800w, ../assets/img/bauablauf/phase-2-gruendung.jpg 1600w" sizes="100vw" alt="" width="1600" height="900" loading="lazy" decoding="async">
+          <picture>
+            <source type="image/avif" sizes="100vw" srcset="../assets/img/bauablauf/phase-2-gruendung-800.avif 800w, ../assets/img/bauablauf/phase-2-gruendung.avif 1600w">
+            <source type="image/webp" sizes="100vw" srcset="../assets/img/bauablauf/phase-2-gruendung-800.webp 800w, ../assets/img/bauablauf/phase-2-gruendung.webp 1600w">
+            <img src="../assets/img/bauablauf/phase-2-gruendung-800.jpg" srcset="../assets/img/bauablauf/phase-2-gruendung-800.jpg 800w, ../assets/img/bauablauf/phase-2-gruendung.jpg 1600w" sizes="100vw" alt="" width="1600" height="900" loading="lazy" decoding="async">
+          </picture>
         </figure>
         <figure class="ebene" data-von="0.235" data-bis="0.45" style="">
-          <img src="../assets/img/bauablauf/phase-3-tragwerk-800.jpg" srcset="../assets/img/bauablauf/phase-3-tragwerk-800.jpg 800w, ../assets/img/bauablauf/phase-3-tragwerk.jpg 1600w" sizes="100vw" alt="" width="1600" height="900" loading="lazy" decoding="async">
+          <picture>
+            <source type="image/avif" sizes="100vw" srcset="../assets/img/bauablauf/phase-3-tragwerk-800.avif 800w, ../assets/img/bauablauf/phase-3-tragwerk.avif 1600w">
+            <source type="image/webp" sizes="100vw" srcset="../assets/img/bauablauf/phase-3-tragwerk-800.webp 800w, ../assets/img/bauablauf/phase-3-tragwerk.webp 1600w">
+            <img src="../assets/img/bauablauf/phase-3-tragwerk-800.jpg" srcset="../assets/img/bauablauf/phase-3-tragwerk-800.jpg 800w, ../assets/img/bauablauf/phase-3-tragwerk.jpg 1600w" sizes="100vw" alt="" width="1600" height="900" loading="lazy" decoding="async">
+          </picture>
         </figure>
         <figure class="ebene" data-von="0.45" data-bis="0.635" style="">
-          <img src="../assets/img/bauablauf/phase-4-huelle-800.jpg" srcset="../assets/img/bauablauf/phase-4-huelle-800.jpg 800w, ../assets/img/bauablauf/phase-4-huelle.jpg 1600w" sizes="100vw" alt="" width="1600" height="900" loading="lazy" decoding="async">
+          <picture>
+            <source type="image/avif" sizes="100vw" srcset="../assets/img/bauablauf/phase-4-huelle-800.avif 800w, ../assets/img/bauablauf/phase-4-huelle.avif 1600w">
+            <source type="image/webp" sizes="100vw" srcset="../assets/img/bauablauf/phase-4-huelle-800.webp 800w, ../assets/img/bauablauf/phase-4-huelle.webp 1600w">
+            <img src="../assets/img/bauablauf/phase-4-huelle-800.jpg" srcset="../assets/img/bauablauf/phase-4-huelle-800.jpg 800w, ../assets/img/bauablauf/phase-4-huelle.jpg 1600w" sizes="100vw" alt="" width="1600" height="900" loading="lazy" decoding="async">
+          </picture>
         </figure>
         <figure class="ebene" data-von="0.855" data-bis="1.001" style="">
-          <img src="../assets/img/bauablauf/phase-6-uebergabe-800.jpg" srcset="../assets/img/bauablauf/phase-6-uebergabe-800.jpg 800w, ../assets/img/bauablauf/phase-6-uebergabe.jpg 1600w" sizes="100vw" alt="" width="1600" height="900" loading="lazy" decoding="async">
+          <picture>
+            <source type="image/avif" sizes="100vw" srcset="../assets/img/bauablauf/phase-6-uebergabe-800.avif 800w, ../assets/img/bauablauf/phase-6-uebergabe.avif 1600w">
+            <source type="image/webp" sizes="100vw" srcset="../assets/img/bauablauf/phase-6-uebergabe-800.webp 800w, ../assets/img/bauablauf/phase-6-uebergabe.webp 1600w">
+            <img src="../assets/img/bauablauf/phase-6-uebergabe-800.jpg" srcset="../assets/img/bauablauf/phase-6-uebergabe-800.jpg 800w, ../assets/img/bauablauf/phase-6-uebergabe.jpg 1600w" sizes="100vw" alt="" width="1600" height="900" loading="lazy" decoding="async">
+          </picture>
         </figure>
       </div>
       <canvas class="buehne__leinwand" id="buehne-leinwand" aria-hidden="true" data-engine="three.js r161" width="1400" height="900" style=""></canvas>
@@ -916,6 +991,46 @@ p{margin:0}
           <p class="ergebnis"><b>النتيجة:</b> نموذج مُنسَّق يصلح أساساً موثوقاً للتنفيذ</p>
         </article>
       </div>
+      <!-- Paketfinder: drei Angaben, eine begruendete Einordnung. Vorher musste der
+           Leser aus "ab"-Preisen und einer AHO-Fussnote selbst schliessen, ob er
+           gemeint ist. Die Regeln stehen im Skript unten (finderEmpfehlung); die
+           Preise sind die der Karten darueber — hier wird nichts hochgerechnet. -->
+      <div class="finder" id="paketfinder">
+        <h3>أي حزمة تناسب مشروعكم؟</h3>
+        <p class="finder__unter">ثلاث إجابات، دون تسجيل. يتبع التصنيف القواعد نفسها التي أعتمدها بنفسي — وينقل إجاباتكم مباشرةً إلى نموذج الطلب.</p>
+        <div class="finder__fragen">
+          <fieldset class="finder__frage" data-frage="summe">
+            <legend><span>تكلفة البناء</span></legend>
+            <div class="finder__wahl">
+              <button type="button" data-wert="u5" aria-pressed="false">أقل من 5 ملايين يورو</button>
+              <button type="button" data-wert="5-10" aria-pressed="false">5–10 ملايين يورو</button>
+              <button type="button" data-wert="10-30" aria-pressed="true">10–30 مليون يورو</button>
+              <button type="button" data-wert="ue30" aria-pressed="false">أكثر من 30 مليون يورو</button>
+            </div>
+          </fieldset>
+          <fieldset class="finder__frage" data-frage="modelle">
+            <legend><span>النماذج التخصصية</span></legend>
+            <div class="finder__wahl">
+              <button type="button" data-wert="a" aria-pressed="false">العمارة</button>
+              <button type="button" data-wert="at" aria-pressed="false">العمارة + الإنشاء</button>
+              <button type="button" data-wert="atg" aria-pressed="true">العمارة + الإنشاء + التمديدات</button>
+              <button type="button" data-wert="bestand" aria-pressed="false">نموذج الوضع القائم / مسح</button>
+              <button type="button" data-wert="keine" aria-pressed="false">لا يوجد بعد</button>
+            </div>
+          </fieldset>
+          <fieldset class="finder__frage" data-frage="phase">
+            <legend><span>المرحلة</span></legend>
+            <div class="finder__wahl">
+              <button type="button" data-wert="2" aria-pressed="false">التصميم الأولي (LPH 2)</button>
+              <button type="button" data-wert="3" aria-pressed="true">التصميم التطويري (LPH 3)</button>
+              <button type="button" data-wert="4" aria-pressed="false">الترخيص (LPH 4)</button>
+              <button type="button" data-wert="5" aria-pressed="false">التصميم التنفيذي (LPH 5)</button>
+              <button type="button" data-wert="6" aria-pressed="false">الترسية / التنفيذ (LPH 6–8)</button>
+            </div>
+          </fieldset>
+        </div>
+        <div class="finder__ergebnis" id="finder-ergebnis" data-nicht-uebersetzen="" aria-live="polite"></div>
+      </div>
       <p class="fussnote">جميع الأسعار صافية بدون ضريبة القيمة المضافة. التسعير يستند إلى التوصيات الألمانية لأتعاب إدارة النمذجة (AHO/DVP: عادةً 20–25 ٪ من أتعاب إدارة المشروع). العرض النهائي يُقدَّم بعد حديث قصير عن حجم المشروع ونماذج التخصصات.</p>
     </div>
   </section>
@@ -948,13 +1063,13 @@ p{margin:0}
         <figcaption>جولة تدقيق حقيقية: نموذج تنفيذي يحتوي 4,185 عنصراً هندسياً على خمسة طوابق، دُقِّق مباشرة في المتصفح — عُثر على تعارضٍ حقيقي واحد، وتحقَّقت متطلبات المعلومات عبر IDS، وأُعيدت النتائج بصيغة BCF إلى مهندسي التخصصات (بيانات المشروع مُجهَّلة).</figcaption>
       </figure>
 
-      <div class="nachweis">
-        <p class="nachweis__titel">So sieht Ihr Befund aus.</p>
-        <p class="nachweis__unter">Prüfbericht und Befundliste aus einem Prüflauf über ein
+      <div class="beleg">
+        <p class="beleg__titel">So sieht Ihr Befund aus.</p>
+        <p class="beleg__unter">Prüfbericht und Befundliste aus einem Prüflauf über ein
           mitgeliefertes Musterprojekt — synthetisch erzeugt, keine Projektdaten. Denselben
           Lauf können Sie in der Demo mit einem Klick selbst auslösen; das BCF öffnet sich
           in jeder gängigen Koordinationssoftware.</p>
-        <div class="nachweis__links">
+        <div class="beleg__links">
           <a class="btn btn--klein" href="../downloads/musterpruefbericht.pdf" download="">
             Musterprüfbericht (PDF)
           </a>
@@ -986,15 +1101,17 @@ p{margin:0}
       <div class="kopfzeile">
         <p class="auge">التنزيلات</p>
         <h2>BIT-Nova PDF</h2>
-        <p class="unter">محرِّر PDF محمول من BIT-Atelier — للتحرير والتنظيم والتحويل والتوقيع والطباعة والحجب النهائي. يعمل بالكامل على جهازك: بلا سحابة، وبلا رفع للملفات، وبلا تتبُّع — ويشمل التعرُّف الضوئي على النصوص دون اتصال (بالألمانية والإنجليزية).</p>
+        <p class="unter">Der portable PDF-Editor aus dem BIT-Atelier — bearbeiten, organisieren,
+          konvertieren, signieren, drucken und forensisch schwärzen. Läuft vollständig lokal: keine
+          Cloud, keine Uploads, keine Telemetrie — inklusive Offline-OCR (Deutsch/Englisch).</p>
       </div>
       <div class="gitter gitter--3">
         <article class="karte">
           <p class="karte__nr">Browser</p>
-          <h3>جرِّبه دون تثبيت</h3>
-          <p>يعمل في المتصفِّح، وعلى الأجهزة اللوحية والهواتف أيضاً — وتبقى ملفاتك على جهازك.</p>
+          <h3>Ohne Installation testen</h3>
+          <p>Läuft im Browser, auch auf Tablet und Handy — die Dateien bleiben auf Ihrem Gerät.</p>
           <div class="karte__fuss">
-            <a class="btn btn--klein" href="https://bit-atelier.de/NovaPDF/">افتحه في المتصفِّح</a>
+            <a class="btn btn--klein" href="https://bit-atelier.de/NovaPDF/">Im Browser öffnen</a>
           </div>
         </article>
         <article class="karte">
@@ -1126,14 +1243,12 @@ p{margin:0}
            leeres Mailfenster. Bei Paketen ab 8.500 EUR ist das eine hohe Huerde —
            der Interessent muss selbst formulieren, was er braucht. -->
       <div class="anfrage">
-        <h3>Erstgespräch vorbereiten</h3>
-        <p class="anfrage__unter">Fünf Angaben, dann öffnet sich Ihr Mailprogramm mit
-          einem vorformulierten Text. Sie sehen alles, bevor Sie senden — es wird
-          nichts übertragen und nichts gespeichert.</p>
+        <h3>الإعداد للمحادثة الأولى</h3>
+        <p class="anfrage__unter">بضع بيانات ويكون نصكم جاهزاً أدناه — للإرسال عبر برنامج البريد، أو للنسخ، أو للطباعة. لا يُنقل شيء ولا يُخزَّن شيء.</p>
 
         <div class="anfrage__raster">
           <label class="anfrage__feld">
-            <span>Projektart</span>
+            <span>نوع المشروع</span>
             <select id="a-art">
               <option>BIM-Koordination</option>
               <option>Modellprüfung / QS</option>
@@ -1142,7 +1257,7 @@ p{margin:0}
             </select>
           </label>
           <label class="anfrage__feld">
-            <span>Bausumme</span>
+            <span>تكلفة البناء</span>
             <select id="a-summe">
               <option>unter 5 Mio. €</option>
               <option>5–10 Mio. €</option>
@@ -1152,7 +1267,7 @@ p{margin:0}
             </select>
           </label>
           <label class="anfrage__feld">
-            <span>Fachmodelle</span>
+            <span>النماذج التخصصية</span>
             <select id="a-modelle">
               <option>Architektur</option>
               <option>Architektur + Tragwerk</option>
@@ -1162,7 +1277,7 @@ p{margin:0}
             </select>
           </label>
           <label class="anfrage__feld">
-            <span>Phase</span>
+            <span>المرحلة</span>
             <select id="a-phase">
               <option>Vorplanung (LPH 2)</option>
               <option>Entwurf (LPH 3)</option>
@@ -1172,11 +1287,11 @@ p{margin:0}
             </select>
           </label>
           <label class="anfrage__feld">
-            <span>Zeitrahmen</span>
+            <span>الإطار الزمني</span>
             <input id="a-termin" type="text" placeholder="z. B. Start im November">
           </label>
           <label class="anfrage__feld">
-            <span>Rückmeldung bitte per</span>
+            <span>الرد المفضَّل عبر</span>
             <select id="a-weg">
               <option>E-Mail</option>
               <option>Telefon (Nummer im Text angeben)</option>
@@ -1185,15 +1300,20 @@ p{margin:0}
         </div>
 
         <label class="anfrage__feld" style="margin-top:.9rem">
-          <span>Kurz zum Vorhaben (freiwillig)</span>
+          <span>نبذة عن المشروع (اختياري)</span>
           <textarea id="a-text" placeholder="Zwei, drei Sätze genügen."></textarea>
         </label>
 
+        <div class="anfrage__vorschau">
+          <span>هذا هو النص الذي سترسلونه</span>
+          <pre class="anfrage__text" id="a-vorschau" data-nicht-uebersetzen="" aria-live="polite"></pre>
+        </div>
+
         <div class="anfrage__fuss">
-          <button class="btn" type="button" id="a-senden" onclick="anfrageOeffnen()">
-            Erstgespräch anfragen
-          </button>
-          <span class="anfrage__frist">Antwort in der Regel innerhalb von 24 Stunden.</span>
+          <button class="btn" type="button" id="a-senden" onclick="anfrageOeffnen()">طلب محادثة أولى</button>
+          <button class="btn btn--geist" type="button" id="a-kopieren" onclick="anfrageKopieren(this)">نسخ النص</button>
+          <button class="btn btn--geist" type="button" id="a-drucken" onclick="anfrageDrucken()">طباعة / حفظ كـ PDF</button>
+          <span class="anfrage__frist">الرد عادةً خلال 24 ساعة.</span>
         </div>
       </div>
     </div>
@@ -1336,35 +1456,104 @@ p{margin:0}
         function rev(s) { return s.split('').reverse().join(''); }
 
         /* ---- Anfrage-Baukasten ----
-           Setzt aus den Feldern einen mailto:-Text zusammen. Die Adresse kommt
-           aus denselben umgekehrten Bestandteilen wie die Enthuell-Knoepfe —
-           sie steht also weiterhin nirgends im Klartext im Quelltext. */
-        function anfrageOeffnen() {
+           Setzt aus den Feldern einen Text zusammen. Die Adresse kommt aus denselben
+           umgekehrten Bestandteilen wie die Enthuell-Knoepfe — sie steht also
+           weiterhin nirgends im Klartext im Quelltext.
+           Der Text steht live als Vorschau unter den Feldern und laesst sich kopieren
+           oder drucken (Befund B-05): Wer kein Mailprogramm eingerichtet hat — Webmail
+           am Rechner, Firmen-iPad ohne Konto —, verlor vorher alles Eingetippte in dem
+           Moment, in dem er auf "Erstgespraech anfragen" drueckte. */
+        const wort = (s) => (window.bitHud ? window.bitHud(s) : s);   /* Wörterbuch aus sprachen.js */
+
+        function anfrageText() {
             const w = (id) => (document.getElementById(id) || {}).value || '';
             const zeilen = [
-                'Guten Tag,',
+                wort('Guten Tag,'),
                 '',
-                'ich möchte ein Erstgespräch vereinbaren.',
+                wort('ich möchte ein Erstgespräch vereinbaren.'),
                 '',
-                '- Projektart: ' + w('a-art'),
-                '- Bausumme: ' + w('a-summe'),
-                '- Fachmodelle: ' + w('a-modelle'),
-                '- Phase: ' + w('a-phase'),
-                '- Zeitrahmen: ' + (w('a-termin') || '(offen)'),
-                '- Rückmeldung bitte per: ' + w('a-weg'),
+                '- ' + wort('Projektart') + ': ' + w('a-art'),
+                '- ' + wort('Bausumme') + ': ' + w('a-summe'),
+                '- ' + wort('Fachmodelle') + ': ' + w('a-modelle'),
+                '- ' + wort('Phase') + ': ' + w('a-phase'),
+                '- ' + wort('Zeitrahmen') + ': ' + (w('a-termin') || wort('(offen)')),
+                '- ' + wort('Rückmeldung bitte per') + ': ' + w('a-weg'),
             ];
             const frei = w('a-text').trim();
-            if (frei) zeilen.push('', 'Zum Vorhaben:', frei);
-            zeilen.push('', 'Mit freundlichen Grüßen');
+            if (frei) zeilen.push('', wort('Zum Vorhaben:'), frei);
+            zeilen.push('', wort('Mit freundlichen Grüßen'));
+            return {
+                betreff: wort('Erstgespräch BIT-ATELIER — ') + w('a-art'),
+                /* mailto vertraegt je nach Mailprogramm nur rund 2.000 Zeichen. */
+                koerper: zeilen.join('\n').slice(0, 1500),
+            };
+        }
 
+        function anfrageOeffnen() {
+            const { betreff, koerper } = anfrageText();
             const adresse = rev(_eu) + '@' + rev(_ed);
-            const betreff = 'Erstgespräch BIT-ATELIER — ' + w('a-art');
-            /* mailto vertraegt je nach Mailprogramm nur rund 2.000 Zeichen. */
-            const koerper = zeilen.join('\n').slice(0, 1500);
             location.href = 'mailto:' + adresse +
                 '?subject=' + encodeURIComponent(betreff) +
                 '&body=' + encodeURIComponent(koerper);
         }
+
+        function anfrageVorschau() {
+            const ziel = document.getElementById('a-vorschau');
+            if (ziel) ziel.textContent = anfrageText().koerper;
+        }
+
+        async function anfrageKopieren(knopf) {
+            const text = anfrageText().koerper;
+            let ok = false;
+            try { await navigator.clipboard.writeText(text); ok = true; }
+            catch (e) {
+                /* Rueckfall ohne Clipboard-API: den Vorschautext markieren und kopieren */
+                const feld = document.getElementById('a-vorschau');
+                if (feld) {
+                    const bereich = document.createRange(); bereich.selectNodeContents(feld);
+                    const auswahl = getSelection(); auswahl.removeAllRanges(); auswahl.addRange(bereich);
+                    try { ok = document.execCommand('copy'); } catch (e2) { ok = false; }
+                    auswahl.removeAllRanges();
+                }
+            }
+            const vorher = knopf.innerHTML;
+            knopf.textContent = ok ? wort('Kopiert ✓') : wort('Bitte den Text oben markieren und kopieren');
+            knopf.disabled = true;
+            setTimeout(() => { knopf.innerHTML = vorher; knopf.disabled = false; }, 2200);
+        }
+
+        function anfrageDrucken() {
+            const { betreff, koerper } = anfrageText();
+            let blatt = document.getElementById('anfrage-druck');
+            if (!blatt) {
+                blatt = document.createElement('section');
+                blatt.id = 'anfrage-druck';
+                blatt.setAttribute('data-nicht-uebersetzen', '');
+                document.body.appendChild(blatt);
+            }
+            blatt.innerHTML = '';
+            const kopf = document.createElement('h1'); kopf.textContent = betreff;
+            const an = document.createElement('p'); an.textContent = wort('An') + ': ' + buildEmail();
+            const datum = document.createElement('p');
+            datum.textContent = new Date().toLocaleDateString(document.documentElement.lang || 'de', { dateStyle: 'long' });
+            const text = document.createElement('pre'); text.textContent = koerper;
+            blatt.append(kopf, an, datum, text);
+            document.body.classList.add('druckt-anfrage');
+            addEventListener('afterprint', () => document.body.classList.remove('druckt-anfrage'), { once: true });
+            print();
+        }
+
+        /* Die Vorschau laeuft mit jeder Eingabe mit — und mit der Sprachwahl.
+           sprachen.js bindet seine Knoepfe erst nach diesem Skript (defer), deshalb
+           einen Tick warten, bis es die Sprache umgestellt hat. */
+        document.querySelectorAll('.anfrage select, .anfrage input, .anfrage textarea').forEach(el => {
+            el.addEventListener('input', anfrageVorschau);
+            el.addEventListener('change', anfrageVorschau);
+        });
+        document.querySelectorAll('[data-sprache]').forEach(b =>
+            b.addEventListener('click', () => setTimeout(() => { anfrageVorschau(); finderZeigen(); }, 0)));
+        addEventListener('load', anfrageVorschau);
+        anfrageVorschau();
 
         // Bestandteile rückwärts gespeichert (keine lesbaren Muster):
         const _eu = 'em';               // Nutzername
@@ -1399,6 +1588,131 @@ p{margin:0}
             a.className = 'kontakt__wert';
             btn.replaceWith(a);
         }
+
+        /* ---- Paketfinder (#pakete) ----
+           Die Einordnung folgt festen Regeln; die Preise sind die veroeffentlichten
+           Einstiegspreise der Karten darueber — hier wird nichts hochgerechnet, was
+           dort nicht steht. Per Knopf gehen die Angaben in den Anfrage-Baukasten,
+           dessen Felder dieselben Werte kennen. */
+        const PAKETE = {
+            1: { titel: 'Paket 1 · BIM-Quick-Check & Setup', preis: 'ab 8.500 € je Projekt', art: 'BIM-Koordination' },
+            2: { titel: 'Paket 2 · Automatisierte Modellprüfung & QS', preis: 'Festpreis je Prüflauf', art: 'Modellprüfung / QS' },
+            3: { titel: 'Paket 3 · BIM-Gesamtkoordination', preis: 'ab 4.500 € / Monat', art: 'BIM-Koordination' },
+        };
+        /* Wert des Finder-Knopfs -> Wortlaut der Option im Baukasten */
+        const FINDER_TEXT = {
+            summe: { u5: 'unter 5 Mio. €', '5-10': '5–10 Mio. €', '10-30': '10–30 Mio. €', ue30: 'über 30 Mio. €' },
+            modelle: { a: 'Architektur', at: 'Architektur + Tragwerk', atg: 'Architektur + Tragwerk + TGA',
+                       bestand: 'Bestandsmodell / Scan', keine: 'noch keine' },
+            phase: { 2: 'Vorplanung (LPH 2)', 3: 'Entwurf (LPH 3)', 4: 'Genehmigung (LPH 4)',
+                     5: 'Ausführungsplanung (LPH 5)', 6: 'Vergabe / Ausführung (LPH 6–8)' },
+        };
+        const finderWahl = { summe: '10-30', modelle: 'atg', phase: '3' };   /* Vorbelegung = haeufigster Fall */
+
+        function finderEmpfehlung(w) {
+            const gross = w.summe === '10-30' || w.summe === 'ue30';
+            const dreiModelle = w.modelle === 'atg';
+            if (w.summe === 'u5') return {
+                paket: null,
+                titel: 'Unterhalb der Paketgröße — der Weg ist die Planung',
+                grund: 'Die drei Pakete sind für Großprojekte ab etwa 10 Mio. € Bausumme geschnitten. Für Ihr Vorhaben ist der direkte Weg die Planung aus einer Hand: Entwurf, Genehmigung, Ausführung — mit Energiebilanz und Modell von Anfang an.',
+                art: 'Planung (LPH 1–9)', ziel: '#leistungen', zielText: 'Zu Planung & Architektur',
+            };
+            if (w.modelle === 'keine' || w.modelle === 'bestand') return {
+                paket: 1,
+                grund: w.modelle === 'keine'
+                    ? 'Ohne Fachmodell beginnt jedes Projekt mit dem Setup: AIA und BAP, Koordinationsumgebung, Namenskonventionen — und der erste Prüflauf, sobald das erste Modell steht.'
+                    : 'Ein Bestandsmodell oder Scan ist eine Grundlage, noch keine Koordinationsbasis. Der Quick-Check legt fest, was die Fachmodelle liefern müssen, und prüft den Bestand gleich mit.',
+                danach: gross ? 3 : null,
+            };
+            if (w.phase === '2' || w.phase === '3') return {
+                paket: 1,
+                grund: gross
+                    ? 'In Vorplanung und Entwurf entscheidet sich, ob das Projekt später prüffähig ist. Der Quick-Check schafft die Grundlage in 2–4 Wochen; über die Planungsphasen hinweg hält dann das Mandat die Fachmodelle zusammen.'
+                    : 'Bei 5–10 Mio. € ist der Quick-Check die passende Einstiegsgröße. Ein laufendes Mandat lohnt sich hier meist erst, wenn drei Fachmodelle koordiniert werden müssen.',
+                danach: gross ? 3 : null,
+            };
+            if (w.phase === '4' || w.phase === '5') return dreiModelle && gross ? {
+                paket: 3,
+                grund: 'Drei Fachmodelle in Genehmigung und Ausführungsplanung: Hier laufen die meisten Änderungen gleichzeitig. Das Mandat prüft jeden Stand, hält Koordinationssitzung und Maßnahmenliste — die Prüfläufe sind darin enthalten.',
+                danach: null,
+            } : {
+                paket: 2,
+                grund: 'Jeder Planungsstand wird geprüft, bevor er in die nächste Runde geht: Kollisionen, Duplikate, IDS-Konformität — mit Befunden als BCF zurück an die Fachplaner. Als Festpreis je Prüflauf, planbar je Meilenstein.',
+                danach: gross ? 3 : null,
+            };
+            return {
+                paket: 2,
+                grund: 'Vor Vergabe und Ausführung zählt der dokumentierte Stand: ein Prüflauf mit Prüfbericht und BCF, bevor der erste Auftrag vergeben wird. Was hier gefunden wird, kostet noch keinen Nachtrag.',
+                danach: null,
+            };
+        }
+
+        function finderZeigen() {
+            const ziel = document.getElementById('finder-ergebnis');
+            if (!ziel) return;
+            const e = finderEmpfehlung(finderWahl);
+            const p = e.paket ? PAKETE[e.paket] : null;
+            ziel.innerHTML = '';
+
+            const links = document.createElement('div');
+            const auge = document.createElement('p'); auge.className = 'finder__auge'; auge.textContent = wort('Empfehlung');
+            const titel = document.createElement('p'); titel.className = 'finder__paket'; titel.textContent = wort(p ? p.titel : e.titel);
+            links.append(auge, titel);
+            if (p) { const preis = document.createElement('p'); preis.className = 'finder__preis'; preis.textContent = wort(p.preis); links.append(preis); }
+            const grund = document.createElement('p'); grund.className = 'finder__grund'; grund.textContent = wort(e.grund);
+            links.append(grund);
+            if (e.danach) {
+                const d = PAKETE[e.danach];
+                const danach = document.createElement('p'); danach.className = 'finder__danach';
+                const b = document.createElement('b'); b.textContent = wort(d.titel);
+                danach.append(wort('Im Anschluss:') + ' ', b, ' · ' + wort(d.preis));
+                links.append(danach);
+            }
+
+            const rechts = document.createElement('div'); rechts.className = 'finder__tun';
+            let knopf;
+            if (e.ziel) {
+                knopf = document.createElement('a'); knopf.href = e.ziel;
+            } else {
+                knopf = document.createElement('button'); knopf.type = 'button';
+                knopf.addEventListener('click', () => finderUebernehmen(p ? p.art : e.art));
+            }
+            knopf.className = 'btn btn--klein';
+            knopf.textContent = wort(e.zielText || 'Mit diesen Angaben anfragen');
+            const hinweis = document.createElement('p'); hinweis.className = 'finder__hinweis';
+            hinweis.textContent = wort(e.ziel
+                ? 'Alle Leistungsphasen, auch Sanierung und geförderter Wohnungsbau.'
+                : 'Bausumme, Fachmodelle und Phase stehen dann schon im Anfrage-Baukasten.');
+            rechts.append(knopf, hinweis);
+            ziel.append(links, rechts);
+        }
+
+        function finderUebernehmen(art) {
+            const setzeOption = (id, text) => {
+                const s = document.getElementById(id); if (!s) return;
+                for (const o of s.options) if (o.text === text) { s.value = o.value; break; }
+            };
+            if (art) setzeOption('a-art', art);
+            setzeOption('a-summe', FINDER_TEXT.summe[finderWahl.summe]);
+            setzeOption('a-modelle', FINDER_TEXT.modelle[finderWahl.modelle]);
+            setzeOption('a-phase', FINDER_TEXT.phase[finderWahl.phase]);
+            anfrageVorschau();
+            const feld = document.getElementById('a-termin');
+            if (feld) { feld.scrollIntoView({ behavior: 'smooth', block: 'center' }); feld.focus({ preventScroll: true }); }
+        }
+
+        document.querySelectorAll('.finder__wahl').forEach(gruppe => {
+            const frage = gruppe.closest('.finder__frage').dataset.frage;
+            gruppe.addEventListener('click', (ev) => {
+                const b = ev.target.closest('button[data-wert]'); if (!b) return;
+                finderWahl[frage] = b.dataset.wert;
+                gruppe.querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', String(x === b)));
+                finderZeigen();
+            });
+        });
+        finderZeigen();
+        addEventListener('load', finderZeigen);   /* jetzt mit Wörterbuch aus sprachen.js */
 
         
         /* ---- Prüf-Engine-Terminal: getippter Beispiel-Prüflauf (Demo-Werte) ---- */
@@ -1510,6 +1824,15 @@ const VIDEO_MIN_BREITE = 900;
 const kannH264 = !!video.canPlayType('video/mp4; codecs="avc1.42E01E"');
 let videoTauglich = false, videoBereit = false, letzteZeit_v = -1;
 
+/* Datensparmodus und langsames Netz (Befund B-03): 4,8 MB Video sind dort fehl
+   am Platz — der Bilderpfad ist ohnehin da. Die Auskunft geben nur
+   Chromium-Browser; wo sie fehlt, entscheidet wie bisher die Breite. */
+const netz = navigator.connection || navigator.mozConnection || navigator.webkitConnection || null;
+function netzSparsam(){
+  return !!(netz && (netz.saveData || /(^|-)2g$/.test(netz.effectiveType || '')));
+}
+if (netz && netz.addEventListener) netz.addEventListener('change', ()=>videoPruefen());
+
 function videoAnzeige(text){
   const d = document.getElementById('dev-video');
   if (d) d.textContent = text;
@@ -1517,11 +1840,12 @@ function videoAnzeige(text){
 
 function videoPruefen(){
   const vorher = videoTauglich;
-  videoTauglich = !reduced && kannH264 && innerWidth >= VIDEO_MIN_BREITE;
+  videoTauglich = !reduced && !netzSparsam() && kannH264 && innerWidth >= VIDEO_MIN_BREITE;
   if (!videoTauglich){
     videoBereit = false;
     video.style.opacity = 0;
     videoAnzeige(reduced ? 'Bewegung reduziert — Standbilder'
+               : netzSparsam() ? 'Datensparmodus / langsames Netz — Standbilder'
                : !kannH264 ? 'kein H.264 — Standbilder'
                : 'Bildschirm unter ' + VIDEO_MIN_BREITE + ' px — Standbilder');
     return;
