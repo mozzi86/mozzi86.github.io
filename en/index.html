@@ -169,6 +169,9 @@
 .anfrage__feld select:focus-visible,.anfrage__feld input:focus-visible,
 .anfrage__feld textarea:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
 .anfrage__fuss{margin-top:1.2rem;display:flex;gap:.8rem;align-items:center;flex-wrap:wrap}
+.anfrage__direkt{font-size:.82rem;color:var(--muted)}
+.anfrage__direkt a{color:var(--accent,inherit);text-decoration:underline;text-underline-offset:.2em}
+.anfrage__hinweis{margin-top:.8rem;color:var(--muted);font-size:.8rem;font-weight:300;max-width:70ch}
 .anfrage__frist{color:var(--muted);font-size:.84rem}
 /* Vorschau des Anfragetexts (Befund B-05): Der Besucher sieht, was sein
    Mailprogramm bekommt — und hat mit Kopieren und Drucken zwei Wege, falls auf
@@ -726,7 +729,7 @@ p{margin:0}
         <button type="button" data-sprache="ar" aria-pressed="false" lang="ar">عربي</button>
       </div>
       <a class="btn btn--geist btn--klein" href="../demo/">Live demo</a>
-      <a class="btn btn--klein" href="#kontakt">Start a project</a>
+      <a class="btn btn--klein" href="#kontakt" data-herkunft="Kopfzeile">Start a project</a>
       <button class="menue-knopf" id="menue-knopf" type="button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="menue">
         <i></i><i></i><i></i>
       </button>
@@ -939,7 +942,7 @@ p{margin:0}
             <li>Refurbishment &amp; historic buildings</li>
             <li>Accessible &amp; wheelchair-friendly design (DIN 18040)</li>
           </ul>
-          <div class="karte__fuss"><a class="btn btn--klein" href="#kontakt">Start a project</a></div>
+          <div class="karte__fuss"><a class="btn btn--klein" href="#kontakt" data-herkunft="Planung">Start a project</a></div>
         </article>
       </div>
     </div>
@@ -1313,8 +1316,13 @@ p{margin:0}
           <button class="btn" type="button" id="a-senden" onclick="anfrageOeffnen()">Request a first conversation</button>
           <button class="btn btn--geist" type="button" id="a-kopieren" onclick="anfrageKopieren(this)">Copy text</button>
           <button class="btn btn--geist" type="button" id="a-drucken" onclick="anfrageDrucken()">Print / save as PDF</button>
+          <div class="anfrage__direkt"><span>or straight into:</span>
+            <a href="#" id="a-gmail" onclick="anfrageCompose('gmail'); return false;" rel="noopener">Gmail</a> ·
+            <a href="#" id="a-outlook" onclick="anfrageCompose('outlook'); return false;" rel="noopener">Outlook Web</a></div>
+          <input type="hidden" id="a-herkunft" value="">
           <span class="anfrage__frist">Reply usually within 24 hours.</span>
         </div>
+        <p class="anfrage__hinweis">Only via Gmail or Outlook Web does your text travel in the address to that provider — with your mail program, copying and printing nothing leaves your computer.</p>
       </div>
     </div>
   </section>
@@ -1489,8 +1497,12 @@ p{margin:0}
             const frei = w('a-text').trim();
             if (frei) zeilen.push('', wort('Zum Vorhaben:'), frei);
             zeilen.push('', wort('Mit freundlichen Grüßen'));
+            /* Herkunftskuerzel: welcher Abschnitt hat die Anfrage ausgeloest (Attribution
+               ohne Analytics). Gesetzt ueber data-herkunft an den Knoepfen, vom Finder
+               und von ?befund= aus der Demo; ohne Angabe [Website]. */
+            const herkunft = w('a-herkunft') || 'Website';
             return {
-                betreff: wort('Erstgespräch BIT-ATELIER — ') + w('a-art'),
+                betreff: '[' + herkunft + '] ' + wort('Erstgespräch BIT-ATELIER — ') + w('a-art'),
                 /* mailto vertraegt je nach Mailprogramm nur rund 2.000 Zeichen. */
                 koerper: zeilen.join('\n').slice(0, 1500),
             };
@@ -1503,6 +1515,55 @@ p{margin:0}
                 '?subject=' + encodeURIComponent(betreff) +
                 '&body=' + encodeURIComponent(koerper);
         }
+
+        function herkunftSetzen(wert) {
+            const feld = document.getElementById('a-herkunft');
+            if (feld && wert) feld.value = wert;
+        }
+        document.querySelectorAll('[data-herkunft]').forEach(el =>
+            el.addEventListener('click', () => herkunftSetzen(el.dataset.herkunft)));
+
+        /* Zwei Auswege fuer Besucher ohne Mailprogramm: Compose-Fenster von Gmail
+           und Outlook Web, Betreff und Text vorbefuellt. Der Text steht dabei in der
+           Adresse zum Anbieter — der Hinweis unter dem Baukasten sagt das. */
+        function anfrageCompose(dienst) {
+            const { betreff, koerper } = anfrageText();
+            const adresse = rev(_eu) + '@' + rev(_ed);
+            const q = (o) => Object.keys(o).map(k => k + '=' + encodeURIComponent(o[k])).join('&');
+            const url = dienst === 'gmail'
+                ? 'https://mail.google.com/mail/?' + q({ view: 'cm', fs: '1', to: adresse, su: betreff, body: koerper })
+                : 'https://outlook.office.com/mail/deeplink/compose?' + q({ to: adresse, subject: betreff, body: koerper });
+            window.open(url, '_blank', 'noopener');
+        }
+
+        /* ?befund= aus der Online-Demo (base64url-JSON der Kennzahlen des Prueflaufs):
+           fuellt das Freitextfeld vor und setzt die Herkunft "Demo". Unsinn wird
+           verworfen, nichts davon verlaesst den Rechner. */
+        function befundUebernehmen() {
+            let roh;
+            try { roh = new URLSearchParams(location.search).get('befund'); } catch (e) { return; }
+            if (!roh) return;
+            let b;
+            try {
+                const b64 = roh.replace(/-/g, '+').replace(/_/g, '/');
+                b = JSON.parse(decodeURIComponent(escape(atob(b64))));
+            } catch (e) { return; }
+            if (!b || typeof b !== 'object') return;
+            const zahl = (v) => (typeof v === 'number' && isFinite(v)) ? String(v) : null;
+            const zeilen = [wort('Kennzahlen aus dem Prüflauf der Online-Demo:')];
+            if (typeof b.modell === 'string' && b.modell) zeilen.push('- ' + wort('Modell') + ': ' + b.modell.slice(0, 120));
+            const felder = [['bauteile', 'Bauteile mit Geometrie'], ['geschosse', 'Geschosse'],
+                            ['kollisionen', 'Harte Kollisionen'], ['duplikate', 'Doppelmodellierungen'],
+                            ['idsFehler', 'IDS-Verstöße']];
+            felder.forEach(([k, label]) => { const v = zahl(b[k]); if (v !== null) zeilen.push('- ' + wort(label) + ': ' + v); });
+            if (zeilen.length < 2) return;
+            const feld = document.getElementById('a-text');
+            if (feld && !feld.value.trim()) feld.value = zeilen.join('\n');
+            herkunftSetzen('Demo');
+            const ziel = document.getElementById('kontakt');
+            if (ziel && !location.hash) ziel.scrollIntoView();
+        }
+        befundUebernehmen();
 
         function anfrageVorschau() {
             const ziel = document.getElementById('a-vorschau');
@@ -1696,6 +1757,7 @@ p{margin:0}
         }
 
         function finderUebernehmen(art) {
+            herkunftSetzen('Paketfinder');
             const setzeOption = (id, text) => {
                 const s = document.getElementById(id); if (!s) return;
                 for (const o of s.options) if (o.text === text) { s.value = o.value; break; }

@@ -115,6 +115,33 @@ try {
   await seite.emulateMedia({ media: 'screen' });
   await seite.evaluate(() => document.body.classList.remove('druckt-anfrage'));
 
+  console.log('\nHerkunft, Compose-Links, ?befund= (69-01)');
+  ok((await seite.evaluate(() => anfrageText().betreff)).startsWith('[Paketfinder] '),
+    'Betreff trägt das Kürzel des Finders: ' + await seite.evaluate(() => anfrageText().betreff));
+  await seite.evaluate(() => { document.getElementById('a-herkunft').value = ''; });
+  ok((await seite.evaluate(() => anfrageText().betreff)).startsWith('[Website] '), 'ohne Angabe [Website]');
+  await seite.click('header a[data-herkunft="Kopfzeile"]');
+  ok((await seite.evaluate(() => anfrageText().betreff)).startsWith('[Kopfzeile] '), 'Kopfzeilen-Knopf setzt die Herkunft');
+  const geoeffnet = await seite.evaluate(() => {
+    const urls = []; window.open = (u) => { urls.push(u); return null; };
+    anfrageCompose('gmail'); anfrageCompose('outlook'); return urls;
+  });
+  ok(geoeffnet.length === 2 && geoeffnet[0].startsWith('https://mail.google.com/mail/?view=cm')
+    && geoeffnet[0].includes('su=%5BKopfzeile%5D') && geoeffnet[0].includes('Start%20im%20November'), 'Gmail-Compose mit Betreff und Text');
+  ok(geoeffnet[1].startsWith('https://outlook.office.com/mail/deeplink/compose?')
+    && geoeffnet[1].includes('subject=%5BKopfzeile%5D') && geoeffnet[1].includes('body='), 'Outlook-Compose mit Betreff und Text');
+  ok(geoeffnet.every(u => /to=me%40bit-atelier\.de/.test(u)), 'Empfänger in beiden Links');
+  const befund = Buffer.from(JSON.stringify({ modell: 'musterprojekt.ifc', bauteile: 128, kollisionen: 2, duplikate: 1, idsFehler: 0 }))
+    .toString('base64').replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+  const s2 = await browser.newPage({ viewport: { width: 1400, height: 900 } });
+  await s2.goto(B + '?befund=' + befund + '#kontakt', { waitUntil: 'load' });
+  const frei = await s2.inputValue('#a-text');
+  ok(frei.includes('musterprojekt.ifc') && frei.includes('Harte Kollisionen: 2') && frei.includes('IDS-Verstöße: 0'), '?befund= füllt das Freitextfeld');
+  ok((await s2.evaluate(() => anfrageText().betreff)).startsWith('[Demo] '), '?befund= setzt Herkunft [Demo]');
+  await s2.goto(B + '?befund=%%%kaputt#kontakt', { waitUntil: 'load' });
+  ok((await s2.inputValue('#a-text')) === '', 'Unsinn in ?befund= wird verworfen');
+  await s2.close();
+
   console.log('\nBühne: Bildquellen');
   for (const f of ['phase-1-baufeld-800.avif', 'phase-1-baufeld.webp', 'phase-6-uebergabe-800.avif']) {
     const r = await seite.request.get(B + 'assets/img/bauablauf/' + f);
