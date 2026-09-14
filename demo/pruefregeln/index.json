@@ -1,0 +1,20 @@
+[
+  {
+    "datei": "beispiel/musterprojekt.ids",
+    "titel": "Musterprojekt — Brandschutz (Demo)",
+    "quelle": "mitgeliefertes Demo-Modell (public/beispiel/)",
+    "art": "ids"
+  },
+  {
+    "datei": "pruefregeln/rohbau-nhr.ids",
+    "titel": "Rohbau NHR Erlangen — LOI LPH5",
+    "quelle": "LOI-Liste des Bauherrn 07.08.2026, erzeugt mit tools/loi-zu-ids.mjs",
+    "art": "ids"
+  },
+  {
+    "datei": "pruefregeln/bap-nhr-rohbau.json",
+    "titel": "BAP NHR Erlangen — Koordination ARC ↔ Rohbau",
+    "quelle": "BAP RG LP8 V2.0, Matrix S. 23-24 (19 Regeln, Toleranz je Regel)",
+    "art": "clash"
+  }
+]

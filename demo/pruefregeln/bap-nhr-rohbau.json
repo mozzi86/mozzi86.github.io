@@ -1,0 +1,183 @@
+{
+  "name": "BAP NHR Erlangen — Koordination ARC ↔ Rohbau/Stahlbau",
+  "quelle": "BAP-RG-LP8_V2.0_2026-08-07, Matrix S. 23-24 (Textextrakt Z. 698-743)",
+  "modelle": {
+    "A": "Rohbau (TX — P5_15150-01_TX_FM_XX_V_01_--.ifc)",
+    "B": "Architektur (AX — P5_15150-01_AX_FM_XX_V_01_--.ifc)"
+  },
+  "standardToleranzMm": 1,
+  "standardHinweis": "BAP Z. 533-534: kategorieübergreifend 1 mm, in sich (TW/TW) 3 mm — gilt für alles, was die Matrix nicht selbst nennt",
+  "regeln": [
+    {
+      "id": "KOORD-01",
+      "name": "Koordinatengleichheit Gebäudekoordinationswürfel",
+      "art": "koordination",
+      "a": { "quelle": "A", "klassen": ["IFCSITE"] },
+      "b": { "quelle": "B", "klassen": ["IFCSITE"] },
+      "toleranzMm": 0,
+      "hinweis": "BAP S. 23: Koordinatengleichheit Gebäudekoordinationswürfel 0 mm — geprüft über den Koordinationskörper (koordinationskoerper.js), nicht über Bauteil-AABBs"
+    },
+    {
+      "id": "OEFF-01",
+      "name": "Türen und Fenster überschneiden sich nicht mit Strukturkomponenten",
+      "art": "schnitt",
+      "a": { "quelle": "B", "klassen": ["IFCDOOR", "IFCWINDOW"] },
+      "b": { "quelle": "A", "klassen": ["IFCWALL", "IFCWALLSTANDARDCASE", "IFCSLAB", "IFCBEAM", "IFCCOLUMN"] },
+      "toleranzMm": 3,
+      "hinweis": "BAP S. 23: ‚Türen und Fenster sollten sich nicht mit Strukturkomponenten überschneiden' 3 mm"
+    },
+    {
+      "id": "OEFF-02",
+      "name": "Position von Öffnungen gleich",
+      "art": "deckung",
+      "a": { "quelle": "B", "klassen": ["IFCDOOR", "IFCWINDOW"] },
+      "b": { "quelle": "A", "klassen": ["IFCOPENINGELEMENT"] },
+      "toleranzMm": 0,
+      "hinweis": "BAP S. 23: ‚Position von Öffnungen sollte gleich sein' 0 mm — vergleicht ARC-Türen/-Fenster mit den Rohbau-Öffnungen (IfcOpeningElement; die 928 ProvisionForVoid-Proxies im TX sind Platzhalter und werden bewusst nicht gematcht)"
+    },
+    {
+      "id": "BALK-01",
+      "name": "Balken: Rohbau nicht größer als Architektur",
+      "art": "enthalten",
+      "a": { "quelle": "A", "klassen": ["IFCBEAM"] },
+      "b": { "quelle": "B", "klassen": ["IFCBEAM"] },
+      "toleranzMm": 2,
+      "hinweis": "BAP S. 23 Balken: ‚Rohbaukomponenten sind nicht größer als Architekturkomponenten' 2 mm — AABB-Näherung (D-P71-04)"
+    },
+    {
+      "id": "BALK-02",
+      "name": "Balken: Architekturkomponenten gefüllt",
+      "art": "gefuellt",
+      "a": { "quelle": "A", "klassen": ["IFCBEAM"] },
+      "b": { "quelle": "B", "klassen": ["IFCBEAM"] },
+      "toleranzMm": 2,
+      "hinweis": "BAP S. 23 Balken: ‚Architekturkomponenten sind gefüllt' 2 mm — jeder ARC-Balken braucht einen Rohbau-Balken; ohne Partner = Befund ‚ohne_partner'"
+    },
+    {
+      "id": "BALK-03",
+      "name": "Balken: Architektur nicht größer als Rohbau",
+      "art": "enthalten",
+      "a": { "quelle": "B", "klassen": ["IFCBEAM"] },
+      "b": { "quelle": "A", "klassen": ["IFCBEAM"] },
+      "toleranzMm": 1,
+      "hinweis": "BAP S. 23 Balken: ‚Architekturkomponenten sind nicht größer als Rohbaukomponenten' 1 mm"
+    },
+    {
+      "id": "STUE-01",
+      "name": "Stützen: Rohbau nicht größer als Architektur",
+      "art": "enthalten",
+      "a": { "quelle": "A", "klassen": ["IFCCOLUMN"] },
+      "b": { "quelle": "B", "klassen": ["IFCCOLUMN"] },
+      "toleranzMm": 2,
+      "hinweis": "BAP S. 23 Stützen: ‚Rohbaukomponenten sind nicht größer als Architekturkomponenten' 2 mm"
+    },
+    {
+      "id": "STUE-02",
+      "name": "Stützen: Architekturkomponenten gefüllt",
+      "art": "gefuellt",
+      "a": { "quelle": "A", "klassen": ["IFCCOLUMN"] },
+      "b": { "quelle": "B", "klassen": ["IFCCOLUMN"] },
+      "toleranzMm": 2,
+      "hinweis": "BAP S. 23 Stützen: ‚Architekturkomponenten sind gefüllt' 2 mm"
+    },
+    {
+      "id": "STUE-03",
+      "name": "Stützen: Architektur nicht größer als Rohbau",
+      "art": "enthalten",
+      "a": { "quelle": "B", "klassen": ["IFCCOLUMN"] },
+      "b": { "quelle": "A", "klassen": ["IFCCOLUMN"] },
+      "toleranzMm": 1,
+      "hinweis": "BAP S. 23 Stützen: ‚Architekturkomponenten sind nicht größer als Rohbaukomponenten' 1 mm"
+    },
+    {
+      "id": "DECK-01",
+      "name": "Decken: Rohbau nicht größer als Architektur",
+      "art": "enthalten",
+      "a": { "quelle": "A", "klassen": ["IFCSLAB"] },
+      "b": { "quelle": "B", "klassen": ["IFCSLAB"] },
+      "toleranzMm": 2,
+      "hinweis": "BAP S. 23-24 Decken: ‚Rohbaukomponenten sind nicht größer als Architekturkomponenten' 2 mm"
+    },
+    {
+      "id": "DECK-02",
+      "name": "Decken: Architekturkomponenten gefüllt",
+      "art": "gefuellt",
+      "a": { "quelle": "A", "klassen": ["IFCSLAB"] },
+      "b": { "quelle": "B", "klassen": ["IFCSLAB"] },
+      "toleranzMm": 2,
+      "hinweis": "BAP S. 23-24 Decken: ‚Architekturkomponenten sind gefüllt' 2 mm"
+    },
+    {
+      "id": "DECK-03",
+      "name": "Decken: Architektur nicht größer als Rohbau",
+      "art": "enthalten",
+      "a": { "quelle": "B", "klassen": ["IFCSLAB"] },
+      "b": { "quelle": "A", "klassen": ["IFCSLAB"] },
+      "toleranzMm": 1,
+      "hinweis": "BAP S. 23-24 Decken: ‚Architekturkomponenten sind nicht größer als Rohbaukomponenten' 1 mm"
+    },
+    {
+      "id": "WAND-01",
+      "name": "Wände: Rohbau nicht größer als Architektur",
+      "art": "enthalten",
+      "a": { "quelle": "A", "klassen": ["IFCWALL", "IFCWALLSTANDARDCASE"] },
+      "b": { "quelle": "B", "klassen": ["IFCWALL", "IFCWALLSTANDARDCASE"] },
+      "toleranzMm": 2,
+      "hinweis": "BAP S. 24 Wände: ‚Rohbaukomponenten sind nicht größer als Architekturkomponenten' 2 mm"
+    },
+    {
+      "id": "WAND-02",
+      "name": "Wände: Architekturkomponenten gefüllt",
+      "art": "gefuellt",
+      "a": { "quelle": "A", "klassen": ["IFCWALL", "IFCWALLSTANDARDCASE"] },
+      "b": { "quelle": "B", "klassen": ["IFCWALL", "IFCWALLSTANDARDCASE"] },
+      "toleranzMm": 2,
+      "hinweis": "BAP S. 24 Wände: ‚Architekturkomponenten sind gefüllt' 2 mm"
+    },
+    {
+      "id": "WAND-03",
+      "name": "Wände: Architektur nicht größer als Rohbau",
+      "art": "enthalten",
+      "a": { "quelle": "B", "klassen": ["IFCWALL", "IFCWALLSTANDARDCASE"] },
+      "b": { "quelle": "A", "klassen": ["IFCWALL", "IFCWALLSTANDARDCASE"] },
+      "toleranzMm": 1,
+      "hinweis": "BAP S. 24 Wände: ‚Architekturkomponenten sind nicht größer als Rohbaukomponenten' 1 mm"
+    },
+    {
+      "id": "FUND-01",
+      "name": "Fundamente: Rohbau nicht größer als Architektur",
+      "art": "enthalten",
+      "a": { "quelle": "A", "klassen": ["IFCFOOTING", "IFCSLAB"] },
+      "b": { "quelle": "B", "klassen": ["IFCFOOTING", "IFCSLAB"] },
+      "toleranzMm": 2,
+      "hinweis": "BAP S. 24 Fundamente: 2 mm — TX-Modell trägt KEINE IfcFooting (71-RESEARCH §1.2), Bodenplatte ist IfcSlab; ‚0 anwendbar' wäre ein ehrliches Ergebnis, keine bestandene Prüfung"
+    },
+    {
+      "id": "FUND-02",
+      "name": "Fundamente: Architekturkomponenten gefüllt",
+      "art": "gefuellt",
+      "a": { "quelle": "A", "klassen": ["IFCFOOTING", "IFCSLAB"] },
+      "b": { "quelle": "B", "klassen": ["IFCFOOTING", "IFCSLAB"] },
+      "toleranzMm": 2,
+      "hinweis": "BAP S. 24 Fundamente: ‚Architekturkomponenten sind gefüllt' 2 mm"
+    },
+    {
+      "id": "FUND-03",
+      "name": "Fundamente: Architektur nicht größer als Rohbau",
+      "art": "enthalten",
+      "a": { "quelle": "B", "klassen": ["IFCFOOTING", "IFCSLAB"] },
+      "b": { "quelle": "A", "klassen": ["IFCFOOTING", "IFCSLAB"] },
+      "toleranzMm": 1,
+      "hinweis": "BAP S. 24 Fundamente: ‚Architekturkomponenten sind nicht größer als Rohbaukomponenten' 1 mm"
+    },
+    {
+      "id": "WAND-NT-01",
+      "name": "Nicht tragende Architektur-Wände STB gefüllt",
+      "art": "gefuellt",
+      "a": { "quelle": "A", "klassen": ["IFCWALL", "IFCWALLSTANDARDCASE"] },
+      "b": { "quelle": "B", "klassen": ["IFCWALL", "IFCWALLSTANDARDCASE"] },
+      "toleranzMm": 2,
+      "hinweis": "BAP S. 24: ‚Nicht tragende Architekturkomponenten STB sind gefüllt' 2 mm — EINSCHRÄNKUNG: die Klassenregel kann LoadBearing=false nicht filtern (dafür bräuchte es Pset-Zugriff im Clash-Lauf); geprüft werden ALLE ARC-Wände. Doppeldeckung mit WAND-02 ist bewusst (die Matrix führt beide Zeilen)"
+    }
+  ]
+}

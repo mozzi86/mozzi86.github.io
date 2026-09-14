@@ -1,14 +1,14 @@
 // Service worker der BIT-Atelier-Online-Demo — ERZEUGT von scripts/build-sw.mjs.
 // Nicht von Hand ändern; der Inhalt entsteht bei jedem `npm run build:demo` neu.
-const CACHE = 'bit-atelier-demo-4be99e964671';
+const CACHE = 'bit-atelier-demo-cb725c8ae985';
 const BASIS = '/demo/';
 const PRECACHE = [
   "/demo/",
   "/demo/index.html",
-  "/demo/assets/index-BJMjgows.css",
-  "/demo/assets/index-BwR8Vxpq.js",
-  "/demo/assets/motion-BCLExD6E.js",
-  "/demo/assets/vendor-yXl-1oZS.js",
+  "/demo/assets/index-Bjd9U2-Q.css",
+  "/demo/assets/index-C42eAk-s.js",
+  "/demo/assets/motion-D3UmDmA0.js",
+  "/demo/assets/vendor-BefMByF5.js",
   "/demo/assets/planegcs-r8EUavAY.wasm",
   "/demo/assets/web-ifc-DaBphSR1.wasm",
   "/demo/beispiel/README.md",

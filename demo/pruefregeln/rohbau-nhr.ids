@@ -1,0 +1,450 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ids xmlns="http://standards.buildingsmart.org/IDS" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <info>
+    <title>Rohbau NHR Erlangen — LOI-Liste des Bauherrn</title>
+    <description>Erzeugt aus der LOI-Liste (Stand 07.08.2026) mit tools/loi-zu-ids.mjs, Pflichtmerkmale LPH5. Blätter: Fassade, Wand, Stützen, Decken, Träger, Treppenpodeste, Treppen. Nicht prüfbar: SiteName/BuildingName/BuildingStoreyName (partOf-Facetten) — siehe public/pruefregeln/README.md. Nicht von Hand ändern.</description>
+    <author>BIT-Atelier (erzeugt)</author>
+    <version>1.0</version>
+  </info>
+  <specifications>
+    <specification name="Fassade" identifier="LOI-Fassade-LPH5" description="LOI-Liste des Bauherrn (Stand 07.08.2026), Blatt „Fassade&quot;, Pflichtmerkmale LPH5. Erzeugt mit tools/loi-zu-ids.mjs — nicht von Hand ändern." ifcVersion="IFC2X3 IFC4">
+      <applicability minOccurs="1" maxOccurs="unbounded">
+        <entity>
+          <name>
+            <xs:restriction base="xs:string">
+              <xs:enumeration value="IFCMEMBER" />
+              <xs:enumeration value="IFCPLATE" />
+            </xs:restriction>
+          </name>
+        </entity>
+      </applicability>
+      <requirements>
+        <attribute>
+          <name><simpleValue>GlobalId</simpleValue></name>
+        </attribute>
+        <property dataType="IFCQUANTITYLENGTH">
+          <propertySet><simpleValue>BaseQuantities</simpleValue></propertySet>
+          <baseName><simpleValue>Length</simpleValue></baseName>
+        </property>
+        <property dataType="IFCQUANTITYLENGTH">
+          <propertySet><simpleValue>BaseQuantities</simpleValue></propertySet>
+          <baseName><simpleValue>Height</simpleValue></baseName>
+        </property>
+        <property dataType="IFCQUANTITYLENGTH">
+          <propertySet><simpleValue>BaseQuantities</simpleValue></propertySet>
+          <baseName><simpleValue>Width</simpleValue></baseName>
+        </property>
+        <property dataType="IFCQUANTITYAREA">
+          <propertySet><simpleValue>BaseQuantities</simpleValue></propertySet>
+          <baseName><simpleValue>NetSideArea</simpleValue></baseName>
+        </property>
+        <property dataType="IFCQUANTITYVOLUME">
+          <propertySet><simpleValue>BaseQuantities</simpleValue></propertySet>
+          <baseName><simpleValue>NetVolume</simpleValue></baseName>
+        </property>
+        <property dataType="IFCLABEL">
+          <propertySet><simpleValue>Pset_PlateCommon</simpleValue></propertySet>
+          <baseName><simpleValue>Reference</simpleValue></baseName>
+        </property>
+        <property dataType="IFCLABEL">
+          <propertySet><simpleValue>Pset_MemberCommon</simpleValue></propertySet>
+          <baseName><simpleValue>Reference</simpleValue></baseName>
+        </property>
+        <property dataType="IFCLABEL">
+          <propertySet><simpleValue>NHR</simpleValue></propertySet>
+          <baseName><simpleValue>Material</simpleValue></baseName>
+        </property>
+        <property dataType="IFCLABEL">
+          <propertySet><simpleValue>NHR</simpleValue></propertySet>
+          <baseName><simpleValue>DIN276_Nummer</simpleValue></baseName>
+        </property>
+        <property dataType="IFCLABEL">
+          <propertySet><simpleValue>NHR</simpleValue></propertySet>
+          <baseName><simpleValue>DIN276_Kuerzel</simpleValue></baseName>
+        </property>
+        <property dataType="IFCBOOLEAN">
+          <propertySet><simpleValue>Pset_PlateCommon</simpleValue></propertySet>
+          <baseName><simpleValue>IsExternal</simpleValue></baseName>
+        </property>
+        <property dataType="IFCBOOLEAN">
+          <propertySet><simpleValue>Pset_MemberCommon</simpleValue></propertySet>
+          <baseName><simpleValue>IsExternal</simpleValue></baseName>
+        </property>
+        <property dataType="IFCBOOLEAN">
+          <propertySet><simpleValue>Pset_PlateCommon</simpleValue></propertySet>
+          <baseName><simpleValue>LoadBearing</simpleValue></baseName>
+        </property>
+        <property dataType="IFCBOOLEAN">
+          <propertySet><simpleValue>Pset_MemberCommon</simpleValue></propertySet>
+          <baseName><simpleValue>LoadBearing</simpleValue></baseName>
+        </property>
+      </requirements>
+    </specification>
+    <specification name="Wand" identifier="LOI-Wand-LPH5" description="LOI-Liste des Bauherrn (Stand 07.08.2026), Blatt „Wand&quot;, Pflichtmerkmale LPH5. Erzeugt mit tools/loi-zu-ids.mjs — nicht von Hand ändern." ifcVersion="IFC2X3 IFC4">
+      <applicability minOccurs="1" maxOccurs="unbounded">
+        <entity>
+          <name>
+            <xs:restriction base="xs:string">
+              <xs:enumeration value="IFCWALL" />
+              <xs:enumeration value="IFCWALLSTANDARDCASE" />
+            </xs:restriction>
+          </name>
+        </entity>
+      </applicability>
+      <requirements>
+        <attribute>
+          <name><simpleValue>GlobalId</simpleValue></name>
+        </attribute>
+        <property dataType="IFCQUANTITYLENGTH">
+          <propertySet><simpleValue>BaseQuantities</simpleValue></propertySet>
+          <baseName><simpleValue>Length</simpleValue></baseName>
+        </property>
+        <property dataType="IFCQUANTITYLENGTH">
+          <propertySet><simpleValue>BaseQuantities</simpleValue></propertySet>
+          <baseName><simpleValue>Height</simpleValue></baseName>
+        </property>
+        <property dataType="IFCQUANTITYLENGTH">
+          <propertySet><simpleValue>BaseQuantities</simpleValue></propertySet>
+          <baseName><simpleValue>Width</simpleValue></baseName>
+        </property>
+        <property dataType="IFCQUANTITYAREA">
+          <propertySet><simpleValue>BaseQuantities</simpleValue></propertySet>
+          <baseName><simpleValue>GrossSideArea</simpleValue></baseName>
+        </property>
+        <property dataType="IFCQUANTITYAREA">
+          <propertySet><simpleValue>BaseQuantities</simpleValue></propertySet>
+          <baseName><simpleValue>NetSideArea</simpleValue></baseName>
+        </property>
+        <property dataType="IFCQUANTITYVOLUME">
+          <propertySet><simpleValue>BaseQuantities</simpleValue></propertySet>
+          <baseName><simpleValue>GrossVolume</simpleValue></baseName>
+        </property>
+        <property dataType="IFCQUANTITYVOLUME">
+          <propertySet><simpleValue>BaseQuantities</simpleValue></propertySet>
+          <baseName><simpleValue>NetVolume</simpleValue></baseName>
+        </property>
+        <property dataType="IFCLABEL">
+          <propertySet><simpleValue>Pset_WallCommon</simpleValue></propertySet>
+          <baseName><simpleValue>Reference</simpleValue></baseName>
+        </property>
+        <property dataType="IFCLABEL">
+          <propertySet><simpleValue>NHR</simpleValue></propertySet>
+          <baseName><simpleValue>Material</simpleValue></baseName>
+        </property>
+        <property dataType="IFCLABEL">
+          <propertySet><simpleValue>NHR</simpleValue></propertySet>
+          <baseName><simpleValue>DIN276_Nummer</simpleValue></baseName>
+        </property>
+        <property dataType="IFCLABEL">
+          <propertySet><simpleValue>NHR</simpleValue></propertySet>
+          <baseName><simpleValue>DIN276_Kuerzel</simpleValue></baseName>
+        </property>
+        <property dataType="IFCBOOLEAN">
+          <propertySet><simpleValue>Pset_WallCommon</simpleValue></propertySet>
+          <baseName><simpleValue>IsExternal</simpleValue></baseName>
+        </property>
+        <property dataType="IFCBOOLEAN">
+          <propertySet><simpleValue>Pset_WallCommon</simpleValue></propertySet>
+          <baseName><simpleValue>LoadBearing</simpleValue></baseName>
+        </property>
+        <property dataType="IFCLABEL">
+          <propertySet><simpleValue>NHR</simpleValue></propertySet>
+          <baseName><simpleValue>Feuerwiderstandsklasse</simpleValue></baseName>
+        </property>
+        <property dataType="IFCLABEL">
+          <propertySet><simpleValue>NHR</simpleValue></propertySet>
+          <baseName><simpleValue>Wandoberfläche</simpleValue></baseName>
+        </property>
+        <property dataType="IFCLABEL">
+          <propertySet><simpleValue>NHR</simpleValue></propertySet>
+          <baseName><simpleValue>Wandaufbau</simpleValue></baseName>
+        </property>
+        <property dataType="IFCLABEL">
+          <propertySet><simpleValue>NHR</simpleValue></propertySet>
+          <baseName><simpleValue>Wandschallschutz</simpleValue></baseName>
+        </property>
+      </requirements>
+    </specification>
+    <specification name="Stützen" identifier="LOI-Stützen-LPH5" description="LOI-Liste des Bauherrn (Stand 07.08.2026), Blatt „Stützen&quot;, Pflichtmerkmale LPH5. Erzeugt mit tools/loi-zu-ids.mjs — nicht von Hand ändern." ifcVersion="IFC2X3 IFC4">
+      <applicability minOccurs="1" maxOccurs="unbounded">
+        <entity>
+          <name>
+            <xs:restriction base="xs:string">
+              <xs:enumeration value="IFCCOLUMN" />
+            </xs:restriction>
+          </name>
+        </entity>
+      </applicability>
+      <requirements>
+        <attribute>
+          <name><simpleValue>GlobalId</simpleValue></name>
+        </attribute>
+        <property dataType="IFCQUANTITYLENGTH">
+          <propertySet><simpleValue>BaseQuantities</simpleValue></propertySet>
+          <baseName><simpleValue>Length</simpleValue></baseName>
+        </property>
+        <property dataType="IFCQUANTITYHEIGHT">
+          <propertySet><simpleValue>BaseQuantities</simpleValue></propertySet>
+          <baseName><simpleValue>Height</simpleValue></baseName>
+        </property>
+        <property dataType="IFCQUANTITYWIDTH">
+          <propertySet><simpleValue>BaseQuantities</simpleValue></propertySet>
+          <baseName><simpleValue>Width</simpleValue></baseName>
+        </property>
+        <property dataType="IFCQUANTITYVOLUME">
+          <propertySet><simpleValue>BaseQuantities</simpleValue></propertySet>
+          <baseName><simpleValue>GrossVolume</simpleValue></baseName>
+        </property>
+        <property dataType="IFCLABEL">
+          <propertySet><simpleValue>Pset_ColumnCommon</simpleValue></propertySet>
+          <baseName><simpleValue>Reference</simpleValue></baseName>
+        </property>
+        <property dataType="IFCLABEL">
+          <propertySet><simpleValue>NHR</simpleValue></propertySet>
+          <baseName><simpleValue>Material</simpleValue></baseName>
+        </property>
+        <property dataType="IFCIDENTIFIER">
+          <propertySet><simpleValue>NHR</simpleValue></propertySet>
+          <baseName><simpleValue>DIN276_Nummer</simpleValue></baseName>
+        </property>
+        <property dataType="IFCLABEL">
+          <propertySet><simpleValue>NHR</simpleValue></propertySet>
+          <baseName><simpleValue>DIN276_Kuerzel</simpleValue></baseName>
+        </property>
+        <property dataType="IFCBOOLEAN">
+          <propertySet><simpleValue>Pset_ColumnCommon</simpleValue></propertySet>
+          <baseName><simpleValue>IsExternal</simpleValue></baseName>
+        </property>
+        <property dataType="IFCBOOLEAN">
+          <propertySet><simpleValue>Pset_ColumnCommon</simpleValue></propertySet>
+          <baseName><simpleValue>LoadBearing</simpleValue></baseName>
+        </property>
+        <property dataType="IFCLABEL">
+          <propertySet><simpleValue>NHR</simpleValue></propertySet>
+          <baseName><simpleValue>Feuerwiderstandsklasse</simpleValue></baseName>
+        </property>
+      </requirements>
+    </specification>
+    <specification name="Decken" identifier="LOI-Decken-LPH5" description="LOI-Liste des Bauherrn (Stand 07.08.2026), Blatt „Decken&quot;, Pflichtmerkmale LPH5. Erzeugt mit tools/loi-zu-ids.mjs — nicht von Hand ändern." ifcVersion="IFC2X3 IFC4">
+      <applicability minOccurs="1" maxOccurs="unbounded">
+        <entity>
+          <name>
+            <xs:restriction base="xs:string">
+              <xs:enumeration value="IFCSLAB" />
+            </xs:restriction>
+          </name>
+        </entity>
+      </applicability>
+      <requirements>
+        <attribute>
+          <name><simpleValue>GlobalId</simpleValue></name>
+        </attribute>
+        <property dataType="IFCQUANTITYLENGTH">
+          <propertySet><simpleValue>BaseQuantities</simpleValue></propertySet>
+          <baseName><simpleValue>Perimeter</simpleValue></baseName>
+        </property>
+        <property dataType="IFCQUANTITYLENGTH">
+          <propertySet><simpleValue>NHR</simpleValue></propertySet>
+          <baseName><simpleValue>Thickness</simpleValue></baseName>
+        </property>
+        <property dataType="IFCQUANTITYAREA">
+          <propertySet><simpleValue>BaseQuantities</simpleValue></propertySet>
+          <baseName><simpleValue>NetArea</simpleValue></baseName>
+        </property>
+        <property dataType="IFCQUANTITYVOLUME">
+          <propertySet><simpleValue>BaseQuantities</simpleValue></propertySet>
+          <baseName><simpleValue>NetVolume</simpleValue></baseName>
+        </property>
+        <property dataType="IFCLABEL">
+          <propertySet><simpleValue>Pset_SlabCommon</simpleValue></propertySet>
+          <baseName><simpleValue>Reference</simpleValue></baseName>
+        </property>
+        <property dataType="IFCLABEL">
+          <propertySet><simpleValue>NHR</simpleValue></propertySet>
+          <baseName><simpleValue>Material</simpleValue></baseName>
+        </property>
+        <property dataType="IFCLABEL">
+          <propertySet><simpleValue>NHR</simpleValue></propertySet>
+          <baseName><simpleValue>DIN276_Nummer</simpleValue></baseName>
+        </property>
+        <property dataType="IFCLABEL">
+          <propertySet><simpleValue>NHR</simpleValue></propertySet>
+          <baseName><simpleValue>DIN276_Kuerzel</simpleValue></baseName>
+        </property>
+        <property dataType="IFCBOOLEAN">
+          <propertySet><simpleValue>Pset_SlabCommon</simpleValue></propertySet>
+          <baseName><simpleValue>IsExternal</simpleValue></baseName>
+        </property>
+        <property dataType="IFCBOOLEAN">
+          <propertySet><simpleValue>Pset_SlabCommon</simpleValue></propertySet>
+          <baseName><simpleValue>LoadBearing</simpleValue></baseName>
+        </property>
+        <property dataType="IFCLABEL">
+          <propertySet><simpleValue>NHR</simpleValue></propertySet>
+          <baseName><simpleValue>Feuerwiderstandsklasse</simpleValue></baseName>
+        </property>
+      </requirements>
+    </specification>
+    <specification name="Träger" identifier="LOI-Träger-LPH5" description="LOI-Liste des Bauherrn (Stand 07.08.2026), Blatt „Träger&quot;, Pflichtmerkmale LPH5. Erzeugt mit tools/loi-zu-ids.mjs — nicht von Hand ändern." ifcVersion="IFC2X3 IFC4">
+      <applicability minOccurs="1" maxOccurs="unbounded">
+        <entity>
+          <name>
+            <xs:restriction base="xs:string">
+              <xs:enumeration value="IFCBEAM" />
+            </xs:restriction>
+          </name>
+        </entity>
+      </applicability>
+      <requirements>
+        <attribute>
+          <name><simpleValue>GlobalId</simpleValue></name>
+        </attribute>
+        <property dataType="IFCQUANTITYLENGTH">
+          <propertySet><simpleValue>BaseQuantities</simpleValue></propertySet>
+          <baseName><simpleValue>Length</simpleValue></baseName>
+        </property>
+        <property dataType="IFCQUANTITYAREA">
+          <propertySet><simpleValue>BaseQuantities</simpleValue></propertySet>
+          <baseName><simpleValue>CrossSectionArea</simpleValue></baseName>
+        </property>
+        <property dataType="IFCQUANTITYVOLUME">
+          <propertySet><simpleValue>BaseQuantities</simpleValue></propertySet>
+          <baseName><simpleValue>GrossVolume</simpleValue></baseName>
+        </property>
+        <property dataType="IFCQUANTITYVOLUME">
+          <propertySet><simpleValue>BaseQuantities</simpleValue></propertySet>
+          <baseName><simpleValue>NetVolume</simpleValue></baseName>
+        </property>
+        <property dataType="IFCLABEL">
+          <propertySet><simpleValue>Pset_BeamCommon</simpleValue></propertySet>
+          <baseName><simpleValue>Reference</simpleValue></baseName>
+        </property>
+        <property dataType="IFCLABEL">
+          <propertySet><simpleValue>NHR</simpleValue></propertySet>
+          <baseName><simpleValue>Material</simpleValue></baseName>
+        </property>
+        <property dataType="IFCIDENTIFIER">
+          <propertySet><simpleValue>NHR</simpleValue></propertySet>
+          <baseName><simpleValue>DIN276_Nummer</simpleValue></baseName>
+        </property>
+        <property dataType="IFCLABEL">
+          <propertySet><simpleValue>NHR</simpleValue></propertySet>
+          <baseName><simpleValue>DIN276_Kuerzel</simpleValue></baseName>
+        </property>
+        <property dataType="IFCBOOLEAN">
+          <propertySet><simpleValue>Pset_BeamCommon</simpleValue></propertySet>
+          <baseName><simpleValue>IsExternal</simpleValue></baseName>
+        </property>
+        <property dataType="IFCBOOLEAN">
+          <propertySet><simpleValue>Pset_BeamCommon</simpleValue></propertySet>
+          <baseName><simpleValue>LoadBearing</simpleValue></baseName>
+        </property>
+        <property dataType="IFCLABEL">
+          <propertySet><simpleValue>NHR</simpleValue></propertySet>
+          <baseName><simpleValue>Feuerwiderstandsklasse</simpleValue></baseName>
+        </property>
+      </requirements>
+    </specification>
+    <specification name="Treppenpodeste" identifier="LOI-Treppenpodeste-LPH5" description="LOI-Liste des Bauherrn (Stand 07.08.2026), Blatt „Treppenpodeste&quot;, Pflichtmerkmale LPH5. Erzeugt mit tools/loi-zu-ids.mjs — nicht von Hand ändern." ifcVersion="IFC2X3 IFC4">
+      <applicability minOccurs="1" maxOccurs="unbounded">
+        <entity>
+          <name>
+            <xs:restriction base="xs:string">
+              <xs:enumeration value="IFCSLAB" />
+            </xs:restriction>
+          </name>
+        </entity>
+      </applicability>
+      <requirements>
+        <attribute>
+          <name><simpleValue>GlobalId</simpleValue></name>
+        </attribute>
+        <property dataType="IFCQUANTITYWIDTH">
+          <propertySet><simpleValue>Pset_StairCommon</simpleValue></propertySet>
+          <baseName><simpleValue>TreadLength</simpleValue></baseName>
+        </property>
+        <property dataType="IFCQUANTITYWIDTH">
+          <propertySet><simpleValue>NHR</simpleValue></propertySet>
+          <baseName><simpleValue>Laufbreite</simpleValue></baseName>
+        </property>
+        <property dataType="IFCQUANTITYHEIGHT">
+          <propertySet><simpleValue>Pset_StairCommon</simpleValue></propertySet>
+          <baseName><simpleValue>RiserHeight</simpleValue></baseName>
+        </property>
+        <property dataType="IFCLABEL">
+          <propertySet><simpleValue>Pset_StairCommon</simpleValue></propertySet>
+          <baseName><simpleValue>Reference</simpleValue></baseName>
+        </property>
+        <property dataType="IFCLABEL">
+          <propertySet><simpleValue>NHR</simpleValue></propertySet>
+          <baseName><simpleValue>Material</simpleValue></baseName>
+        </property>
+        <property dataType="IFCIDENTIFIER">
+          <propertySet><simpleValue>NHR</simpleValue></propertySet>
+          <baseName><simpleValue>DIN276_Nummer</simpleValue></baseName>
+        </property>
+        <property dataType="IFCLABEL">
+          <propertySet><simpleValue>NHR</simpleValue></propertySet>
+          <baseName><simpleValue>DIN276_Kuerzel</simpleValue></baseName>
+        </property>
+        <property dataType="IFCBOOLEAN">
+          <propertySet><simpleValue>Pset_StairCommon</simpleValue></propertySet>
+          <baseName><simpleValue>IsExternal</simpleValue></baseName>
+        </property>
+        <property dataType="IFCBOOLEAN">
+          <propertySet><simpleValue>Pset_StairCommon</simpleValue></propertySet>
+          <baseName><simpleValue>LoadBearing</simpleValue></baseName>
+        </property>
+      </requirements>
+    </specification>
+    <specification name="Treppen" identifier="LOI-Treppen-LPH5" description="LOI-Liste des Bauherrn (Stand 07.08.2026), Blatt „Treppen&quot;, Pflichtmerkmale LPH5. Erzeugt mit tools/loi-zu-ids.mjs — nicht von Hand ändern." ifcVersion="IFC2X3 IFC4">
+      <applicability minOccurs="1" maxOccurs="unbounded">
+        <entity>
+          <name>
+            <xs:restriction base="xs:string">
+              <xs:enumeration value="IFCSTAIR" />
+              <xs:enumeration value="IFCSTAIRFLIGHT" />
+            </xs:restriction>
+          </name>
+        </entity>
+      </applicability>
+      <requirements>
+        <attribute>
+          <name><simpleValue>GlobalId</simpleValue></name>
+        </attribute>
+        <property dataType="IFCQUANTITYWIDTH">
+          <propertySet><simpleValue>Pset_StairCommon</simpleValue></propertySet>
+          <baseName><simpleValue>TreadLength</simpleValue></baseName>
+        </property>
+        <property dataType="IFCQUANTITYWIDTH">
+          <propertySet><simpleValue>NHR</simpleValue></propertySet>
+          <baseName><simpleValue>Laufbreite</simpleValue></baseName>
+        </property>
+        <property dataType="IFCQUANTITYHEIGHT">
+          <propertySet><simpleValue>Pset_StairCommon</simpleValue></propertySet>
+          <baseName><simpleValue>RiserHeight</simpleValue></baseName>
+        </property>
+        <property dataType="IFCLABEL">
+          <propertySet><simpleValue>Pset_StairCommon</simpleValue></propertySet>
+          <baseName><simpleValue>Reference</simpleValue></baseName>
+        </property>
+        <property dataType="IFCLABEL">
+          <propertySet><simpleValue>NHR</simpleValue></propertySet>
+          <baseName><simpleValue>Material</simpleValue></baseName>
+        </property>
+        <property dataType="IFCIDENTIFIER">
+          <propertySet><simpleValue>NHR</simpleValue></propertySet>
+          <baseName><simpleValue>DIN276_Nummer</simpleValue></baseName>
+        </property>
+        <property dataType="IFCLABEL">
+          <propertySet><simpleValue>NHR</simpleValue></propertySet>
+          <baseName><simpleValue>DIN276_Kuerzel</simpleValue></baseName>
+        </property>
+        <property dataType="IFCBOOLEAN">
+          <propertySet><simpleValue>Pset_StairCommon</simpleValue></propertySet>
+          <baseName><simpleValue>IsExternal</simpleValue></baseName>
+        </property>
+      </requirements>
+    </specification>
+  </specifications>
+</ids>
