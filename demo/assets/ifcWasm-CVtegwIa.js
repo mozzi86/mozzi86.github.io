@@ -1,0 +1,1 @@
+import{I as r,w as e}from"./ifc-DnL0zpxT.js";let a=null;function c(){return a||(a=(async()=>{const t=new r;return t.SetWasmPath(e.slice(0,e.lastIndexOf("/")+1),!0),await t.Init((i,n)=>i.endsWith("web-ifc.wasm")?e:n+i,!0),t})().catch(t=>{throw a=null,t})),a}export{c as loadIfcApi};

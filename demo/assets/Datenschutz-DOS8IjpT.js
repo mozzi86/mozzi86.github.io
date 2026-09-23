@@ -1,0 +1,1 @@
+import{j as t}from"./vendor-Dd18YUNZ.js";import{R as e}from"./RechtsSeite-CJKHosvI.js";import{q as r}from"./index-BJczngZd.js";import"./motion-CQ56TjSX.js";function a(){return t.jsx(e,{titel:"Datenschutzerklärung",children:t.jsx(r,{})})}export{a as default};

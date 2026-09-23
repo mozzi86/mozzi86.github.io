@@ -1,0 +1,1 @@
+import{j as i}from"./vendor-Dd18YUNZ.js";import{R as t}from"./RechtsSeite-CJKHosvI.js";import{C as o}from"./index-BJczngZd.js";import"./motion-CQ56TjSX.js";function n(){return i.jsx(t,{titel:"Cookie-Richtlinie",children:i.jsx(o,{})})}export{n as default};

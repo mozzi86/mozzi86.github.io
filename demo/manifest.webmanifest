@@ -1,0 +1,17 @@
+{
+  "name": "BIT-Atelier — Online-Demo",
+  "short_name": "BIT-Atelier",
+  "description": "Bau- und Architekturplattform: Modellprüfung, Ausschreibung, Baustelle. Demo-Fassung, alle Daten bleiben im Browser.",
+  "lang": "de",
+  "start_url": "/demo/#/",
+  "scope": "/demo/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#0f172a",
+  "theme_color": "#0f172a",
+  "icons": [
+    { "src": "/demo/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/demo/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/demo/icons/icon-512-maskable.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

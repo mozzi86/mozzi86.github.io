@@ -1,0 +1,2624 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" style="--bh: 900px;"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BIT-ATELIER — where architecture meets data</title>
+<meta name="description" content="BIT-ATELIER, Architekturbüro von Mohamed Elmokadem: BIM-Koordination und Modellprüfung mit eigener Prüf-Engine, dazu Planung und Architektur über alle Leistungsphasen. Raum Nürnberg, Projekte bundesweit.">
+<meta name="theme-color" content="#0c1117">
+<link rel="canonical" href="https://bit-atelier.de/en/">
+<meta property="og:title" content="BIT-ATELIER — Architektur trifft Digitalisierung">
+<meta property="og:description" content="BIM-Koordination, Modellprüfung mit eigener Prüf-Engine, Planung über alle Leistungsphasen.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://bit-atelier.de/en/">
+<meta property="og:image" content="https://bit-atelier.de/assets/img/og-bit-atelier.png">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:locale:alternate" content="ar_AR">
+<meta property="og:image:alt" content="BIT-ATELIER — Architektur trifft Digitalisierung. BIM-Koordination und Modellprüfung mit eigener Prüf-Engine.">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="BIT-ATELIER — Architektur trifft Digitalisierung">
+<meta name="twitter:description" content="BIM-Koordination, Modellprüfung mit eigener Prüf-Engine, Planung über alle Leistungsphasen.">
+<meta name="twitter:image" content="https://bit-atelier.de/assets/img/og-bit-atelier.png">
+
+<!-- Sprachfassungen: /en/ und /ar/ werden von tools/sprachkopien-erzeugen.mjs
+     aus dieser Datei erzeugt. x-default zeigt auf Deutsch, die Quellsprache. -->
+<link rel="alternate" hreflang="de" href="https://bit-atelier.de/">
+<link rel="alternate" hreflang="en" href="https://bit-atelier.de/en/">
+<link rel="alternate" hreflang="ar" href="https://bit-atelier.de/ar/">
+<link rel="alternate" hreflang="x-default" href="https://bit-atelier.de/">
+
+<link rel="icon" type="image/svg+xml" href="/assets/img/favicon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="/assets/img/favicon-192.png">
+<link rel="apple-touch-icon" href="/assets/img/favicon-180.png">
+<link rel="manifest" href="/site.webmanifest">
+
+<!-- Strukturierte Daten. Bewusst OHNE Telefon und E-Mail: beide sind auf der
+     Seite absichtlich hinter einem Klick verborgen (Spam-Schutz), und was hier
+     stünde, wäre wieder maschinenlesbar. Alle Angaben stammen 1:1 aus dem
+     Impressum weiter unten — eine zweite Wahrheit soll hier nicht entstehen. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "@id": "https://bit-atelier.de/#buero",
+  "name": "BIT-ATELIER",
+  "alternateName": "BIT-ATELIER — Mohamed Elmokadem, Freiberuflicher Architekt",
+  "url": "https://bit-atelier.de/",
+  "image": "https://bit-atelier.de/assets/img/og-bit-atelier.png",
+  "description": "Architekturbüro für BIM-Koordination und Modellprüfung mit eigener Prüf-Engine sowie Planung über alle Leistungsphasen.",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Am Röthenbacher Landgraben 36",
+    "postalCode": "90451",
+    "addressLocality": "Nürnberg",
+    "addressRegion": "Bayern",
+    "addressCountry": "DE"
+  },
+  "areaServed": [
+    { "@type": "Country", "name": "Deutschland" },
+    { "@type": "AdministrativeArea", "name": "Mittelfranken" }
+  ],
+  "priceRange": "ab 4.500 €",
+  "founder": { "@id": "https://bit-atelier.de/#person" },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Leistungspakete",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "name": "BIM-Quick-Check & Setup",
+        "description": "Festpreis je Projekt: Bestandsaufnahme, BIM-Setup und erster Prüflauf.",
+        "priceCurrency": "EUR",
+        "price": "8500",
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "priceCurrency": "EUR",
+          "minPrice": "8500",
+          "valueAddedTaxIncluded": false
+        }
+      },
+      {
+        "@type": "Offer",
+        "name": "Automatisierte Modellprüfung & QS",
+        "description": "Festpreis je Prüflauf: Kollisionsprüfung, IDS-Konformität, BCF-Rückgabe an die Fachplanung."
+      },
+      {
+        "@type": "Offer",
+        "name": "BIM-Gesamtkoordination",
+        "description": "Monatliches Mandat: durchgehende BIM-Koordination über die Projektlaufzeit.",
+        "priceCurrency": "EUR",
+        "price": "4500",
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "priceCurrency": "EUR",
+          "minPrice": "4500",
+          "unitText": "MON",
+          "valueAddedTaxIncluded": false
+        }
+      }
+    ]
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://bit-atelier.de/#person",
+  "name": "Mohamed Elmokadem",
+  "jobTitle": "Architekt",
+  "worksFor": { "@id": "https://bit-atelier.de/#buero" },
+  "url": "https://bit-atelier.de/",
+  "sameAs": ["https://github.com/mozzi86"],
+  "hasCredential": [
+    {
+      "@type": "EducationalOccupationalCredential",
+      "credentialCategory": "Eintragung in die Architektenliste",
+      "name": "Bayerische Architektenkammer, Listen-Nr. 192.197",
+      "recognizedBy": { "@type": "Organization", "name": "Bayerische Architektenkammer" },
+      "validFrom": "2021-06-15"
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      "credentialCategory": "Hochschulabschluss",
+      "name": "M.Sc. ClimaDesign",
+      "recognizedBy": { "@type": "CollegeOrUniversity", "name": "Technische Universität München" }
+    }
+  ]
+}
+</script>
+<script type="importmap">
+{ "imports": { "three": "../assets/js/three.module.min.js" } }
+</script>
+<!-- three.module.min.js ist die mit esbuild minifizierte Fassung derselben
+     Revision r161 (erzeugt aus three.module.js, siehe tools/README-bilder.md):
+     259.351 -> 172.490 B gzip. Die unminifizierte Datei bleibt als Quelle liegen.
+     NICHT gegen eine neuere three-Fassung tauschen, ohne die Bühne anzusehen —
+     zwischen r161 und r17x haben sich Farbverwaltung und Renderer-Optionen
+     geaendert. -->
+<style>
+/* --- Beleg-Kasten unter dem Pruefergebnis (Phase 65-06) -------------------
+   Beide Dateien stammen aus dem Beispiel-Pruflauf der Demo, den der Besucher
+   selbst ausloesen kann — derselbe Lauf, dieselben Zahlen.
+   Klassenname bewusst NICHT .nachweis: den gibt es auf der Seite schon vierfach
+   (Kammer, Master, BIM, Jahre) — die haetten mein CSS sonst mitbekommen. */
+.beleg{margin-top:1rem;border:1px solid rgba(255,255,255,.10);border-radius:12px;
+  padding:1rem 1.15rem;background:rgba(255,255,255,.02)}
+.beleg__titel{font-weight:600;margin:0 0 .3rem}
+.beleg__unter{color:var(--muted);font-size:.88rem;margin:0 0 .9rem}
+.beleg__links{display:flex;gap:.6rem;flex-wrap:wrap}
+
+/* --- Anfrage-Baukasten (Phase 65-06) --------------------------------------
+   Kein Formular-Versand: die Felder bauen im Browser eine vorformulierte
+   E-Mail. Kein Server, kein Cookie, kein Tracking — die Kontaktaufnahme geht
+   weiterhin ausschliesslich vom Besucher aus, die Datenschutzerklaerung bleibt
+   unberuehrt. Der Spam-Schutz der Enthuell-Knoepfe gilt unveraendert weiter. */
+.anfrage{margin-top:2rem;border:1px solid rgba(255,255,255,.10);border-radius:14px;
+  padding:1.4rem;background:rgba(255,255,255,.02)}
+.anfrage h3{font-size:1.05rem;margin:0 0 .3rem}
+.anfrage__unter{color:var(--muted);font-size:.9rem;margin:0 0 1.1rem}
+.anfrage__raster{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:.9rem}
+.anfrage__feld{display:flex;flex-direction:column;gap:.35rem}
+.anfrage__feld span{font-size:.76rem;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.anfrage__feld select,.anfrage__feld input,.anfrage__feld textarea{
+  background:var(--bg-deep);color:var(--ink);border:1px solid rgba(255,255,255,.14);
+  border-radius:9px;padding:.62rem .7rem;font:inherit;font-size:.94rem;min-height:44px}
+.anfrage__feld textarea{min-height:88px;resize:vertical}
+.anfrage__feld select:focus-visible,.anfrage__feld input:focus-visible,
+.anfrage__feld textarea:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.anfrage__fuss{margin-top:1.2rem;display:flex;gap:.8rem;align-items:center;flex-wrap:wrap}
+.anfrage__direkt{font-size:.82rem;color:var(--muted)}
+.anfrage__direkt a{color:var(--accent,inherit);text-decoration:underline;text-underline-offset:.2em}
+.anfrage__hinweis{margin-top:.8rem;color:var(--muted);font-size:.8rem;font-weight:300;max-width:70ch}
+.anfrage__frist{color:var(--muted);font-size:.84rem}
+/* Vorschau des Anfragetexts (Befund B-05): Der Besucher sieht, was sein
+   Mailprogramm bekommt — und hat mit Kopieren und Drucken zwei Wege, falls auf
+   dem Geraet keines eingerichtet ist. Vorher endete der Baukasten dort im Nichts. */
+.anfrage__vorschau{margin-top:1.1rem}
+.anfrage__vorschau>span{font-size:.76rem;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);
+  display:block;margin-bottom:.35rem}
+.anfrage__text{margin:0;max-height:15rem;overflow:auto;white-space:pre-wrap;word-break:break-word;
+  background:var(--bg-deep);border:1px solid rgba(255,255,255,.10);border-radius:9px;padding:.8rem .9rem;
+  font-family:var(--mono);font-size:.8rem;line-height:1.55;color:var(--ink-dim)}
+#anfrage-druck{display:none}
+@media print{
+  body.druckt-anfrage>*:not(#anfrage-druck){display:none!important}
+  body.druckt-anfrage{background:#fff;color:#000}
+  #anfrage-druck{display:block;font:11pt/1.5 Montserrat,system-ui,sans-serif;color:#000}
+  #anfrage-druck h1{font-size:15pt;margin:0 0 .4rem}
+  #anfrage-druck p{margin:0 0 .25rem}
+  #anfrage-druck pre{white-space:pre-wrap;font:inherit;margin:1.2rem 0 0}
+}
+
+/* Paketfinder (#pakete): drei Angaben, eine begruendete Einordnung. Ersetzt
+   das eigene Rechnen des Lesers ("ist das eine Groessenordnung fuer uns?") und
+   traegt die Angaben in den Anfrage-Baukasten — die Felder sind dieselben. */
+.finder{margin-top:2.4rem;border:1px solid rgba(255,255,255,.10);border-radius:14px;
+  padding:1.4rem;background:rgba(255,255,255,.02)}
+.finder h3{font-size:1.05rem;margin:0 0 .3rem}
+.finder__unter{color:var(--muted);font-size:.9rem;margin:0 0 1.2rem;max-width:62ch}
+.finder__fragen{display:grid;gap:1rem}
+@media(min-width:60rem){.finder__fragen{grid-template-columns:repeat(3,1fr);gap:1.2rem}}
+.finder__frage{border:0;margin:0;padding:0;min-width:0}
+.finder__frage legend{padding:0;margin-bottom:.45rem}
+.finder__frage legend span{font-size:.76rem;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.finder__wahl{display:flex;flex-wrap:wrap;gap:.4rem}
+.finder__wahl button{font:inherit;font-size:.84rem;min-height:2.5rem;padding:.45rem .75rem;border-radius:9px;
+  cursor:pointer;background:var(--bg-deep);color:var(--ink-dim);border:1px solid rgba(255,255,255,.14)}
+.finder__wahl button:hover{border-color:var(--line-strong);color:var(--ink)}
+.finder__wahl button[aria-pressed="true"]{border-color:var(--accent);color:var(--accent);background:rgba(45,212,191,.08)}
+.finder__wahl button:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.finder__ergebnis{margin-top:1.3rem;border-top:1px solid var(--line);padding-top:1.2rem;display:grid;gap:.9rem}
+@media(min-width:60rem){.finder__ergebnis{grid-template-columns:1.2fr .8fr;gap:2rem;align-items:start}}
+.finder__auge{margin:0 0 .4rem;color:var(--accent);font-family:var(--mono);font-size:.72rem;
+  letter-spacing:.14em;text-transform:uppercase}
+.finder__paket{margin:0;font-size:1.25rem;font-weight:600;letter-spacing:-.01em}
+.finder__preis{margin:.25rem 0 .7rem;font-family:var(--display);font-weight:700;font-size:1.25rem;
+  color:var(--accent);letter-spacing:-.02em}
+.finder__grund{margin:0;color:var(--muted);font-weight:300;max-width:60ch}
+.finder__danach{margin:.8rem 0 0;font-size:.9rem;color:var(--ink-dim)}
+.finder__danach b{color:var(--ink)}
+.finder__tun{display:flex;flex-direction:column;gap:.6rem;align-items:flex-start}
+@media(min-width:60rem){.finder__tun{align-items:flex-end;text-align:right}}
+.finder__hinweis{margin:0;font-size:.8rem;color:var(--muted);max-width:32ch}
+
+/* ===========================================================================
+   BIT-ATELIER — Startseite
+   Alles selbst gehostet: Schriften aus assets/fonts, Three.js aus assets/js,
+   Video aus assets/video. Kein CDN, kein externer Font-Dienst, kein Tracking,
+   keine Cookies. Externe Verweise gibt es nur als Download-Links zu GitHub.
+   Tailwind wird nicht mehr gebraucht — diese Datei bringt ihr CSS selbst mit.
+=========================================================================== */
+@font-face{font-family:Montserrat;font-style:normal;font-weight:300;font-display:swap;
+  src:url(../assets/fonts/montserrat-300-normal-latin.woff2) format("woff2")}
+@font-face{font-family:Montserrat;font-style:normal;font-weight:400;font-display:swap;
+  src:url(../assets/fonts/montserrat-400-normal-latin.woff2) format("woff2");
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215}
+@font-face{font-family:Montserrat;font-style:normal;font-weight:400;font-display:swap;
+  src:url(../assets/fonts/montserrat-400-normal-latin-ext.woff2) format("woff2");
+  unicode-range:U+0100-024F,U+1E00-1EFF,U+2020,U+20A0-20AB}
+@font-face{font-family:Montserrat;font-style:normal;font-weight:600;font-display:swap;
+  src:url(../assets/fonts/montserrat-600-normal-latin.woff2) format("woff2")}
+@font-face{font-family:Montserrat;font-style:normal;font-weight:700;font-display:swap;
+  src:url(../assets/fonts/montserrat-700-normal-latin.woff2) format("woff2")}
+@font-face{font-family:"Space Grotesk";font-style:normal;font-weight:500;font-display:swap;
+  src:url(../assets/fonts/spacegrotesk-500-normal-latin.woff2) format("woff2");
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215}
+@font-face{font-family:"Space Grotesk";font-style:normal;font-weight:500;font-display:swap;
+  src:url(../assets/fonts/spacegrotesk-500-normal-latin-ext.woff2) format("woff2");
+  unicode-range:U+0100-024F,U+1E00-1EFF,U+2020,U+20A0-20AB}
+@font-face{font-family:"Space Grotesk";font-style:normal;font-weight:700;font-display:swap;
+  src:url(../assets/fonts/spacegrotesk-700-normal-latin.woff2) format("woff2");
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215}
+@font-face{font-family:"Space Grotesk";font-style:normal;font-weight:700;font-display:swap;
+  src:url(../assets/fonts/spacegrotesk-700-normal-latin-ext.woff2) format("woff2");
+  unicode-range:U+0100-024F,U+1E00-1EFF,U+2020,U+20A0-20AB}
+@font-face{font-family:"IBM Plex Mono";font-style:normal;font-weight:400;font-display:swap;
+  src:url(../assets/fonts/ibmplexmono-400-normal-latin.woff2) format("woff2");
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215}
+@font-face{font-family:"IBM Plex Mono";font-style:normal;font-weight:400;font-display:swap;
+  src:url(../assets/fonts/ibmplexmono-400-normal-latin-ext.woff2) format("woff2");
+  unicode-range:U+0100-024F,U+1E00-1EFF,U+2020,U+20A0-20AB}
+@font-face{font-family:"IBM Plex Mono";font-style:normal;font-weight:600;font-display:swap;
+  src:url(../assets/fonts/ibmplexmono-600-normal-latin.woff2) format("woff2")}
+/* Arabisch — Montserrat, Space Grotesk und IBM Plex Mono haben keine
+   arabischen Glyphen. Ohne eigene Schrift fällt der Browser auf eine
+   Systemschrift zurück und der Satz bricht optisch aus dem Auftritt aus. */
+@font-face{font-family:"IBM Plex Sans Arabic";font-style:normal;font-weight:400;font-display:swap;
+  src:url(../assets/fonts/ibmplexsansarabic-400-normal-arabic.woff2) format("woff2")}
+@font-face{font-family:"IBM Plex Sans Arabic";font-style:normal;font-weight:600;font-display:swap;
+  src:url(../assets/fonts/ibmplexsansarabic-600-normal-arabic.woff2) format("woff2")}
+@font-face{font-family:"IBM Plex Sans Arabic";font-style:normal;font-weight:700;font-display:swap;
+  src:url(../assets/fonts/ibmplexsansarabic-700-normal-arabic.woff2) format("woff2")}
+
+:root{
+  --bg:#0c1117; --bg-raise:#111a22; --bg-deep:#070b0f;
+  --ink:#f2f6f8; --ink-dim:#c9d6de; --muted:#7d8b9c;
+  --line:rgba(242,246,248,.12); --line-strong:rgba(242,246,248,.24);
+  --accent:#2dd4bf; --accent-ink:#04231f; --accent-soft:rgba(45,212,191,.26);
+  --warn:#f0b429; --ok:#3ddc84; --alarm:#ff5468;
+  --display:"Space Grotesk",Montserrat,system-ui,sans-serif;
+  --body:Montserrat,system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Consolas,monospace;
+  --pad:clamp(1.25rem,5vw,5.5rem);
+  --breit:78rem;
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+/* KEIN overflow-x hier! Jeder Wert ausser visible macht das html-Element zum
+   Scrollcontainer und zerstoert damit position:sticky der Buehne. Der Querlauf
+   wird stattdessen an der Ursache behoben (Abdunkler-Inset unten). */
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);
+  font-size:1rem;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img,svg,video{display:block;max-width:100%;height:auto}   /* height:auto ist Pflicht,
+  sonst quetscht max-width das Bild gegen die height-Angabe im Markup */
+a{color:inherit}
+h1,h2,h3{font-family:var(--display);font-weight:700;letter-spacing:-.035em;line-height:1.03;margin:0}
+h4{margin:0;font-family:var(--display);font-weight:700;letter-spacing:-.02em}
+p{margin:0}
+.verborgen{display:none !important}
+.nurlesbar{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.mono{font-family:var(--mono);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase}
+.mitte{max-width:var(--breit);margin:0 auto}
+
+/* ---------------- Schaltflächen ---------------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;
+  padding:.78rem 1.25rem;text-decoration:none;cursor:pointer;
+  font-family:var(--mono);font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;
+  border:1px solid var(--accent);background:var(--accent);color:var(--accent-ink);
+  transition:transform .2s var(--ease),filter .2s,border-color .2s,color .2s}
+.btn:hover{transform:translateY(-2px);filter:brightness(1.08)}
+.btn--geist{background:transparent;color:var(--ink);border-color:var(--line-strong)}
+.btn--geist:hover{border-color:var(--accent);color:var(--accent)}
+.btn--klein{padding:.6rem .9rem;font-size:.7rem;min-height:2.75rem}
+
+/* ---------------- Kopfzeile ---------------- */
+.kopf{position:fixed;z-index:70;inset:0 0 auto 0;
+  background:linear-gradient(rgba(7,11,15,.92),rgba(7,11,15,0));
+  backdrop-filter:blur(8px)}
+.kopf__zeile{display:flex;align-items:center;justify-content:space-between;gap:.7rem;
+  padding:.85rem var(--pad);margin:0 auto;
+  /* NICHT max-width:var(--breit) — die Polsterung liegt hier am selben
+     Element, die Abschnitte legen sie eine Ebene darueber. Ohne das
+     Aufaddieren ist die Kopfzeile 2x --pad schmaler als der Inhalt und
+     laeuft bei jeder Fensterbreite rechts heraus. */
+  max-width:calc(var(--breit) + 2 * var(--pad))}
+.marke{display:flex;align-items:center;gap:.7rem;text-decoration:none;flex:none}
+.marke svg{width:2.6rem;height:1.8rem;color:var(--accent)}
+.marke__name{font-family:var(--display);font-weight:700;letter-spacing:.02em;
+  font-size:.95rem;text-transform:uppercase}
+.marke__name span{color:var(--accent)}
+.navi{display:none;align-items:center;gap:0}
+.navi a{padding:.55rem .5rem;text-decoration:none;color:var(--muted);
+  font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;
+  transition:color .18s}
+.navi a:hover{color:var(--ink)}
+.kopf__tun{display:flex;align-items:center;gap:.45rem}
+/* Ohne Umbruchsperre wachsen die Schaltflaechen zweizeilig und ziehen die
+   Kopfzeile mit — auf Englisch besonders, weil die Beschriftungen laenger sind. */
+.kopf__tun .btn{white-space:nowrap}
+.menue-knopf{display:inline-flex;flex-direction:column;justify-content:center;align-items:center;
+  gap:.28rem;min-width:2.75rem;min-height:2.75rem;   /* 44 px Mindestmass fuer Finger */
+  background:transparent;border:1px solid var(--line-strong);cursor:pointer}
+.menue-knopf i{display:block;width:1.05rem;height:1.5px;background:var(--ink)}
+.menue{border-top:1px solid var(--line);background:var(--bg-deep);padding:.6rem var(--pad) 1rem}
+.menue a{display:block;padding:.7rem .2rem;text-decoration:none;color:var(--ink-dim);
+  font-family:var(--mono);font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;
+  border-bottom:1px solid var(--line)}
+/* Volle Navigation erst, wenn das Fenster mindestens so breit ist wie die
+   Inhaltsspalte. Darunter uebernimmt das Menue — es enthaelt alle sieben
+   Punkte und Demo, es geht also nichts verloren. */
+@media(min-width:78rem){
+  .navi{display:flex}
+  .menue-knopf{display:none}
+  .menue{display:none !important}
+}
+/* "Projekt anfragen" braucht neben Sprachwahl und Menueknopf zu viel Platz,
+   sobald das Fenster unter 64rem faellt. Kontakt steht im Menue. */
+@media not all and (min-width:64rem){ .kopf__tun .btn:not(.btn--geist){display:none} }
+/* Auf dem Handy bleiben Logo, Sprachwahl und Menueknopf. Beide
+   Schaltflaechen wuerden den Menueknopf aus dem Bild schieben. */
+@media(max-width:34rem){ .kopf__tun .btn{display:none} }
+/* Sehr schmale Geraete (320 px): Bildmarke und Schriftzug kleiner. */
+@media(max-width:22rem){
+  .marke{gap:.5rem}
+  .marke svg{width:2.15rem;height:1.5rem}
+  .marke__name{font-size:.85rem}
+}
+
+/* ---------------- Bühne ---------------- */
+.buehne{position:relative;isolation:isolate;background:var(--bg)}
+.buehne__fix{position:sticky;top:0;z-index:0;width:100%;height:var(--bh,100lvh);overflow:hidden;
+  background:radial-gradient(125% 85% at 50% 8%,#1b2a35 0%,#101a22 42%,var(--bg-deep) 100%)}
+.buehne__medien{position:absolute;inset:0;z-index:1}
+.ebene{position:absolute;inset:0;margin:0;opacity:0;will-change:opacity}
+.ebene picture{display:block;width:100%;height:100%}
+.ebene img{width:100%;height:100%;object-fit:cover;object-position:center 62%}
+.buehne__video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  object-position:center 58%;opacity:0;z-index:2;pointer-events:none}
+.buehne__leinwand{position:absolute;inset:0;width:100%;height:100%;z-index:3;opacity:0}
+.buehne__schleier{position:absolute;inset:0;z-index:4;pointer-events:none;
+  background:
+    radial-gradient(125% 90% at 50% 42%,transparent 44%,rgba(7,11,15,.55) 100%),
+    linear-gradient(rgba(7,11,15,.55),rgba(7,11,15,.05) 26%,rgba(7,11,15,.12) 60%,rgba(7,11,15,.75))}
+.buehne__fortschritt{position:absolute;z-index:6;inset:0 0 auto 0;height:2px;
+  background:rgba(242,246,248,.14)}
+.buehne__fortschritt span{display:block;width:100%;height:100%;background:var(--accent);
+  transform:scaleX(var(--p,0));transform-origin:left center}
+.buehne__route{position:absolute;z-index:7;top:clamp(4.2rem,7vw,5rem);
+  left:var(--pad);right:var(--pad);display:flex;justify-content:flex-end;gap:.1rem;flex-wrap:wrap}
+.buehne__route button{min-height:2.5rem;padding:.45rem .65rem;border:0;background:transparent;
+  color:var(--muted);font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;
+  text-transform:uppercase;cursor:pointer}
+.buehne__route button:hover{color:var(--ink)}
+.buehne__route button[aria-current="step"]{color:var(--ink);
+  text-decoration:underline var(--accent) .14em;text-underline-offset:.34em}
+.buehne__anzeige{position:absolute;z-index:6;left:var(--pad);
+  bottom:clamp(1.4rem,3.5vw,2.4rem);display:flex;gap:1.4rem;
+  font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--muted);pointer-events:none}
+.buehne__anzeige b{display:block;color:var(--ink);font-family:var(--display);
+  font-size:1.05rem;letter-spacing:-.02em}
+.buehne__wink{position:absolute;z-index:6;right:var(--pad);
+  bottom:clamp(1.4rem,3.5vw,2.4rem);font-family:var(--mono);font-size:.66rem;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--muted);pointer-events:none;
+  animation:wippen 2.4s ease-in-out infinite;transition:opacity .4s}
+@keyframes wippen{0%,100%{transform:translateY(0);opacity:.5}50%{transform:translateY(5px);opacity:1}}
+
+.buehne__text{position:relative;z-index:5;margin-top:calc(-1 * var(--bh,100lvh));pointer-events:none}
+.kapitel{position:relative}
+.kapitel__halt{position:sticky;top:0;display:flex;align-items:center;min-height:var(--bh,100lvh);
+  --kpad:var(--pad);   /* der Abdunkler .satz::before liest das mit — beide muessen gleich sein */
+  padding:clamp(5rem,8vw,7rem) var(--kpad);pointer-events:none}
+.kapitel[data-lage="rechts"] .kapitel__halt{justify-content:flex-end}
+.kapitel[data-lage="mitte"] .kapitel__halt{justify-content:center;text-align:center}
+.satz{position:relative;width:min(36rem,54vw);pointer-events:auto}
+.satz::before{content:"";position:absolute;z-index:-1;
+  inset:-2.6rem calc(-1 * min(4.5rem, var(--kpad, var(--pad))));   /* nie ueber den Seitenrand hinaus */
+  background:radial-gradient(ellipse at center,rgba(7,11,15,.93) 0%,rgba(7,11,15,.7) 54%,transparent 82%)}
+.satz::after{content:attr(data-nr);position:absolute;z-index:-2;top:50%;left:50%;
+  transform:translate(-50%,-50%);font-family:var(--display);font-weight:700;line-height:1;
+  color:var(--accent);opacity:.085;font-size:clamp(13rem,28vw,24rem);pointer-events:none}
+.satz__auge{margin:0 0 .85rem;color:var(--accent);font-family:var(--mono);font-size:.72rem;
+  font-weight:600;letter-spacing:.15em;text-transform:uppercase}
+.satz__titel{max-width:16ch;font-size:clamp(2.2rem,5.2vw,4.6rem);
+  text-shadow:0 2px 18px rgba(7,11,15,.9),0 1px 4px rgba(7,11,15,.95)}
+.satz__titel em{font-style:normal;color:var(--accent)}
+.satz__text{max-width:46ch;margin:1.3rem 0 0;color:var(--ink-dim);font-weight:300;
+  font-size:clamp(1rem,1.25vw,1.12rem);line-height:1.62;
+  text-shadow:0 2px 14px rgba(7,11,15,.9)}
+.satz__marken{display:flex;flex-wrap:wrap;gap:.45rem;margin:1.3rem 0 0;padding:0;list-style:none}
+.satz__marken li{padding:.38rem .62rem;border:1px solid var(--line-strong);
+  font-family:var(--mono);font-size:.72rem;letter-spacing:.05em}
+@media(max-width:52rem){
+  .satz{width:100%}
+  .satz__titel{max-width:100%}
+  .buehne__route{display:none}
+  /* Anzeige und Scroll-Hinweis wuerden sich mit dem Kapiteltext ueberlagern —
+     auf schmalen Schirmen hat der Text Vorrang. */
+  .buehne__anzeige,.buehne__wink{display:none}
+  .kapitel__halt{--kpad:1.15rem;padding-left:var(--kpad);padding-right:var(--kpad)}
+  .satz::after{font-size:clamp(9rem,52vw,15rem);opacity:.07}
+}
+
+/* ---------------- Abschnitte ---------------- */
+.abschnitt{padding:clamp(4rem,8vw,7.5rem) var(--pad);scroll-margin-top:5rem}
+.abschnitt--hoch{background:var(--bg-raise)}
+.kopfzeile{max-width:52rem}
+.auge{margin:0 0 .9rem;color:var(--accent);font-family:var(--mono);font-size:.72rem;
+  letter-spacing:.15em;text-transform:uppercase}
+.abschnitt h2{font-size:clamp(1.9rem,3.4vw,3rem)}
+.abschnitt h2 em{font-style:normal;color:var(--accent)}
+.unter{margin:1.1rem 0 0;color:var(--muted);font-weight:300;max-width:56ch;font-size:1.06rem}
+
+.gitter{display:grid;gap:1px;background:var(--line);margin-top:2.8rem}
+.gitter--2{grid-template-columns:1fr}
+.gitter--3{grid-template-columns:1fr}
+@media(min-width:52rem){.gitter--2{grid-template-columns:1fr 1fr}}
+@media(min-width:60rem){.gitter--3{grid-template-columns:repeat(3,1fr)}}
+.karte{background:var(--bg);padding:clamp(1.4rem,2.6vw,2.1rem);display:flex;flex-direction:column}
+.abschnitt--hoch .karte{background:var(--bg-raise)}
+.karte__nr{font-family:var(--mono);font-size:.72rem;color:var(--accent);letter-spacing:.14em}
+.karte h3{margin:.8rem 0 .65rem;font-size:1.35rem}
+.karte__preis{font-family:var(--display);font-weight:700;font-size:1.6rem;
+  letter-spacing:-.03em;color:var(--accent);margin:.2rem 0 .8rem}
+.karte p{color:var(--muted);font-weight:300}
+.liste{margin:1.1rem 0 0;padding:0;list-style:none;display:grid;gap:.5rem}
+.liste li{position:relative;padding-left:1.15rem;font-size:.94rem;color:var(--ink-dim)}
+.liste li::before{content:"";position:absolute;left:0;top:.62em;width:.4rem;height:.4rem;
+  background:var(--accent)}
+.karte__fuss{margin-top:auto;padding-top:1.3rem}
+.ergebnis{margin-top:1.1rem;padding-top:1.1rem;border-top:1px solid var(--line);
+  font-size:.92rem;color:var(--ink)}
+.ergebnis b{color:var(--accent);font-weight:600}
+.fussnote{margin-top:1.8rem;color:var(--muted);font-size:.86rem;font-weight:300;max-width:70ch}
+
+/* Prinzip */
+.prinzip{display:grid;gap:2.6rem;margin-top:2.6rem}
+@media(min-width:60rem){.prinzip{grid-template-columns:1.15fr .85fr;gap:4rem}}
+.prinzip p+p{margin-top:1.1rem}
+.prinzip p{color:var(--ink-dim);font-weight:300}
+.nachweise{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line)}
+@media(max-width:30rem){ .nachweise{grid-template-columns:1fr} }
+.nachweis span{overflow-wrap:anywhere}   /* "Architektenkammer," sprengte sonst die Spalte */
+.nachweis{background:var(--bg);padding:1.15rem}
+.abschnitt--hoch .nachweis{background:var(--bg-raise)}
+.nachweis h4{font-size:1.05rem;color:var(--accent)}
+.nachweis span{display:block;margin-top:.3rem;color:var(--muted);font-size:.84rem}
+
+/* Werkzeuge */
+.fenster{margin-top:2.6rem;border:1px solid var(--line);background:var(--bg-deep)}
+.fenster__leiste{display:flex;align-items:center;gap:.4rem;padding:.65rem .85rem;
+  border-bottom:1px solid var(--line)}
+.fenster__leiste i{width:.6rem;height:.6rem;border-radius:50%;background:var(--line-strong)}
+.fenster__leiste i:first-child{background:var(--accent)}
+.fenster__leiste span{margin-left:.5rem;font-family:var(--mono);font-size:.66rem;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.fenster figcaption{padding:.9rem;color:var(--muted);font-size:.86rem;
+  border-top:1px solid var(--line);font-weight:300}
+.terminal{font-family:var(--mono);font-size:.8rem;line-height:1.75;padding:1.1rem;
+  min-height:15rem;white-space:pre-wrap;word-break:break-word;color:var(--ink-dim)}
+.t-dim{color:var(--muted)} .t-ok{color:var(--ok)} .t-warn{color:var(--warn)}
+.t-akzent{color:var(--accent);font-weight:600} .t-cursor{color:var(--accent)}
+.chips{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:2rem;padding:0;list-style:none}
+.chips li{padding:.42rem .7rem;border:1px solid var(--line-strong);font-family:var(--mono);
+  font-size:.72rem;letter-spacing:.05em;color:var(--ink-dim)}
+
+/* Stationen */
+/* Gründer-Block: Text links, Portrait rechts und bewusst größer als die
+   Textspalte — nach den am Vorbild gemessenen Verhältnissen (502 zu 679 px,
+   72 px Abstand, mittig ausgerichtet). */
+.gruender{display:grid;gap:2.5rem;align-items:center;margin-top:.5rem}
+@media(min-width:64rem){
+  .gruender{grid-template-columns:minmax(0,.44fr) minmax(0,.56fr);gap:4.5rem}
+}
+/* Zwei Klassen, damit die Regel gegen .abschnitt h2 gewinnt (Spezifität) */
+.gruender .gruender__name{font-size:clamp(2rem,4.6vw,3.5rem);margin:.6rem 0 1.5rem;line-height:1.02}
+.gruender__text p:not(.auge){color:var(--ink-dim);font-weight:300;font-size:1.06rem;
+  max-width:52ch;line-height:1.7}
+.gruender__text p:not(.auge)+p{margin-top:1.1rem}
+.gruender__text b{color:var(--ink);font-weight:600}
+.gruender__bild{margin:0}
+.gruender__bild img{width:100%;border:1px solid var(--line);filter:saturate(.94) contrast(1.02)}
+.gruender__bild figcaption{margin-top:.9rem;font-family:var(--mono);font-size:.72rem;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--muted);line-height:1.9}
+.nachweis{opacity:.72;font-size:.66rem;letter-spacing:.1em}
+
+.stationen{margin-top:2.2rem;padding:0;list-style:none;position:relative}
+.stationen::before{content:"";position:absolute;left:.36rem;top:.5rem;bottom:.5rem;
+  width:1px;background:var(--line)}
+.station{position:relative;padding:0 0 1.9rem 2rem}
+.station::before{content:"";position:absolute;left:0;top:.42rem;width:.78rem;height:.78rem;
+  border:2px solid var(--accent);background:var(--bg);border-radius:50%}
+.station__zeit{font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--accent)}
+.station h4{margin:.35rem 0 .3rem;font-size:1.02rem}
+.station p{color:var(--muted);font-size:.92rem;font-weight:300}
+
+/* Kontakt */
+.kontakt{display:grid;gap:2.6rem;margin-top:2.4rem}
+@media(min-width:60rem){.kontakt{grid-template-columns:1.1fr .9fr;gap:4rem}}
+.kontakt__zeile{display:grid;gap:1px;background:var(--line);margin-top:1.8rem}
+.kontakt__feld{background:var(--bg);padding:1.15rem}
+.abschnitt--hoch .kontakt__feld{background:var(--bg-raise)}
+.kontakt__feld .mono{color:var(--muted);display:block;margin-bottom:.5rem}
+.kontakt__knopf{background:transparent;border:1px dashed var(--line-strong);color:var(--accent);
+  font:inherit;font-size:.95rem;padding:.5rem .8rem;cursor:pointer;text-align:left}
+.kontakt__knopf:hover{border-color:var(--accent)}
+.kontakt__knopf small{display:block;color:var(--muted);font-size:.75rem;margin-top:.2rem}
+.kontakt__wert{font-size:1.05rem;color:var(--accent);text-decoration:none;word-break:break-all}
+.kontakt__wert:hover{color:var(--ink)}
+
+/* Fuß und Impressum */
+.fuss{border-top:1px solid var(--line);padding:2.4rem var(--pad);
+  display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;align-items:center;
+  color:var(--muted);font-size:.85rem}
+.fuss button{background:none;border:0;color:var(--muted);font:inherit;cursor:pointer;
+  text-decoration:underline;text-underline-offset:.25em;
+  min-height:2.75rem;padding:.5rem 0}
+.fuss button:hover{color:var(--accent)}
+.rechtstext{padding:clamp(3rem,6vw,5rem) var(--pad);background:var(--bg-deep);scroll-margin-top:5rem;
+  border-top:1px solid var(--line)}
+.rechtstext .mitte{max-width:52rem}
+.rechtstext h2{font-size:clamp(1.6rem,2.6vw,2.2rem);margin-bottom:1.6rem}
+.rechtstext h3{font-size:1.02rem;margin:2rem 0 .5rem;color:var(--accent)}
+.rechtstext p,.rechtstext li{color:var(--ink-dim);font-size:.92rem;font-weight:300;
+  margin:.45rem 0}
+.rechtstext ul{padding-left:1.2rem}
+.rechtstext a{color:var(--accent)}
+.rechtstext button{background:transparent;border:1px dashed var(--line-strong);
+  color:var(--accent);font:inherit;font-size:.9rem;padding:.35rem .6rem;cursor:pointer}
+.rechtstext svg{display:inline;vertical-align:middle}
+
+/* Modal */
+.modal{position:fixed;inset:0;z-index:90;display:flex;align-items:center;justify-content:center;
+  padding:1.5rem;background:rgba(7,11,15,.86);backdrop-filter:blur(6px)}
+.modal__kasten{max-width:34rem;background:var(--bg-raise);border:1px solid var(--line-strong);
+  padding:clamp(1.5rem,3vw,2.4rem)}
+.modal__kasten h3{font-size:1.5rem;margin-bottom:.9rem}
+.modal__kasten p{color:var(--muted);font-weight:300}
+.modal__tun{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.6rem}
+
+/* Flache Fenster (Tablet und Handy quer). Der Kapiteltext hatte bei 560 px
+   Höhe nur noch 21 px Luft, auf Arabisch 12 px — jede knappere Höhe schneidet ab.
+   Deshalb hier weniger Polsterung, kleinere Schrift, und die Schlagwort-Marken
+   weichen als erstes, weil sie Dekor sind. */
+@media(max-height:46rem){
+  .buehne__anzeige,.buehne__wink{display:none}
+  .kapitel__halt{padding-top:4.2rem;padding-bottom:2.4rem}
+  .satz__auge{margin-bottom:.5rem}
+  .satz__titel{font-size:clamp(1.7rem,3.6vw,2.7rem)}
+  .satz__text{font-size:.96rem;line-height:1.5;margin-top:.9rem}
+  .satz__marken{display:none}
+  .satz::after{font-size:clamp(8rem,20vw,14rem)}
+}
+@media(max-height:34rem){
+  .kapitel__halt{padding-top:3.6rem;padding-bottom:1.6rem}
+  .satz__titel{font-size:clamp(1.4rem,3vw,2rem)}
+  .satz__text{font-size:.9rem;line-height:1.45;margin-top:.7rem}
+}
+
+/* ---------------- Sprachwahl ---------------- */
+.sprachwahl{display:flex;border:1px solid var(--line-strong)}
+.sprachwahl button{min-height:2.75rem;padding:.5rem .58rem;background:transparent;border:0;
+  color:var(--muted);font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;
+  cursor:pointer;transition:color .18s,background .18s}
+.sprachwahl button+button{border-inline-start:1px solid var(--line-strong)}
+.sprachwahl button:hover{color:var(--ink)}
+.sprachwahl button[aria-pressed="true"]{color:var(--accent-ink);background:var(--accent)}
+.sprachwahl button[lang="ar"]{font-family:"IBM Plex Sans Arabic",var(--mono);letter-spacing:0}
+/* Sprachknoepfe auf dem Handy: 31 px waren zum Tippen zu schmal, die Hoehe
+   war mit 44 px schon richtig. Feste Breite geht nicht — bei 320 px muessen
+   Logo und Menueknopf daneben passen. Die Gruppe nimmt sich daher den freien
+   Platz der Kopfzeile bis 44 px je Knopf und schrumpft nur so weit, wie es
+   die Nachbarn erzwingen. Ergebnis: 44 px ab 390 px Geraetebreite, 39 px bei
+   360, 32 px bei 320 — statt ueberall 31. */
+/* Gilt ueberall, wo der Menueknopf steht — also auf allen Tippgeraeten
+   einschliesslich Tablet, nicht nur auf dem Handy. Sonst faellt die Breite
+   bei 641 px wieder auf 33 px zurueck. */
+/* 77.99, nicht 78: bei exakt 78rem greift sonst auch der
+   min-width:78rem-Block der Desktop-Navigation — Doppel-Match. */
+@media not all and (min-width:78rem){
+  /* Der freie Platz liegt in .kopf__zeile, nicht in .kopf__tun — ohne dieses
+     Mitwachsen hat flex-grow an der Gruppe keine Wirkung. flex-end haelt
+     Knoepfe und Menue weiter am Rand (und spiegelt sich in RTL von selbst). */
+  .kopf__tun{flex:1 1 auto;justify-content:flex-end}
+  .sprachwahl{flex:1 1 auto;
+    /* 3 = Anzahl der Sprachknoepfe (DE/EN/AR) — bei einer vierten
+       Sprache hier mitzaehlen, sonst sinkt die Tippflaeche unter 44 px */
+    max-width:calc(3 * 2.75rem + 2px)}
+  .sprachwahl button{flex:1 1 auto;min-width:2rem;max-width:2.75rem}
+}
+@media(max-width:40rem){ .sprachwahl button{padding:.5rem .2rem;font-size:.66rem} }
+
+/* ---------------- Arabisch: Schrift und Leserichtung ---------------- */
+:root[lang="ar"]{
+  --display:"IBM Plex Sans Arabic",Montserrat,system-ui,sans-serif;
+  --body:"IBM Plex Sans Arabic",Montserrat,system-ui,sans-serif;
+  --mono:"IBM Plex Sans Arabic",ui-monospace,monospace;
+}
+:root[lang="ar"] h1,:root[lang="ar"] h2,:root[lang="ar"] h3,:root[lang="ar"] h4{
+  letter-spacing:0;line-height:1.25}          /* enges Tracking passt nicht zur arabischen Schrift */
+:root[lang="ar"] .mono,:root[lang="ar"] .auge,:root[lang="ar"] .satz__auge,
+:root[lang="ar"] .karte__nr,:root[lang="ar"] .station__zeit,
+:root[lang="ar"] .chips li,:root[lang="ar"] .satz__marken li,
+:root[lang="ar"] .navi a,:root[lang="ar"] .btn,:root[lang="ar"] .menue a,
+:root[lang="ar"] .gruender__bild figcaption,:root[lang="ar"] .fenster__leiste span,
+:root[lang="ar"] .buehne__anzeige,:root[lang="ar"] .buehne__route button{
+  letter-spacing:0;text-transform:none}       /* Kapitälchen gibt es im Arabischen nicht */
+:root[lang="ar"] .marke__name{font-size:.88rem}   /* sonst frisst der Schriftzug die Tippflaeche der Sprachknoepfe */
+:root[lang="ar"] .satz__text,:root[lang="ar"] .unter,:root[lang="ar"] .gruender__text p{
+  font-weight:400}                            /* Strichstärke 300 wirkt arabisch zu dünn */
+
+/* Physische Ränder spiegeln — was in der Grundfassung links steht, muss
+   rechts stehen. Flexbox und Grid drehen von selbst, diese Stellen nicht. */
+[dir="rtl"] .buehne__anzeige{left:auto;right:var(--pad)}
+[dir="rtl"] .buehne__wink{right:auto;left:var(--pad)}
+[dir="rtl"] .liste li{padding-left:0;padding-right:1.15rem}
+[dir="rtl"] .liste li::before{left:auto;right:0}
+[dir="rtl"] .stationen::before{left:auto;right:.36rem}
+[dir="rtl"] .station{padding:0 2rem 1.9rem 0}
+[dir="rtl"] .station::before{left:auto;right:0}
+[dir="rtl"] .fenster__leiste span{margin-left:0;margin-right:.5rem}
+[dir="rtl"] .btn--geist.btn--klein[style*="margin-left"]{margin-left:0 !important;margin-right:.5rem}
+[dir="rtl"] .terminal{direction:ltr;text-align:left}   /* Protokollzeilen bleiben lateinisch */
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .buehne__wink{animation:none}
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute">
+  <symbol id="logo-mark" viewBox="0 0 104 72">
+    <g fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round">
+      <path d="M20 64 H74"></path>
+      <path d="M54 64 V18 L68 9 V64"></path>
+      <path d="M38 64 V34 H54"></path>
+    </g>
+    <g fill="none" stroke="currentColor" stroke-width="1.4">
+      <rect x="41" y="40" width="3.4" height="3.4"></rect>
+      <rect x="47.2" y="40" width="3.4" height="3.4"></rect>
+      <rect x="41" y="48" width="3.4" height="3.4"></rect>
+      <rect x="47.2" y="48" width="3.4" height="3.4"></rect>
+      <rect x="41" y="56" width="3.4" height="3.4"></rect>
+      <rect x="47.2" y="56" width="3.4" height="3.4"></rect>
+    </g>
+    <g fill="currentColor">
+      <rect x="30" y="29" width="4" height="4"></rect>
+      <rect x="29" y="39" width="4" height="4"></rect>
+      <rect x="31" y="49" width="3.6" height="3.6"></rect>
+      <rect x="29.4" y="58" width="3.2" height="3.2"></rect>
+      <rect x="23" y="33" width="3.4" height="3.4"></rect>
+      <rect x="24" y="45" width="3.2" height="3.2"></rect>
+      <rect x="21" y="54" width="3" height="3"></rect>
+      <rect x="15" y="37" width="2.8" height="2.8"></rect>
+      <rect x="17" y="48" width="2.6" height="2.6"></rect>
+      <rect x="14" y="29" width="2.4" height="2.4"></rect>
+      <rect x="9" y="44" width="2.2" height="2.2"></rect>
+      <rect x="8" y="53" width="2" height="2"></rect>
+      <rect x="7" y="35" width="1.8" height="1.8"></rect>
+    </g>
+  </symbol>
+</svg>
+
+<header class="kopf">
+  <div class="kopf__zeile">
+    <a class="marke" href="#top" aria-label="BIT-ATELIER, zur Startseite" data-nicht-uebersetzen="">
+      <svg aria-hidden="true"><use href="#logo-mark"></use></svg>
+      <span class="marke__name">BIT<span>·</span>ATELIER</span>
+    </a>
+    <nav class="navi" aria-label="Hauptnavigation">
+      <a href="#prinzip">Approach</a>
+      <a href="#leistungen">Services</a>
+      <a href="#pakete">Packages</a>
+      <a href="#werkzeuge">Tools</a>
+      <a href="#downloads">Downloads</a>
+      <a href="#erfahrung">Experience</a>
+      <a href="#kontakt">Contact</a>
+    </nav>
+    <div class="kopf__tun">
+      <div class="sprachwahl" data-sprachwahl="" role="group" aria-label="Sprache wählen">
+        <button type="button" data-sprache="de" aria-pressed="false" lang="de">DE</button>
+        <button type="button" data-sprache="en" aria-pressed="true" lang="en">EN</button>
+        <button type="button" data-sprache="ar" aria-pressed="false" lang="ar">عربي</button>
+      </div>
+      <a class="btn btn--geist btn--klein" href="../demo/">Live demo</a>
+      <!-- Zugang zur Plattform. EINE Stelle je Sprachfassung — wenn
+           app.bit-atelier.de eingerichtet ist, hier und im Menue unten die
+           Adresse tauschen. -->
+      <a class="btn btn--geist btn--klein" href="https://bit-atelier.pages.dev/anmeldung"
+         title="Go to the platform — access is issued by your office administration">Sign in</a>
+      <a class="btn btn--klein" href="#kontakt" data-herkunft="Kopfzeile">Start a project</a>
+      <button class="menue-knopf" id="menue-knopf" type="button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="menue">
+        <i></i><i></i><i></i>
+      </button>
+    </div>
+  </div>
+  <nav class="menue verborgen" id="menue" aria-label="Menü">
+    <a href="#prinzip">Approach</a>
+    <a href="#leistungen">Services</a>
+    <a href="#pakete">Service packages</a>
+    <a href="#werkzeuge">Tools</a>
+    <a href="#downloads">Downloads</a>
+    <a href="#erfahrung">Experience</a>
+    <a href="#kontakt">Contact</a>
+    <a href="../demo/">Live demo</a>
+    <a href="https://bit-atelier.pages.dev/anmeldung">Sign in</a>
+  </nav>
+</header>
+
+<script>
+  /* Buehnenhoehe festschreiben.
+     Viewport-Einheiten taugen auf dem Handy nicht: beim ersten Scrollen faehrt
+     die Adressleiste ein, das Fenster waechst — dvh zieht verzoegert nach und
+     hinterlaesst einen dunklen Streifen unter der klebenden Buehne.
+     Gemessen wird ein LAUFENDES MAXIMUM: die Buehne darf zu hoch sein (man
+     sieht es nicht, das Bild ist auf Fuellen gestellt), aber nie zu niedrig.
+     Beim Drehen wird das Maximum zurueckgesetzt. */
+  (function(){
+    var wurzel = document.documentElement, maxH = 0, warten = false;
+    function messen(){
+      warten = false;
+      var h = window.innerHeight || 0;
+      if (window.visualViewport && visualViewport.height > h) h = visualViewport.height;
+      if (h > maxH) { maxH = h; wurzel.style.setProperty('--bh', Math.round(h) + 'px'); }
+    }
+    function anstossen(){ if (!warten) { warten = true; requestAnimationFrame(messen); } }
+    function neuBeginnen(){ maxH = 0; setTimeout(messen, 240); }
+    messen();
+    addEventListener('load', messen);
+    addEventListener('resize', anstossen, {passive:true});
+    addEventListener('scroll', anstossen, {passive:true});   /* faengt die einfahrende Adressleiste */
+    addEventListener('orientationchange', neuBeginnen);
+    if (window.visualViewport) visualViewport.addEventListener('resize', anstossen, {passive:true});
+  })();
+</script>
+<main id="top">
+
+  <!-- ==================== BÜHNE: VOM BAUFELD ZUM HAUS ==================== -->
+  <section class="buehne" id="buehne" aria-label="Vom Baufeld zum fertigen Wohnhaus">
+    <div class="buehne__fix">
+      <div class="buehne__medien" id="medien" aria-hidden="true">
+        <video class="buehne__video" id="buehne-video" muted="" playsinline="" preload="auto" disablepictureinpicture="" disableremoteplayback="" style=""></video>
+        <figure class="ebene" data-von="0.00" data-bis="0.115" style="">
+          <!-- AVIF/WebP zuerst (Befund B-03): unter 900 px traegt allein dieser
+               Bilderpfad die Buehne. Die JPEGs bleiben als Rueckfall. -->
+          <picture>
+            <source type="image/avif" sizes="100vw" srcset="../assets/img/bauablauf/phase-1-baufeld-800.avif 800w, ../assets/img/bauablauf/phase-1-baufeld.avif 1600w">
+            <source type="image/webp" sizes="100vw" srcset="../assets/img/bauablauf/phase-1-baufeld-800.webp 800w, ../assets/img/bauablauf/phase-1-baufeld.webp 1600w">
+            <img src="../assets/img/bauablauf/phase-1-baufeld-800.jpg" srcset="../assets/img/bauablauf/phase-1-baufeld-800.jpg 800w, ../assets/img/bauablauf/phase-1-baufeld.jpg 1600w" sizes="100vw" alt="" width="1600" height="900" loading="eager" decoding="async" fetchpriority="high">
+          </picture>
+        </figure>
+        <figure class="ebene" data-von="0.115" data-bis="0.235" style="">
+          <picture>
+            <source type="image/avif" sizes="100vw" srcset="../assets/img/bauablauf/phase-2-gruendung-800.avif 800w, ../assets/img/bauablauf/phase-2-gruendung.avif 1600w">
+            <source type="image/webp" sizes="100vw" srcset="../assets/img/bauablauf/phase-2-gruendung-800.webp 800w, ../assets/img/bauablauf/phase-2-gruendung.webp 1600w">
+            <img src="../assets/img/bauablauf/phase-2-gruendung-800.jpg" srcset="../assets/img/bauablauf/phase-2-gruendung-800.jpg 800w, ../assets/img/bauablauf/phase-2-gruendung.jpg 1600w" sizes="100vw" alt="" width="1600" height="900" loading="lazy" decoding="async">
+          </picture>
+        </figure>
+        <figure class="ebene" data-von="0.235" data-bis="0.45" style="">
+          <picture>
+            <source type="image/avif" sizes="100vw" srcset="../assets/img/bauablauf/phase-3-tragwerk-800.avif 800w, ../assets/img/bauablauf/phase-3-tragwerk.avif 1600w">
+            <source type="image/webp" sizes="100vw" srcset="../assets/img/bauablauf/phase-3-tragwerk-800.webp 800w, ../assets/img/bauablauf/phase-3-tragwerk.webp 1600w">
+            <img src="../assets/img/bauablauf/phase-3-tragwerk-800.jpg" srcset="../assets/img/bauablauf/phase-3-tragwerk-800.jpg 800w, ../assets/img/bauablauf/phase-3-tragwerk.jpg 1600w" sizes="100vw" alt="" width="1600" height="900" loading="lazy" decoding="async">
+          </picture>
+        </figure>
+        <figure class="ebene" data-von="0.45" data-bis="0.635" style="">
+          <picture>
+            <source type="image/avif" sizes="100vw" srcset="../assets/img/bauablauf/phase-4-huelle-800.avif 800w, ../assets/img/bauablauf/phase-4-huelle.avif 1600w">
+            <source type="image/webp" sizes="100vw" srcset="../assets/img/bauablauf/phase-4-huelle-800.webp 800w, ../assets/img/bauablauf/phase-4-huelle.webp 1600w">
+            <img src="../assets/img/bauablauf/phase-4-huelle-800.jpg" srcset="../assets/img/bauablauf/phase-4-huelle-800.jpg 800w, ../assets/img/bauablauf/phase-4-huelle.jpg 1600w" sizes="100vw" alt="" width="1600" height="900" loading="lazy" decoding="async">
+          </picture>
+        </figure>
+        <figure class="ebene" data-von="0.855" data-bis="1.001" style="">
+          <picture>
+            <source type="image/avif" sizes="100vw" srcset="../assets/img/bauablauf/phase-6-uebergabe-800.avif 800w, ../assets/img/bauablauf/phase-6-uebergabe.avif 1600w">
+            <source type="image/webp" sizes="100vw" srcset="../assets/img/bauablauf/phase-6-uebergabe-800.webp 800w, ../assets/img/bauablauf/phase-6-uebergabe.webp 1600w">
+            <img src="../assets/img/bauablauf/phase-6-uebergabe-800.jpg" srcset="../assets/img/bauablauf/phase-6-uebergabe-800.jpg 800w, ../assets/img/bauablauf/phase-6-uebergabe.jpg 1600w" sizes="100vw" alt="" width="1600" height="900" loading="lazy" decoding="async">
+          </picture>
+        </figure>
+      </div>
+      <canvas class="buehne__leinwand" id="buehne-leinwand" aria-hidden="true" data-engine="three.js r161" width="1400" height="900" style=""></canvas>
+      <div class="buehne__schleier" aria-hidden="true"></div>
+      <div class="buehne__fortschritt" aria-hidden="true"><span id="fortschritt-balken" style="--p: 0.0000;"></span></div>
+      <nav class="buehne__route" id="route" aria-label="Kapitel der Bauablauf-Ansicht"></nav>
+      <div class="buehne__anzeige" aria-hidden="true">
+        <div><b id="anzeige-lph">LPH 1</b><span>Work stage</span></div>
+        <div><b id="anzeige-teile">0</b><span>Components in the model</span></div>
+        <div><b id="anzeige-stand">The site</b><span>Model status</span></div>
+      </div>
+      <p class="buehne__wink" id="wink" style="transition: opacity 0.4s; opacity: 1;">Scroll ↓</p>
+    </div>
+
+    <div class="buehne__text">
+      <article class="kapitel" id="kap-1" style="min-height:calc(1.30 * var(--bh,100lvh))">
+        <div class="kapitel__halt"><div class="satz" data-nr="1">
+          <p class="satz__auge">Chapter 01 · The site</p>
+          <h1 class="satz__titel">Where architecture meets <em>data</em>.</h1>
+          <p class="satz__text">Every project starts with the rules of its place: boundaries, orientation, the path of the sun, the neighbourhood. I record them in the model before the first line is drawn — as a chartered architect holding a master’s degree in climate-responsive design.</p>
+          <ul class="satz__marken"><li>Site survey</li><li>Planning law</li><li>Solar study</li></ul>
+        </div></div>
+      </article>
+
+      <article class="kapitel" id="kap-2" data-lage="rechts" style="min-height:calc(1.20 * var(--bh,100lvh))">
+        <div class="kapitel__halt"><div class="satz" data-nr="2">
+          <p class="satz__auge">Chapter 02 · Foundations</p>
+          <h2 class="satz__titel">Everything good stands on <em>millimetres</em>.</h2>
+          <p class="satz__text">Footings, base slab, service penetrations — located in the model before the first cubic metre of concrete is poured. What is right here costs nothing later.</p>
+          <ul class="satz__marken"><li>Foundations</li><li>Penetration planning</li><li>Quantities</li></ul>
+        </div></div>
+      </article>
+
+      <article class="kapitel" id="kap-3" style="min-height:calc(1.35 * var(--bh,100lvh))">
+        <div class="kapitel__halt"><div class="satz" data-nr="3">
+          <p class="satz__auge">Chapter 03 · Structure</p>
+          <h2 class="satz__titel">The building rises <em>in the model first</em>.</h2>
+          <p class="satz__text">Slabs, columns, circulation core — storey by storey. Every component carries its own data: material, layer, fire rating, cost. One component, one truth.</p>
+          <ul class="satz__marken"><li>Structure</li><li>LOD / LOI</li><li>IFC structure</li></ul>
+        </div></div>
+      </article>
+
+      <article class="kapitel" id="kap-4" data-lage="rechts" style="min-height:calc(1.20 * var(--bh,100lvh))">
+        <div class="kapitel__halt"><div class="satz" data-nr="4">
+          <p class="satz__auge">Chapter 04 · Envelope</p>
+          <h2 class="satz__titel">Facade, windows, <em>light</em>.</h2>
+          <p class="satz__text">The envelope decides how a building feels — and what it consumes. I test openings, shading and build-up on the model and calculate the energy balance alongside, not afterwards.</p>
+          <ul class="satz__marken"><li>Facade build-up</li><li>Shading</li><li>Energy balance</li></ul>
+        </div></div>
+      </article>
+
+      <article class="kapitel" id="kap-5" style="min-height:calc(1.40 * var(--bh,100lvh))">
+        <div class="kapitel__halt"><div class="satz" data-nr="5">
+          <p class="satz__auge">Chapter 05 · Services &amp; checking</p>
+          <h2 class="satz__titel">The error is found <em>before it gets expensive</em>.</h2>
+          <p class="satz__text">An X-ray view of pipes, ducts and shafts. My own checking engine runs clash detection and IDS across the model and returns the findings to the specialist designers as BCF. Red turns green — in the computer, not on site.</p>
+          <ul class="satz__marken"><li>Clash detection</li><li>IDS</li><li>BCF</li></ul>
+        </div></div>
+      </article>
+
+      <article class="kapitel" id="kap-6" data-lage="mitte" style="min-height:calc(1.30 * var(--bh,100lvh))">
+        <div class="kapitel__halt"><div class="satz" data-nr="6">
+          <p class="satz__auge">Chapter 06 · Handover</p>
+          <h2 class="satz__titel">It is only finished when it is <em>right</em>.</h2>
+          <p class="satz__text">At the end there is a building — and a model that matches it. Quantities, costs, components, maintenance: handed over as open data, not as ring binders.</p>
+          <ul class="satz__marken"><li>Handover model</li><li>openBIM</li><li>Operation</li></ul>
+        </div></div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ==================== PRINZIP ==================== -->
+  <section class="abschnitt abschnitt--hoch" id="prinzip">
+    <div class="mitte">
+      <div class="kopfzeile">
+        <p class="auge">The BIT-Atelier approach</p>
+        <h2>Precision meets <em>design</em>.</h2>
+      </div>
+      <div class="prinzip">
+        <div>
+          <p>Good design alone is no longer enough in construction. My approach combines the architect’s design work with the precision of modern data methods — from BIM and energy simulation through to AI-assisted project development.</p>
+          <p>As a chartered architect and graduate of the master’s programme in climate-responsive design (ClimaDesign) at the Technical University of Munich, I bring scientific method to every project. Sustainability is not a slogan here but a basis for calculation.</p>
+        </div>
+        <div class="nachweise">
+          <div class="nachweis"><h4>Architect</h4><span>Bavarian Chamber of Architects, reg. no. 192.197</span></div>
+          <div class="nachweis"><h4>M.Sc. TUM</h4><span>Climate Responsive Design</span></div>
+          <div class="nachweis"><h4>BIM &amp; digital</h4><span>Management · Modeling · IFC</span></div>
+          <div class="nachweis"><h4>15+ years</h4><span>Design &amp; project management</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== LEISTUNGEN ==================== -->
+  <section class="abschnitt" id="leistungen">
+    <div class="mitte">
+      <div class="kopfzeile">
+        <p class="auge">Services</p>
+        <h2>Two routes, <em>one standard</em>.</h2>
+        <p class="unter">Whether you are building or want to secure a major project digitally — both follow the same principle: considered, data-driven design without friction.</p>
+      </div>
+      <div class="gitter gitter--2">
+        <article class="karte">
+          <p class="karte__nr">For lead designers, practices &amp; contractors</p>
+          <h3>BIM coordination &amp; model checking</h3>
+          <p>External BIM management for major projects — from structuring the BIM execution plan to a clash-free IFC handover. The aim: design errors are found <em>before</em> construction starts, not paid for on site.</p>
+          <ul class="liste">
+            <li>Clash-free IFC handover before construction begins — one avoided structural clash saves many times the fee</li>
+            <li>Employer’s information requirements &amp; BIM execution plan — structured for auditing to ISO 19650</li>
+            <li>Automated model and requirements compliance checking with my own engine (IFC/IDS), findings returned to the specialist designers as BCF</li>
+            <li>Coordination of the discipline models (architecture, structure, building services) including LOD/LOI</li>
+            <li>Relief for your in-house teams — without new software licences</li>
+          </ul>
+          <div class="karte__fuss"><a class="btn btn--geist btn--klein" href="#pakete">See the service packages</a></div>
+        </article>
+        <article class="karte">
+          <p class="karte__nr">For clients</p>
+          <h3>Design &amp; architecture</h3>
+          <p>End-to-end design of residential and refurbishment projects across all work stages — with an eye for the detail and for the energy balance.</p>
+          <ul class="liste">
+            <li>Concept &amp; planning application design (HOAI stages 1–4)</li>
+            <li>Technical, construction &amp; detail design (HOAI stage 5)</li>
+            <li>Housing, subsidised housing, KfW standards</li>
+            <li>Refurbishment &amp; historic buildings</li>
+            <li>Accessible &amp; wheelchair-friendly design (DIN 18040)</li>
+          </ul>
+          <div class="karte__fuss"><a class="btn btn--klein" href="#kontakt" data-herkunft="Planung">Start a project</a></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== PAKETE ==================== -->
+  <section class="abschnitt abschnitt--hoch" id="pakete">
+    <div class="mitte">
+      <div class="kopfzeile">
+        <p class="auge">BIM service packages</p>
+        <h2>Clear scope. Clear result. <em>Clear price.</em></h2>
+        <p class="unter">Three packages for major projects from around €10 million construction value — as a fixed price or a monthly retainer, priced on project value rather than timesheets.</p>
+      </div>
+      <div class="gitter gitter--3">
+        <article class="karte">
+          <p class="karte__nr">Package 1 · Fixed price</p>
+          <h3>BIM quick check &amp; setup</h3>
+          <p class="karte__preis">from €8,500 per project</p>
+          <p>The fast, auditable start: your project becomes fit for BIM delivery — in two to four weeks.</p>
+          <ul class="liste">
+            <li>Review or draft the information requirements, structure the BIM execution plan</li>
+            <li>Set up the coordination environment (IFC/openBIM standards, naming conventions)</li>
+            <li>Automated initial model check with a written report</li>
+          </ul>
+          <p class="ergebnis"><b>Result:</b> an auditable BIM execution plan and a documented model status</p>
+        </article>
+        <article class="karte">
+          <p class="karte__nr">Package 2 · Fixed price per design stage · Core service</p>
+          <h3>Automated model checking &amp; QA</h3>
+          <p class="karte__preis">Fixed price per checking run</p>
+          <p>Every design stage is checked by machine before it gets expensive — with my own engine instead of licensed software.</p>
+          <ul class="liste">
+            <li>Clash detection across architecture, structure and building services with tolerance and duplicate rules</li>
+            <li>IDS compliance checking against your information requirements (buildingSMART standard)</li>
+            <li>Findings returned directly to the specialist designers as BCF, plus a PDF report</li>
+          </ul>
+          <p class="ergebnis"><b>Result:</b> a design stage documented as clash-checked and rule-compliant</p>
+        </article>
+        <article class="karte">
+          <p class="karte__nr">Package 3 · Monthly retainer</p>
+          <h3>Overall BIM coordination</h3>
+          <p class="karte__preis">from €4,500 per month</p>
+          <p>Ongoing external BIM management across the design stages — your teams design, I hold the models together.</p>
+          <ul class="liste">
+            <li>Coordination of the discipline models including LOD/LOI requirements</li>
+            <li>Regular checking cycles with a coordination meeting and an action list</li>
+            <li>Reporting for the client and the project managers</li>
+          </ul>
+          <p class="ergebnis"><b>Result:</b> a coordinated model as a reliable basis for construction</p>
+        </article>
+      </div>
+      <!-- Paketfinder: drei Angaben, eine begruendete Einordnung. Vorher musste der
+           Leser aus "ab"-Preisen und einer AHO-Fussnote selbst schliessen, ob er
+           gemeint ist. Die Regeln stehen im Skript unten (finderEmpfehlung); die
+           Preise sind die der Karten darueber — hier wird nichts hochgerechnet. -->
+      <div class="finder" id="paketfinder">
+        <h3>Which package fits your project?</h3>
+        <p class="finder__unter">Three answers, no sign-up. The result follows the same rules I use myself — and carries your answers straight into the enquiry.</p>
+        <div class="finder__fragen">
+          <fieldset class="finder__frage" data-frage="summe">
+            <legend><span>Construction cost</span></legend>
+            <div class="finder__wahl">
+              <button type="button" data-wert="u5" aria-pressed="false">under €5 m</button>
+              <button type="button" data-wert="5-10" aria-pressed="false">€5–10 m</button>
+              <button type="button" data-wert="10-30" aria-pressed="true">€10–30 m</button>
+              <button type="button" data-wert="ue30" aria-pressed="false">over €30 m</button>
+            </div>
+          </fieldset>
+          <fieldset class="finder__frage" data-frage="modelle">
+            <legend><span>Discipline models</span></legend>
+            <div class="finder__wahl">
+              <button type="button" data-wert="a" aria-pressed="false">Architecture</button>
+              <button type="button" data-wert="at" aria-pressed="false">Architecture + structure</button>
+              <button type="button" data-wert="atg" aria-pressed="true">Architecture + structure + MEP</button>
+              <button type="button" data-wert="bestand" aria-pressed="false">As-built model / scan</button>
+              <button type="button" data-wert="keine" aria-pressed="false">none yet</button>
+            </div>
+          </fieldset>
+          <fieldset class="finder__frage" data-frage="phase">
+            <legend><span>Stage</span></legend>
+            <div class="finder__wahl">
+              <button type="button" data-wert="2" aria-pressed="false">Concept design (LPH 2)</button>
+              <button type="button" data-wert="3" aria-pressed="true">Developed design (LPH 3)</button>
+              <button type="button" data-wert="4" aria-pressed="false">Planning approval (LPH 4)</button>
+              <button type="button" data-wert="5" aria-pressed="false">Technical design (LPH 5)</button>
+              <button type="button" data-wert="6" aria-pressed="false">Tender / construction (LPH 6–8)</button>
+            </div>
+          </fieldset>
+        </div>
+        <div class="finder__ergebnis" id="finder-ergebnis" data-nicht-uebersetzen="" aria-live="polite"></div>
+      </div>
+      <p class="fussnote">All prices are net, excluding statutory VAT. Pricing follows the German fee recommendations for BIM management (AHO/DVP: typically 20–25 % of the project management fee). A firm quotation follows a short conversation about project size and discipline models.</p>
+    </div>
+  </section>
+
+  <!-- ==================== WERKZEUGE ==================== -->
+  <section class="abschnitt" id="werkzeuge">
+    <div class="mitte">
+      <div class="kopfzeile">
+        <p class="auge">The difference</p>
+        <h2>Own tools instead of <em>licensed software</em>.</h2>
+        <p class="unter">The checking and evaluation tools behind my services are developed in house: the BIT-Atelier platform reads IFC models directly (buildingSMART standards, no cloud required), derives quantities by filter on a WHAT ∩ STATE principle, and checks models for clashes and requirements compliance (IDS) — returning findings as BCF.</p>
+        <p class="unter">For you that means checking rules tailored precisely to your project, no licence costs passed on through the fee — and no dependence on third-party software subscriptions.</p>
+      </div>
+
+      <div class="gitter gitter--2" style="margin-top:2.4rem">
+        <article class="karte"><h3>IFC import</h3><p>Storeys, components, properties, classification — straight from the openBIM format</p></article>
+        <article class="karte"><h3>Clash detection</h3><p>Rule matrix per discipline pair, tolerances, duplicate detection</p></article>
+        <article class="karte"><h3>IDS checking</h3><p>Information requirements made machine-checkable to buildingSMART IDS</p></article>
+        <article class="karte"><h3>BCF return</h3><p>Findings arrive as open issues directly with the specialist designers</p></article>
+      </div>
+
+      <figure class="fenster">
+        <div class="fenster__leiste"><i></i><i></i><i></i><span>bit-atelier · checking suite — result</span></div>
+        <!-- Der Screenshot war bisher eine Behauptung ohne Weg dahin. Jetzt fuehrt
+             er in die Demo, die denselben Lauf mit einem mitgelieferten
+             Musterprojekt vorfuehrt (Phase 65-06, Paket W-4). -->
+        <a href="../demo/#/ModelCheck?beispiel=1" title="Denselben Prüflauf in der Demo selbst starten">
+          <img src="../assets/img/pruefsuite-ergebnis.webp" width="2048" height="1280" loading="lazy" decoding="async" alt="Ergebnisansicht der Prüf-Suite mit Kollisions- und IDS-Befunden">
+        </a>
+        <figcaption>A checking run on the bundled sample project, checked directly in the browser — hard clashes found, information requirements verified via IDS, findings returned to the specialist designers as BCF. You can start the same run yourself in the demo.</figcaption>
+      </figure>
+
+      <div class="beleg">
+        <p class="beleg__titel">So sieht Ihr Befund aus.</p>
+        <p class="beleg__unter">Prüfbericht und Befundliste aus einem Prüflauf über ein
+          mitgeliefertes Musterprojekt — synthetisch erzeugt, keine Projektdaten. Denselben
+          Lauf können Sie in der Demo mit einem Klick selbst auslösen; das BCF öffnet sich
+          in jeder gängigen Koordinationssoftware.</p>
+        <div class="beleg__links">
+          <a class="btn btn--klein" href="../downloads/musterpruefbericht.pdf" download="">
+            Musterprüfbericht (PDF)
+          </a>
+          <a class="btn btn--geist btn--klein" href="../downloads/musterbefunde.bcf" download="">
+            Befunde als BCF
+          </a>
+          <a class="btn btn--geist btn--klein" href="../demo/#/ModelCheck?beispiel=1">
+            Prüflauf selbst starten
+          </a>
+        </div>
+      </div>
+
+      <figure class="fenster">
+        <div class="fenster__leiste"><i></i><i></i><i></i><span>bit-atelier · checking engine — sample run</span></div>
+        <div class="terminal" id="pruef-terminal" role="img" aria-label="Beispielhafter Ablauf eines Prüflaufs: Modelle einlesen, Kollisionsprüfung, IDS-Prüfung, Export von Prüfbericht und BCF"></div>
+      </figure>
+
+      <ul class="chips">
+        <li>IFC / openBIM</li><li>buildingSMART IDS</li><li>BCF</li>
+        <li>Energy simulation</li><li>Tendering &amp; cost planning</li><li>Python automation</li>
+      </ul>
+      <p class="fussnote">The platform is open to try as an online demo — serverless, everything stays in your browser. <a href="../demo/" style="color:var(--accent)">Try the demo</a>.</p>
+    </div>
+  </section>
+
+  <!-- ==================== DOWNLOADS ==================== -->
+  <section class="abschnitt abschnitt--hoch" id="downloads">
+    <div class="mitte">
+      <div class="kopfzeile">
+        <p class="auge">Downloads</p>
+        <h2>BIT-PDF</h2>
+        <p class="unter">Der portable PDF-Editor aus dem BIT-Atelier — bearbeiten, organisieren,
+          konvertieren, signieren, drucken und forensisch schwärzen. Läuft vollständig lokal: keine
+          Cloud, keine Uploads, keine Telemetrie — inklusive Offline-OCR (Deutsch/Englisch).</p>
+      </div>
+      <div class="gitter gitter--3">
+        <article class="karte">
+          <p class="karte__nr">Browser</p>
+          <h3>Ohne Installation testen</h3>
+          <p>Läuft im Browser, auch auf Tablet und Handy — die Dateien bleiben auf Ihrem Gerät.</p>
+          <div class="karte__fuss">
+            <a class="btn btn--klein" href="https://bit-atelier.de/NovaPDF/">Im Browser öffnen</a>
+          </div>
+        </article>
+        <article class="karte">
+          <p class="karte__nr">Windows</p>
+          <h3>Portable .exe</h3>
+          <p>No installation, runs from a USB stick too.</p>
+          <div class="karte__fuss">
+            <a class="btn btn--klein" href="https://github.com/mozzi86/NovaPDF/releases/latest/download/BIT-PDF-portable.exe">Download for Windows</a>
+          </div>
+        </article>
+        <article class="karte">
+          <p class="karte__nr">macOS</p>
+          <h3>DMG for Apple silicon</h3>
+          <p>Intel version <a href="https://github.com/mozzi86/NovaPDF/releases/latest/download/BIT-PDF-x64.dmg" style="color:var(--accent)">here</a>.</p>
+          <div class="karte__fuss">
+            <a class="btn btn--klein" href="https://github.com/mozzi86/NovaPDF/releases/latest/download/BIT-PDF-arm64.dmg">Download for macOS</a>
+          </div>
+        </article>
+      </div>
+      <p class="fussnote">Free · developed openly at BIT-Atelier · all releases <a href="https://github.com/mozzi86/NovaPDF/releases" style="color:var(--accent)">on GitHub</a>. The apps are not code-signed or notarised — on first launch confirm through Windows SmartScreen (“Run anyway”) or macOS Gatekeeper (right-click → “Open”).</p>
+    </div>
+  </section>
+
+  <!-- ==================== ERFAHRUNG ==================== -->
+  <section class="abschnitt" id="erfahrung">
+    <div class="mitte">
+
+      <div class="gruender">
+        <div class="gruender__text">
+          <p class="auge">About the founder</p>
+          <h2 class="gruender__name">Mohamed Elmokadem</h2>
+          <p>BIT-Atelier was founded by Mohamed Elmokadem. In more than fifteen years of design and project management he has taken housing, school and laboratory buildings through every work stage — from subsidised housing in Nuremberg to the refurbishment of German institutions in Cairo.</p>
+          <p>Today he combines the hand of the architect with his own checking technology. You work with him directly, with no layer in between. What a large practice solves with staff, BIT-Atelier solves with tools: an in-house checking engine for clashes and requirements compliance — instead of bought-in licensed software.</p>
+        </div>
+        <figure class="gruender__bild">
+          <img src="../assets/img/mohamed-elmokadem-800.jpg" srcset="../assets/img/mohamed-elmokadem-800.jpg 800w, ../assets/img/mohamed-elmokadem-1200.jpg 1200w" sizes="(min-width:64rem) 52vw, 92vw" width="800" height="1200" loading="lazy" decoding="async" alt="Mohamed Elmokadem, eingetragener Architekt und Gründer des BIT-Atelier" onerror="this.closest('figure').style.display='none'">
+          <figcaption>Mohamed Elmokadem · Architect, M.Sc. (TUM) ClimaDesign</figcaption>
+        </figure>
+      </div>
+
+      <div class="kopfzeile" style="margin-top:clamp(3.5rem,7vw,6rem)">
+        <p class="auge">Selected positions</p>
+        <h2>More than <em>15 years</em> of design and project management.</h2>
+        <p class="unter">From subsidised housing in Nuremberg to refurbishment projects for German institutions in Cairo.</p>
+      </div>
+      <ul class="chips" style="margin-top:1.6rem">
+        <li>Full scope across HOAI work stages 1–9</li>
+        <li>Coordination with engineers, manufacturers &amp; authorities</li>
+        <li>Lecturer in 3D and CAD design</li>
+      </ul>
+      <ul class="stationen">
+        <li class="station">
+          <p class="station__zeit">Since 2025 · Nuremberg</p>
+          <h4>Project lead · BIM coordinator · drafting coordinator · Schwarz Architekturbüro</h4>
+          <p>All projects · HOAI stages 1–9</p>
+        </li>
+        <li class="station">
+          <p class="station__zeit">2020 – 2025 · Nuremberg</p>
+          <h4>Architect / designer · Schultheiß Projektentwicklung AG</h4>
+          <p>Subsidised housing, including Lichtenreutherzeile WA 19/20 · construction design, KfW-55</p>
+        </li>
+        <li class="station">
+          <p class="station__zeit">2019 · Wendelstein</p>
+          <h4>Project lead · Gömmel Wieland Architekten</h4>
+          <p>Municipal depot in Lauf an der Pegnitz, pharmaceutical laboratory · concept through construction design</p>
+        </li>
+        <li class="station">
+          <p class="station__zeit">2018 – 2019 · Cairo</p>
+          <h4>Authorised officer / practice lead · Bit-Design Architekturbüro</h4>
+          <p>Refurbishment of the German Embassy, DAAD &amp; Goethe-Institut · fire safety, escape and rescue routes</p>
+        </li>
+        <li class="station">
+          <p class="station__zeit">2009 – 2017 · Bavaria</p>
+          <h4>Architect &amp; technical designer · various practices</h4>
+          <p>Apartment buildings with underground parking, school buildings, changes of use · detail and construction design</p>
+        </li>
+        <li class="station">
+          <p class="station__zeit">Education</p>
+          <h4>M.Sc. Climate-Responsive Building · TU Munich</h4>
+          <p>Climate-responsive design · whole-building optimisation (concept, facade, building services)</p>
+        </li>
+      </ul>
+
+    </div>
+  </section>
+
+  <!-- ==================== KONTAKT ==================== -->
+  <section class="abschnitt abschnitt--hoch" id="kontakt">
+    <div class="mitte">
+      <div class="kopfzeile">
+        <p class="auge">Contact</p>
+        <h2>Let’s <em>talk</em>.</h2>
+        <p class="unter">Whether it is a building project or a digitalisation project — tell me briefly what you have in mind. As protection against spam, my contact details only appear on click.</p>
+      </div>
+      <div class="kontakt">
+        <div>
+          <div class="kontakt__zeile">
+            <div class="kontakt__feld">
+              <span class="mono">Phone</span>
+              <button class="kontakt__knopf" type="button" id="telefon-slot" onclick="revealPhone(this)">Show phone<small>Click to reveal the number</small></button>
+            </div>
+            <div class="kontakt__feld">
+              <span class="mono">Email</span>
+              <button class="kontakt__knopf" type="button" id="email-slot" onclick="revealEmail(this)">Show email<small>Click to reveal the address</small></button>
+            </div>
+            <div class="kontakt__feld">
+              <span class="mono">Region</span>
+              <p>Nuremberg region · projects across Germany</p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h3 style="font-size:1.2rem;margin-bottom:1rem">At a glance</h3>
+          <ul class="liste">
+            <li>Chartered architect — Bavarian Chamber of Architects (no. 192.197)</li>
+            <li>M.Sc. ClimaDesign, TU Munich</li>
+            <li>Full design scope, HOAI stages 1–9</li>
+            <li>BIM · IFC · AI-assisted project development</li>
+            <li>Nuremberg region</li>
+          </ul>
+          <div style="margin-top:1.8rem;display:flex;gap:.6rem;flex-wrap:wrap">
+            <a class="btn btn--klein" href="#pakete">See the service packages</a>
+            <a class="btn btn--geist btn--klein" href="../demo/">Platform demo</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Anfrage-Baukasten: bis hierher war der einzige Weg zum Gespraech ein
+           leeres Mailfenster. Bei Paketen ab 8.500 EUR ist das eine hohe Huerde —
+           der Interessent muss selbst formulieren, was er braucht. -->
+      <div class="anfrage">
+        <h3>Prepare a first conversation</h3>
+        <p class="anfrage__unter">A few details and your text is ready below — to send from your mail app, to copy, or to print. Nothing is transmitted and nothing is stored.</p>
+
+        <div class="anfrage__raster">
+          <label class="anfrage__feld">
+            <span>Project type</span>
+            <select id="a-art">
+              <option>BIM-Koordination</option>
+              <option>Modellprüfung / QS</option>
+              <option>Planung (LPH 1–9)</option>
+              <option>Noch offen</option>
+            </select>
+          </label>
+          <label class="anfrage__feld">
+            <span>Construction cost</span>
+            <select id="a-summe">
+              <option>unter 5 Mio. €</option>
+              <option>5–10 Mio. €</option>
+              <option>10–30 Mio. €</option>
+              <option>über 30 Mio. €</option>
+              <option>noch nicht bezifferbar</option>
+            </select>
+          </label>
+          <label class="anfrage__feld">
+            <span>Discipline models</span>
+            <select id="a-modelle">
+              <option>Architektur</option>
+              <option>Architektur + Tragwerk</option>
+              <option>Architektur + Tragwerk + TGA</option>
+              <option>Bestandsmodell / Scan</option>
+              <option>noch keine</option>
+            </select>
+          </label>
+          <label class="anfrage__feld">
+            <span>Stage</span>
+            <select id="a-phase">
+              <option>Vorplanung (LPH 2)</option>
+              <option>Entwurf (LPH 3)</option>
+              <option>Genehmigung (LPH 4)</option>
+              <option>Ausführungsplanung (LPH 5)</option>
+              <option>Vergabe / Ausführung (LPH 6–8)</option>
+            </select>
+          </label>
+          <label class="anfrage__feld">
+            <span>Timeframe</span>
+            <input id="a-termin" type="text" placeholder="z. B. Start im November">
+          </label>
+          <label class="anfrage__feld">
+            <span>Reply preferred by</span>
+            <select id="a-weg">
+              <option>E-Mail</option>
+              <option>Telefon (Nummer im Text angeben)</option>
+            </select>
+          </label>
+        </div>
+
+        <label class="anfrage__feld" style="margin-top:.9rem">
+          <span>About the project (optional)</span>
+          <textarea id="a-text" placeholder="Zwei, drei Sätze genügen."></textarea>
+        </label>
+
+        <div class="anfrage__vorschau">
+          <span>This is the text you send</span>
+          <pre class="anfrage__text" id="a-vorschau" data-nicht-uebersetzen="" aria-live="polite"></pre>
+        </div>
+
+        <div class="anfrage__fuss">
+          <button class="btn" type="button" id="a-senden" onclick="anfrageOeffnen()">Request a first conversation</button>
+          <button class="btn btn--geist" type="button" id="a-kopieren" onclick="anfrageKopieren(this)">Copy text</button>
+          <button class="btn btn--geist" type="button" id="a-drucken" onclick="anfrageDrucken()">Print / save as PDF</button>
+          <div class="anfrage__direkt"><span>or straight into:</span>
+            <a href="#" id="a-gmail" onclick="anfrageCompose('gmail'); return false;" rel="noopener">Gmail</a> ·
+            <a href="#" id="a-outlook" onclick="anfrageCompose('outlook'); return false;" rel="noopener">Outlook Web</a></div>
+          <input type="hidden" id="a-herkunft" value="">
+          <span class="anfrage__frist">Reply usually within 24 hours.</span>
+        </div>
+        <p class="anfrage__hinweis">Only via Gmail or Outlook Web does your text travel in the address to that provider — with your mail program, copying and printing nothing leaves your computer.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="fuss">
+    <span data-nicht-uebersetzen="">BIT-ATELIER · © <span id="jahr">2026</span> Mohamed Elmokadem.</span>
+    <span>All rights reserved.</span>
+    <button type="button" onclick="toggleImpressum()">Legal notice &amp; privacy</button>
+  </footer>
+
+  <section class="rechtstext verborgen" id="impressum" aria-label="Impressum und Datenschutz">
+    <div class="mitte"><p id="impressum-sprachhinweis" data-nicht-uebersetzen="" style="border: 1px solid var(--line-strong); padding: 0.8rem 1rem; margin-bottom: 1.6rem;">The legal notice and privacy statement below are given in German — they are the legally binding version under German law.</p>
+      <div>
+      <div>
+      <h2>Impressum</h2>
+      <button onclick="toggleImpressum()"><i></i> Schließen</button>
+      </div>
+      <div>
+      <div>
+      <h3>Angaben gemäß § 5 DDG</h3>
+      <p>Mohamed Elmokadem<br>
+      Freiberuflicher Architekt<br>
+      BIT-ATELIER (Geschäftsbezeichnung dieser Webseite)<br>
+      <span id="imp-adresse"><button onclick="revealAdresse(this)">Anschrift anzeigen</button></span><br>
+      Deutschland</p>
+      <noscript><p>Am Röthenbacher Landgraben 36, 90451 Nürnberg</p></noscript>
+      <p>Es handelt sich um eine freiberufliche Tätigkeit; eine Eintragung im Handelsregister besteht nicht.</p>
+      </div>
+      <div>
+      <h3>Umsatzsteuer</h3>
+      <p>Umsatzsteuer-IdNr. gemäß § 27a UStG: DE464635659</p>
+      </div>
+      <div>
+      <h3>Kontakt</h3>
+      <p>
+      Telefon: <span id="imp-phone"><button onclick="revealPhone(this)">anzeigen</button></span><br>
+      E-Mail: <span id="imp-email"><button onclick="revealEmail(this)">anzeigen</button></span>
+      </p>
+      <noscript><p>Telefon: 0176 74554989 &middot; E-Mail: me@bit-atelier.de</p></noscript>
+      </div>
+      <div>
+      <h3>Berufsbezeichnung und berufsrechtliche Regelungen</h3>
+      <p>
+      Berufsbezeichnung: Architekt (verliehen in der Bundesrepublik Deutschland)<br>
+      Zuständige Kammer: Bayerische Architektenkammer, Waisenhausstraße 4, 80637 München<br>
+      Eintragung: Architektenliste der Bayerischen Architektenkammer, Listen-Nr. 192.197 (seit 15.06.2021)<br>
+      Es gelten u. a. das Baukammerngesetz (BauKaG) sowie die Berufs- und Satzungsordnung der Bayerischen Architektenkammer (einsehbar unter byak.de).
+      </p>
+      </div>
+      <div>
+      <h3>Berufshaftpflichtversicherung</h3>
+      <p>Markel Insurance SE, Sophienstraße 26, 80333 München<br>
+      Räumlicher Geltungsbereich: Deutschland</p>
+      </div>
+      <div>
+      <h3>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h3>
+      <p>Mohamed Elmokadem (Anschrift wie oben)</p>
+      </div>
+      <div>
+      <h3>Verbraucherstreitbeilegung</h3>
+      <p>Ich bin nicht bereit und nicht verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen (§ 36 VSBG).</p>
+      </div>
+      <div>
+      <h3>Haftung für Inhalte</h3>
+      <p>Als Diensteanbieter bin ich für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Ich bin jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen. Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt.</p>
+      </div>
+      <div>
+      <h3>Bildnachweis</h3>
+      <p>Gründerportrait: KI-generiert (Grok, xAI).</p>
+
+      <h3>Datenschutz</h3>
+      <p><strong>Verantwortlicher:</strong> Mohamed Elmokadem, Anschrift und Kontaktdaten wie oben im Impressum.</p>
+      <p><strong>Keine Cookies, kein Tracking:</strong> Diese Website setzt keine Cookies und verwendet keine Tracking-, Analyse- oder Werbedienste. Sämtliche Inhalte (Schriftarten, Stylesheets, Icons, Skripte) werden direkt von dieser Domain ausgeliefert – es werden keine Inhalte von Drittanbietern nachgeladen und keine Besucherdaten an Dritte übermittelt. Für die Demo-Anwendung gelten die Besonderheiten im Absatz „Demo-Anwendung“.</p>
+      <p><strong>Hosting und Server-Logs:</strong> Die Website wird über GitHub Pages bereitgestellt (GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA; Vertragspartner im EWR: GitHub B.V., Prins Bernhardplein 200, 1097 JB Amsterdam, Niederlande). Beim Aufruf verarbeitet GitHub die zur Auslieferung technisch notwendigen Verbindungsdaten (IP-Adresse, Zeitpunkt, aufgerufene Datei, Browser-Kennung) in Server-Logs, um die Seite auszuliefern und die Sicherheit des Dienstes zu gewährleisten. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einem sicheren und stabilen Betrieb). Eine Verarbeitung in den USA kann dabei nicht ausgeschlossen werden; GitHub ist unter dem EU-US Data Privacy Framework zertifiziert. Ich selbst habe keinen Zugriff auf diese Logs. Näheres in der Datenschutzerklärung von GitHub (docs.github.com/site-policy/privacy-policies).</p>
+      <p><strong>Kontaktaufnahme:</strong> Eine Kontaktaufnahme erfolgt ausschließlich auf Ihre Initiative per Telefon oder E-Mail. Der Anfrage-Baukasten auf dieser Seite formuliert lediglich in Ihrem Browser einen E-Mail-Text vor; es wird nichts an einen Server übertragen. Die dabei mitgeteilten Daten verwende ich nur zur Bearbeitung Ihrer Anfrage (Art. 6 Abs. 1 lit. b DSGVO bei Vertragsanbahnung, sonst lit. f). Sie werden gelöscht, sobald die Anfrage erledigt ist und keine gesetzlichen Aufbewahrungsfristen (insbesondere § 147 AO, § 257 HGB) entgegenstehen.</p>
+      <p><strong>Demo-Anwendung:</strong> Die Demo läuft ohne Server in Ihrem Browser. Geladene Modelle, Einstellungen und Prüfergebnisse werden ausschließlich lokal auf Ihrem Gerät gespeichert (localStorage, IndexedDB sowie ein Service Worker für den Offline-Betrieb) und nicht an mich übertragen. Diese Speicherung ist für die gewünschte Funktion technisch erforderlich (§ 25 Abs. 2 Nr. 2 TDDDG). Zwei Ausnahmen nennt die Demo selbst: Beim Öffnen einer Karte lädt Ihr Browser Kartenkacheln unmittelbar von OpenStreetMap, Esri, OpenFreeMap, MapLibre und Amazon Web Services (Höhendaten) und übermittelt dabei Ihre IP-Adresse (Art. 6 Abs. 1 lit. f DSGVO); der Feedback-Knopf öffnet Ihr eigenes E-Mail-Programm mit einem sichtbaren Entwurf. Ein Nutzungsprotokoll wird nur mit gesondert angekreuzter Einwilligung geführt, bleibt im Browser und ist jederzeit abschaltbar. Cookies setzt die Demo nicht. Vollständige Datenschutzerklärung, Nutzungsbedingungen und Cookie-Richtlinie stehen in der Demo selbst (Startdialog und Fußzeile). Sie können die Daten jederzeit über die Browser-Einstellungen („Website-Daten löschen“) entfernen.</p>
+      <p><strong>Externe Links:</strong> Die Downloads von BIT-PDF und der Quellcode liegen auf github.com. Beim Anklicken dieser Links verlassen Sie diese Website; es gelten dann die Datenschutzbestimmungen von GitHub.</p>
+      <p><strong>Ihre Rechte:</strong> Sie haben das Recht auf Auskunft (Art. 15 DSGVO), Berichtigung (Art. 16), Löschung (Art. 17), Einschränkung der Verarbeitung (Art. 18), Datenübertragbarkeit (Art. 20) sowie Widerspruch gegen eine Verarbeitung auf Grundlage berechtigter Interessen (Art. 21). Wenden Sie sich dazu an die im Impressum genannten Kontaktdaten. Außerdem können Sie sich bei einer Datenschutz-Aufsichtsbehörde beschweren; für mich zuständig ist das Bayerische Landesamt für Datenschutzaufsicht (BayLDA), Promenade 18, 91522 Ansbach, www.lda.bayern.de.</p>
+      <p><em>Stand: September 2026.</em></p>
+      </div>
+      </div>
+      </div>
+      <p style="margin-top:2.5rem">
+        <button type="button" onclick="toggleImpressum()">Impressum schließen</button>
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<div class="modal verborgen" id="app-modal" role="dialog" aria-modal="true" aria-labelledby="app-modal-title">
+  <div class="modal__kasten">
+    <h3 id="app-modal-title">The BIT-Atelier platform launches shortly</h3>
+    <p>Accounts for the platform are not yet open. You can already try the checking and evaluation tools as an online demo — serverless, everything stays in your browser.</p>
+    <div class="modal__tun">
+      <a class="btn btn--klein" href="../demo/">Live demo</a>
+      <button class="btn btn--geist btn--klein" type="button" onclick="closeAppModal()">Close</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// Jahr im Footer
+        document.getElementById('jahr').textContent = new Date().getFullYear();
+
+        // App-Modal (Plattform-Teaser)
+        function showAppModal() {
+            document.getElementById('app-modal').classList.remove('verborgen');
+            document.getElementById('menue').classList.add('verborgen');
+        }
+        function closeAppModal() {
+            document.getElementById('app-modal').classList.add('verborgen');
+        }
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeAppModal(); });
+
+        // Mobiles Menü
+        (function(){
+            const knopf = document.getElementById('menue-knopf');
+            const menue = document.getElementById('menue');
+            if (!knopf || !menue) return;
+            knopf.addEventListener('click', () => {
+                const offen = menue.classList.toggle('verborgen') === false;
+                knopf.setAttribute('aria-expanded', String(offen));
+            });
+            menue.addEventListener('click', (e) => {
+                if (e.target.tagName === 'A') {
+                    menue.classList.add('verborgen');
+                    knopf.setAttribute('aria-expanded', 'false');
+                }
+            });
+        })();
+
+        // Impressum ein-/ausklappen
+        function toggleImpressum() {
+            const imp = document.getElementById('impressum');
+            imp.classList.toggle('verborgen');
+            if (!imp.classList.contains('verborgen')) {
+                imp.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        /* ---- Human-Filter ----
+           Kontaktdaten stehen NICHT im Klartext im Quelltext und es gibt kein abgreifbares
+           Link-Muster. Die Bestandteile sind umgekehrt gespeichert und werden erst nach einem
+           Klick (= menschliche Aktion) zur Laufzeit zusammengesetzt. */
+        function rev(s) { return s.split('').reverse().join(''); }
+
+        /* ---- Anfrage-Baukasten ----
+           Setzt aus den Feldern einen Text zusammen. Die Adresse kommt aus denselben
+           umgekehrten Bestandteilen wie die Enthuell-Knoepfe — sie steht also
+           weiterhin nirgends im Klartext im Quelltext.
+           Der Text steht live als Vorschau unter den Feldern und laesst sich kopieren
+           oder drucken (Befund B-05): Wer kein Mailprogramm eingerichtet hat — Webmail
+           am Rechner, Firmen-iPad ohne Konto —, verlor vorher alles Eingetippte in dem
+           Moment, in dem er auf "Erstgespraech anfragen" drueckte. */
+        const wort = (s) => (window.bitHud ? window.bitHud(s) : s);   /* Wörterbuch aus sprachen.js */
+
+        function anfrageText() {
+            const w = (id) => (document.getElementById(id) || {}).value || '';
+            const zeilen = [
+                wort('Guten Tag,'),
+                '',
+                wort('ich möchte ein Erstgespräch vereinbaren.'),
+                '',
+                '- ' + wort('Projektart') + ': ' + w('a-art'),
+                '- ' + wort('Bausumme') + ': ' + w('a-summe'),
+                '- ' + wort('Fachmodelle') + ': ' + w('a-modelle'),
+                '- ' + wort('Phase') + ': ' + w('a-phase'),
+                '- ' + wort('Zeitrahmen') + ': ' + (w('a-termin') || wort('(offen)')),
+                '- ' + wort('Rückmeldung bitte per') + ': ' + w('a-weg'),
+            ];
+            const frei = w('a-text').trim();
+            if (frei) zeilen.push('', wort('Zum Vorhaben:'), frei);
+            zeilen.push('', wort('Mit freundlichen Grüßen'));
+            /* Herkunftskuerzel: welcher Abschnitt hat die Anfrage ausgeloest (Attribution
+               ohne Analytics). Gesetzt ueber data-herkunft an den Knoepfen, vom Finder
+               und von ?befund= aus der Demo; ohne Angabe [Website]. */
+            const herkunft = w('a-herkunft') || 'Website';
+            return {
+                betreff: '[' + herkunft + '] ' + wort('Erstgespräch BIT-ATELIER — ') + w('a-art'),
+                /* mailto vertraegt je nach Mailprogramm nur rund 2.000 Zeichen. */
+                koerper: zeilen.join('\n').slice(0, 1500),
+            };
+        }
+
+        function anfrageOeffnen() {
+            const { betreff, koerper } = anfrageText();
+            const adresse = rev(_eu) + '@' + rev(_ed);
+            location.href = 'mailto:' + adresse +
+                '?subject=' + encodeURIComponent(betreff) +
+                '&body=' + encodeURIComponent(koerper);
+        }
+
+        function herkunftSetzen(wert) {
+            const feld = document.getElementById('a-herkunft');
+            if (feld && wert) feld.value = wert;
+        }
+        document.querySelectorAll('[data-herkunft]').forEach(el =>
+            el.addEventListener('click', () => herkunftSetzen(el.dataset.herkunft)));
+
+        /* Zwei Auswege fuer Besucher ohne Mailprogramm: Compose-Fenster von Gmail
+           und Outlook Web, Betreff und Text vorbefuellt. Der Text steht dabei in der
+           Adresse zum Anbieter — der Hinweis unter dem Baukasten sagt das. */
+        function anfrageCompose(dienst) {
+            const { betreff, koerper } = anfrageText();
+            const adresse = rev(_eu) + '@' + rev(_ed);
+            const q = (o) => Object.keys(o).map(k => k + '=' + encodeURIComponent(o[k])).join('&');
+            const url = dienst === 'gmail'
+                ? 'https://mail.google.com/mail/?' + q({ view: 'cm', fs: '1', to: adresse, su: betreff, body: koerper })
+                : 'https://outlook.office.com/mail/deeplink/compose?' + q({ to: adresse, subject: betreff, body: koerper });
+            window.open(url, '_blank', 'noopener');
+        }
+
+        /* ?befund= aus der Online-Demo (base64url-JSON der Kennzahlen des Prueflaufs):
+           fuellt das Freitextfeld vor und setzt die Herkunft "Demo". Unsinn wird
+           verworfen, nichts davon verlaesst den Rechner. */
+        function befundUebernehmen() {
+            let roh;
+            try { roh = new URLSearchParams(location.search).get('befund'); } catch (e) { return; }
+            if (!roh) return;
+            let b;
+            try {
+                const b64 = roh.replace(/-/g, '+').replace(/_/g, '/');
+                b = JSON.parse(decodeURIComponent(escape(atob(b64))));
+            } catch (e) { return; }
+            if (!b || typeof b !== 'object') return;
+            const zahl = (v) => (typeof v === 'number' && isFinite(v)) ? String(v) : null;
+            const zeilen = [wort('Kennzahlen aus dem Prüflauf der Online-Demo:')];
+            if (typeof b.modell === 'string' && b.modell) zeilen.push('- ' + wort('Modell') + ': ' + b.modell.slice(0, 120));
+            const felder = [['bauteile', 'Bauteile mit Geometrie'], ['geschosse', 'Geschosse'],
+                            ['kollisionen', 'Harte Kollisionen'], ['duplikate', 'Doppelmodellierungen'],
+                            ['idsFehler', 'IDS-Verstöße']];
+            felder.forEach(([k, label]) => { const v = zahl(b[k]); if (v !== null) zeilen.push('- ' + wort(label) + ': ' + v); });
+            if (zeilen.length < 2) return;
+            const feld = document.getElementById('a-text');
+            if (feld && !feld.value.trim()) feld.value = zeilen.join('\n');
+            herkunftSetzen('Demo');
+            const ziel = document.getElementById('kontakt');
+            if (ziel && !location.hash) ziel.scrollIntoView();
+        }
+        befundUebernehmen();
+
+        function anfrageVorschau() {
+            const ziel = document.getElementById('a-vorschau');
+            if (ziel) ziel.textContent = anfrageText().koerper;
+        }
+
+        async function anfrageKopieren(knopf) {
+            const text = anfrageText().koerper;
+            let ok = false;
+            try { await navigator.clipboard.writeText(text); ok = true; }
+            catch (e) {
+                /* Rueckfall ohne Clipboard-API: den Vorschautext markieren und kopieren */
+                const feld = document.getElementById('a-vorschau');
+                if (feld) {
+                    const bereich = document.createRange(); bereich.selectNodeContents(feld);
+                    const auswahl = getSelection(); auswahl.removeAllRanges(); auswahl.addRange(bereich);
+                    try { ok = document.execCommand('copy'); } catch (e2) { ok = false; }
+                    auswahl.removeAllRanges();
+                }
+            }
+            const vorher = knopf.innerHTML;
+            knopf.textContent = ok ? wort('Kopiert ✓') : wort('Bitte den Text oben markieren und kopieren');
+            knopf.disabled = true;
+            setTimeout(() => { knopf.innerHTML = vorher; knopf.disabled = false; }, 2200);
+        }
+
+        function anfrageDrucken() {
+            const { betreff, koerper } = anfrageText();
+            let blatt = document.getElementById('anfrage-druck');
+            if (!blatt) {
+                blatt = document.createElement('section');
+                blatt.id = 'anfrage-druck';
+                blatt.setAttribute('data-nicht-uebersetzen', '');
+                document.body.appendChild(blatt);
+            }
+            blatt.innerHTML = '';
+            const kopf = document.createElement('h1'); kopf.textContent = betreff;
+            const an = document.createElement('p'); an.textContent = wort('An') + ': ' + buildEmail();
+            const datum = document.createElement('p');
+            datum.textContent = new Date().toLocaleDateString(document.documentElement.lang || 'de', { dateStyle: 'long' });
+            const text = document.createElement('pre'); text.textContent = koerper;
+            blatt.append(kopf, an, datum, text);
+            document.body.classList.add('druckt-anfrage');
+            addEventListener('afterprint', () => document.body.classList.remove('druckt-anfrage'), { once: true });
+            print();
+        }
+
+        /* Die Vorschau laeuft mit jeder Eingabe mit — und mit der Sprachwahl.
+           sprachen.js bindet seine Knoepfe erst nach diesem Skript (defer), deshalb
+           einen Tick warten, bis es die Sprache umgestellt hat. */
+        document.querySelectorAll('.anfrage select, .anfrage input, .anfrage textarea').forEach(el => {
+            el.addEventListener('input', anfrageVorschau);
+            el.addEventListener('change', anfrageVorschau);
+        });
+        document.querySelectorAll('[data-sprache]').forEach(b =>
+            b.addEventListener('click', () => setTimeout(() => { anfrageVorschau(); finderZeigen(); }, 0)));
+        addEventListener('load', anfrageVorschau);
+        anfrageVorschau();
+
+        // Bestandteile rückwärts gespeichert (keine lesbaren Muster):
+        const _eu = 'em';               // Nutzername
+        const _ed = 'ed.reileta-tib';   // Domain
+        const _p2 = '98945547';         // Rufnummern-Block
+        const _a1 = '63 nebargdnaL rehcabnehtöR mA';  // Straße
+        const _a2 = 'grebnrüN 15409';                 // PLZ/Ort
+
+        function buildEmail() { return rev(_eu) + String.fromCharCode(64) + rev(_ed); }
+        function buildPhoneDisplay() { return '0176 ' + rev(_p2); }
+        function buildPhoneDial() { return '+49' + '176' + rev(_p2); }
+
+        function revealEmail(btn) {
+            const mail = buildEmail();
+            const a = document.createElement('a');
+            a.href = String.fromCharCode(109,97,105,108,116,111,58) + mail; // Schema zur Laufzeit
+            a.textContent = mail;
+            a.className = 'kontakt__wert';
+            btn.replaceWith(a);
+        }
+
+        function revealAdresse(btn) {
+            const span = document.createElement('span');
+            span.textContent = rev(_a1) + ', ' + rev(_a2);
+            btn.replaceWith(span);
+        }
+
+        function revealPhone(btn) {
+            const a = document.createElement('a');
+            a.href = String.fromCharCode(116,101,108,58) + buildPhoneDial(); // Schema zur Laufzeit
+            a.textContent = buildPhoneDisplay();
+            a.className = 'kontakt__wert';
+            btn.replaceWith(a);
+        }
+
+        /* ---- Paketfinder (#pakete) ----
+           Die Einordnung folgt festen Regeln; die Preise sind die veroeffentlichten
+           Einstiegspreise der Karten darueber — hier wird nichts hochgerechnet, was
+           dort nicht steht. Per Knopf gehen die Angaben in den Anfrage-Baukasten,
+           dessen Felder dieselben Werte kennen. */
+        const PAKETE = {
+            1: { titel: 'Paket 1 · BIM-Quick-Check & Setup', preis: 'ab 8.500 € je Projekt', art: 'BIM-Koordination' },
+            2: { titel: 'Paket 2 · Automatisierte Modellprüfung & QS', preis: 'Festpreis je Prüflauf', art: 'Modellprüfung / QS' },
+            3: { titel: 'Paket 3 · BIM-Gesamtkoordination', preis: 'ab 4.500 € / Monat', art: 'BIM-Koordination' },
+        };
+        /* Wert des Finder-Knopfs -> Wortlaut der Option im Baukasten */
+        const FINDER_TEXT = {
+            summe: { u5: 'unter 5 Mio. €', '5-10': '5–10 Mio. €', '10-30': '10–30 Mio. €', ue30: 'über 30 Mio. €' },
+            modelle: { a: 'Architektur', at: 'Architektur + Tragwerk', atg: 'Architektur + Tragwerk + TGA',
+                       bestand: 'Bestandsmodell / Scan', keine: 'noch keine' },
+            phase: { 2: 'Vorplanung (LPH 2)', 3: 'Entwurf (LPH 3)', 4: 'Genehmigung (LPH 4)',
+                     5: 'Ausführungsplanung (LPH 5)', 6: 'Vergabe / Ausführung (LPH 6–8)' },
+        };
+        const finderWahl = { summe: '10-30', modelle: 'atg', phase: '3' };   /* Vorbelegung = haeufigster Fall */
+
+        function finderEmpfehlung(w) {
+            const gross = w.summe === '10-30' || w.summe === 'ue30';
+            const dreiModelle = w.modelle === 'atg';
+            if (w.summe === 'u5') return {
+                paket: null,
+                titel: 'Unterhalb der Paketgröße — der Weg ist die Planung',
+                grund: 'Die drei Pakete sind für Großprojekte ab etwa 10 Mio. € Bausumme geschnitten. Für Ihr Vorhaben ist der direkte Weg die Planung aus einer Hand: Entwurf, Genehmigung, Ausführung — mit Energiebilanz und Modell von Anfang an.',
+                art: 'Planung (LPH 1–9)', ziel: '#leistungen', zielText: 'Zu Planung & Architektur',
+            };
+            if (w.modelle === 'keine' || w.modelle === 'bestand') return {
+                paket: 1,
+                grund: w.modelle === 'keine'
+                    ? 'Ohne Fachmodell beginnt jedes Projekt mit dem Setup: AIA und BAP, Koordinationsumgebung, Namenskonventionen — und der erste Prüflauf, sobald das erste Modell steht.'
+                    : 'Ein Bestandsmodell oder Scan ist eine Grundlage, noch keine Koordinationsbasis. Der Quick-Check legt fest, was die Fachmodelle liefern müssen, und prüft den Bestand gleich mit.',
+                danach: gross ? 3 : null,
+            };
+            if (w.phase === '2' || w.phase === '3') return {
+                paket: 1,
+                grund: gross
+                    ? 'In Vorplanung und Entwurf entscheidet sich, ob das Projekt später prüffähig ist. Der Quick-Check schafft die Grundlage in 2–4 Wochen; über die Planungsphasen hinweg hält dann das Mandat die Fachmodelle zusammen.'
+                    : 'Bei 5–10 Mio. € ist der Quick-Check die passende Einstiegsgröße. Ein laufendes Mandat lohnt sich hier meist erst, wenn drei Fachmodelle koordiniert werden müssen.',
+                danach: gross ? 3 : null,
+            };
+            if (w.phase === '4' || w.phase === '5') return dreiModelle && gross ? {
+                paket: 3,
+                grund: 'Drei Fachmodelle in Genehmigung und Ausführungsplanung: Hier laufen die meisten Änderungen gleichzeitig. Das Mandat prüft jeden Stand, hält Koordinationssitzung und Maßnahmenliste — die Prüfläufe sind darin enthalten.',
+                danach: null,
+            } : {
+                paket: 2,
+                grund: 'Jeder Planungsstand wird geprüft, bevor er in die nächste Runde geht: Kollisionen, Duplikate, IDS-Konformität — mit Befunden als BCF zurück an die Fachplaner. Als Festpreis je Prüflauf, planbar je Meilenstein.',
+                danach: gross ? 3 : null,
+            };
+            return {
+                paket: 2,
+                grund: 'Vor Vergabe und Ausführung zählt der dokumentierte Stand: ein Prüflauf mit Prüfbericht und BCF, bevor der erste Auftrag vergeben wird. Was hier gefunden wird, kostet noch keinen Nachtrag.',
+                danach: null,
+            };
+        }
+
+        function finderZeigen() {
+            const ziel = document.getElementById('finder-ergebnis');
+            if (!ziel) return;
+            const e = finderEmpfehlung(finderWahl);
+            const p = e.paket ? PAKETE[e.paket] : null;
+            ziel.innerHTML = '';
+
+            const links = document.createElement('div');
+            const auge = document.createElement('p'); auge.className = 'finder__auge'; auge.textContent = wort('Empfehlung');
+            const titel = document.createElement('p'); titel.className = 'finder__paket'; titel.textContent = wort(p ? p.titel : e.titel);
+            links.append(auge, titel);
+            if (p) { const preis = document.createElement('p'); preis.className = 'finder__preis'; preis.textContent = wort(p.preis); links.append(preis); }
+            const grund = document.createElement('p'); grund.className = 'finder__grund'; grund.textContent = wort(e.grund);
+            links.append(grund);
+            if (e.danach) {
+                const d = PAKETE[e.danach];
+                const danach = document.createElement('p'); danach.className = 'finder__danach';
+                const b = document.createElement('b'); b.textContent = wort(d.titel);
+                danach.append(wort('Im Anschluss:') + ' ', b, ' · ' + wort(d.preis));
+                links.append(danach);
+            }
+
+            const rechts = document.createElement('div'); rechts.className = 'finder__tun';
+            let knopf;
+            if (e.ziel) {
+                knopf = document.createElement('a'); knopf.href = e.ziel;
+            } else {
+                knopf = document.createElement('button'); knopf.type = 'button';
+                knopf.addEventListener('click', () => finderUebernehmen(p ? p.art : e.art));
+            }
+            knopf.className = 'btn btn--klein';
+            knopf.textContent = wort(e.zielText || 'Mit diesen Angaben anfragen');
+            const hinweis = document.createElement('p'); hinweis.className = 'finder__hinweis';
+            hinweis.textContent = wort(e.ziel
+                ? 'Alle Leistungsphasen, auch Sanierung und geförderter Wohnungsbau.'
+                : 'Bausumme, Fachmodelle und Phase stehen dann schon im Anfrage-Baukasten.');
+            rechts.append(knopf, hinweis);
+            ziel.append(links, rechts);
+        }
+
+        function finderUebernehmen(art) {
+            herkunftSetzen('Paketfinder');
+            const setzeOption = (id, text) => {
+                const s = document.getElementById(id); if (!s) return;
+                for (const o of s.options) if (o.text === text) { s.value = o.value; break; }
+            };
+            if (art) setzeOption('a-art', art);
+            setzeOption('a-summe', FINDER_TEXT.summe[finderWahl.summe]);
+            setzeOption('a-modelle', FINDER_TEXT.modelle[finderWahl.modelle]);
+            setzeOption('a-phase', FINDER_TEXT.phase[finderWahl.phase]);
+            anfrageVorschau();
+            const feld = document.getElementById('a-termin');
+            if (feld) { feld.scrollIntoView({ behavior: 'smooth', block: 'center' }); feld.focus({ preventScroll: true }); }
+        }
+
+        document.querySelectorAll('.finder__wahl').forEach(gruppe => {
+            const frage = gruppe.closest('.finder__frage').dataset.frage;
+            gruppe.addEventListener('click', (ev) => {
+                const b = ev.target.closest('button[data-wert]'); if (!b) return;
+                finderWahl[frage] = b.dataset.wert;
+                gruppe.querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', String(x === b)));
+                finderZeigen();
+            });
+        });
+        finderZeigen();
+        addEventListener('load', finderZeigen);   /* jetzt mit Wörterbuch aus sprachen.js */
+
+        
+        /* ---- Prüf-Engine-Terminal: getippter Beispiel-Prüflauf (Demo-Werte) ---- */
+        (function () {
+            const el = document.getElementById('pruef-terminal');
+            if (!el) return;
+            const ZEILEN = [
+                { t: '> modelle einlesen — architektur.ifc · tragwerk.ifc · tga.ifc', c: 't-dim', tippen: true },
+                { t: '✓ 3 Fachmodelle geladen · IFC4 · 4.812 Bauteile', c: 't-ok' },
+                { t: '> kollisionsprüfung — regelmatrix ARC × TWP × TGA · toleranz 20 mm', c: 't-dim', tippen: true },
+                { t: '⚠ K-102 · Lüftungskanal ⨯ Unterzug · 2. OG, Achse C/3', c: 't-warn' },
+                { t: '⚠ K-114 · Sprinklerleitung ⨯ Kabeltrasse · EG, Flur', c: 't-warn' },
+                { t: '> ids-prüfung gegen AIA (buildingSMART IDS)', c: 't-dim', tippen: true },
+                { t: '✓ 97,4 % konform · 12 fehlende Attribute markiert', c: 't-ok' },
+                { t: '> export — prüfbericht.pdf · befunde.bcf an fachplaner', c: 't-dim', tippen: true },
+                { t: '✓ prüflauf abgeschlossen — 38 s', c: 't-akzent' },
+            ];
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                el.innerHTML = ZEILEN.map(z => `<div class="${z.c}"></div>`).join('');
+                [...el.children].forEach((d, i) => d.textContent = ZEILEN[i].t);
+                return;
+            }
+            let aktiv = false, gestartet = false;
+            const warte = (ms) => new Promise(r => setTimeout(r, ms));
+            async function bisSichtbar() { while (!aktiv) await warte(300); }
+            async function lauf() {
+                if (gestartet) return; gestartet = true;
+                const cursor = document.createElement('span');
+                cursor.className = 't-cursor';
+                cursor.textContent = '▌';
+                setInterval(() => { cursor.style.visibility = cursor.style.visibility === 'hidden' ? 'visible' : 'hidden'; }, 480);
+                while (true) {
+                    el.innerHTML = '';
+                    el.appendChild(cursor);
+                    for (const z of ZEILEN) {
+                        await bisSichtbar();
+                        const div = document.createElement('div');
+                        div.className = z.c;
+                        el.insertBefore(div, cursor);
+                        if (z.tippen) {
+                            for (const zeichen of z.t) { div.textContent += zeichen; await warte(13); }
+                        } else {
+                            await warte(360);
+                            div.textContent = z.t;
+                        }
+                        await warte(150);
+                    }
+                    await warte(6500);
+                }
+            }
+            new IntersectionObserver((es) => {
+                aktiv = es[0].isIntersecting;
+                if (aktiv) lauf();
+            }, { threshold: 0.2 }).observe(el);
+        })();
+</script>
+<script src="../assets/js/sprachen.js" defer=""></script>
+<script type="module">
+import * as THREE from 'three';
+
+/* =============================================================================
+   Scroll-getriebene Baustelle.
+   Ein Kapitel = ein Bauabschnitt. Der Fortschritt 0..1 der gesamten Bühne
+   steuert Kamera, Aufbau der Bauteile und Lichtstimmung.
+============================================================================= */
+
+const canvas = document.getElementById('buehne-leinwand');
+const scrub   = document.querySelector('.buehne');
+const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+const KAPITEL = [
+  { id:'kap-1', label:'Baufeld',   lph:'LPH 1', stand:'Baufeld' },
+  { id:'kap-2', label:'Gründung',  lph:'LPH 3', stand:'Gründung' },
+  { id:'kap-3', label:'Tragwerk',  lph:'LPH 4', stand:'Rohbau' },
+  { id:'kap-4', label:'Hülle',     lph:'LPH 5', stand:'Hülle' },
+  { id:'kap-5', label:'Prüfung',   lph:'LPH 5', stand:'Prüflauf' },
+  { id:'kap-6', label:'Übergabe',  lph:'LPH 8', stand:'Übergabe' },
+];
+
+/* ---------- Kapitel-Navigation aufbauen ---------- */
+const route = document.getElementById('route');
+KAPITEL.forEach((k,i)=>{
+  const b = document.createElement('button');
+  b.type='button';
+  b.dataset.nr = String(i+1).padStart(2,'0');
+  b.dataset.label = k.label;          /* deutsches Original, fuer die Sprachumschaltung */
+  b.textContent = b.dataset.nr + ' ' + ((window.bitHud && window.bitHud(k.label)) || k.label);
+  b.addEventListener('click',()=>document.getElementById(k.id).scrollIntoView({behavior:'smooth',block:'start'}));
+  route.appendChild(b);
+});
+const routeBtns = [...route.children];
+
+/* Medienebenen: Fenster im Gesamtfortschritt, weiche Überblendung an den Rändern */
+const ebenen = [...document.querySelectorAll('.ebene')].map(el=>({
+  el, von:parseFloat(el.dataset.von), bis:parseFloat(el.dataset.bis)
+}));
+const BLENDE = 0.035;                    /* Überblendbreite */
+const CANVAS_AN = [0.600, 0.650];        /* 3D fährt hoch */
+const CANVAS_AUS = [0.860, 0.900];       /* 3D fährt runter */
+const VIDEO_BIS = 0.62;                  /* Video deckt den Aufbau bis hierher ab */
+let buehnenModus = 'hybrid';
+
+/* Video nur dort, wo es sich lohnt: breiter Bildschirm, keine
+   Bewegungsreduktion, und der Browser kann H.264. Die Prüfung läuft bei jeder
+   Größenänderung erneut — sonst hängt die Seite in dem Modus fest, der beim
+   Laden gerade galt (ein Fenster wird breiter, ein Tablet wird gedreht). */
+const video = document.getElementById('buehne-video');
+const VIDEO_MIN_BREITE = 900;
+const kannH264 = !!video.canPlayType('video/mp4; codecs="avc1.42E01E"');
+let videoTauglich = false, videoBereit = false, letzteZeit_v = -1;
+
+/* Datensparmodus und langsames Netz (Befund B-03): 4,8 MB Video sind dort fehl
+   am Platz — der Bilderpfad ist ohnehin da. Die Auskunft geben nur
+   Chromium-Browser; wo sie fehlt, entscheidet wie bisher die Breite. */
+const netz = navigator.connection || navigator.mozConnection || navigator.webkitConnection || null;
+function netzSparsam(){
+  return !!(netz && (netz.saveData || /(^|-)2g$/.test(netz.effectiveType || '')));
+}
+if (netz && netz.addEventListener) netz.addEventListener('change', ()=>videoPruefen());
+
+function videoAnzeige(text){
+  const d = document.getElementById('dev-video');
+  if (d) d.textContent = text;
+}
+
+function videoPruefen(){
+  const vorher = videoTauglich;
+  videoTauglich = !reduced && !netzSparsam() && kannH264 && innerWidth >= VIDEO_MIN_BREITE;
+  if (!videoTauglich){
+    videoBereit = false;
+    video.style.opacity = 0;
+    videoAnzeige(reduced ? 'Bewegung reduziert — Standbilder'
+               : netzSparsam() ? 'Datensparmodus / langsames Netz — Standbilder'
+               : !kannH264 ? 'kein H.264 — Standbilder'
+               : 'Bildschirm unter ' + VIDEO_MIN_BREITE + ' px — Standbilder');
+    return;
+  }
+  if (!video.src){                      /* erst laden, wenn es gebraucht wird */
+    videoAnzeige('Video lädt …');
+    video.preload = 'auto';
+    /* Absolut, nicht relativ: dieser Pfad wird zur Laufzeit gesetzt und wuerde
+       auf den Sprachkopien /en/ und /ar/ gegen deren Ordner aufgeloest (Befund
+       aus dem Pruflauf 65-06: 404 auf en/assets/video/…). */
+    video.src = '/assets/video/bauablauf-1280.mp4';
+    video.addEventListener('loadeddata', ()=>{
+      videoBereit = true; letzteZeit_v = -1;
+      videoAnzeige('Video ' + video.duration.toFixed(1) + ' s · Scrubbing aktiv');
+      ebenenSetzen(fortschritt);
+    }, {once:true});
+    video.addEventListener('error', ()=>{
+      videoBereit = false;
+      videoAnzeige('Video-Fehler — Standbilder aktiv');
+    }, {once:true});
+    video.load();
+  } else if (!vorher){
+    videoBereit = video.readyState >= 2;
+    videoAnzeige(videoBereit
+      ? 'Video ' + video.duration.toFixed(1) + ' s · Scrubbing aktiv'
+      : 'Video lädt …');
+  }
+}
+
+function ebenenSetzen(p){
+  if (buehnenModus === 'voll3d'){
+    ebenen.forEach(e=>e.el.style.opacity = 0);
+    video.style.opacity = 0;
+    canvas.style.opacity = 1;
+    return 1;
+  }
+
+  /* Video führt, solange es geladen ist und der Modus es zulässt */
+  const videoAn = videoBereit && buehnenModus !== 'bilder';
+  if (videoAn){
+    const t = Math.min(1, Math.max(0, p / VIDEO_BIS)) * (video.duration || 1);
+    /* nur suchen, wenn es sich lohnt — sonst ertrinkt der Decoder in Sprüngen */
+    if (Math.abs(t - letzteZeit_v) > 0.02 && video.readyState >= 2){
+      video.currentTime = t; letzteZeit_v = t;
+    }
+    /* Video blendet aus, sobald der Röntgenblick übernimmt */
+    const vAus = Math.min(1, Math.max(0, (p - CANVAS_AN[0]) / (CANVAS_AN[1]-CANVAS_AN[0])));
+    video.style.opacity = (1 - vAus).toFixed(3);
+    /* nur die Schluss-Ebene bleibt, alle Aufbau-Ebenen sind stumm */
+    ebenen.forEach((e,i)=>{
+      if (i < ebenen.length - 1){ e.el.style.opacity = 0; return; }
+      const ein = Math.min(1, Math.max(0, (p - (e.von - BLENDE)) / BLENDE));
+      const aus = Math.min(1, Math.max(0, (p - e.bis) / BLENDE));
+      e.el.style.opacity = (ein * (1 - aus)).toFixed(3);
+    });
+    const an  = Math.min(1, Math.max(0, (p - CANVAS_AN[0]) / (CANVAS_AN[1]-CANVAS_AN[0])));
+    const aus = Math.min(1, Math.max(0, (p - CANVAS_AUS[0]) / (CANVAS_AUS[1]-CANVAS_AUS[0])));
+    const deck = an * (1 - aus);
+    canvas.style.opacity = deck.toFixed(3);
+    return deck;
+  }
+  video.style.opacity = 0;
+  for (const e of ebenen){
+    const ein  = Math.min(1, Math.max(0, (p - (e.von - BLENDE)) / BLENDE));
+    const aus  = Math.min(1, Math.max(0, (p - e.bis) / BLENDE));
+    e.el.style.opacity = (ein * (1 - aus)).toFixed(3);
+  }
+  const an  = Math.min(1, Math.max(0, (p - CANVAS_AN[0]) / (CANVAS_AN[1]-CANVAS_AN[0])));
+  const aus = Math.min(1, Math.max(0, (p - CANVAS_AUS[0]) / (CANVAS_AUS[1]-CANVAS_AUS[0])));
+  const deck = an * (1 - aus);
+  canvas.style.opacity = deck.toFixed(3);
+  return deck;
+}
+
+const hudPhase = document.getElementById('anzeige-lph');
+const hudStand = document.getElementById('anzeige-stand');
+const hudCount = document.getElementById('anzeige-teile');
+const balken   = document.getElementById('fortschritt-balken');
+const hinweis  = document.getElementById('wink');
+hinweis.style.transition = 'opacity .4s';
+
+/* =============================================================================
+   Szene
+============================================================================= */
+const scene = new THREE.Scene();
+scene.fog = new THREE.Fog(0x172230, 55, 190);
+
+const camera = new THREE.PerspectiveCamera(52, 1, .1, 900);   /* Bildwinkel wie Blender */
+const renderer = new THREE.WebGLRenderer({canvas, antialias:true, alpha:true, powerPreference:'high-performance'});
+renderer.setPixelRatio(Math.min(devicePixelRatio||1, 2));
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.22;
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+
+/* ---------- Akzentfarbe: wird aus dem CSS übernommen ---------- */
+const ACCENT = new THREE.Color('#8b4bf0');
+const akzentMaterialien = [];
+function linienMat(op){
+  const m = new THREE.LineBasicMaterial({color:ACCENT.clone(), transparent:true, opacity:op});
+  akzentMaterialien.push(m); return m;
+}
+
+/* ---------- Licht ---------- */
+const hemi = new THREE.HemisphereLight(0xc4d6ff, 0x4a4258, 1.15);
+scene.add(hemi);
+const sonne = new THREE.DirectionalLight(0xfff4e6, 3.0);
+sonne.castShadow = true;
+sonne.shadow.mapSize.set(1536,1536);
+sonne.shadow.camera.near = 1; sonne.shadow.camera.far = 170;
+sonne.shadow.camera.left=-40; sonne.shadow.camera.right=40;
+sonne.shadow.camera.top=40; sonne.shadow.camera.bottom=-40;
+sonne.shadow.bias = -0.0006;
+scene.add(sonne);
+const fuell = new THREE.DirectionalLight(0x8fa0e8, .55);
+fuell.position.set(-14,10,-12); scene.add(fuell);
+
+const innenLichter = [];
+[[-3,2.0,0],[0,5.1,2],[-4,8.2,-2],[1,11.3,1],[-2,14.2,0]].forEach(p=>{
+  const l = new THREE.PointLight(0xffd9a3, 0, 22, 2);
+  l.position.set(p[0],p[1],p[2]); scene.add(l); innenLichter.push(l);
+});
+
+/* =============================================================================
+   Bauteil-Registry
+============================================================================= */
+const teile = [];
+function bauteil(obj, von, bis, art){
+  obj.userData.von = von; obj.userData.bis = bis; obj.userData.art = art || 'wachsen';
+  teile.push(obj); scene.add(obj);
+  return obj;
+}
+const smooth = t => t<=0?0 : t>=1?1 : t*t*(3-2*t);
+const spanne = (p,a,b) => smooth((p-a)/(b-a));
+const mix = (a,b,t)=>a+(b-a)*t;
+
+/* ---------- Materialien ---------- */
+const matBeton  = new THREE.MeshStandardMaterial({color:0x9a97a4, roughness:.82, metalness:.02});
+const matPutz   = new THREE.MeshStandardMaterial({color:0xf2efe8, roughness:.68, metalness:.0});
+const matHolz   = new THREE.MeshStandardMaterial({color:0xc08a52, roughness:.58, metalness:.0});
+const matDecke  = new THREE.MeshStandardMaterial({color:0xd0ccd6, roughness:.74, metalness:.02});
+const matGlas   = new THREE.MeshStandardMaterial({color:0x8fb6d8, roughness:.08, metalness:.28,
+                     opacity:.42, emissive:new THREE.Color(0xffcf8a), emissiveIntensity:0});
+const glasMats = [];   /* alle Scheiben, um sie abends zum Leuchten zu bringen */
+const matMetall = new THREE.MeshStandardMaterial({color:0x4a4a52, roughness:.42, metalness:.75});
+const matPv     = new THREE.MeshStandardMaterial({color:0x14161f, roughness:.28, metalness:.55});
+const matGruen  = new THREE.MeshStandardMaterial({color:0x5f8a4c, roughness:.88});
+const matBoden  = new THREE.MeshStandardMaterial({color:0x27313c, roughness:.93});
+
+/* Solid + Kantenlinien: erst wird gezeichnet, dann materialisiert. */
+function koerper(geo, mat, pos, keinSchatten){
+  const g = new THREE.Group();
+  const mesh = new THREE.Mesh(geo, mat.clone());
+  mesh.castShadow = !keinSchatten;
+  mesh.receiveShadow = true;
+  mesh.material.transparent = true;
+  mesh.material.opacity = 0;
+  mesh.userData.maxOpacity = (mat === matGlas) ? .42 : 1;
+  if (mat === matGlas) glasMats.push(mesh.material);
+  const kanten = new THREE.LineSegments(new THREE.EdgesGeometry(geo, 22), linienMat(0));
+  g.add(mesh); g.add(kanten);
+  g.position.set(pos[0],pos[1],pos[2]);
+  g.userData.mesh = mesh; g.userData.kanten = kanten;
+  return g;
+}
+/* Geometrie so verschieben, dass der Ursprung unten liegt (Wachsen von unten). */
+function box(b,h,t){ const g = new THREE.BoxGeometry(b,h,t); g.translate(0,h/2,0); return g; }
+
+/* =============================================================================
+   GELÄNDE, BAUFELD, NACHBARSCHAFT
+   Maße identisch zu blender/haus_v2.py — die Standbilder und diese Bühne
+   zeigen dasselbe Gebäude aus derselben Kamera.
+============================================================================= */
+const GH = 3.1, GESCHOSSE = 5, HOEHE = GH * GESCHOSSE;   /* 15.5 */
+const HV_X0 = -8.5, HV_X1 = 4.0, HV_Z0 = -7.5, HV_Z1 = 7.5;
+const HV_B = HV_X1 - HV_X0, HV_T = HV_Z1 - HV_Z0;
+const EK_X0 = 4.0, EK_X1 = 8.5, EK_B = EK_X1 - EK_X0;
+const LO_X0 = -1.0, LO_X1 = 4.0, LO_Z0 = 3.4, LO_T = HV_Z1 - LO_Z0;
+const FIRST_X = -2.0;
+const PG_X0 = 3.0, PG_X1 = 14.5, PG_Z0 = -16.0, PG_Z1 = -8.6, PG_H = 3.4;
+const PO_X0 = -3.0, PO_X1 = 12.0, PO_Z = 10.6;
+
+/* Geometrie mit Ursprung in der Mitte — für gedrehte Bauteile (Pultdächer, PV) */
+function boxM(b,h,t){ return new THREE.BoxGeometry(b,h,t); }
+
+const boden = new THREE.Mesh(new THREE.PlaneGeometry(420,420), matBoden);
+boden.rotation.x = -Math.PI/2; boden.position.y = -0.03; boden.receiveShadow = true;
+scene.add(boden);
+
+const raster = new THREE.GridHelper(160, 80, ACCENT.clone(), 0x2a2533);
+raster.material.transparent = true; raster.material.opacity = .34;
+akzentMaterialien.push(raster.material);
+scene.add(raster);
+
+/* Grundstücksgrenze, gestrichelt */
+const GX0 = -13, GX1 = 15, GZ0 = -17, GZ1 = 13;
+const grenzePunkte = [[GX0,GZ0],[GX1,GZ0],[GX1,GZ1],[GX0,GZ1],[GX0,GZ0]]
+  .map(c=>new THREE.Vector3(c[0],.06,c[1]));
+const grenzeMat = new THREE.LineDashedMaterial({color:ACCENT.clone(), dashSize:1.1,
+  gapSize:.7, transparent:true, opacity:0});
+akzentMaterialien.push(grenzeMat);
+const grenze = new THREE.Line(new THREE.BufferGeometry().setFromPoints(grenzePunkte), grenzeMat);
+grenze.computeLineDistances();
+bauteil(grenze, 0.00, 0.055, 'linie');
+
+/* Sonnenbahn */
+const bahnPunkte = [];
+for (let i=0;i<=48;i++){ const a = Math.PI*(i/48);
+  bahnPunkte.push(new THREE.Vector3(Math.cos(a)*34, Math.sin(a)*24+.5, Math.sin(a*.6)*10-8)); }
+bauteil(new THREE.Line(new THREE.BufferGeometry().setFromPoints(bahnPunkte), linienMat(0)),
+        0.01, 0.07, 'linie');
+
+/* Nachbarschaft — dieselben Standorte wie in haus_v2.py */
+const matNachbar = new THREE.MeshStandardMaterial({color:0x3b3630, roughness:.88});
+const matNachbarDach = new THREE.MeshStandardMaterial({color:0x2a2622, roughness:.7});
+[[-34,-6,11,9.5,9.3,-8],[-30,16,10,9,6.4,12],[-26,-28,12,10,9.8,5],[18,-34,11,9,7.0,-14],
+ [34,-14,10,12,10.5,9],[36,14,11,9,6.8,-6],[10,40,12,10,9.0,3],[-12,38,10,9,7.4,-10]]
+ .forEach(n=>{
+   const [nx,nz,nb,nt,nh,ndr] = n;
+   const g = new THREE.Group();
+   const koerp = new THREE.Mesh(box(nb,nh,nt), matNachbar);
+   koerp.castShadow = koerp.receiveShadow = true;
+   const dach = new THREE.Mesh(boxM(nb+0.9,0.3,nt+0.9), matNachbarDach);
+   dach.position.y = nh + 0.15;
+   const kante = new THREE.LineSegments(new THREE.EdgesGeometry(koerp.geometry,22),
+     new THREE.LineBasicMaterial({color:0x4a4540, transparent:true, opacity:.3}));
+   g.add(koerp, dach, kante);
+   g.position.set(nx,0,nz);
+   g.rotation.y = ndr * Math.PI/180;
+   scene.add(g);
+ });
+
+/* Horizontkante: Baumsilhouetten im Ring */
+const matLaub = new THREE.MeshStandardMaterial({color:0x1c2a15, roughness:.9});
+function baumKoerper(hoehe){
+  const g = new THREE.Group();
+  const stamm = new THREE.Mesh(new THREE.CylinderGeometry(.16,.22,hoehe*.42,6), matHolz);
+  stamm.position.y = hoehe*.21;
+  g.add(stamm);
+  [[0,0,.66,.34],[.24,.14,.52,.26],[-.2,-.1,.78,.22]].forEach(k=>{
+    const kr = new THREE.Mesh(new THREE.IcosahedronGeometry(hoehe*k[3],1), matLaub);
+    kr.position.set(k[0]*hoehe, hoehe*k[2], k[1]*hoehe);
+    kr.castShadow = true;
+    g.add(kr);
+  });
+  return g;
+}
+for (let i=0;i<56;i++){
+  const w = i/56 * Math.PI*2;
+  const r = 84 + (i*37 % 52);
+  const b = baumKoerper(8.5 + (i*53 % 40)/10);
+  b.position.set(Math.cos(w)*r, 0, Math.sin(w)*r);
+  scene.add(b);
+}
+
+/* =============================================================================
+   GRÜNDUNG
+============================================================================= */
+bauteil(koerper(box(HV_B+EK_B+1.0, .55, HV_T+1.0), matBeton, [-1.0,-.55,0]),
+        0.11, 0.20, 'wachsen');
+[-7.0,-2.5,2.0,6.5].forEach((fx,i)=>[-6.0,0.0,6.0].forEach(fz=>
+  bauteil(koerper(box(1.8,1.2,1.8), matBeton, [fx,-1.75,fz]), 0.12+i*0.004, 0.21, 'wachsen')));
+
+/* =============================================================================
+   TRAGWERK — Decken, Erschliessungskern, Stützenraster
+============================================================================= */
+for (let g=1; g<=GESCHOSSE; g++){
+  const y = g*GH;
+  const von = 0.245 + (g-1)*0.035, bis = von + 0.05;
+  bauteil(koerper(box(HV_B,.28,HV_T), matDecke, [(HV_X0+HV_X1)/2, y-.28, 0]),
+          von, bis, 'ausbreiten');
+  bauteil(koerper(box(EK_B,.28,HV_T), matDecke, [(EK_X0+EK_X1)/2, y-.28, 0]),
+          von+.008, bis+.008, 'ausbreiten');
+}
+/* Kernscheiben */
+bauteil(koerper(box(.35,HOEHE,HV_T), matBeton, [EK_X0+.18,0,0]), 0.25, 0.36, 'wachsen');
+bauteil(koerper(box(.35,HOEHE,HV_T), matBeton, [EK_X1-.18,0,0]), 0.255, 0.365, 'wachsen');
+bauteil(koerper(box(EK_B,HOEHE,.35), matBeton, [(EK_X0+EK_X1)/2,0,HV_Z0+.18]),
+        0.26, 0.37, 'wachsen');
+bauteil(koerper(box(EK_B-.9,HOEHE,.30), matBeton, [(EK_X0+EK_X1)/2,0,1.2]),
+        0.265, 0.375, 'wachsen');
+/* Stützenraster */
+[HV_X0+.4,-4.2,0.0,HV_X1-.4].forEach((sx,i)=>[HV_Z0+.4,0.0,HV_Z1-.4].forEach(sz=>
+  bauteil(koerper(box(.34,HOEHE,.34), matBeton, [sx,0,sz]), 0.25+i*0.006, 0.37, 'wachsen')));
+
+/* Dunkler Innenausbau — lässt die Verglasung als Öffnung lesen */
+const matInnenD = new THREE.MeshStandardMaterial({color:0x14120f, roughness:.9});
+for (let g=0; g<GESCHOSSE; g++){
+  const y = g*GH;
+  bauteil(koerper(box(HV_B-.8, GH-.3, .06), matInnenD,
+          [(HV_X0+HV_X1)/2, y+.15, HV_Z0+.9], true), 0.27, 0.38, 'wachsen');
+  bauteil(koerper(box(HV_B-.8, .06, HV_T-1.8), matInnenD,
+          [(HV_X0+HV_X1)/2, y+.15, 0], true), 0.27, 0.38, 'ausbreiten');
+}
+
+/* =============================================================================
+   HÜLLE — Fassaden mit echten Öffnungen, Loggien, Schiebeläden
+============================================================================= */
+function fensterband(laenge, anzahl, breite){
+  const rand = (laenge - anzahl*breite) / (anzahl+1);
+  const f = [];
+  for (let i=0;i<anzahl;i++){
+    const von = -laenge/2 + rand + i*(breite+rand);
+    f.push([von, von+breite]);
+  }
+  return f;
+}
+function fassade(o){
+  const mat = o.mat || matPutz;
+  const setz = (laenge, hoehe, yOff, lokal, material, glas) => {
+    const dicke = glas ? .07 : .22;
+    const geo = o.achse === 'x' ? box(laenge,hoehe,dicke) : box(dicke,hoehe,laenge);
+    const pos = o.achse === 'x' ? [o.mx + lokal, o.y + yOff, o.mz]
+                                : [o.mx, o.y + yOff, o.mz + lokal];
+    bauteil(koerper(geo, material, pos, glas), o.von, o.bis, glas ? 'blenden' : 'wachsen');
+  };
+  const f = [...o.fenster].sort((a,b)=>a[0]-b[0]);
+  const halb = o.laenge/2;
+  let kante = -halb;
+  for (const [von,bis] of f){
+    if (von - kante > .02) setz(von-kante, o.hoehe, 0, (kante+von)/2, mat, false);
+    kante = bis;
+  }
+  if (halb - kante > .02) setz(halb-kante, o.hoehe, 0, (kante+halb)/2, mat, false);
+  for (const [von,bis] of f){
+    const b = bis-von, m = (von+bis)/2;
+    if (o.sill > .02)            setz(b, o.sill, 0, m, mat, false);
+    if (o.hoehe - o.sturz > .02) setz(b, o.hoehe-o.sturz, o.sturz, m, mat, false);
+    setz(b, o.sturz-o.sill, o.sill, m, matGlas, true);
+  }
+}
+
+const matStein = new THREE.MeshStandardMaterial({color:0xd8d3c8, roughness:.66});
+const matHolzDunkel = new THREE.MeshStandardMaterial({color:0x6b452a, roughness:.55});
+
+for (let g=0; g<GESCHOSSE; g++){
+  const y = g*GH, hg = GH - .28;
+  const von = 0.455 + g*0.022, bis = von + 0.045;
+
+  /* Süd links: Glas zwischen Holzpfeilern */
+  const sl = LO_X0 - HV_X0;
+  fassade({laenge:sl, hoehe:hg, y, mx:(HV_X0+LO_X0)/2, mz:HV_Z1-.11, achse:'x',
+           sill:.15, sturz:hg-.20, fenster:fensterband(sl,2,2.9), von, bis, mat:matHolzDunkel});
+
+  /* Loggien: zurückgesetzte Front, Platte, Glasbrüstung, Handlauf */
+  fassade({laenge:LO_X1-LO_X0, hoehe:hg, y, mx:(LO_X0+LO_X1)/2, mz:LO_Z0-.11, achse:'x',
+           sill:.15, sturz:hg-.20, fenster:fensterband(LO_X1-LO_X0,2,2.2),
+           von:von+.006, bis:bis+.006, mat:matHolzDunkel});
+  bauteil(koerper(box(LO_X1-LO_X0,.24,LO_T), matDecke,
+          [(LO_X0+LO_X1)/2, y-.24, (LO_Z0+HV_Z1)/2]), von+.01, bis+.01, 'ausbreiten');
+  bauteil(koerper(box(LO_X1-LO_X0,1.05,.04), matGlas,
+          [(LO_X0+LO_X1)/2, y+.1, HV_Z1-.06], true), von+.014, bis+.014, 'blenden');
+  bauteil(koerper(box(LO_X1-LO_X0,.07,.07), matMetall,
+          [(LO_X0+LO_X1)/2, y+1.15, HV_Z1-.06]), von+.016, bis+.016, 'ausbreiten');
+  /* Holz-Schiebeläden, geschossweise versetzt */
+  for (let i=0;i<2;i++){
+    const lx = LO_X0 + 0.6 + i*2.4 + (g%2 ? 0.5 : 0);
+    bauteil(koerper(box(1.15, hg-.3, .08), matHolzDunkel, [lx, y+.15, HV_Z1-.18]),
+            von+.018+i*.004, bis+.02+i*.004, 'wachsen');
+  }
+
+  /* Nord: geschlossener */
+  fassade({laenge:HV_B, hoehe:hg, y, mx:(HV_X0+HV_X1)/2, mz:HV_Z0+.11, achse:'x',
+           sill:.95, sturz:hg-.35, fenster:fensterband(HV_B,3,1.4),
+           von:von+.004, bis:bis+.004, mat:matHolzDunkel});
+  /* West: hohe Schlitze in Holzschalung */
+  fassade({laenge:HV_T, hoehe:hg, y, mx:HV_X0+.11, mz:0, achse:'z',
+           sill:.25, sturz:hg-.20, fenster:fensterband(HV_T,3,1.1),
+           von:von+.008, bis:bis+.008, mat:matHolzDunkel});
+  /* Erschliessungsriegel: heller Werkstein, gestanzte Fenster */
+  fassade({laenge:HV_T, hoehe:hg, y, mx:EK_X1-.11, mz:0, achse:'z',
+           sill:1.05, sturz:2.35, fenster:fensterband(HV_T,3,1.3),
+           von:von+.012, bis:bis+.012, mat:matStein});
+  fassade({laenge:EK_B, hoehe:hg, y, mx:(EK_X0+EK_X1)/2, mz:HV_Z1-.11, achse:'x',
+           sill:1.05, sturz:2.35, fenster:[[-.7,.7]],
+           von:von+.014, bis:bis+.014, mat:matStein});
+}
+
+/* Warmes Innenlicht ab Übergabe */
+for (let g=0; g<GESCHOSSE; g++){
+  bauteil(koerper(box(HV_B-2.0,.05,HV_T-2.6), matGlas,
+          [(HV_X0+HV_X1)/2, g*GH + GH - .45, 0], true), 0.84, 0.90, 'blenden');
+}
+
+/* =============================================================================
+   DÄCHER — zwei gegenläufige Pultdächer, Gründach, Gewächshaus
+============================================================================= */
+function pultdach(x0, x1, y0, y1, dicke, mat, von, bis){
+  const dx = x1 - x0, dy = y1 - y0;
+  const laenge = Math.hypot(dx, dy);
+  const g = koerper(boxM(laenge, dicke, HV_T + 1.0), mat,
+                    [(x0+x1)/2, (y0+y1)/2, 0]);
+  g.rotation.z = Math.atan2(dy, dx);
+  bauteil(g, von, bis, 'blenden');
+  return g;
+}
+pultdach(HV_X0, FIRST_X, HOEHE+2.3, HOEHE, .34, matHolzDunkel, 0.575, 0.615);
+pultdach(FIRST_X, HV_X1, HOEHE, HOEHE+1.9, .34, matHolzDunkel, 0.58, 0.62);
+
+/* Flachdach und Attika über dem Riegel */
+bauteil(koerper(box(EK_B,.30,HV_T), matDecke, [(EK_X0+EK_X1)/2, HOEHE, 0]),
+        0.575, 0.615, 'ausbreiten');
+bauteil(koerper(box(EK_B,.55,.16), matMetall,
+        [(EK_X0+EK_X1)/2, HOEHE+.30, HV_Z1-.08]), 0.60, 0.635, 'wachsen');
+
+/* PV auf beiden Pultdächern — erst zur Übergabe, wie in den Standbildern */
+const neigW = Math.atan2(2.3, FIRST_X - HV_X0);
+for (let i=0;i<4;i++) for (let j=0;j<4;j++){
+  const x = HV_X0 + 0.9 + i*1.7;
+  const y = HOEHE + 2.3 - (x - HV_X0) * (2.3/(FIRST_X-HV_X0)) * -1 + 0.42;
+  const yy = HOEHE + 2.3 + (x - HV_X0)/(FIRST_X - HV_X0) * (HOEHE - (HOEHE+2.3)) + 0.42;
+  const pv = koerper(boxM(1.55,.06,2.9), matPv, [x, yy, HV_Z0 + 2.2 + j*3.6], true);
+  pv.rotation.z = -neigW;
+  bauteil(pv, 0.845 + (i*4+j)*0.002, 0.885 + (i*4+j)*0.002, 'blenden');
+}
+const neigO = Math.atan2(1.9, HV_X1 - FIRST_X);
+for (let i=0;i<3;i++) for (let j=0;j<4;j++){
+  const x = FIRST_X + 0.9 + i*1.8;
+  const yy = HOEHE + (x - FIRST_X)/(HV_X1 - FIRST_X) * 1.9 + 0.42;
+  const pv = koerper(boxM(1.6,.06,2.9), matPv, [x, yy, HV_Z0 + 2.2 + j*3.6], true);
+  pv.rotation.z = neigO;
+  bauteil(pv, 0.85 + (i*4+j)*0.002, 0.89 + (i*4+j)*0.002, 'blenden');
+}
+
+/* Gründach und Glas-Gewächshaus auf dem Riegel */
+bauteil(koerper(box(EK_B-.6,.16,HV_T-.8), matGruen,
+        [(EK_X0+EK_X1)/2, HOEHE+.30, 0], true), 0.845, 0.885, 'ausbreiten');
+bauteil(koerper(box(3.2,.20,3.2), matDecke, [6.2, HOEHE+.30, 1.5], true),
+        0.85, 0.885, 'ausbreiten');
+bauteil(koerper(box(3.0,2.5,3.0), matGlas, [6.2, HOEHE+.50, 1.5], true),
+        0.855, 0.895, 'blenden');
+
+/* =============================================================================
+   NEBENFLÜGEL — PV-Pergola
+============================================================================= */
+[PG_X0+.4, (PG_X0+PG_X1)/2, PG_X1-.4].forEach((sx,i)=>[PG_Z0+.4, PG_Z1-.4].forEach(sz=>
+  bauteil(koerper(box(.26,PG_H,.26), matMetall, [sx,0,sz]), 0.30+i*0.01, 0.40, 'wachsen')));
+bauteil(koerper(box(PG_X1-PG_X0,.24,PG_Z1-PG_Z0), matDecke,
+        [(PG_X0+PG_X1)/2, PG_H, (PG_Z0+PG_Z1)/2]), 0.585, 0.625, 'ausbreiten');
+for (let i=0;i<4;i++) for (let j=0;j<2;j++){
+  const pv = koerper(boxM(2.5,.06,3.2), matPv,
+    [PG_X0+1.5+i*2.8, PG_H+0.30, PG_Z0+2.0+j*3.6], true);
+  pv.rotation.z = -6*Math.PI/180;
+  bauteil(pv, 0.855+(i*2+j)*0.003, 0.895+(i*2+j)*0.003, 'blenden');
+}
+
+/* =============================================================================
+   POOL UND AUSSENANLAGEN
+============================================================================= */
+bauteil(koerper(box(PO_X1-PO_X0+.6,.5,4.0), matBeton, [(PO_X0+PO_X1)/2,-.5,PO_Z]),
+        0.47, 0.52, 'wachsen');
+const matWasser = new THREE.MeshStandardMaterial({color:0x0f5a63, roughness:.03,
+  metalness:.1, transparent:true, opacity:.85});
+bauteil(koerper(box(PO_X1-PO_X0,.10,3.4), matWasser, [(PO_X0+PO_X1)/2,-.02,PO_Z], true),
+        0.86, 0.90, 'ausbreiten');
+const matHecke = new THREE.MeshStandardMaterial({color:0x172a10, roughness:.92});
+bauteil(koerper(box(PO_X1-PO_X0+3.0,1.7,.9), matHecke,
+        [(PO_X0+PO_X1)/2, 0, PO_Z+3.6]), 0.865, 0.905, 'wachsen');
+bauteil(koerper(box(.9,1.7,8.0), matHecke, [PO_X1+2.0, 0, PO_Z-2.0]), 0.87, 0.91, 'wachsen');
+for (let i=0;i<3;i++)
+  bauteil(koerper(box(2.0,.42,.75), matHolzDunkel, [2.0+i*2.4, 0, PO_Z-2.6]),
+          0.875+i*0.004, 0.915, 'ausbreiten');
+bauteil(koerper(box(9.0,.06,4.5), matBeton, [-2.0,0,12.6], true), 0.875, 0.915, 'ausbreiten');
+bauteil(koerper(box(PG_X1-PG_X0,.06,PG_Z1-PG_Z0), matBeton,
+        [(PG_X0+PG_X1)/2, 0, (PG_Z0+PG_Z1)/2], true), 0.88, 0.92, 'ausbreiten');
+
+/* Nahe Bäume */
+[[-16,9,6.5],[-18,-12,7.5],[-14,24,5.5],[17,7,6.0],[23,20,7.0],[-24,4,8.0],
+ [8,-22,6.0],[27,-4,5.5],[-7,27,5.0],[15,31,5.5],[-21,18,5.0],[20,-24,6.5]]
+ .forEach((c,i)=>{
+   const b = baumKoerper(c[2]);
+   b.position.set(c[0],0,c[1]);
+   b.userData.skalieren = true;
+   bauteil(b, 0.845+i*0.006, 0.90+i*0.006, 'skala');
+ });
+
+/* =============================================================================
+   TECHNIK (Röntgenblick) + PRÜFUNG — Lage im neuen Gebäude
+============================================================================= */
+const tgaMats = [];
+function leitung(punkte, radius, farbe){
+  const kurve = new THREE.CatmullRomCurve3(punkte.map(p=>new THREE.Vector3(p[0],p[1],p[2])));
+  const mat = new THREE.MeshStandardMaterial({color:farbe, emissive:new THREE.Color(farbe),
+    emissiveIntensity:.9, roughness:.35, metalness:.4, transparent:true, opacity:0});
+  const m = new THREE.Mesh(new THREE.TubeGeometry(kurve, 100, radius, 10, false), mat);
+  tgaMats.push(mat); scene.add(m); return m;
+}
+/* Lüftung: waagerechte Verteilung je Geschoss, Steigschacht im Kern */
+leitung([[-7.6,1.6,4.6],[-3.0,1.9,4.6],[1.0,1.9,2.2],[5.2,2.2,2.2],
+         [5.2,5.3,2.2],[1.0,5.6,2.2],[-3.0,5.6,4.6],[-7.6,5.9,4.6],
+         [-7.6,9.0,4.6],[-3.0,9.3,4.6],[1.0,9.3,2.2]], .20, 0x5ec8ff);
+/* Heizung: Steigstrang durch alle Geschosse */
+leitung([[6.2,0.8,-1.0],[6.2,4.2,-1.0],[6.2,7.6,-1.0],[6.2,11.0,-1.0],
+         [6.2,14.2,-1.0],[2.0,14.4,-1.0]], .14, 0xff8a5c);
+/* Sanitär */
+leitung([[-6.0,0.6,-5.0],[0,0.9,-5.0],[5.0,0.9,-5.0],[5.0,4.4,-5.0],
+         [0,4.7,-5.0],[-6.0,4.7,-5.0],[-6.0,8.2,-5.0],[0,8.4,-5.0]], .12, 0x9ce6f3);
+/* Elektro-Trasse */
+leitung([[-8.0,2.6,0.0],[-4.0,2.6,0.0],[0.0,2.6,0.0],[4.0,2.8,0.0],
+         [4.0,6.0,0.0],[0.0,6.0,0.0],[-4.0,6.0,0.0],[-8.0,6.0,0.0]], .10, 0xb08cff);
+
+const ROT = new THREE.Color(0xff3344), GRUEN = new THREE.Color(0x3ddc84);
+const marker = [];
+[[1.0,1.9,2.2],[6.2,7.6,-1.0],[5.0,4.55,-5.0]].forEach(p=>{
+  const mat = new THREE.MeshStandardMaterial({color:0xff3344, emissive:0xff3344,
+    emissiveIntensity:1.6, transparent:true, opacity:0, roughness:.3});
+  const m = new THREE.Mesh(new THREE.SphereGeometry(.52,20,16), mat);
+  m.position.set(p[0],p[1],p[2]); scene.add(m); marker.push(m);
+  const ringMat = new THREE.MeshBasicMaterial({color:0xff3344, transparent:true,
+    opacity:0, side:THREE.DoubleSide});
+  const ring = new THREE.Mesh(new THREE.RingGeometry(.75,.88,32), ringMat);
+  ring.position.set(p[0],p[1],p[2]); scene.add(ring);
+  m.userData.ring = ring;
+});
+
+const scanMat = new THREE.MeshBasicMaterial({color:ACCENT.clone(), transparent:true,
+  opacity:0, side:THREE.DoubleSide});
+akzentMaterialien.push(scanMat);
+const scan = new THREE.Mesh(new THREE.PlaneGeometry(30,24), scanMat);
+scan.rotation.x = -Math.PI/2; scene.add(scan);
+
+/* =============================================================================
+   KAMERAFAHRT
+============================================================================= */
+const KAM = [
+  { p:[34,28.5,35], z:[0,3.0,0] },   /* p=0.0  — Baufeld,  = Standbild Phase 1 */
+  { p:[31,26.0,32], z:[0,1.5,0] },   /* p=0.2  — Gründung, = Standbild Phase 2 */
+  { p:[33,28.0,34], z:[0,6.5,0] },   /* p=0.4  — Tragwerk, = Standbild Phase 3 */
+  { p:[32,27.5,33], z:[0,7.5,0] },   /* p=0.6  — Hülle,    = Standbild Phase 4  ← Canvas blendet hier ein */
+  { p:[21,17.0,21], z:[0,7.5,0] },   /* p=0.8  — Prüfung, näher heran für den Röntgenblick */
+  { p:[30,26.5,31], z:[0,7.0,1.5] }, /* p=1.0  — Übergabe, = Standbild Phase 6  ← Canvas blendet hier aus */
+];
+const tmpA = new THREE.Vector3(), tmpB = new THREE.Vector3(), ziel = new THREE.Vector3();
+
+/* Schlüsselbilder in Polarkoordinaten umrechnen. Zwischen zwei Bildern wird
+   Radius/Winkel/Höhe interpoliert statt der Luftlinie — sonst fliegt die
+   Kamera zwischen gegenüberliegenden Standpunkten mitten durch das Haus. */
+const KAM_POLAR = KAM.map(k=>({
+  r: Math.hypot(k.p[0], k.p[2]),
+  a: Math.atan2(k.p[2], k.p[0]),
+  y: k.p[1], z: k.z
+}));
+for (let i=1;i<KAM_POLAR.length;i++){
+  let d = KAM_POLAR[i].a - KAM_POLAR[i-1].a;
+  while (d >  Math.PI) { KAM_POLAR[i].a -= Math.PI*2; d = KAM_POLAR[i].a - KAM_POLAR[i-1].a; }
+  while (d < -Math.PI) { KAM_POLAR[i].a += Math.PI*2; d = KAM_POLAR[i].a - KAM_POLAR[i-1].a; }
+}
+
+function kamera(p){
+  const s = p*(KAM_POLAR.length-1);
+  const i = Math.min(Math.floor(s), KAM_POLAR.length-2);
+  const t = smooth(s-i);
+  const a = KAM_POLAR[i], b = KAM_POLAR[i+1];
+  const r   = mix(a.r, b.r, t);
+  const win = mix(a.a, b.a, t);   /* keine Eigendrehung — sonst bricht der
+                                     Anschluss an die Standbilder */
+  camera.position.set(Math.cos(win)*r, mix(a.y, b.y, t), Math.sin(win)*r);
+  tmpA.set(a.z[0],a.z[1],a.z[2]);
+  tmpB.set(b.z[0],b.z[1],b.z[2]);
+  ziel.lerpVectors(tmpA,tmpB,t);
+  camera.lookAt(ziel);
+}
+
+/* =============================================================================
+   FORTSCHRITT ANWENDEN
+============================================================================= */
+function anwenden(p, zeit){
+  kamera(p);
+
+  /* Sonnenstand: Vormittag -> Mittag -> späterer Nachmittag.
+     Bewusst nicht bis zur Dämmerung, sonst säuft das Finale ab. */
+  const sw = mix(0.30, 0.70, p);
+  sonne.position.set(Math.cos(Math.PI*sw)*46, Math.sin(Math.PI*sw)*38+6, 18+Math.sin(Math.PI*sw)*8);
+  sonne.intensity = mix(2.7, 3.4, Math.sin(Math.PI*sw));
+  hemi.intensity = mix(.80,.62,p);
+
+  /* Röntgenblick im Prüfkapitel */
+  const xray = spanne(p,0.655,0.72) * (1 - spanne(p,0.815,0.865));
+
+  let zaehler = 0;
+  for (const o of teile){
+    const t = spanne(p, o.userData.von, o.userData.bis);
+    o.visible = t > 0.001;
+    if (!o.visible) continue;
+    if (t > 0.55) zaehler++;
+
+    const mesh = o.userData.mesh, kanten = o.userData.kanten;
+
+    if (mesh){
+      const fuell = smooth(Math.max(0,(t-.35)/.65));
+      mesh.material.opacity = fuell * mesh.userData.maxOpacity * mix(1,.16,xray);
+      if (o.userData.art === 'wachsen')         o.scale.set(1, Math.max(.001,fuell), 1);
+      else if (o.userData.art === 'ausbreiten') o.scale.set(Math.max(.001,fuell),1,Math.max(.001,fuell));
+      if (kanten) kanten.material.opacity =
+        Math.max(t < .5 ? t*1.8 : mix(.9,.22,(t-.5)*2), xray*.6);
+    } else if (o.userData.art === 'skala'){
+      o.scale.setScalar(Math.max(.001,t));
+    } else if (o.material){
+      /* Baufeld-Linien: einblenden, ab Rohbau wieder zurücknehmen */
+      o.material.opacity = t * mix(1, .12, spanne(p,0.22,0.34));
+    }
+  }
+
+  tgaMats.forEach(m=>{ m.opacity = xray; m.emissiveIntensity = .6 + xray*1.2; });
+
+  /* Prüfebene fährt durch das Haus */
+  const scanT = spanne(p,0.68,0.80);
+  scan.position.y = mix(-.8, 18.6, scanT);
+  scanMat.opacity = (scanT>0 && scanT<1) ? .08 + Math.sin(scanT*Math.PI)*.15 : 0;
+
+  /* Kollisionsmarker: rot -> grün -> aus */
+  const mT = spanne(p,0.70,0.78), heilT = spanne(p,0.79,0.845), ausT = spanne(p,0.85,0.88);
+  marker.forEach((m,i)=>{
+    m.scale.setScalar((1 + Math.sin(zeit*4.5 + i*1.7)*.16) * (0.6 + mT*0.5));
+    m.material.color.copy(ROT).lerp(GRUEN, heilT);
+    m.material.emissive.copy(ROT).lerp(GRUEN, heilT);
+    m.material.opacity = mT * (1-ausT);
+    const ring = m.userData.ring;
+    ring.material.color.copy(m.material.color);
+    ring.material.opacity = mT*(1-ausT)*(.3+Math.sin(zeit*3+i)*.18);
+    ring.scale.setScalar(1 + ((zeit*.5+i*.33)%1)*1.9);
+    ring.lookAt(camera.position);
+  });
+
+  /* Innenlicht am Abend */
+  const abend = spanne(p,0.60,0.86);
+  innenLichter.forEach((l,i)=>l.intensity = abend*(26+i*5));
+  glasMats.forEach(m=>{ m.emissiveIntensity = abend*0.55; });
+
+  raster.material.opacity = mix(.34,.05,spanne(p,0.06,0.32));
+
+  /* HUD */
+  const kap = Math.min(KAPITEL.length-1, Math.floor(p*KAPITEL.length));
+  /* Über die Sprachtabelle, falls geladen — sonst deutsch */
+  const uebs = (t) => (window.bitHud && window.bitHud(t)) || t;
+  hudPhase.textContent = uebs(KAPITEL[kap].lph);
+  hudStand.textContent = uebs(KAPITEL[kap].stand);
+  hudCount.textContent = String(Math.round(zaehler*11)).replace(/\B(?=(\d{3})+(?!\d))/g,'.');
+  routeBtns.forEach((b,i)=> i===kap ? b.setAttribute('aria-current','step') : b.removeAttribute('aria-current'));
+  balken.style.setProperty('--p', p.toFixed(4));
+  hinweis.style.opacity = p > 0.03 ? 0 : 1;
+}
+
+/* =============================================================================
+   SCROLL + RENDER-SCHLEIFE
+============================================================================= */
+let fortschritt = 0, zielP = 0, sichtbar = false, letzteZeit = 0;
+
+function messen(){
+  const r = scrub.getBoundingClientRect();
+  const gesamt = r.height - innerHeight;
+  zielP = gesamt > 0 ? Math.min(1, Math.max(0, -r.top / gesamt)) : 0;
+}
+function groesse(){
+  const w = canvas.clientWidth, h = canvas.clientHeight;
+  if (!w || !h) return;
+  renderer.setSize(w,h,false);
+  camera.aspect = w/h; camera.updateProjectionMatrix();
+}
+
+new IntersectionObserver(e=>{ sichtbar = e[0].isIntersecting; }, {threshold:0})
+  .observe(document.querySelector('.buehne__fix'));
+
+addEventListener('scroll', messen, {passive:true});
+let resizeTimer = 0;
+addEventListener('resize', ()=>{
+  groesse(); messen();
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(()=>{ videoPruefen(); ebenenSetzen(fortschritt); }, 220);
+});
+
+let frames = 0, fpsZeit = 0;
+
+function schleife(ms){
+  requestAnimationFrame(schleife);
+  const zeit = ms/1000;
+  const dt = Math.min(.05, zeit - letzteZeit); letzteZeit = zeit;
+  if (!sichtbar) return;
+  /* sanftes Nachziehen — weiches Scrollen ohne Scroll-Hijacking */
+  fortschritt += (zielP - fortschritt) * (reduced ? 1 : Math.min(1, dt*7));
+  const p = reduced ? zielP : fortschritt;
+  const deck = ebenenSetzen(p);
+  anwenden(p, zeit);
+  /* Rechenzeit sparen: das Bild wird nur erzeugt, wenn der Canvas sichtbar ist */
+  if (deck > 0.004) renderer.render(scene, camera);
+  frames++;  if (zeit - fpsZeit > 1){ frames = 0; fpsZeit = zeit; }
+}
+
+function leseAkzent(){
+  const v = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim();
+  if (v) ACCENT.set(v);
+  akzentMaterialien.forEach(m=>m.color.set(ACCENT));
+}
+
+groesse(); messen(); leseAkzent(); videoPruefen(); ebenenSetzen(0);
+requestAnimationFrame(schleife);
+</script>
+
+
+</body></html>

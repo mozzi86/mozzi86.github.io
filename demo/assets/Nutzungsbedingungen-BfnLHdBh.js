@@ -1,0 +1,1 @@
+import{j as t}from"./vendor-Dd18YUNZ.js";import{R as n}from"./RechtsSeite-CJKHosvI.js";import{N as e}from"./index-BJczngZd.js";import"./motion-CQ56TjSX.js";function o(){return t.jsx(n,{titel:"Nutzungsbedingungen",children:t.jsx(e,{})})}export{o as default};

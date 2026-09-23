@@ -1,0 +1,1 @@
+import{j as t}from"./vendor-Dd18YUNZ.js";import{R as e}from"./RechtsSeite-CJKHosvI.js";import{R as r}from"./index-BJczngZd.js";import"./motion-CQ56TjSX.js";function o(){return t.jsx(e,{titel:"Kündigung und Rückerstattung",children:t.jsx(r,{})})}export{o as default};

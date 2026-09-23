@@ -1,0 +1,1 @@
+import{j as r}from"./vendor-Dd18YUNZ.js";import{R as s}from"./RechtsSeite-CJKHosvI.js";import{I as t}from"./index-BJczngZd.js";import"./motion-CQ56TjSX.js";function p(){return r.jsx(s,{titel:"Impressum",children:r.jsx(t,{})})}export{p as default};
