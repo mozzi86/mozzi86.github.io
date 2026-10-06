@@ -2,8 +2,4 @@
 User-agent: *
 Allow: /
 
-# Die Online-Demo ist eine vollwertige Anwendung, keine Inhaltsseite. Suchmaschinen
-# sollen die Startseite finden, nicht Dutzende Hash-Routen daraus.
-Disallow: /demo/assets/
-
 Sitemap: https://bit-atelier.de/sitemap.xml

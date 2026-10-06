@@ -95,7 +95,6 @@ async function warteAufServer() {
 function pfadeAnheben(html) {
   return html
     .replace(/(\s(?:href|src|content)=")(?!https?:|\/|#|data:|mailto:|\.\.\/)(assets\/)/g, '$1../$2')
-    .replace(/(\s(?:href|src)=")(?!https?:|\/|#|data:|mailto:|\.\.\/)(demo\/)/g, '$1../$2')
     .replace(/(\s(?:href|src)=")(?!https?:|\/|#|data:|mailto:|\.\.\/)(downloads\/)/g, '$1../$2')
     .replace(/("imports":\s*\{\s*"three":\s*")\.\//g, '$1../')
     /* Schriften und Hintergrundbilder stehen in url(...) im eingebetteten CSS —

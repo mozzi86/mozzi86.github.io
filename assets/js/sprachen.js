@@ -23,7 +23,10 @@
       'Werkzeuge': 'Tools',
       'Erfahrung': 'Experience',
       'Kontakt': 'Contact',
-      'Demo starten': 'Live demo',
+      'Open Source': 'Open source',
+      'Open Source · Herunterladen': 'Open source · Download',
+      'Registrieren': 'Register',
+      'Anmelden': 'Sign in',
       'Projekt anfragen': 'Start a project',
       'Leistungspakete': 'Service packages',
       'Baufeld': 'The site',
@@ -175,8 +178,88 @@
       'Energiesimulation': 'Energy simulation',
       'AVA &amp; Kostenplanung': 'Tendering &amp; cost planning',
       'Python-Automatisierung': 'Python automation',
-      'Die Plattform ist als Online-Demo zum Ausprobieren freigegeben — serverlos, alles bleibt im Browser. <a href="demo/" style="color:var(--accent)">Demo starten</a>.':
-        'The platform is open to try as an online demo — serverless, everything stays in your browser. <a href="demo/" style="color:var(--accent)">Try the demo</a>.',
+      'Prüflauf am mitgelieferten Musterprojekt, direkt im Browser geprüft — harte Kollisionen gefunden, AIA-Anforderungen per IDS kontrolliert, Befunde gehen als BCF zurück an die Fachplaner. Denselben Lauf können Sie mit der Open-Source-Fassung auf Ihrem Rechner selbst starten.':
+        'A checking run on the bundled sample project, checked directly in the browser — hard clashes found, information requirements verified via IDS, findings returned to the specialist designers as BCF. You can run the same check yourself with the open-source version on your own computer.',
+      'So sieht Ihr Befund aus.': 'This is what your findings look like.',
+      'Prüfbericht und Befundliste aus einem Prüflauf über ein mitgeliefertes Musterprojekt — synthetisch erzeugt, keine Projektdaten. Denselben Lauf können Sie in der Open-Source-Fassung mit einem Klick selbst auslösen; das BCF öffnet sich in jeder gängigen Koordinationssoftware.':
+        'Check report and findings list from a run on a bundled sample project — synthetic, no project data. You can trigger the same run yourself in the open-source version with one click; the BCF opens in any common coordination software.',
+      'Musterprüfbericht (PDF)': 'Sample check report (PDF)',
+      'Befunde als BCF': 'Findings as BCF',
+      'BIT-Atelier herunterladen': 'Download BIT-Atelier',
+      'BIT-Atelier ist Open Source (MIT-Lizenz) und läuft lokal auf Ihrem Rechner — ohne Konto und ohne Lizenzkosten. <a href="#open-source" style="color:var(--accent)">Zum Download</a>.':
+        'BIT-Atelier is open source (MIT licence) and runs locally on your computer — no account, no licence fees. <a href="#open-source" style="color:var(--accent)">Go to download</a>.',
+
+      /* Open Source (#open-source, 83-05) */
+      'Open Source · MIT-Lizenz': 'Open source · MIT licence',
+      'BIT-Atelier ist <em>Open Source</em>.': 'BIT-Atelier is <em>open source</em>.',
+      'Die Werkzeuge, mit denen ich Modelle prüfe, stehen allen offen — frei unter der MIT-Lizenz. BIT-Atelier läuft lokal auf Ihrem Rechner, ohne Cloud-Zwang und ohne Lizenzkosten. Ihre Modelle und Projektdaten bleiben auf Ihrem eigenen Gerät.':
+        'The tools I use to check models are open to everyone — free under the MIT licence. BIT-Atelier runs locally on your computer, with no cloud requirement and no licence fees. Your models and project data stay on your own machine.',
+      '01 · Herunterladen': '01 · Download',
+      'Eine ZIP für Windows, macOS und Linux': 'One ZIP for Windows, macOS and Linux',
+      'Voraussetzung ist Node.js 22. Entpacken, per Doppelklick starten und im Browser arbeiten — alles auf Ihrem Rechner.':
+        'Requires Node.js 22. Unzip, start with a double-click and work in your browser — all on your own computer.',
+      'BIT-Atelier.zip herunterladen': 'Download BIT-Atelier.zip',
+      '02 · Quellcode': '02 · Source code',
+      'Offen auf GitHub': 'Open on GitHub',
+      'Lesen, anpassen, weitergeben. Aus dem Quellcode starten: <code dir="ltr">git clone</code>, <code dir="ltr">npm install</code>, <code dir="ltr">npm run dev</code>. Eigene Prüfregeln und Erweiterungen sind ausdrücklich erwünscht.':
+        'Read it, adapt it, pass it on. To run from source: <code dir="ltr">git clone</code>, <code dir="ltr">npm install</code>, <code dir="ltr">npm run dev</code>. Your own checking rules and extensions are explicitly welcome.',
+      'Quellcode auf GitHub': 'Source code on GitHub',
+      '03 · KI anbinden': '03 · Connect AI',
+      'Ihr Modell, Ihre Wahl': 'Your model, your choice',
+      'Anbieterunabhängig: Anthropic, jede OpenAI-kompatible Schnittstelle, Ollama lokal oder ein eigener Endpunkt. Dazu ein lokaler KI-Harness (Python) mit Profilen u.&nbsp;a. für LM Studio, Ollama, Qwen/DashScope, DeepSeek und Groq.':
+        'Vendor-neutral: Anthropic, any OpenAI-compatible API, Ollama running locally, or your own endpoint. Plus a local AI harness (Python) with profiles for LM Studio, Ollama, Qwen/DashScope, DeepSeek and Groq, among others.',
+      '04 · Feedback': '04 · Feedback',
+      'Feedback erwünscht': 'Feedback wanted',
+      'Fehler gefunden, Idee für eine Prüfregel, etwas unklar? Schreiben Sie mir per E-Mail oder legen Sie ein Issue auf GitHub an — ich lese jede Rückmeldung selbst.':
+        'Found a bug, have an idea for a checking rule, or is something unclear? Email me or open an issue on GitHub — I read every message myself.',
+      'Feedback per E-Mail': 'Feedback by email',
+      'GitHub-Issue anlegen': 'Open a GitHub issue',
+      'Schnellstart': 'Quick start',
+      'In drei Schritten startklar': 'Up and running in three steps',
+      'Schritt 1': 'Step 1',
+      'Node.js 22 installieren': 'Install Node.js 22',
+      'Einmalig und kostenlos von nodejs.org — falls noch nicht vorhanden.': 'Once and free of charge from nodejs.org — if it is not already installed.',
+      'Schritt 2': 'Step 2',
+      'ZIP herunterladen und entpacken': 'Download and unzip',
+      'BIT-Atelier.zip in einen beliebigen Ordner entpacken.': 'Unzip BIT-Atelier.zip into any folder.',
+      'Schritt 3': 'Step 3',
+      'Starten und loslegen': 'Start and get going',
+      'Doppelklick auf <code dir="ltr">start-windows.cmd</code> (Windows) bzw. <code dir="ltr">./start.sh</code> ausführen (macOS, Linux), dann im Browser <code dir="ltr">http://localhost:3001</code> öffnen.':
+        'Double-click <code dir="ltr">start-windows.cmd</code> (Windows) or run <code dir="ltr">./start.sh</code> (macOS, Linux), then open <code dir="ltr">http://localhost:3001</code> in your browser.',
+      'Funktionsumfang': 'Features',
+      'Was BIT-Atelier kann': 'What BIT-Atelier does',
+      'IFC lesen — lokal im Browser (web-ifc); IFC4 schreiben aus dem Komplex-Designer': 'Read IFC — locally in the browser (web-ifc); write IFC4 from the complex designer',
+      'IDS 1.0 lesen und schreiben': 'Read and write IDS 1.0',
+      'BCF 2.1 lesen und schreiben — Austausch mit Solibri, BIMcollab und Catenda': 'Read and write BCF 2.1 — exchange with Solibri, BIMcollab and Catenda',
+      'GAEB DA XML X81, X82, X83, X84, X86 und GAEB 90 lesen; X83 schreiben': 'Read GAEB DA XML X81, X82, X83, X84, X86 and GAEB 90; write X83',
+      'Exporte als CSV/Excel (LV, Preisspiegel, Befundliste), Prüfbericht als PDF': 'Exports to CSV/Excel (bill of quantities, bid comparison, findings list), check report as PDF',
+      'Flurstücke aus GeoJSON': 'Land parcels from GeoJSON',
+      'Revit, Archicad, Allplan, Vectorworks u.&nbsp;a. über ihren IFC-Export angebunden': 'Revit, Archicad, Allplan, Vectorworks and others connected through their IFC export',
+      'BIT-Atelier ist freie Software (MIT-Lizenz) und wird ohne Gewährleistung bereitgestellt. Die Nutzung erfolgt auf eigene Gefahr; Prüfergebnisse sind Hinweise und ersetzen keine fachliche Prüfung.':
+        'BIT-Atelier is free software (MIT licence) and is provided without warranty. You use it at your own risk; checking results are pointers and do not replace a professional review.',
+      'Optional: Konto für die gehostete Fassung': 'Optional: an account for the hosted version',
+      'Konten für die gehostete Fassung werden von Hand freigeschaltet — das dauert in der Regel ein paar Werktage. Die lokale Fassung braucht kein Konto.':
+        'Accounts for the hosted version are activated by hand — this usually takes a few working days. The local version needs no account.',
+      /* Downloads: Block "BIT-Atelier (Open Source)" */
+      'BIT-Atelier (Open Source)': 'BIT-Atelier (open source)',
+      'Die BIM-Plattform aus dem BIT-Atelier — IFC, IDS, BCF und GAEB lokal auf Ihrem Rechner. Eine ZIP für Windows, macOS und Linux; Voraussetzung ist Node.js 22.':
+        'The BIM platform from BIT-Atelier — IFC, IDS, BCF and GAEB locally on your computer. One ZIP for Windows, macOS and Linux; requires Node.js 22.',
+      'Windows · macOS · Linux': 'Windows · macOS · Linux',
+      'BIT-Atelier.zip': 'BIT-Atelier.zip',
+      'Entpacken, dann <code dir="ltr">start-windows.cmd</code> per Doppelklick bzw. <code dir="ltr">./start.sh</code> starten und im Browser <code dir="ltr">localhost:3001</code> öffnen.':
+        'Unzip, then double-click <code dir="ltr">start-windows.cmd</code> or run <code dir="ltr">./start.sh</code>, and open <code dir="ltr">localhost:3001</code> in your browser.',
+      'Download (ZIP)': 'Download (ZIP)',
+      'Quellcode': 'Source code',
+      'MIT-Lizenz auf GitHub': 'MIT licence on GitHub',
+      'Quellcode, alle Versionen und Issues im öffentlichen Repository.': 'Source code, all releases and issues in the public repository.',
+      'Zum Repository': 'Go to the repository',
+      'Ebenfalls kostenlos': 'Also free',
+      /* Feedback-Mail (feedbackText in index.html; Betreff nutzt
+         'BIT-Atelier (Open Source)' von oben mit) */
+      'Was ich gemacht habe:': 'What I did:',
+      'Was passiert ist:': 'What happened:',
+      'Was ich erwartet hätte:': 'What I expected:',
+      'Fassung, Betriebssystem, Browser:': 'Version, operating system, browser:',
 
       'Der portable PDF-Editor aus dem BIT-Atelier — bearbeiten, organisieren, konvertieren, signieren und forensisch schwärzen. Läuft vollständig lokal: keine Cloud, keine Uploads, keine Telemetrie — inklusive Offline-OCR (Deutsch/Englisch).':
         'The portable PDF editor from BIT-Atelier — edit, organise, convert, sign and redact irreversibly. Runs entirely on your machine: no cloud, no uploads, no telemetry — including offline OCR (German and English).',
@@ -216,11 +299,7 @@
       'BIM · IFC · KI-gestützte Projektentwicklung': 'BIM · IFC · AI-assisted project development',
       'Raum Nürnberg / Mittelfranken': 'Nuremberg region',
       'Leistungspakete ansehen': 'See the service packages',
-      'Plattform-Demo': 'Platform demo',
       'Impressum &amp; Datenschutz': 'Legal notice &amp; privacy',
-      'Die BIT-Atelier-Plattform startet in Kürze': 'The BIT-Atelier platform launches shortly',
-      'Konten für die Plattform sind noch nicht freigeschaltet. Die Prüf- und Auswertungswerkzeuge können Sie aber schon jetzt als Online-Demo ausprobieren — serverlos, alles bleibt in Ihrem Browser.':
-        'Accounts for the platform are not yet open. You can already try the checking and evaluation tools as an online demo — serverless, everything stays in your browser.',
       'Schließen': 'Close',
       'BIT-ATELIER Architekturbüro': 'BIT-ATELIER architectural practice',
       'Alle Rechte vorbehalten.': 'All rights reserved.',
@@ -259,8 +338,8 @@
       'M.Sc. Klimaoptimiertes Bauen · TU München': 'M.Sc. Climate-Responsive Building · TU Munich',
       'Climate Responsive Design · ganzheitliche Gebäudeoptimierung (Konzept, Fassade, Gebäudetechnik)':
         'Climate-responsive design · whole-building optimisation (concept, facade, building services)',
-      'Intel-Version <a href="https://github.com/mozzi86/NovaPDF/releases/latest/download/BIT-Nova-PDF-x64.dmg" style="color:var(--accent)">hier</a>.':
-        'Intel version <a href="https://github.com/mozzi86/NovaPDF/releases/latest/download/BIT-Nova-PDF-x64.dmg" style="color:var(--accent)">here</a>.',
+      'Intel-Version <a href="https://github.com/mozzi86/NovaPDF/releases/latest/download/BIT-PDF-x64.dmg" style="color:var(--accent)">hier</a>.':
+        'Intel version <a href="https://github.com/mozzi86/NovaPDF/releases/latest/download/BIT-PDF-x64.dmg" style="color:var(--accent)">here</a>.',
       'Kostenlos · quelloffen entwickelt im BIT-Atelier · alle Versionen <a href="https://github.com/mozzi86/NovaPDF/releases" style="color:var(--accent)">auf GitHub</a>. Die Apps sind nicht signiert bzw. notarisiert — Windows SmartScreen bzw. macOS Gatekeeper beim ersten Start über „Trotzdem ausführen" / Rechtsklick → „Öffnen" bestätigen.':
         'Free · developed openly at BIT-Atelier · all releases <a href="https://github.com/mozzi86/NovaPDF/releases" style="color:var(--accent)">on GitHub</a>. The apps are not code-signed or notarised — on first launch confirm through Windows SmartScreen (“Run anyway”) or macOS Gatekeeper (right-click → “Open”).',
 
@@ -328,7 +407,7 @@
       'Gmail': 'Gmail',
       'Outlook Web': 'Outlook Web',
       'Nur beim Weg über Gmail oder Outlook Web steht Ihr Text in der Adresse zum jeweiligen Anbieter — beim Mailprogramm, beim Kopieren und beim Drucken verlässt nichts Ihren Rechner.': 'Only via Gmail or Outlook Web does your text travel in the address to that provider — with your mail program, copying and printing nothing leaves your computer.',
-      'Kennzahlen aus dem Prüflauf der Online-Demo:': 'Key figures from the online demo check run:',
+      'Kennzahlen aus einem Prüflauf mit BIT-Atelier:': 'Key figures from a BIT-Atelier checking run:',
       'Modell': 'Model',
       'Bauteile mit Geometrie': 'Elements with geometry',
       'Geschosse': 'Storeys',
@@ -356,7 +435,10 @@
       'Downloads': 'التنزيلات',
       'Erfahrung': 'الخبرة',
       'Kontakt': 'اتصل بنا',
-      'Demo starten': 'تجربة النسخة التجريبية',
+      'Open Source': 'مفتوح المصدر',
+      'Open Source · Herunterladen': 'مفتوح المصدر · تنزيل',
+      'Registrieren': 'إنشاء حساب',
+      'Anmelden': 'تسجيل الدخول',
       'Projekt anfragen': 'اطلب استشارة لمشروعك',
       'Leistungspakete': 'حزم الخدمات',
       'Baufeld': 'أرض المشروع',
@@ -510,8 +592,88 @@
       'Energiesimulation': 'محاكاة الطاقة',
       'AVA &amp; Kostenplanung': 'المناقصات وتخطيط التكاليف',
       'Python-Automatisierung': 'الأتمتة ببايثون',
-      'Die Plattform ist als Online-Demo zum Ausprobieren freigegeben — serverlos, alles bleibt im Browser. <a href="demo/" style="color:var(--accent)">Demo starten</a>.':
-        'المنصة متاحة للتجربة كنسخة تجريبية على الإنترنت — بلا خادم، وكل شيء يبقى في متصفحك. <a href="demo/" style="color:var(--accent)">ابدأ التجربة</a>.',
+      'Prüflauf am mitgelieferten Musterprojekt, direkt im Browser geprüft — harte Kollisionen gefunden, AIA-Anforderungen per IDS kontrolliert, Befunde gehen als BCF zurück an die Fachplaner. Denselben Lauf können Sie mit der Open-Source-Fassung auf Ihrem Rechner selbst starten.':
+        'جولة تدقيق على المشروع النموذجي المُرفق، دُقِّقت مباشرة في المتصفح — عُثر على تعارضات صلبة، وتحقَّقت متطلبات المعلومات عبر IDS، وأُعيدت النتائج بصيغة BCF إلى مهندسي التخصصات. يمكنك تشغيل الجولة نفسها بنفسك بالنسخة مفتوحة المصدر على حاسوبك.',
+      'So sieht Ihr Befund aus.': 'هكذا تبدو ملاحظات التدقيق لديك.',
+      'Prüfbericht und Befundliste aus einem Prüflauf über ein mitgeliefertes Musterprojekt — synthetisch erzeugt, keine Projektdaten. Denselben Lauf können Sie in der Open-Source-Fassung mit einem Klick selbst auslösen; das BCF öffnet sich in jeder gängigen Koordinationssoftware.':
+        'تقرير التدقيق وقائمة الملاحظات من جولة تدقيق على مشروع نموذجي مُرفق — مُولَّد اصطناعياً، دون بيانات مشاريع. يمكنك تشغيل الجولة نفسها بنقرة واحدة في النسخة مفتوحة المصدر؛ ويُفتح ملف BCF في أي برنامج تنسيق شائع.',
+      'Musterprüfbericht (PDF)': 'تقرير تدقيق نموذجي (PDF)',
+      'Befunde als BCF': 'الملاحظات بصيغة BCF',
+      'BIT-Atelier herunterladen': 'تنزيل BIT-Atelier',
+      'BIT-Atelier ist Open Source (MIT-Lizenz) und läuft lokal auf Ihrem Rechner — ohne Konto und ohne Lizenzkosten. <a href="#open-source" style="color:var(--accent)">Zum Download</a>.':
+        'BIT-Atelier مفتوح المصدر (رخصة MIT) ويعمل محلياً على حاسوبك — دون حساب ودون رسوم ترخيص. <a href="#open-source" style="color:var(--accent)">إلى التنزيل</a>.',
+
+      /* Open Source (#open-source, 83-05) */
+      'Open Source · MIT-Lizenz': 'مفتوح المصدر · رخصة MIT',
+      'BIT-Atelier ist <em>Open Source</em>.': 'BIT-Atelier <em>مفتوح المصدر</em>.',
+      'Die Werkzeuge, mit denen ich Modelle prüfe, stehen allen offen — frei unter der MIT-Lizenz. BIT-Atelier läuft lokal auf Ihrem Rechner, ohne Cloud-Zwang und ohne Lizenzkosten. Ihre Modelle und Projektdaten bleiben auf Ihrem eigenen Gerät.':
+        'الأدوات التي أدقّق بها النماذج متاحة للجميع — مجاناً بموجب رخصة MIT. يعمل BIT-Atelier محلياً على حاسوبك، دون إلزام بالسحابة ودون رسوم ترخيص. وتبقى نماذجك وبيانات مشاريعك على جهازك.',
+      '01 · Herunterladen': '01 · التنزيل',
+      'Eine ZIP für Windows, macOS und Linux': 'ملف ZIP واحد لأنظمة Windows وmacOS وLinux',
+      'Voraussetzung ist Node.js 22. Entpacken, per Doppelklick starten und im Browser arbeiten — alles auf Ihrem Rechner.':
+        'المتطلب: Node.js 22. فُكَّ الضغط، وشغِّل بنقرة مزدوجة، واعمل في المتصفح — كل ذلك على حاسوبك.',
+      'BIT-Atelier.zip herunterladen': 'تنزيل BIT-Atelier.zip',
+      '02 · Quellcode': '02 · الشيفرة المصدرية',
+      'Offen auf GitHub': 'مفتوحة على GitHub',
+      'Lesen, anpassen, weitergeben. Aus dem Quellcode starten: <code dir="ltr">git clone</code>, <code dir="ltr">npm install</code>, <code dir="ltr">npm run dev</code>. Eigene Prüfregeln und Erweiterungen sind ausdrücklich erwünscht.':
+        'اقرأها وعدِّلها وشاركها. للتشغيل من الشيفرة المصدرية: <code dir="ltr">git clone</code> ثم <code dir="ltr">npm install</code> ثم <code dir="ltr">npm run dev</code>. قواعد التدقيق والإضافات الخاصة بك مُرحَّب بها صراحةً.',
+      'Quellcode auf GitHub': 'الشيفرة المصدرية على GitHub',
+      '03 · KI anbinden': '03 · ربط الذكاء الاصطناعي',
+      'Ihr Modell, Ihre Wahl': 'نموذجك، اختيارك',
+      'Anbieterunabhängig: Anthropic, jede OpenAI-kompatible Schnittstelle, Ollama lokal oder ein eigener Endpunkt. Dazu ein lokaler KI-Harness (Python) mit Profilen u.&nbsp;a. für LM Studio, Ollama, Qwen/DashScope, DeepSeek und Groq.':
+        'مستقل عن المزوِّد: Anthropic، أو أي واجهة متوافقة مع OpenAI، أو Ollama محلياً، أو نقطة وصول خاصة بك. إضافةً إلى بيئة تشغيل محلية للذكاء الاصطناعي (Python) بملفات إعداد لـ LM Studio وOllama وQwen/DashScope وDeepSeek وGroq وغيرها.',
+      '04 · Feedback': '04 · الملاحظات',
+      'Feedback erwünscht': 'ملاحظاتك مرحَّب بها',
+      'Fehler gefunden, Idee für eine Prüfregel, etwas unklar? Schreiben Sie mir per E-Mail oder legen Sie ein Issue auf GitHub an — ich lese jede Rückmeldung selbst.':
+        'وجدتَ خطأً، أو لديك فكرة لقاعدة تدقيق، أو هناك ما هو غير واضح؟ راسلني بالبريد الإلكتروني أو افتح Issue على GitHub — أقرأ كل رسالة بنفسي.',
+      'Feedback per E-Mail': 'ملاحظات عبر البريد الإلكتروني',
+      'GitHub-Issue anlegen': 'فتح Issue على GitHub',
+      'Schnellstart': 'بدء سريع',
+      'In drei Schritten startklar': 'جاهز للعمل في ثلاث خطوات',
+      'Schritt 1': 'الخطوة 1',
+      'Node.js 22 installieren': 'ثبِّت Node.js 22',
+      'Einmalig und kostenlos von nodejs.org — falls noch nicht vorhanden.': 'مرة واحدة ومجاناً من nodejs.org — إن لم يكن مثبَّتاً لديك.',
+      'Schritt 2': 'الخطوة 2',
+      'ZIP herunterladen und entpacken': 'نزِّل الملف وفُكَّ ضغطه',
+      'BIT-Atelier.zip in einen beliebigen Ordner entpacken.': 'فُكَّ ضغط BIT-Atelier.zip في أي مجلد.',
+      'Schritt 3': 'الخطوة 3',
+      'Starten und loslegen': 'شغِّل وابدأ',
+      'Doppelklick auf <code dir="ltr">start-windows.cmd</code> (Windows) bzw. <code dir="ltr">./start.sh</code> ausführen (macOS, Linux), dann im Browser <code dir="ltr">http://localhost:3001</code> öffnen.':
+        'انقر نقراً مزدوجاً على <code dir="ltr">start-windows.cmd</code> (Windows) أو شغِّل <code dir="ltr">./start.sh</code> (macOS وLinux)، ثم افتح <code dir="ltr">http://localhost:3001</code> في المتصفح.',
+      'Funktionsumfang': 'الإمكانات',
+      'Was BIT-Atelier kann': 'ما يقدِّمه BIT-Atelier',
+      'IFC lesen — lokal im Browser (web-ifc); IFC4 schreiben aus dem Komplex-Designer': 'قراءة IFC — محلياً في المتصفح (web-ifc)؛ وكتابة IFC4 من مصمِّم المجمَّعات',
+      'IDS 1.0 lesen und schreiben': 'قراءة IDS 1.0 وكتابتها',
+      'BCF 2.1 lesen und schreiben — Austausch mit Solibri, BIMcollab und Catenda': 'قراءة BCF 2.1 وكتابتها — للتبادل مع Solibri وBIMcollab وCatenda',
+      'GAEB DA XML X81, X82, X83, X84, X86 und GAEB 90 lesen; X83 schreiben': 'قراءة GAEB DA XML (X81 وX82 وX83 وX84 وX86) وGAEB 90؛ وكتابة X83',
+      'Exporte als CSV/Excel (LV, Preisspiegel, Befundliste), Prüfbericht als PDF': 'تصدير بصيغة CSV/Excel (جدول الكميات، مقارنة العروض، قائمة الملاحظات)، وتقرير التدقيق بصيغة PDF',
+      'Flurstücke aus GeoJSON': 'قطع الأراضي من GeoJSON',
+      'Revit, Archicad, Allplan, Vectorworks u.&nbsp;a. über ihren IFC-Export angebunden': 'Revit وArchicad وAllplan وVectorworks وغيرها مرتبطة عبر تصدير IFC الخاص بها',
+      'BIT-Atelier ist freie Software (MIT-Lizenz) und wird ohne Gewährleistung bereitgestellt. Die Nutzung erfolgt auf eigene Gefahr; Prüfergebnisse sind Hinweise und ersetzen keine fachliche Prüfung.':
+        'BIT-Atelier برنامج حرّ (رخصة MIT) ويُقدَّم دون أي ضمان. الاستخدام على مسؤوليتك الخاصة؛ ونتائج التدقيق إرشادات ولا تُغني عن المراجعة المهنية.',
+      'Optional: Konto für die gehostete Fassung': 'اختياري: حساب للنسخة المستضافة',
+      'Konten für die gehostete Fassung werden von Hand freigeschaltet — das dauert in der Regel ein paar Werktage. Die lokale Fassung braucht kein Konto.':
+        'تُفعَّل حسابات النسخة المستضافة يدوياً — ويستغرق ذلك عادةً بضعة أيام عمل. أما النسخة المحلية فلا تحتاج إلى حساب.',
+      /* Downloads: Block "BIT-Atelier (Open Source)" */
+      'BIT-Atelier (Open Source)': 'BIT-Atelier (مفتوح المصدر)',
+      'Die BIM-Plattform aus dem BIT-Atelier — IFC, IDS, BCF und GAEB lokal auf Ihrem Rechner. Eine ZIP für Windows, macOS und Linux; Voraussetzung ist Node.js 22.':
+        'منصة BIM من BIT-Atelier — IFC وIDS وBCF وGAEB محلياً على حاسوبك. ملف ZIP واحد لأنظمة Windows وmacOS وLinux؛ ويتطلب Node.js 22.',
+      'Windows · macOS · Linux': 'Windows · macOS · Linux',
+      'BIT-Atelier.zip': 'BIT-Atelier.zip',
+      'Entpacken, dann <code dir="ltr">start-windows.cmd</code> per Doppelklick bzw. <code dir="ltr">./start.sh</code> starten und im Browser <code dir="ltr">localhost:3001</code> öffnen.':
+        'فُكَّ الضغط، ثم انقر نقراً مزدوجاً على <code dir="ltr">start-windows.cmd</code> أو شغِّل <code dir="ltr">./start.sh</code>، وافتح <code dir="ltr">localhost:3001</code> في المتصفح.',
+      'Download (ZIP)': 'تنزيل (ZIP)',
+      'Quellcode': 'الشيفرة المصدرية',
+      'MIT-Lizenz auf GitHub': 'رخصة MIT على GitHub',
+      'Quellcode, alle Versionen und Issues im öffentlichen Repository.': 'الشيفرة المصدرية وجميع الإصدارات والمشكلات (Issues) في المستودع العام.',
+      'Zum Repository': 'إلى المستودع',
+      'Ebenfalls kostenlos': 'مجاني أيضاً',
+      /* Feedback-Mail (feedbackText in index.html; Betreff nutzt
+         'BIT-Atelier (Open Source)' von oben mit) */
+      'Was ich gemacht habe:': 'ما الذي فعلته:',
+      'Was passiert ist:': 'ما الذي حدث:',
+      'Was ich erwartet hätte:': 'ما الذي كنت أتوقعه:',
+      'Fassung, Betriebssystem, Browser:': 'الإصدار ونظام التشغيل والمتصفح:',
 
       'Der portable PDF-Editor aus dem BIT-Atelier — bearbeiten, organisieren, konvertieren, signieren und forensisch schwärzen. Läuft vollständig lokal: keine Cloud, keine Uploads, keine Telemetrie — inklusive Offline-OCR (Deutsch/Englisch).':
         'محرِّر PDF محمول من BIT-Atelier — للتحرير والتنظيم والتحويل والتوقيع والحجب النهائي. يعمل بالكامل على جهازك: بلا سحابة، وبلا رفع للملفات، وبلا تتبُّع — ويشمل التعرُّف الضوئي على النصوص دون اتصال (بالألمانية والإنجليزية).',
@@ -552,11 +714,7 @@
       'BIM · IFC · KI-gestützte Projektentwicklung': 'نمذجة معلومات البناء · IFC · تطوير المشاريع بمساعدة الذكاء الاصطناعي',
       'Raum Nürnberg / Mittelfranken': 'منطقة نورنبرغ',
       'Leistungspakete ansehen': 'استعراض حزم الخدمات',
-      'Plattform-Demo': 'النسخة التجريبية للمنصة',
       'Impressum &amp; Datenschutz': 'البيانات القانونية وحماية البيانات',
-      'Die BIT-Atelier-Plattform startet in Kürze': 'منصة BIT-Atelier تنطلق قريباً',
-      'Konten für die Plattform sind noch nicht freigeschaltet. Die Prüf- und Auswertungswerkzeuge können Sie aber schon jetzt als Online-Demo ausprobieren — serverlos, alles bleibt in Ihrem Browser.':
-        'حسابات المنصة لم تُفتَح بعد. لكن يمكنكم تجربة أدوات التدقيق والتحليل الآن كنسخة تجريبية على الإنترنت — بلا خادم، وكل شيء يبقى في متصفحكم.',
       'Schließen': 'إغلاق',
       'BIT-ATELIER Architekturbüro': 'BIT-ATELIER مكتب هندسة معمارية',
       'Alle Rechte vorbehalten.': 'جميع الحقوق محفوظة.',
@@ -594,8 +752,8 @@
       'M.Sc. Klimaoptimiertes Bauen · TU München': 'ماجستير البناء المُحسَّن مناخياً · جامعة ميونخ التقنية',
       'Climate Responsive Design · ganzheitliche Gebäudeoptimierung (Konzept, Fassade, Gebäudetechnik)':
         'التصميم المستجيب للمناخ · تحسين شامل للمبنى (المفهوم، الواجهة، التمديدات)',
-      'Intel-Version <a href="https://github.com/mozzi86/NovaPDF/releases/latest/download/BIT-Nova-PDF-x64.dmg" style="color:var(--accent)">hier</a>.':
-        'نسخة Intel <a href="https://github.com/mozzi86/NovaPDF/releases/latest/download/BIT-Nova-PDF-x64.dmg" style="color:var(--accent)">من هنا</a>.',
+      'Intel-Version <a href="https://github.com/mozzi86/NovaPDF/releases/latest/download/BIT-PDF-x64.dmg" style="color:var(--accent)">hier</a>.':
+        'نسخة Intel <a href="https://github.com/mozzi86/NovaPDF/releases/latest/download/BIT-PDF-x64.dmg" style="color:var(--accent)">من هنا</a>.',
       'Kostenlos · quelloffen entwickelt im BIT-Atelier · alle Versionen <a href="https://github.com/mozzi86/NovaPDF/releases" style="color:var(--accent)">auf GitHub</a>. Die Apps sind nicht signiert bzw. notarisiert — Windows SmartScreen bzw. macOS Gatekeeper beim ersten Start über „Trotzdem ausführen" / Rechtsklick → „Öffnen" bestätigen.':
         'مجاني · مُطوَّر بشكل مفتوح في BIT-Atelier · جميع الإصدارات <a href="https://github.com/mozzi86/NovaPDF/releases" style="color:var(--accent)">على GitHub</a>. التطبيقات غير موقَّعة رقمياً — عند أول تشغيل أكِّد عبر Windows SmartScreen («تشغيل على أي حال») أو macOS Gatekeeper (نقر بالزر الأيمن ← «فتح»).',
 
@@ -663,7 +821,7 @@
       'Gmail': 'Gmail',
       'Outlook Web': 'Outlook Web',
       'Nur beim Weg über Gmail oder Outlook Web steht Ihr Text in der Adresse zum jeweiligen Anbieter — beim Mailprogramm, beim Kopieren und beim Drucken verlässt nichts Ihren Rechner.': 'فقط عند استخدام Gmail أو Outlook Web يُنقل نصكم في عنوان المزوّد المعني — مع برنامج البريد والنسخ والطباعة لا يغادر شيء جهازكم.',
-      'Kennzahlen aus dem Prüflauf der Online-Demo:': 'مؤشرات من دورة الفحص في العرض التجريبي:',
+      'Kennzahlen aus einem Prüflauf mit BIT-Atelier:': 'مؤشرات من دورة تدقيق في BIT-Atelier:',
       'Modell': 'النموذج',
       'Bauteile mit Geometrie': 'عناصر ذات هندسة',
       'Geschosse': 'الطوابق',
@@ -785,19 +943,6 @@
   /* Knöpfe verdrahten */
   document.querySelectorAll('[data-sprache]').forEach(b =>
     b.addEventListener('click', () => setze(b.dataset.sprache)));
-
-  /* Die Sprache geht mit in die Demo (Befund B-06). Website und Demo liegen auf
-     derselben Herkunft, und die Demo liest ihre Sprache aus localStorage["lang"]
-     — wer über /en/ kam, landete trotzdem auf Deutsch. Arabisch kennt die Demo
-     noch nicht; dann Englisch, die nächstliegende Fassung. */
-  document.addEventListener('click', (e) => {
-    const a = e.target && e.target.closest ? e.target.closest('a[href]') : null;
-    if (!a) return;
-    let ziel;
-    try { ziel = new URL(a.getAttribute('href'), location.href); } catch (err) { return; }
-    if (ziel.origin !== location.origin || !/^\/demo\/?$/.test(ziel.pathname)) return;
-    try { localStorage.setItem('lang', aktuell === 'ar' ? 'en' : aktuell); } catch (err) { /* egal */ }
-  });
 
   /* Reihenfolge: ?lang= aus der Adresse, dann gemerkte Wahl, dann Browsersprache.
      Die Adresse gewinnt, damit ein geteilter Link beim Empfaenger dieselbe

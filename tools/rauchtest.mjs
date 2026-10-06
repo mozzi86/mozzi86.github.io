@@ -1,7 +1,8 @@
 #!/usr/bin/env node
-// Rauchtest der Startseite in echtem Chromium (Stand 14.09.2026):
+// Rauchtest der Startseite in echtem Chromium (Stand 06.10.2026, 83-05):
 // Paketfinder, Anfrage-Vorschau / Kopieren / Drucken, <picture>-Quellen,
-// Sprachumschaltung DE/EN/AR, Sprachuebergabe an die Demo, Querlauf bei 390 px.
+// Sprachumschaltung DE/EN/AR, Open-Source-Abschnitt (Download, Quellcode,
+// Feedback, Registrierung), keine Demo-Reste, Querlauf bei 390 px.
 //
 // Aufruf wie sprachkopien-erzeugen.mjs:
 //   node tools/rauchtest.mjs
@@ -27,6 +28,12 @@ const PORT = 4189;
 const B = `http://localhost:${PORT}/`;
 const AUS = path.join(os.tmpdir(), 'bit-atelier-rauchtest');
 fs.mkdirSync(AUS, { recursive: true });
+
+// Quellcode-Adresse der Open-Source-Fassung. EINE Stelle in dieser Datei —
+// bei einer neuen Adresse hier und in index.html (Kommentar OSS_REPO) tauschen.
+const OSS_REPO = 'https://github.com/mozzi86/bit-atelier-oss';
+const OSS_ZIP = OSS_REPO + '/releases/latest/download/BIT-Atelier.zip';
+const REGISTRIEREN = 'https://bit-atelier.pages.dev/registrieren';
 
 const TYPEN = {
   '.html': 'text/html; charset=utf-8', '.js': 'text/javascript', '.mjs': 'text/javascript', '.css': 'text/css',
@@ -58,13 +65,7 @@ try {
   seite.on('pageerror', (f) => skriptfehler.push(f.message));
   await seite.goto(B + '?lang=de', { waitUntil: 'networkidle' });
   await seite.waitForTimeout(800);
-  // Demo-Links nicht wirklich verfolgen: der window-Listener laeuft NACH dem
-  // document-Listener von sprachen.js, der die Sprache in localStorage schreibt.
-  await seite.evaluate(() => addEventListener('click', (e) => {
-    const a = e.target.closest && e.target.closest('a[href]');
-    if (a && /demo\//.test(a.getAttribute('href'))) e.preventDefault();
-  }));
-  const text = async (sel) => (await seite.locator(sel).textContent()).trim();   /* ohne text-transform */
+  const text =async (sel) => (await seite.locator(sel).textContent()).trim();   /* ohne text-transform */
   ok(await seite.evaluate(() => window.bitSprache.aktuell()) === 'de', 'Seite startet auf Deutsch (?lang=de)');
 
   console.log('\nPaketfinder');
@@ -137,7 +138,7 @@ try {
   await s2.goto(B + '?befund=' + befund + '#kontakt', { waitUntil: 'load' });
   const frei = await s2.inputValue('#a-text');
   ok(frei.includes('musterprojekt.ifc') && frei.includes('Harte Kollisionen: 2') && frei.includes('IDS-Verstöße: 0'), '?befund= füllt das Freitextfeld');
-  ok((await s2.evaluate(() => anfrageText().betreff)).startsWith('[Demo] '), '?befund= setzt Herkunft [Demo]');
+  ok((await s2.evaluate(() => anfrageText().betreff)).startsWith('[BIT-Atelier] '), '?befund= setzt Herkunft [BIT-Atelier]');
   await s2.goto(B + '?befund=%%%kaputt#kontakt', { waitUntil: 'load' });
   ok((await s2.inputValue('#a-text')) === '', 'Unsinn in ?befund= wird verworfen');
   await s2.close();
@@ -160,28 +161,65 @@ try {
   ok(await text('#a-kopieren') === 'Copy text', 'Knopf "Text kopieren" übersetzt');
   const fehlendEn = await seite.evaluate(() => window.bitSprache.fehlende('en'));
   const fehlendAr = await seite.evaluate(() => window.bitSprache.fehlende('ar'));
-  console.log(`  ohne Übersetzung (Altbestand, Stand 14.09.2026: en 36, ar 30): en ${fehlendEn.length}, ar ${fehlendAr.length}`);
+  console.log(`  ohne Übersetzung (Altbestand, Stand 06.10.2026: en 32, ar 26): en ${fehlendEn.length}, ar ${fehlendAr.length}`);
   await seite.evaluate(() => window.bitSprache.setze('ar'));
   await seite.evaluate(() => { anfrageVorschau(); finderZeigen(); });
   ok(await seite.evaluate(() => document.documentElement.dir) === 'rtl', 'Arabisch: dir=rtl');
   ok(/[\u0600-\u06FF]/.test(await text('#finder-ergebnis .finder__paket')), 'Finder-Ergebnis auf Arabisch');
   await seite.locator('#paketfinder').screenshot({ path: path.join(AUS, 'finder-ar.png') });
 
-  console.log('\nDemo-Link trägt die Sprache');
-  await seite.evaluate(() => window.bitSprache.setze('en'));
-  await seite.evaluate(() => localStorage.removeItem('lang'));
-  await seite.locator('.kopf__tun a[href="demo/"]').click({ force: true });
-  await seite.waitForTimeout(200);
-  ok(await seite.evaluate(() => localStorage.getItem('lang')) === 'en', 'localStorage.lang = en (Seite auf Englisch)');
-  ok(await seite.evaluate(() => location.pathname) === '/', 'Navigation im Test unterbunden');
-  await seite.evaluate(() => window.bitSprache.setze('ar'));
-  await seite.locator('.kopf__tun a[href="demo/"]').click({ force: true });
-  await seite.waitForTimeout(200);
-  ok(await seite.evaluate(() => localStorage.getItem('lang')) === 'en', 'Arabisch -> Demo auf Englisch (Rückfall)');
+  console.log('\nOpen Source (83-05)');
   await seite.evaluate(() => window.bitSprache.setze('de'));
-  await seite.locator('#werkzeuge a[href^="demo/#/ModelCheck"]').first().click({ force: true });
-  await seite.waitForTimeout(200);
-  ok(await seite.evaluate(() => localStorage.getItem('lang')) === 'de', 'Deutsch -> auch der Prüflauf-Link setzt de');
+  ok(await seite.locator('#open-source').isVisible(), 'Abschnitt #open-source sichtbar');
+  ok(await seite.locator('.kopf__tun a[href="#open-source"]').count() === 1, 'Kopfzeilen-Knopf führt zu #open-source');
+  ok(await seite.locator('#menue a[href="#open-source"]').count() === 1, 'Menü führt zu #open-source');
+  ok(await seite.locator(`#open-source a[href="${OSS_ZIP}"]`).count() === 1, 'ZIP-Download im Abschnitt');
+  ok(await seite.locator(`#downloads a[href="${OSS_ZIP}"]`).count() === 1, 'ZIP-Download im Downloads-Block');
+  ok(await seite.locator(`#open-source a[href="${OSS_REPO}"]`).count() === 1, 'Quellcode-Link');
+  ok(await seite.locator(`#open-source a[href="${OSS_REPO}/issues"]`).count() === 1, 'GitHub-Issues-Link');
+  ok(await seite.locator(`#open-source a[href="${REGISTRIEREN}"]`).count() === 1
+    && await seite.locator(`#menue a[href="${REGISTRIEREN}"]`).count() === 1, 'Registrieren im Abschnitt und im Menü');
+  ok((await text('#open-source')).includes('ohne Gewährleistung'), 'Haftungssatz im Abschnitt');
+  ok((await text('#downloads')).includes('ohne Gewährleistung'), 'Haftungssatz beim Download');
+  ok((await text('#open-source')).includes('ein paar Werktage'), 'Hinweis auf Freischaltung von Hand');
+  const fb = await seite.evaluate(() => ({ ...feedbackText(), an: rev(_eu) + '@' + rev(_ed) }));
+  ok(fb.an === 'me@bit-atelier.de' && fb.betreff.startsWith('[Feedback] ') && fb.koerper.includes('Was passiert ist:'),
+    'Feedback-Mail: Empfänger, Betreff, Gliederung');
+  const ld = await seite.evaluate(() => [...document.querySelectorAll('script[type="application/ld+json"]')]
+    .map((s) => JSON.parse(s.textContent)));
+  const sw = ld.find((x) => x['@type'] === 'SoftwareSourceCode');
+  ok(sw && sw.license === 'https://opensource.org/licenses/MIT' && sw.codeRepository === OSS_REPO
+    && sw.isAccessibleForFree === true, 'JSON-LD: Lizenz, Repository, kostenlos');
+  await seite.evaluate(() => window.bitSprache.setze('en'));
+  ok((await text('#open-source h2')).includes('open source'), 'Abschnitt auf Englisch');
+  ok(await seite.evaluate(() => feedbackText().betreff) === '[Feedback] BIT-Atelier (open source)', 'Feedback-Betreff auf Englisch');
+  await seite.evaluate(() => window.bitSprache.setze('de'));
+  await seite.locator('#open-source').screenshot({ path: path.join(AUS, 'open-source-desktop.png') });
+
+  console.log('\nKeine Demo-Reste, interne Anker, Konsole (DE/EN/AR)');
+  ok(!fs.readFileSync(path.join(WURZEL, 'assets/js/sprachen.js'), 'utf8').includes('demo/'), 'sprachen.js ohne "demo/"');
+  ok(!fs.existsSync(path.join(WURZEL, 'demo')), 'Ordner demo/ entfernt');
+  for (const pfad of ['', 'en/', 'ar/']) {
+    const p = await browser.newPage({ viewport: { width: 1400, height: 900 } });
+    const meldungen = [];
+    p.on('pageerror', (f) => meldungen.push(f.message));
+    p.on('console', (m) => { if (m.type() === 'error') meldungen.push(m.text()); });
+    await p.goto(B + pfad, { waitUntil: 'networkidle' });
+    await p.waitForTimeout(500);
+    const r = await p.evaluate(() => {
+      const html = document.documentElement.outerHTML;
+      const tot = [...document.querySelectorAll('a[href^="#"]')].map((a) => a.getAttribute('href'))
+        .filter((h) => h.length > 1 && !document.getElementById(decodeURIComponent(h.slice(1))));
+      const os = document.getElementById('open-source');
+      return { demo: (html.match(/demo\//g) || []).length, tot, oss: !!os && os.getBoundingClientRect().height > 0 };
+    });
+    const name = '/' + pfad;
+    ok(r.demo === 0, `${name}: 0× "demo/" im Dokument`);
+    ok(r.tot.length === 0, `${name}: keine toten internen Anker` + (r.tot.length ? ' — ' + r.tot.join(', ') : ''));
+    ok(r.oss, `${name}: Open-Source-Abschnitt vorhanden und sichtbar`);
+    ok(meldungen.length === 0, `${name}: keine Konsolenfehler` + (meldungen.length ? '\n    ' + meldungen.join('\n    ') : ''));
+    await p.close();
+  }
 
   console.log('\nMobil (390 px)');
   const handy = await browser.newPage({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 2, isMobile: true });

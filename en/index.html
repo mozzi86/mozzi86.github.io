@@ -129,6 +129,32 @@
   ]
 }
 </script>
+<!-- Open-Source-Fassung (83-05). Nur Angaben, die im Abschnitt #open-source
+     sichtbar stehen. codeRepository = OSS_REPO (siehe Kommentar dort). -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareSourceCode",
+  "@id": "https://bit-atelier.de/#software",
+  "name": "BIT-Atelier",
+  "description": "Open-Source-Plattform für BIM-Koordination und Modellprüfung: IFC, IDS, BCF und GAEB lokal auf dem eigenen Rechner.",
+  "url": "https://bit-atelier.de/#open-source",
+  "codeRepository": "https://github.com/mozzi86/bit-atelier-oss",
+  "license": "https://opensource.org/licenses/MIT",
+  "isAccessibleForFree": true,
+  "runtimePlatform": "Node.js 22",
+  "author": { "@id": "https://bit-atelier.de/#person" },
+  "targetProduct": {
+    "@type": "SoftwareApplication",
+    "name": "BIT-Atelier",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Windows, macOS, Linux",
+    "downloadUrl": "https://github.com/mozzi86/bit-atelier-oss/releases/latest/download/BIT-Atelier.zip",
+    "license": "https://opensource.org/licenses/MIT",
+    "isAccessibleForFree": true
+  }
+}
+</script>
 <script type="importmap">
 { "imports": { "three": "../assets/js/three.module.min.js" } }
 </script>
@@ -140,8 +166,9 @@
      geaendert. -->
 <style>
 /* --- Beleg-Kasten unter dem Pruefergebnis (Phase 65-06) -------------------
-   Beide Dateien stammen aus dem Beispiel-Pruflauf der Demo, den der Besucher
-   selbst ausloesen kann — derselbe Lauf, dieselben Zahlen.
+   Beide Dateien stammen aus dem Beispiel-Prueflauf am mitgelieferten
+   Musterprojekt, den der Besucher in der Open-Source-Fassung selbst ausloesen
+   kann — derselbe Lauf, dieselben Zahlen.
    Klassenname bewusst NICHT .nachweis: den gibt es auf der Seite schon vierfach
    (Kammer, Master, BIM, Jahre) — die haetten mein CSS sonst mitbekommen. */
 .beleg{margin-top:1rem;border:1px solid rgba(255,255,255,.10);border-radius:12px;
@@ -350,7 +377,8 @@ p{margin:0}
   border-bottom:1px solid var(--line)}
 /* Volle Navigation erst, wenn das Fenster mindestens so breit ist wie die
    Inhaltsspalte. Darunter uebernimmt das Menue — es enthaelt alle sieben
-   Punkte und Demo, es geht also nichts verloren. */
+   Punkte plus Open Source, Registrieren und Anmelden, es geht also nichts
+   verloren. */
 @media(min-width:78rem){
   .navi{display:flex}
   .menue-knopf{display:none}
@@ -475,6 +503,9 @@ p{margin:0}
   font-size:.92rem;color:var(--ink)}
 .ergebnis b{color:var(--accent);font-weight:600}
 .fussnote{margin-top:1.8rem;color:var(--muted);font-size:.86rem;font-weight:300;max-width:70ch}
+/* Befehle und Dateinamen im Open-Source-Abschnitt. overflow-wrap, weil
+   "http://localhost:3001" bei 320 px sonst die Karte sprengt. */
+code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywhere}
 
 /* Prinzip */
 .prinzip{display:grid;gap:2.6rem;margin-top:2.6rem}
@@ -572,15 +603,6 @@ p{margin:0}
 .rechtstext button{background:transparent;border:1px dashed var(--line-strong);
   color:var(--accent);font:inherit;font-size:.9rem;padding:.35rem .6rem;cursor:pointer}
 .rechtstext svg{display:inline;vertical-align:middle}
-
-/* Modal */
-.modal{position:fixed;inset:0;z-index:90;display:flex;align-items:center;justify-content:center;
-  padding:1.5rem;background:rgba(7,11,15,.86);backdrop-filter:blur(6px)}
-.modal__kasten{max-width:34rem;background:var(--bg-raise);border:1px solid var(--line-strong);
-  padding:clamp(1.5rem,3vw,2.4rem)}
-.modal__kasten h3{font-size:1.5rem;margin-bottom:.9rem}
-.modal__kasten p{color:var(--muted);font-weight:300}
-.modal__tun{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.6rem}
 
 /* Flache Fenster (Tablet und Handy quer). Der Kapiteltext hatte bei 560 px
    Höhe nur noch 21 px Luft, auf Arabisch 12 px — jede knappere Höhe schneidet ab.
@@ -728,12 +750,18 @@ p{margin:0}
         <button type="button" data-sprache="en" aria-pressed="true" lang="en">EN</button>
         <button type="button" data-sprache="ar" aria-pressed="false" lang="ar">عربي</button>
       </div>
-      <a class="btn btn--geist btn--klein" href="../demo/">Live demo</a>
-      <!-- Zugang zur Plattform. EINE Stelle je Sprachfassung — wenn
-           app.bit-atelier.de eingerichtet ist, hier und im Menue unten die
-           Adresse tauschen. -->
-      <a class="btn btn--geist btn--klein" href="https://bit-atelier.pages.dev/anmeldung"
-         title="Go to the platform — access is issued by your office administration">Sign in</a>
+      <!-- Kurz "Open Source" statt "Open Source · Herunterladen": die lange
+           Beschriftung (249 px) schob die Kopfzeile bei 1248–1440 px und unter
+           64rem aus dem Bild (gemessen 83-05). Menue und Kontakt tragen die
+           lange Fassung. -->
+      <a class="btn btn--geist btn--klein" href="#open-source">Open source</a>
+      <!-- Zugang zur gehosteten Fassung. Wenn app.bit-atelier.de eingerichtet
+           ist, die Adresse bit-atelier.pages.dev hier, im Menue unten und im
+           Abschnitt #open-source (Registrieren/Anmelden) tauschen. Ziel ist
+           /anmeldung statt /: die Wurzel wirft einen Besucher ohne Sitzung
+           ohnehin dorthin, nur mit Umweg. Bewusst ohne title-Attribut:
+           sprachen.js uebersetzt keine Attribute, EN/AR zeigten sonst Deutsch. -->
+      <a class="btn btn--geist btn--klein" href="https://bit-atelier.pages.dev/anmeldung">Sign in</a>
       <a class="btn btn--klein" href="#kontakt" data-herkunft="Kopfzeile">Start a project</a>
       <button class="menue-knopf" id="menue-knopf" type="button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="menue">
         <i></i><i></i><i></i>
@@ -748,7 +776,8 @@ p{margin:0}
     <a href="#downloads">Downloads</a>
     <a href="#erfahrung">Experience</a>
     <a href="#kontakt">Contact</a>
-    <a href="../demo/">Live demo</a>
+    <a href="#open-source">Open source · Download</a>
+    <a href="https://bit-atelier.pages.dev/registrieren">Register</a>
     <a href="https://bit-atelier.pages.dev/anmeldung">Sign in</a>
   </nav>
 </header>
@@ -1063,31 +1092,23 @@ p{margin:0}
 
       <figure class="fenster">
         <div class="fenster__leiste"><i></i><i></i><i></i><span>bit-atelier · checking suite — result</span></div>
-        <!-- Der Screenshot war bisher eine Behauptung ohne Weg dahin. Jetzt fuehrt
-             er in die Demo, die denselben Lauf mit einem mitgelieferten
-             Musterprojekt vorfuehrt (Phase 65-06, Paket W-4). -->
-        <a href="../demo/#/ModelCheck?beispiel=1" title="Denselben Prüflauf in der Demo selbst starten">
+        <!-- Der Screenshot war bisher eine Behauptung ohne Weg dahin. Bis 83-05
+             fuehrte er in die Online-Demo; die gibt es nicht mehr. Jetzt fuehrt
+             er zum Download — das Musterprojekt ist in der Open-Source-Fassung
+             dabei ("Musterprojekt prüfen", ModelCheck?beispiel=1). -->
+        <a href="#open-source">
           <img src="../assets/img/pruefsuite-ergebnis.webp" width="2048" height="1280" loading="lazy" decoding="async" alt="Ergebnisansicht der Prüf-Suite mit Kollisions- und IDS-Befunden">
         </a>
-        <figcaption>A checking run on the bundled sample project, checked directly in the browser — hard clashes found, information requirements verified via IDS, findings returned to the specialist designers as BCF. You can start the same run yourself in the demo.</figcaption>
+        <figcaption>A checking run on the bundled sample project, checked directly in the browser — hard clashes found, information requirements verified via IDS, findings returned to the specialist designers as BCF. You can run the same check yourself with the open-source version on your own computer.</figcaption>
       </figure>
 
       <div class="beleg">
-        <p class="beleg__titel">So sieht Ihr Befund aus.</p>
-        <p class="beleg__unter">Prüfbericht und Befundliste aus einem Prüflauf über ein
-          mitgeliefertes Musterprojekt — synthetisch erzeugt, keine Projektdaten. Denselben
-          Lauf können Sie in der Demo mit einem Klick selbst auslösen; das BCF öffnet sich
-          in jeder gängigen Koordinationssoftware.</p>
+        <p class="beleg__titel">This is what your findings look like.</p>
+        <p class="beleg__unter">Check report and findings list from a run on a bundled sample project — synthetic, no project data. You can trigger the same run yourself in the open-source version with one click; the BCF opens in any common coordination software.</p>
         <div class="beleg__links">
-          <a class="btn btn--klein" href="../downloads/musterpruefbericht.pdf" download="">
-            Musterprüfbericht (PDF)
-          </a>
-          <a class="btn btn--geist btn--klein" href="../downloads/musterbefunde.bcf" download="">
-            Befunde als BCF
-          </a>
-          <a class="btn btn--geist btn--klein" href="../demo/#/ModelCheck?beispiel=1">
-            Prüflauf selbst starten
-          </a>
+          <a class="btn btn--klein" href="../downloads/musterpruefbericht.pdf" download="">Sample check report (PDF)</a>
+          <a class="btn btn--geist btn--klein" href="../downloads/musterbefunde.bcf" download="">Findings as BCF</a>
+          <a class="btn btn--geist btn--klein" href="#open-source">Download BIT-Atelier</a>
         </div>
       </div>
 
@@ -1100,7 +1121,104 @@ p{margin:0}
         <li>IFC / openBIM</li><li>buildingSMART IDS</li><li>BCF</li>
         <li>Energy simulation</li><li>Tendering &amp; cost planning</li><li>Python automation</li>
       </ul>
-      <p class="fussnote">The platform is open to try as an online demo — serverless, everything stays in your browser. <a href="../demo/" style="color:var(--accent)">Try the demo</a>.</p>
+      <p class="fussnote">BIT-Atelier is open source (MIT licence) and runs locally on your computer — no account, no licence fees. <a href="#open-source" style="color:var(--accent)">Go to download</a>.</p>
+    </div>
+  </section>
+
+  <!-- ==================== OPEN SOURCE (83-05) ====================
+       Ersetzt die Online-Demo: BIT-Atelier gibt es nur noch als freie Software.
+       Quellcode-Adresse, EINE Stelle zum Tauschen:
+         OSS_REPO = https://github.com/mozzi86/bit-atelier-oss
+       Sie steht in dieser Datei in den Links dieses Abschnitts, im
+       Downloads-Block "BIT-Atelier (Open Source)" und im JSON-LD (#software)
+       oben. Bei einer neuen Adresse alle Vorkommen von OSS_REPO ersetzen und
+       danach node tools/sprachkopien-erzeugen.mjs laufen lassen.
+       Feedback-Adresse: dieselbe verdeckte Adresse wie im Kontakt (_eu/_ed). -->
+  <section class="abschnitt abschnitt--hoch" id="open-source">
+    <div class="mitte">
+      <div class="kopfzeile">
+        <p class="auge">Open source · MIT licence</p>
+        <h2>BIT-Atelier is <em>open source</em>.</h2>
+        <p class="unter">The tools I use to check models are open to everyone — free under the MIT licence. BIT-Atelier runs locally on your computer, with no cloud requirement and no licence fees. Your models and project data stay on your own machine.</p>
+      </div>
+
+      <div class="gitter gitter--2">
+        <article class="karte">
+          <p class="karte__nr">01 · Download</p>
+          <h3>One ZIP for Windows, macOS and Linux</h3>
+          <p>Requires Node.js 22. Unzip, start with a double-click and work in your browser — all on your own computer.</p>
+          <div class="karte__fuss">
+            <a class="btn btn--klein" href="https://github.com/mozzi86/bit-atelier-oss/releases/latest/download/BIT-Atelier.zip">Download BIT-Atelier.zip</a>
+          </div>
+        </article>
+        <article class="karte">
+          <p class="karte__nr">02 · Source code</p>
+          <h3>Open on GitHub</h3>
+          <p>Read it, adapt it, pass it on. To run from source: <code dir="ltr">git clone</code>, <code dir="ltr">npm install</code>, <code dir="ltr">npm run dev</code>. Your own checking rules and extensions are explicitly welcome.</p>
+          <div class="karte__fuss">
+            <a class="btn btn--geist btn--klein" href="https://github.com/mozzi86/bit-atelier-oss">Source code on GitHub</a>
+          </div>
+        </article>
+        <article class="karte">
+          <p class="karte__nr">03 · Connect AI</p>
+          <h3>Your model, your choice</h3>
+          <p>Vendor-neutral: Anthropic, any OpenAI-compatible API, Ollama running locally, or your own endpoint. Plus a local AI harness (Python) with profiles for LM Studio, Ollama, Qwen/DashScope, DeepSeek and Groq, among others.</p>
+        </article>
+        <article class="karte">
+          <p class="karte__nr">04 · Feedback</p>
+          <h3>Feedback wanted</h3>
+          <p>Found a bug, have an idea for a checking rule, or is something unclear? Email me or open an issue on GitHub — I read every message myself.</p>
+          <div class="karte__fuss" style="display:flex;gap:.6rem;flex-wrap:wrap">
+            <button class="btn btn--klein" type="button" onclick="feedbackMail()">Feedback by email</button>
+            <a class="btn btn--geist btn--klein" href="https://github.com/mozzi86/bit-atelier-oss/issues">Open a GitHub issue</a>
+          </div>
+        </article>
+        <article class="karte">
+          <p class="karte__nr">Quick start</p>
+          <h3>Up and running in three steps</h3>
+          <ol class="stationen" style="margin-top:1rem">
+            <li class="station">
+              <p class="station__zeit">Step 1</p>
+              <h4>Install Node.js 22</h4>
+              <p>Once and free of charge from nodejs.org — if it is not already installed.</p>
+            </li>
+            <li class="station">
+              <p class="station__zeit">Step 2</p>
+              <h4>Download and unzip</h4>
+              <p>Unzip BIT-Atelier.zip into any folder.</p>
+            </li>
+            <li class="station">
+              <p class="station__zeit">Step 3</p>
+              <h4>Start and get going</h4>
+              <p>Double-click <code dir="ltr">start-windows.cmd</code> (Windows) or run <code dir="ltr">./start.sh</code> (macOS, Linux), then open <code dir="ltr">http://localhost:3001</code> in your browser.</p>
+            </li>
+          </ol>
+        </article>
+        <article class="karte">
+          <p class="karte__nr">Features</p>
+          <h3>What BIT-Atelier does</h3>
+          <ul class="liste">
+            <li>Read IFC — locally in the browser (web-ifc); write IFC4 from the complex designer</li>
+            <li>Read and write IDS 1.0</li>
+            <li>Read and write BCF 2.1 — exchange with Solibri, BIMcollab and Catenda</li>
+            <li>Read GAEB DA XML X81, X82, X83, X84, X86 and GAEB 90; write X83</li>
+            <li>Exports to CSV/Excel (bill of quantities, bid comparison, findings list), check report as PDF</li>
+            <li>Land parcels from GeoJSON</li>
+            <li>Revit, Archicad, Allplan, Vectorworks and others connected through their IFC export</li>
+          </ul>
+        </article>
+      </div>
+
+      <p class="fussnote">BIT-Atelier is free software (MIT licence) and is provided without warranty. You use it at your own risk; checking results are pointers and do not replace a professional review.</p>
+
+      <div class="beleg">
+        <p class="beleg__titel">Optional: an account for the hosted version</p>
+        <p class="beleg__unter">Accounts for the hosted version are activated by hand — this usually takes a few working days. The local version needs no account.</p>
+        <div class="beleg__links">
+          <a class="btn btn--klein" href="https://bit-atelier.pages.dev/registrieren">Register</a>
+          <a class="btn btn--geist btn--klein" href="https://bit-atelier.pages.dev/anmeldung">Sign in</a>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -1109,6 +1227,31 @@ p{margin:0}
     <div class="mitte">
       <div class="kopfzeile">
         <p class="auge">Downloads</p>
+        <h2>BIT-Atelier (open source)</h2>
+        <p class="unter">The BIM platform from BIT-Atelier — IFC, IDS, BCF and GAEB locally on your computer. One ZIP for Windows, macOS and Linux; requires Node.js 22.</p>
+      </div>
+      <div class="gitter gitter--2">
+        <article class="karte">
+          <p class="karte__nr">Windows · macOS · Linux</p>
+          <h3>BIT-Atelier.zip</h3>
+          <p>Unzip, then double-click <code dir="ltr">start-windows.cmd</code> or run <code dir="ltr">./start.sh</code>, and open <code dir="ltr">localhost:3001</code> in your browser.</p>
+          <div class="karte__fuss">
+            <a class="btn btn--klein" href="https://github.com/mozzi86/bit-atelier-oss/releases/latest/download/BIT-Atelier.zip">Download (ZIP)</a>
+          </div>
+        </article>
+        <article class="karte">
+          <p class="karte__nr">Source code</p>
+          <h3>MIT licence on GitHub</h3>
+          <p>Source code, all releases and issues in the public repository.</p>
+          <div class="karte__fuss">
+            <a class="btn btn--geist btn--klein" href="https://github.com/mozzi86/bit-atelier-oss">Go to the repository</a>
+          </div>
+        </article>
+      </div>
+      <p class="fussnote">BIT-Atelier is free software (MIT licence) and is provided without warranty. You use it at your own risk; checking results are pointers and do not replace a professional review.</p>
+
+      <div class="kopfzeile" style="margin-top:clamp(3rem,6vw,5rem)">
+        <p class="auge">Also free</p>
         <h2>BIT-PDF</h2>
         <p class="unter">Der portable PDF-Editor aus dem BIT-Atelier — bearbeiten, organisieren,
           konvertieren, signieren, drucken und forensisch schwärzen. Läuft vollständig lokal: keine
@@ -1243,7 +1386,7 @@ p{margin:0}
           </ul>
           <div style="margin-top:1.8rem;display:flex;gap:.6rem;flex-wrap:wrap">
             <a class="btn btn--klein" href="#pakete">See the service packages</a>
-            <a class="btn btn--geist btn--klein" href="../demo/">Platform demo</a>
+            <a class="btn btn--geist btn--klein" href="#open-source">Open source · Download</a>
           </div>
         </div>
       </div>
@@ -1396,18 +1539,23 @@ p{margin:0}
       <p>Als Diensteanbieter bin ich für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Ich bin jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen. Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt.</p>
       </div>
       <div>
+      <h3>Open-Source-Software</h3>
+      <p>BIT-Atelier ist freie Software (MIT-Lizenz) und wird ohne Gewährleistung bereitgestellt. Die Nutzung erfolgt auf eigene Gefahr; Prüfergebnisse sind Hinweise und ersetzen keine fachliche Prüfung.</p>
+      </div>
+      <div>
       <h3>Bildnachweis</h3>
       <p>Gründerportrait: KI-generiert (Grok, xAI).</p>
 
       <h3>Datenschutz</h3>
       <p><strong>Verantwortlicher:</strong> Mohamed Elmokadem, Anschrift und Kontaktdaten wie oben im Impressum.</p>
-      <p><strong>Keine Cookies, kein Tracking:</strong> Diese Website setzt keine Cookies und verwendet keine Tracking-, Analyse- oder Werbedienste. Sämtliche Inhalte (Schriftarten, Stylesheets, Icons, Skripte) werden direkt von dieser Domain ausgeliefert – es werden keine Inhalte von Drittanbietern nachgeladen und keine Besucherdaten an Dritte übermittelt. Für die Demo-Anwendung gelten die Besonderheiten im Absatz „Demo-Anwendung“.</p>
+      <p><strong>Keine Cookies, kein Tracking:</strong> Diese Website setzt keine Cookies und verwendet keine Tracking-, Analyse- oder Werbedienste. Sämtliche Inhalte dieser Seiten (Schriftarten, Stylesheets, Icons, Skripte) werden direkt von dieser Domain ausgeliefert – es werden keine Inhalte von Drittanbietern nachgeladen und keine Besucherdaten an Dritte übermittelt. Für die Open-Source-Anwendung und die Registrierung gelten die Absätze weiter unten.</p>
       <p><strong>Hosting und Server-Logs:</strong> Die Website wird über GitHub Pages bereitgestellt (GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA; Vertragspartner im EWR: GitHub B.V., Prins Bernhardplein 200, 1097 JB Amsterdam, Niederlande). Beim Aufruf verarbeitet GitHub die zur Auslieferung technisch notwendigen Verbindungsdaten (IP-Adresse, Zeitpunkt, aufgerufene Datei, Browser-Kennung) in Server-Logs, um die Seite auszuliefern und die Sicherheit des Dienstes zu gewährleisten. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einem sicheren und stabilen Betrieb). Eine Verarbeitung in den USA kann dabei nicht ausgeschlossen werden; GitHub ist unter dem EU-US Data Privacy Framework zertifiziert. Ich selbst habe keinen Zugriff auf diese Logs. Näheres in der Datenschutzerklärung von GitHub (docs.github.com/site-policy/privacy-policies).</p>
       <p><strong>Kontaktaufnahme:</strong> Eine Kontaktaufnahme erfolgt ausschließlich auf Ihre Initiative per Telefon oder E-Mail. Der Anfrage-Baukasten auf dieser Seite formuliert lediglich in Ihrem Browser einen E-Mail-Text vor; es wird nichts an einen Server übertragen. Die dabei mitgeteilten Daten verwende ich nur zur Bearbeitung Ihrer Anfrage (Art. 6 Abs. 1 lit. b DSGVO bei Vertragsanbahnung, sonst lit. f). Sie werden gelöscht, sobald die Anfrage erledigt ist und keine gesetzlichen Aufbewahrungsfristen (insbesondere § 147 AO, § 257 HGB) entgegenstehen.</p>
-      <p><strong>Demo-Anwendung:</strong> Die Demo läuft ohne Server in Ihrem Browser. Geladene Modelle, Einstellungen und Prüfergebnisse werden ausschließlich lokal auf Ihrem Gerät gespeichert (localStorage, IndexedDB sowie ein Service Worker für den Offline-Betrieb) und nicht an mich übertragen. Diese Speicherung ist für die gewünschte Funktion technisch erforderlich (§ 25 Abs. 2 Nr. 2 TDDDG). Zwei Ausnahmen nennt die Demo selbst: Beim Öffnen einer Karte lädt Ihr Browser Kartenkacheln unmittelbar von OpenStreetMap, Esri, OpenFreeMap, MapLibre und Amazon Web Services (Höhendaten) und übermittelt dabei Ihre IP-Adresse (Art. 6 Abs. 1 lit. f DSGVO); der Feedback-Knopf öffnet Ihr eigenes E-Mail-Programm mit einem sichtbaren Entwurf. Ein Nutzungsprotokoll wird nur mit gesondert angekreuzter Einwilligung geführt, bleibt im Browser und ist jederzeit abschaltbar. Cookies setzt die Demo nicht. Vollständige Datenschutzerklärung, Nutzungsbedingungen und Cookie-Richtlinie stehen in der Demo selbst (Startdialog und Fußzeile). Sie können die Daten jederzeit über die Browser-Einstellungen („Website-Daten löschen“) entfernen.</p>
-      <p><strong>Externe Links:</strong> Die Downloads von BIT-PDF und der Quellcode liegen auf github.com. Beim Anklicken dieser Links verlassen Sie diese Website; es gelten dann die Datenschutzbestimmungen von GitHub.</p>
+      <p><strong>Open-Source-Anwendung:</strong> BIT-Atelier wird als freie Software über GitHub bereitgestellt und läuft lokal auf Ihrem Rechner. Dabei werden keine Daten an mich übertragen; Modelle, Einstellungen und Prüfergebnisse bleiben auf Ihrem Gerät. Funktionen, die Inhalte aus dem Internet laden (etwa Kartenkacheln beim Öffnen einer Karte) oder einen von Ihnen eingetragenen KI-Dienst ansprechen, verbinden sich direkt mit dem jeweiligen Anbieter; dafür gelten dessen Bedingungen. Feedback erhalte ich nur, wenn Sie mir selbst eine E-Mail schreiben oder ein GitHub-Issue anlegen. Für E-Mails gilt der Absatz „Kontaktaufnahme“; für Issues gelten die Nutzungsbedingungen und Datenschutzbestimmungen von GitHub, und ein Issue ist öffentlich sichtbar.</p>
+      <p><strong>Registrierung für die gehostete Fassung:</strong> Wer unter bit-atelier.pages.dev ein Konto beantragt, übermittelt dabei die im Formular abgefragten Angaben. Ich verwende sie ausschließlich, um die Anfrage zu prüfen und das Konto freizuschalten (Art. 6 Abs. 1 lit. b DSGVO).</p>
+      <p><strong>Externe Links:</strong> Die Downloads von BIT-Atelier und BIT-PDF sowie der Quellcode liegen auf github.com. Beim Anklicken dieser Links verlassen Sie diese Website; es gelten dann die Datenschutzbestimmungen von GitHub.</p>
       <p><strong>Ihre Rechte:</strong> Sie haben das Recht auf Auskunft (Art. 15 DSGVO), Berichtigung (Art. 16), Löschung (Art. 17), Einschränkung der Verarbeitung (Art. 18), Datenübertragbarkeit (Art. 20) sowie Widerspruch gegen eine Verarbeitung auf Grundlage berechtigter Interessen (Art. 21). Wenden Sie sich dazu an die im Impressum genannten Kontaktdaten. Außerdem können Sie sich bei einer Datenschutz-Aufsichtsbehörde beschweren; für mich zuständig ist das Bayerische Landesamt für Datenschutzaufsicht (BayLDA), Promenade 18, 91522 Ansbach, www.lda.bayern.de.</p>
-      <p><em>Stand: September 2026.</em></p>
+      <p><em>Stand: Oktober 2026.</em></p>
       </div>
       </div>
       </div>
@@ -1419,30 +1567,9 @@ p{margin:0}
 
 </main>
 
-<div class="modal verborgen" id="app-modal" role="dialog" aria-modal="true" aria-labelledby="app-modal-title">
-  <div class="modal__kasten">
-    <h3 id="app-modal-title">The BIT-Atelier platform launches shortly</h3>
-    <p>Accounts for the platform are not yet open. You can already try the checking and evaluation tools as an online demo — serverless, everything stays in your browser.</p>
-    <div class="modal__tun">
-      <a class="btn btn--klein" href="../demo/">Live demo</a>
-      <button class="btn btn--geist btn--klein" type="button" onclick="closeAppModal()">Close</button>
-    </div>
-  </div>
-</div>
-
 <script>
 // Jahr im Footer
         document.getElementById('jahr').textContent = new Date().getFullYear();
-
-        // App-Modal (Plattform-Teaser)
-        function showAppModal() {
-            document.getElementById('app-modal').classList.remove('verborgen');
-            document.getElementById('menue').classList.add('verborgen');
-        }
-        function closeAppModal() {
-            document.getElementById('app-modal').classList.add('verborgen');
-        }
-        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeAppModal(); });
 
         // Mobiles Menü
         (function(){
@@ -1505,7 +1632,7 @@ p{margin:0}
             zeilen.push('', wort('Mit freundlichen Grüßen'));
             /* Herkunftskuerzel: welcher Abschnitt hat die Anfrage ausgeloest (Attribution
                ohne Analytics). Gesetzt ueber data-herkunft an den Knoepfen, vom Finder
-               und von ?befund= aus der Demo; ohne Angabe [Website]. */
+               und von ?befund=; ohne Angabe [Website]. */
             const herkunft = w('a-herkunft') || 'Website';
             return {
                 betreff: '[' + herkunft + '] ' + wort('Erstgespräch BIT-ATELIER — ') + w('a-art'),
@@ -1542,9 +1669,33 @@ p{margin:0}
             window.open(url, '_blank', 'noopener');
         }
 
-        /* ?befund= aus der Online-Demo (base64url-JSON der Kennzahlen des Prueflaufs):
-           fuellt das Freitextfeld vor und setzt die Herkunft "Demo". Unsinn wird
-           verworfen, nichts davon verlaesst den Rechner. */
+        /* Feedback zur Open-Source-Fassung (#open-source). Dieselbe verdeckte
+           Adresse wie der Kontakt, Betreff und eine kurze Gliederung vorbelegt,
+           damit Rueckmeldungen im Postfach sofort erkennbar und vergleichbar
+           sind. Kein Server — die Mail schreibt und sendet der Besucher selbst. */
+        function feedbackText() {
+            return {
+                betreff: '[Feedback] ' + wort('BIT-Atelier (Open Source)'),
+                koerper: [
+                    wort('Was ich gemacht habe:'), '', '',
+                    wort('Was passiert ist:'), '', '',
+                    wort('Was ich erwartet hätte:'), '', '',
+                    wort('Fassung, Betriebssystem, Browser:'), '',
+                ].join('\n'),
+            };
+        }
+        function feedbackMail() {
+            const { betreff, koerper } = feedbackText();
+            location.href = 'mailto:' + rev(_eu) + '@' + rev(_ed) +
+                '?subject=' + encodeURIComponent(betreff) +
+                '&body=' + encodeURIComponent(koerper);
+        }
+
+        /* ?befund= (base64url-JSON der Kennzahlen eines Prueflaufs): fuellt das
+           Freitextfeld vor und setzt die Herkunft "BIT-Atelier". Bis 83-05 kam der
+           Link aus der Online-Demo; die gibt es nicht mehr, das Format bleibt fuer
+           einen Rueckweg aus der Open-Source-Fassung. Unsinn wird verworfen,
+           nichts davon verlaesst den Rechner. */
         function befundUebernehmen() {
             let roh;
             try { roh = new URLSearchParams(location.search).get('befund'); } catch (e) { return; }
@@ -1556,7 +1707,7 @@ p{margin:0}
             } catch (e) { return; }
             if (!b || typeof b !== 'object') return;
             const zahl = (v) => (typeof v === 'number' && isFinite(v)) ? String(v) : null;
-            const zeilen = [wort('Kennzahlen aus dem Prüflauf der Online-Demo:')];
+            const zeilen = [wort('Kennzahlen aus einem Prüflauf mit BIT-Atelier:')];
             if (typeof b.modell === 'string' && b.modell) zeilen.push('- ' + wort('Modell') + ': ' + b.modell.slice(0, 120));
             const felder = [['bauteile', 'Bauteile mit Geometrie'], ['geschosse', 'Geschosse'],
                             ['kollisionen', 'Harte Kollisionen'], ['duplikate', 'Doppelmodellierungen'],
@@ -1565,7 +1716,7 @@ p{margin:0}
             if (zeilen.length < 2) return;
             const feld = document.getElementById('a-text');
             if (feld && !feld.value.trim()) feld.value = zeilen.join('\n');
-            herkunftSetzen('Demo');
+            herkunftSetzen('BIT-Atelier');
             const ziel = document.getElementById('kontakt');
             if (ziel && !location.hash) ziel.scrollIntoView();
         }
@@ -1790,7 +1941,7 @@ p{margin:0}
         addEventListener('load', finderZeigen);   /* jetzt mit Wörterbuch aus sprachen.js */
 
         
-        /* ---- Prüf-Engine-Terminal: getippter Beispiel-Prüflauf (Demo-Werte) ---- */
+        /* ---- Prüf-Engine-Terminal: getippter Beispiel-Prüflauf (Beispielwerte) ---- */
         (function () {
             const el = document.getElementById('pruef-terminal');
             if (!el) return;
