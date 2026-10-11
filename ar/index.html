@@ -149,6 +149,7 @@
     "name": "BIT-Atelier",
     "applicationCategory": "BusinessApplication",
     "operatingSystem": "Windows, macOS, Linux",
+    "softwareVersion": "1.1.0",
     "downloadUrl": "https://github.com/mozzi86/bit-atelier-oss/releases/latest/download/BIT-Atelier.zip",
     "license": "https://opensource.org/licenses/MIT",
     "isAccessibleForFree": true
@@ -176,6 +177,34 @@
 .beleg__titel{font-weight:600;margin:0 0 .3rem}
 .beleg__unter{color:var(--muted);font-size:.88rem;margin:0 0 .9rem}
 .beleg__links{display:flex;gap:.6rem;flex-wrap:wrap}
+
+/* --- Download (92-09): one block, the detected system first ---------------
+   Without script (or on an unknown system) all three ways stand side by side;
+   data-system only reorders and marks, it never hides a way. */
+.download{margin-top:2.8rem;background:var(--bg-raise);border:1px solid var(--line);
+  padding:clamp(1.4rem,2.6vw,2.1rem)}
+.download h3{margin:.8rem 0 .65rem;font-size:1.35rem}
+.download p{color:var(--muted);font-weight:300}
+.download__wege{display:grid;gap:1px;background:var(--line);margin-top:1.4rem;grid-template-columns:1fr}
+@media(min-width:60rem){.download__wege{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.download__weg{background:var(--bg);padding:1.2rem;display:flex;flex-direction:column;gap:.7rem}
+.download__weg p{margin:0}
+.download__weg p code{white-space:nowrap}   /* "~/BIT-Atelier" broke at the hyphen */
+.download__weg .btn{align-self:flex-start;margin-top:auto}
+.download__empfohlen,.download__mobil{display:none}
+.download__empfohlen{font-family:var(--mono);font-size:.72rem;color:var(--accent);letter-spacing:.14em;text-transform:uppercase}
+.download[data-system="windows"] [data-fuer="windows"],
+.download[data-system="unix"] [data-fuer="unix"]{order:-1;box-shadow:inset 0 0 0 1px var(--accent)}
+.download[data-system="windows"] [data-fuer="windows"] .download__empfohlen,
+.download[data-system="unix"] [data-fuer="unix"] .download__empfohlen,
+.download[data-system="mobil"] .download__mobil{display:block}
+.download__befehl{margin:0;padding:.65rem .8rem;background:var(--bg-raise);border:1px solid var(--line);
+  white-space:pre-wrap;overflow-wrap:anywhere;font-size:.85rem;text-align:left}
+.download__fassung,.download__pruefsumme{margin-top:1.1rem;font-family:var(--mono);font-size:.78rem;
+  color:var(--muted);overflow-wrap:anywhere}
+.download__pruefsumme{margin-top:.4rem}
+.download__fassung a,.download__pruefsumme a{color:var(--accent)}
+.download__danach{margin-top:1.1rem}
 
 /* --- Anfrage-Baukasten (Phase 65-06) --------------------------------------
    Kein Formular-Versand: die Felder bauen im Browser eine vorformulierte
@@ -1142,16 +1171,47 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
         <p class="unter">الأدوات التي أدقّق بها النماذج متاحة للجميع — مجاناً بموجب رخصة MIT. يعمل BIT-Atelier محلياً على حاسوبك، دون إلزام بالسحابة ودون رسوم ترخيص. وتبقى نماذجك وبيانات مشاريعك على جهازك.</p>
       </div>
 
-      <div class="gitter gitter--2">
-        <article class="karte">
-          <p class="karte__nr">01 · التنزيل</p>
-          <h3>التثبيت بنقرة واحدة</h3>
-          <p>Windows: نزِّل برنامج التثبيت وانقر عليه نقراً مزدوجاً — يجلب الإصدار الحالي ويتحقق منه ويضع اختصاراً على سطح المكتب ويشغِّل التطبيق. بعد ذلك يُبلغ التطبيق نفسه عن الإصدارات الجديدة ويثبِّتها بضغطة زر. macOS/Linux: <code dir="ltr">curl -fsSL https://github.com/mozzi86/bit-atelier-oss/releases/latest/download/install.sh | sh</code>. المتطلب: Node.js 22.9 أو أحدث.</p>
-          <div class="karte__fuss" style="display:flex;gap:.6rem;flex-wrap:wrap">
+      <!-- ==== DOWNLOAD (92-09): the ONE place with download links ====
+           Links point to releases/latest, so the installer and the ZIP are always
+           current. The release line below names the release they were written for.
+           FASSUNG — on every release update these tokens (all language-neutral,
+           so sprachen.js needs no change): version (2x incl. the tag link),
+           <time>, size, SHA-256 of BIT-Atelier.zip, JSON-LD softwareVersion; then
+           node tools/sprachkopien-erzeugen.mjs. Values from the GitHub release API
+           (asset "digest"). The .sha256 link always matches the current ZIP.
+           data-system is set by the script at the end of the page (windows | unix |
+           mobil | empty = no recommendation, all ways equal). -->
+      <div class="download" id="herunterladen">
+        <p class="karte__nr">01 · التنزيل</p>
+        <h3>التثبيت بنقرة واحدة</h3>
+        <p class="download__vorher">مرة واحدة مسبقاً: Node.js 22.9 أو أحدث، مجاناً من <a href="https://nodejs.org/" style="color:var(--accent)">nodejs.org</a>.</p>
+        <p class="download__mobil">يعمل BIT-Atelier على Windows وmacOS وLinux، وليس على الهاتف. أرسل الرابط إلى حاسوبك.</p>
+        <div class="download__wege">
+          <div class="download__weg" data-fuer="windows">
+            <p class="download__empfohlen">لنظامك</p>
+            <h4>Windows</h4>
+            <p>نزِّل برنامج التثبيت وانقر عليه نقراً مزدوجاً — يجلب الإصدار الحالي ويتحقق منه ويضع اختصاراً على سطح المكتب ويشغِّل التطبيق.</p>
             <a class="btn btn--klein" href="https://github.com/mozzi86/bit-atelier-oss/releases/latest/download/BIT-Atelier-Installer.cmd">برنامج التثبيت لنظام Windows</a>
+          </div>
+          <div class="download__weg" data-fuer="unix">
+            <p class="download__empfohlen">لنظامك</p>
+            <h4>macOS · Linux</h4>
+            <p>نفِّذه في الطرفية — يجلب الإصدار الحالي ويتحقق منه ويثبِّته في <code dir="ltr">~/BIT-Atelier</code> ويشغِّل التطبيق.</p>
+            <pre class="download__befehl" dir="ltr"><code id="dl-befehl">curl -fsSL https://github.com/mozzi86/bit-atelier-oss/releases/latest/download/install.sh | sh</code></pre>
+            <button class="btn btn--klein" type="button" id="dl-kopieren" onclick="befehlKopieren(this)">نسخ الأمر</button>
+          </div>
+          <div class="download__weg" data-fuer="zip">
+            <h4>يدوياً (جميع الأنظمة)</h4>
+            <p>فُكَّ ضغط الملف وشغِّل <code dir="ltr">start-windows.cmd</code> أو <code dir="ltr">./start.sh</code>.</p>
             <a class="btn btn--geist btn--klein" href="https://github.com/mozzi86/bit-atelier-oss/releases/latest/download/BIT-Atelier.zip">ZIP (يدوياً)</a>
           </div>
-        </article>
+        </div>
+        <div class="download__fassung"><span>الإصدار</span> <b data-nicht-uebersetzen="">1.1.0</b> · <time datetime="2026-10-11">11.10.2026</time> · <span data-nicht-uebersetzen="">ZIP 10 MB</span> · <span>Node.js 22.9 أو أحدث</span> · <a href="https://github.com/mozzi86/bit-atelier-oss/releases/tag/v1.1.0">التغييرات</a></div>
+        <div class="download__pruefsumme"><span>SHA-256 لملف ZIP:</span> <code dir="ltr" id="dl-sha256">3751185f6cb78178c938ebedbed4076ccbd2bfc1fabd9594f37a4ba4679209e2</code> · <a href="https://github.com/mozzi86/bit-atelier-oss/releases/latest/download/BIT-Atelier.zip.sha256">المجموع الاختباري للإصدار الحالي كملف</a></div>
+        <p class="download__danach">بعد ذلك يعمل التطبيق على <code dir="ltr">http://localhost:3001</code>، ولاحقاً عبر الاختصار „BIT-Atelier“. يُبلغ التطبيق نفسه عن الإصدارات الجديدة ويثبِّتها بضغطة زر.</p>
+      </div>
+
+      <div class="gitter gitter--2">
         <article class="karte">
           <p class="karte__nr">02 · الشيفرة المصدرية</p>
           <h3>مفتوحة على GitHub</h3>
@@ -1173,27 +1233,6 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
             <button class="btn btn--klein" type="button" onclick="feedbackMail()">ملاحظات عبر البريد الإلكتروني</button>
             <a class="btn btn--geist btn--klein" href="https://github.com/mozzi86/bit-atelier-oss/issues">فتح Issue على GitHub</a>
           </div>
-        </article>
-        <article class="karte">
-          <p class="karte__nr">بدء سريع</p>
-          <h3>جاهز للعمل في ثلاث خطوات</h3>
-          <ol class="stationen" style="margin-top:1rem">
-            <li class="station">
-              <p class="station__zeit">الخطوة 1</p>
-              <h4>ثبِّت Node.js 22.9 أو أحدث</h4>
-              <p>مرة واحدة ومجاناً من nodejs.org — إن لم يكن مثبَّتاً لديك.</p>
-            </li>
-            <li class="station">
-              <p class="station__zeit">الخطوة 2</p>
-              <h4>شغِّل برنامج التثبيت</h4>
-              <p>انقر نقراً مزدوجاً على BIT-Atelier-Installer.cmd (Windows) أو نفِّذ الأمر أعلاه (macOS وLinux). بدون برنامج التثبيت: فُكَّ ضغط BIT-Atelier.zip.</p>
-            </li>
-            <li class="station">
-              <p class="station__zeit">الخطوة 3</p>
-              <h4>شغِّل وابدأ</h4>
-              <p>يبدأ التطبيق تلقائياً على <code dir="ltr">http://localhost:3001</code>؛ ولاحقاً عبر الاختصار „BIT-Atelier“. تأتي التحديثات من داخل التطبيق.</p>
-            </li>
-          </ol>
         </article>
         <article class="karte">
           <p class="karte__nr">الإمكانات</p>
@@ -1229,28 +1268,11 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
       <div class="kopfzeile">
         <p class="auge">التنزيلات</p>
         <h2>BIT-Atelier (مفتوح المصدر)</h2>
-        <p class="unter">منصة BIM من BIT-Atelier — IFC وIDS وBCF وGAEB محلياً على حاسوبك. ملف ZIP واحد لأنظمة Windows وmacOS وLinux؛ ويتطلب Node.js 22.9 أو أحدث.</p>
+        <!-- 92-09: no second set of download links here; installer, ZIP, release
+             line and checksum live in ONE place (#herunterladen). -->
+        <p class="unter">برنامج التثبيت وملف ZIP والإصدار والمجموع الاختباري في مكان واحد — في قسم المصدر المفتوح.</p>
+        <div style="margin-top:1.2rem"><a class="btn btn--klein" href="#herunterladen">إلى التنزيل</a></div>
       </div>
-      <div class="gitter gitter--2">
-        <article class="karte">
-          <p class="karte__nr">Windows · macOS · Linux</p>
-          <h3>BIT-Atelier.zip</h3>
-          <p>Windows: انقر نقراً مزدوجاً على برنامج التثبيت — يثبِّت ويضع الاختصارات ويشغِّل؛ ثم التحديثات بنقرة داخل التطبيق. macOS/Linux: <code dir="ltr">curl -fsSL https://github.com/mozzi86/bit-atelier-oss/releases/latest/download/install.sh | sh</code>. أو فُكَّ ضغط ملف ZIP وشغِّل <code dir="ltr">start-windows.cmd</code> أو <code dir="ltr">./start.sh</code>.</p>
-          <div class="karte__fuss" style="display:flex;gap:.6rem;flex-wrap:wrap">
-            <a class="btn btn--klein" href="https://github.com/mozzi86/bit-atelier-oss/releases/latest/download/BIT-Atelier-Installer.cmd">برنامج التثبيت لنظام Windows</a>
-            <a class="btn btn--geist btn--klein" href="https://github.com/mozzi86/bit-atelier-oss/releases/latest/download/BIT-Atelier.zip">تنزيل (ZIP)</a>
-          </div>
-        </article>
-        <article class="karte">
-          <p class="karte__nr">الشيفرة المصدرية</p>
-          <h3>رخصة MIT على GitHub</h3>
-          <p>الشيفرة المصدرية وجميع الإصدارات والمشكلات (Issues) في المستودع العام.</p>
-          <div class="karte__fuss">
-            <a class="btn btn--geist btn--klein" href="https://github.com/mozzi86/bit-atelier-oss">إلى المستودع</a>
-          </div>
-        </article>
-      </div>
-      <p class="fussnote">BIT-Atelier برنامج حرّ (رخصة MIT) ويُقدَّم دون أي ضمان. الاستخدام على مسؤوليتك الخاصة؛ ونتائج التدقيق إرشادات ولا تُغني عن المراجعة المهنية.</p>
 
       <div class="kopfzeile" style="margin-top:clamp(3rem,6vw,5rem)">
         <p class="auge">مجاني أيضاً</p>
@@ -1686,6 +1708,43 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
                 ].join('\n'),
             };
         }
+        /* Download (92-09): put the way for the visitor's system first. Only a
+           hint — every way stays visible. iPadOS reports "MacIntel", hence the
+           touch check; Android reports "Linux", hence mobile first. */
+        function systemErkennen() {
+            const el = document.getElementById('herunterladen');
+            if (!el) return '';
+            const n = navigator;
+            const roh = ((n.userAgentData && n.userAgentData.platform) || n.platform || '') + ' ' + (n.userAgent || '');
+            let sys = '';
+            if (/android|iphone|ipad|ipod|mobile/i.test(roh) || (/mac/i.test(roh) && n.maxTouchPoints > 1)) sys = 'mobil';
+            else if (/win/i.test(roh)) sys = 'windows';
+            else if (/mac|linux|x11|cros|bsd/i.test(roh)) sys = 'unix';
+            if (sys) el.dataset.system = sys; else delete el.dataset.system;
+            return sys;
+        }
+        systemErkennen();
+
+        async function befehlKopieren(knopf) {
+            const code = document.getElementById('dl-befehl');
+            const text = code ? code.textContent.trim() : '';
+            let ok = false;
+            try { await navigator.clipboard.writeText(text); ok = true; }
+            catch (e) {
+                /* Fallback without the Clipboard API: select the command and copy */
+                if (code) {
+                    const bereich = document.createRange(); bereich.selectNodeContents(code);
+                    const auswahl = getSelection(); auswahl.removeAllRanges(); auswahl.addRange(bereich);
+                    try { ok = document.execCommand('copy'); } catch (e2) { ok = false; }
+                    if (ok) auswahl.removeAllRanges();   /* on failure the selection stays for Ctrl+C */
+                }
+            }
+            const vorher = knopf.innerHTML;
+            knopf.textContent = ok ? wort('Kopiert ✓') : wort('Bitte den Befehl markieren und kopieren');
+            knopf.disabled = true;
+            setTimeout(() => { knopf.innerHTML = vorher; knopf.disabled = false; }, 2200);
+        }
+
         function feedbackMail() {
             const { betreff, koerper } = feedbackText();
             location.href = 'mailto:' + rev(_eu) + '@' + rev(_ed) +

@@ -195,8 +195,6 @@
       'Die Werkzeuge, mit denen ich Modelle prüfe, stehen allen offen — frei unter der MIT-Lizenz. BIT-Atelier läuft lokal auf Ihrem Rechner, ohne Cloud-Zwang und ohne Lizenzkosten. Ihre Modelle und Projektdaten bleiben auf Ihrem eigenen Gerät.':
         'The tools I use to check models are open to everyone — free under the MIT licence. BIT-Atelier runs locally on your computer, with no cloud requirement and no licence fees. Your models and project data stay on your own machine.',
       '01 · Herunterladen': '01 · Download',
-      'Eine ZIP für Windows, macOS und Linux': 'One ZIP for Windows, macOS and Linux',
-      'BIT-Atelier.zip herunterladen': 'Download BIT-Atelier.zip',
       '02 · Quellcode': '02 · Source code',
       'Offen auf GitHub': 'Open on GitHub',
       'Lesen, anpassen, weitergeben. Aus dem Quellcode starten: <code dir="ltr">git clone</code>, <code dir="ltr">npm install</code>, <code dir="ltr">npm run dev</code>. Eigene Prüfregeln und Erweiterungen sind ausdrücklich erwünscht.':
@@ -212,18 +210,6 @@
         'Found a bug, have an idea for a checking rule, or is something unclear? Email me or open an issue on GitHub — I read every message myself.',
       'Feedback per E-Mail': 'Feedback by email',
       'GitHub-Issue anlegen': 'Open a GitHub issue',
-      'Schnellstart': 'Quick start',
-      'In drei Schritten startklar': 'Up and running in three steps',
-      'Schritt 1': 'Step 1',
-      'Node.js 22.9 oder neuer installieren': 'Install Node.js 22.9 or newer',
-      'Einmalig und kostenlos von nodejs.org — falls noch nicht vorhanden.': 'Once and free of charge from nodejs.org — if it is not already installed.',
-      'Schritt 2': 'Step 2',
-      'ZIP herunterladen und entpacken': 'Download and unzip',
-      'BIT-Atelier.zip in einen beliebigen Ordner entpacken.': 'Unzip BIT-Atelier.zip into any folder.',
-      'Schritt 3': 'Step 3',
-      'Starten und loslegen': 'Start and get going',
-      'Doppelklick auf <code dir="ltr">start-windows.cmd</code> (Windows) bzw. <code dir="ltr">./start.sh</code> ausführen (macOS, Linux), dann im Browser <code dir="ltr">http://localhost:3001</code> öffnen.':
-        'Double-click <code dir="ltr">start-windows.cmd</code> (Windows) or run <code dir="ltr">./start.sh</code> (macOS, Linux), then open <code dir="ltr">http://localhost:3001</code> in your browser.',
       'Funktionsumfang': 'Features',
       'Was BIT-Atelier kann': 'What BIT-Atelier does',
       'IFC lesen — lokal im Browser (web-ifc); IFC4 schreiben aus dem Komplex-Designer': 'Read IFC — locally in the browser (web-ifc); write IFC4 from the complex designer',
@@ -238,36 +224,52 @@
       'Optional: Konto für die gehostete Fassung': 'Optional: an account for the hosted version',
       'Konten für die gehostete Fassung werden von Hand freigeschaltet — das dauert in der Regel ein paar Werktage. Die lokale Fassung braucht kein Konto.':
         'Accounts for the hosted version are activated by hand — this usually takes a few working days. The local version needs no account.',
-      /* Installer (76bb5d6, taken verbatim from the en/ar pages; Node.js 22.9 since 92-09) */
+      /* Download block (92-09) */
+      'Einmalig vorher: Node.js 22.9 oder neuer, kostenlos von <a href="https://nodejs.org/" style="color:var(--accent)">nodejs.org</a>.':
+        'Once beforehand: Node.js 22.9 or newer, free from <a href="https://nodejs.org/" style="color:var(--accent)">nodejs.org</a>.',
+      'BIT-Atelier läuft auf Windows, macOS und Linux, nicht auf dem Handy. Schicken Sie sich den Link an Ihren Rechner.':
+        'BIT-Atelier runs on Windows, macOS and Linux, not on a phone. Send yourself the link to your computer.',
+      'Für Ihr System':
+        'For your system',
+      'Installer herunterladen und doppelklicken — er holt die aktuelle Version, prüft sie, legt eine Verknüpfung auf dem Desktop an und startet die App.':
+        'Download the installer and double-click it — it fetches the current version, verifies it, adds a desktop shortcut and starts the app.',
+      'Im Terminal ausführen — holt die aktuelle Version, prüft sie, installiert nach <code dir="ltr">~/BIT-Atelier</code> und startet die App.':
+        'Run it in a terminal — it fetches the current version, verifies it, installs to <code dir="ltr">~/BIT-Atelier</code> and starts the app.',
+      'Befehl kopieren':
+        'Copy command',
+      'Von Hand (alle Systeme)':
+        'By hand (all systems)',
+      'ZIP entpacken und <code dir="ltr">start-windows.cmd</code> bzw. <code dir="ltr">./start.sh</code> starten.':
+        'Unzip it and start <code dir="ltr">start-windows.cmd</code> or <code dir="ltr">./start.sh</code>.',
+      'Fassung':
+        'Version',
+      'Node.js 22.9 oder neuer':
+        'Node.js 22.9 or newer',
+      'Änderungen':
+        'Changes',
+      'SHA-256 der ZIP:':
+        'SHA-256 of the ZIP:',
+      'Prüfsumme der aktuellen Fassung als Datei':
+        'Checksum of the current version as a file',
+      'Danach läuft die App unter <code dir="ltr">http://localhost:3001</code>, später über die Verknüpfung „BIT-Atelier“. Neue Versionen meldet die App selbst und installiert sie auf Knopfdruck.':
+        'The app then runs at <code dir="ltr">http://localhost:3001</code>, later via the "BIT-Atelier" shortcut. The app reports new versions itself and installs them at the push of a button.',
+      'Bitte den Befehl markieren und kopieren':
+        'Please select the command and copy it',
+      'Installer, ZIP, Fassung und Prüfsumme stehen an einer Stelle — im Abschnitt Open Source.':
+        'Installer, ZIP, version and checksum are in one place — in the open source section.',
+      'Zum Download':
+        'Go to download',
+      /* Installer (76bb5d6, taken verbatim from the en/ar pages) */
       'Installieren mit einem Klick':
         'Install with one click',
-      'Windows: Installer herunterladen und doppelklicken — er holt die aktuelle Version, prüft sie, legt eine Verknüpfung auf dem Desktop an und startet die App. Neue Versionen meldet die App danach selbst und installiert sie auf Knopfdruck. macOS/Linux: <code dir="ltr">curl -fsSL https://github.com/mozzi86/bit-atelier-oss/releases/latest/download/install.sh | sh</code>. Voraussetzung ist Node.js 22.9 oder neuer.':
-        'Windows: download the installer and double-click it — it fetches the current version, verifies it, adds a desktop shortcut and starts the app. After that the app reports new versions itself and installs them at the push of a button. macOS/Linux: <code dir="ltr">curl -fsSL https://github.com/mozzi86/bit-atelier-oss/releases/latest/download/install.sh | sh</code>. Requires Node.js 22.9 or newer.',
       'Installer für Windows':
         'Installer for Windows',
       'ZIP (manuell)':
         'ZIP (manual)',
-      'Installer starten':
-        'Run the installer',
-      'BIT-Atelier-Installer.cmd doppelklicken (Windows) bzw. den Befehl oben ausführen (macOS, Linux). Ohne Installer: BIT-Atelier.zip entpacken.':
-        'Double-click BIT-Atelier-Installer.cmd (Windows) or run the command above (macOS, Linux). Without the installer: unzip BIT-Atelier.zip.',
-      'Die App startet von selbst unter <code dir="ltr">http://localhost:3001</code>; später über die Verknüpfung „BIT-Atelier“. Updates kommen aus der App.':
-        'The app starts by itself at <code dir="ltr">http://localhost:3001</code>; later via the "BIT-Atelier" shortcut. Updates come from inside the app.',
-      'Windows: Installer doppelklicken — installiert, legt Verknüpfungen an, startet; Updates danach per Klick in der App. macOS/Linux: <code dir="ltr">curl -fsSL https://github.com/mozzi86/bit-atelier-oss/releases/latest/download/install.sh | sh</code>. Oder die ZIP entpacken und <code dir="ltr">start-windows.cmd</code> bzw. <code dir="ltr">./start.sh</code> starten.':
-        'Windows: double-click the installer — it installs, adds shortcuts and starts; updates then with one click inside the app. macOS/Linux: <code dir="ltr">curl -fsSL https://github.com/mozzi86/bit-atelier-oss/releases/latest/download/install.sh | sh</code>. Or unzip the ZIP and start <code dir="ltr">start-windows.cmd</code> or <code dir="ltr">./start.sh</code>.',
       /* Downloads: Block "BIT-Atelier (Open Source)" */
       'BIT-Atelier (Open Source)': 'BIT-Atelier (open source)',
-      'Die BIM-Plattform aus dem BIT-Atelier — IFC, IDS, BCF und GAEB lokal auf Ihrem Rechner. Eine ZIP für Windows, macOS und Linux; Voraussetzung ist Node.js 22.9 oder neuer.':
-        'The BIM platform from BIT-Atelier — IFC, IDS, BCF and GAEB locally on your computer. One ZIP for Windows, macOS and Linux; requires Node.js 22.9 or newer.',
-      'Windows · macOS · Linux': 'Windows · macOS · Linux',
       'BIT-Atelier.zip': 'BIT-Atelier.zip',
-      'Entpacken, dann <code dir="ltr">start-windows.cmd</code> per Doppelklick bzw. <code dir="ltr">./start.sh</code> starten und im Browser <code dir="ltr">localhost:3001</code> öffnen.':
-        'Unzip, then double-click <code dir="ltr">start-windows.cmd</code> or run <code dir="ltr">./start.sh</code>, and open <code dir="ltr">localhost:3001</code> in your browser.',
-      'Download (ZIP)': 'Download (ZIP)',
       'Quellcode': 'Source code',
-      'MIT-Lizenz auf GitHub': 'MIT licence on GitHub',
-      'Quellcode, alle Versionen und Issues im öffentlichen Repository.': 'Source code, all releases and issues in the public repository.',
-      'Zum Repository': 'Go to the repository',
       'Ebenfalls kostenlos': 'Also free',
       /* Feedback-Mail (feedbackText in index.html; Betreff nutzt
          'BIT-Atelier (Open Source)' von oben mit) */
@@ -624,8 +626,6 @@
       'Die Werkzeuge, mit denen ich Modelle prüfe, stehen allen offen — frei unter der MIT-Lizenz. BIT-Atelier läuft lokal auf Ihrem Rechner, ohne Cloud-Zwang und ohne Lizenzkosten. Ihre Modelle und Projektdaten bleiben auf Ihrem eigenen Gerät.':
         'الأدوات التي أدقّق بها النماذج متاحة للجميع — مجاناً بموجب رخصة MIT. يعمل BIT-Atelier محلياً على حاسوبك، دون إلزام بالسحابة ودون رسوم ترخيص. وتبقى نماذجك وبيانات مشاريعك على جهازك.',
       '01 · Herunterladen': '01 · التنزيل',
-      'Eine ZIP für Windows, macOS und Linux': 'ملف ZIP واحد لأنظمة Windows وmacOS وLinux',
-      'BIT-Atelier.zip herunterladen': 'تنزيل BIT-Atelier.zip',
       '02 · Quellcode': '02 · الشيفرة المصدرية',
       'Offen auf GitHub': 'مفتوحة على GitHub',
       'Lesen, anpassen, weitergeben. Aus dem Quellcode starten: <code dir="ltr">git clone</code>, <code dir="ltr">npm install</code>, <code dir="ltr">npm run dev</code>. Eigene Prüfregeln und Erweiterungen sind ausdrücklich erwünscht.':
@@ -641,18 +641,6 @@
         'وجدتَ خطأً، أو لديك فكرة لقاعدة تدقيق، أو هناك ما هو غير واضح؟ راسلني بالبريد الإلكتروني أو افتح Issue على GitHub — أقرأ كل رسالة بنفسي.',
       'Feedback per E-Mail': 'ملاحظات عبر البريد الإلكتروني',
       'GitHub-Issue anlegen': 'فتح Issue على GitHub',
-      'Schnellstart': 'بدء سريع',
-      'In drei Schritten startklar': 'جاهز للعمل في ثلاث خطوات',
-      'Schritt 1': 'الخطوة 1',
-      'Node.js 22.9 oder neuer installieren': 'ثبِّت Node.js 22.9 أو أحدث',
-      'Einmalig und kostenlos von nodejs.org — falls noch nicht vorhanden.': 'مرة واحدة ومجاناً من nodejs.org — إن لم يكن مثبَّتاً لديك.',
-      'Schritt 2': 'الخطوة 2',
-      'ZIP herunterladen und entpacken': 'نزِّل الملف وفُكَّ ضغطه',
-      'BIT-Atelier.zip in einen beliebigen Ordner entpacken.': 'فُكَّ ضغط BIT-Atelier.zip في أي مجلد.',
-      'Schritt 3': 'الخطوة 3',
-      'Starten und loslegen': 'شغِّل وابدأ',
-      'Doppelklick auf <code dir="ltr">start-windows.cmd</code> (Windows) bzw. <code dir="ltr">./start.sh</code> ausführen (macOS, Linux), dann im Browser <code dir="ltr">http://localhost:3001</code> öffnen.':
-        'انقر نقراً مزدوجاً على <code dir="ltr">start-windows.cmd</code> (Windows) أو شغِّل <code dir="ltr">./start.sh</code> (macOS وLinux)، ثم افتح <code dir="ltr">http://localhost:3001</code> في المتصفح.',
       'Funktionsumfang': 'الإمكانات',
       'Was BIT-Atelier kann': 'ما يقدِّمه BIT-Atelier',
       'IFC lesen — lokal im Browser (web-ifc); IFC4 schreiben aus dem Komplex-Designer': 'قراءة IFC — محلياً في المتصفح (web-ifc)؛ وكتابة IFC4 من مصمِّم المجمَّعات',
@@ -667,36 +655,52 @@
       'Optional: Konto für die gehostete Fassung': 'اختياري: حساب للنسخة المستضافة',
       'Konten für die gehostete Fassung werden von Hand freigeschaltet — das dauert in der Regel ein paar Werktage. Die lokale Fassung braucht kein Konto.':
         'تُفعَّل حسابات النسخة المستضافة يدوياً — ويستغرق ذلك عادةً بضعة أيام عمل. أما النسخة المحلية فلا تحتاج إلى حساب.',
-      /* Installer (76bb5d6, taken verbatim from the en/ar pages; Node.js 22.9 since 92-09) */
+      /* Download block (92-09) */
+      'Einmalig vorher: Node.js 22.9 oder neuer, kostenlos von <a href="https://nodejs.org/" style="color:var(--accent)">nodejs.org</a>.':
+        'مرة واحدة مسبقاً: Node.js 22.9 أو أحدث، مجاناً من <a href="https://nodejs.org/" style="color:var(--accent)">nodejs.org</a>.',
+      'BIT-Atelier läuft auf Windows, macOS und Linux, nicht auf dem Handy. Schicken Sie sich den Link an Ihren Rechner.':
+        'يعمل BIT-Atelier على Windows وmacOS وLinux، وليس على الهاتف. أرسل الرابط إلى حاسوبك.',
+      'Für Ihr System':
+        'لنظامك',
+      'Installer herunterladen und doppelklicken — er holt die aktuelle Version, prüft sie, legt eine Verknüpfung auf dem Desktop an und startet die App.':
+        'نزِّل برنامج التثبيت وانقر عليه نقراً مزدوجاً — يجلب الإصدار الحالي ويتحقق منه ويضع اختصاراً على سطح المكتب ويشغِّل التطبيق.',
+      'Im Terminal ausführen — holt die aktuelle Version, prüft sie, installiert nach <code dir="ltr">~/BIT-Atelier</code> und startet die App.':
+        'نفِّذه في الطرفية — يجلب الإصدار الحالي ويتحقق منه ويثبِّته في <code dir="ltr">~/BIT-Atelier</code> ويشغِّل التطبيق.',
+      'Befehl kopieren':
+        'نسخ الأمر',
+      'Von Hand (alle Systeme)':
+        'يدوياً (جميع الأنظمة)',
+      'ZIP entpacken und <code dir="ltr">start-windows.cmd</code> bzw. <code dir="ltr">./start.sh</code> starten.':
+        'فُكَّ ضغط الملف وشغِّل <code dir="ltr">start-windows.cmd</code> أو <code dir="ltr">./start.sh</code>.',
+      'Fassung':
+        'الإصدار',
+      'Node.js 22.9 oder neuer':
+        'Node.js 22.9 أو أحدث',
+      'Änderungen':
+        'التغييرات',
+      'SHA-256 der ZIP:':
+        'SHA-256 لملف ZIP:',
+      'Prüfsumme der aktuellen Fassung als Datei':
+        'المجموع الاختباري للإصدار الحالي كملف',
+      'Danach läuft die App unter <code dir="ltr">http://localhost:3001</code>, später über die Verknüpfung „BIT-Atelier“. Neue Versionen meldet die App selbst und installiert sie auf Knopfdruck.':
+        'بعد ذلك يعمل التطبيق على <code dir="ltr">http://localhost:3001</code>، ولاحقاً عبر الاختصار „BIT-Atelier“. يُبلغ التطبيق نفسه عن الإصدارات الجديدة ويثبِّتها بضغطة زر.',
+      'Bitte den Befehl markieren und kopieren':
+        'يُرجى تحديد الأمر ونسخه',
+      'Installer, ZIP, Fassung und Prüfsumme stehen an einer Stelle — im Abschnitt Open Source.':
+        'برنامج التثبيت وملف ZIP والإصدار والمجموع الاختباري في مكان واحد — في قسم المصدر المفتوح.',
+      'Zum Download':
+        'إلى التنزيل',
+      /* Installer (76bb5d6, taken verbatim from the en/ar pages) */
       'Installieren mit einem Klick':
         'التثبيت بنقرة واحدة',
-      'Windows: Installer herunterladen und doppelklicken — er holt die aktuelle Version, prüft sie, legt eine Verknüpfung auf dem Desktop an und startet die App. Neue Versionen meldet die App danach selbst und installiert sie auf Knopfdruck. macOS/Linux: <code dir="ltr">curl -fsSL https://github.com/mozzi86/bit-atelier-oss/releases/latest/download/install.sh | sh</code>. Voraussetzung ist Node.js 22.9 oder neuer.':
-        'Windows: نزِّل برنامج التثبيت وانقر عليه نقراً مزدوجاً — يجلب الإصدار الحالي ويتحقق منه ويضع اختصاراً على سطح المكتب ويشغِّل التطبيق. بعد ذلك يُبلغ التطبيق نفسه عن الإصدارات الجديدة ويثبِّتها بضغطة زر. macOS/Linux: <code dir="ltr">curl -fsSL https://github.com/mozzi86/bit-atelier-oss/releases/latest/download/install.sh | sh</code>. المتطلب: Node.js 22.9 أو أحدث.',
       'Installer für Windows':
         'برنامج التثبيت لنظام Windows',
       'ZIP (manuell)':
         'ZIP (يدوياً)',
-      'Installer starten':
-        'شغِّل برنامج التثبيت',
-      'BIT-Atelier-Installer.cmd doppelklicken (Windows) bzw. den Befehl oben ausführen (macOS, Linux). Ohne Installer: BIT-Atelier.zip entpacken.':
-        'انقر نقراً مزدوجاً على BIT-Atelier-Installer.cmd (Windows) أو نفِّذ الأمر أعلاه (macOS وLinux). بدون برنامج التثبيت: فُكَّ ضغط BIT-Atelier.zip.',
-      'Die App startet von selbst unter <code dir="ltr">http://localhost:3001</code>; später über die Verknüpfung „BIT-Atelier“. Updates kommen aus der App.':
-        'يبدأ التطبيق تلقائياً على <code dir="ltr">http://localhost:3001</code>؛ ولاحقاً عبر الاختصار „BIT-Atelier“. تأتي التحديثات من داخل التطبيق.',
-      'Windows: Installer doppelklicken — installiert, legt Verknüpfungen an, startet; Updates danach per Klick in der App. macOS/Linux: <code dir="ltr">curl -fsSL https://github.com/mozzi86/bit-atelier-oss/releases/latest/download/install.sh | sh</code>. Oder die ZIP entpacken und <code dir="ltr">start-windows.cmd</code> bzw. <code dir="ltr">./start.sh</code> starten.':
-        'Windows: انقر نقراً مزدوجاً على برنامج التثبيت — يثبِّت ويضع الاختصارات ويشغِّل؛ ثم التحديثات بنقرة داخل التطبيق. macOS/Linux: <code dir="ltr">curl -fsSL https://github.com/mozzi86/bit-atelier-oss/releases/latest/download/install.sh | sh</code>. أو فُكَّ ضغط ملف ZIP وشغِّل <code dir="ltr">start-windows.cmd</code> أو <code dir="ltr">./start.sh</code>.',
       /* Downloads: Block "BIT-Atelier (Open Source)" */
       'BIT-Atelier (Open Source)': 'BIT-Atelier (مفتوح المصدر)',
-      'Die BIM-Plattform aus dem BIT-Atelier — IFC, IDS, BCF und GAEB lokal auf Ihrem Rechner. Eine ZIP für Windows, macOS und Linux; Voraussetzung ist Node.js 22.9 oder neuer.':
-        'منصة BIM من BIT-Atelier — IFC وIDS وBCF وGAEB محلياً على حاسوبك. ملف ZIP واحد لأنظمة Windows وmacOS وLinux؛ ويتطلب Node.js 22.9 أو أحدث.',
-      'Windows · macOS · Linux': 'Windows · macOS · Linux',
       'BIT-Atelier.zip': 'BIT-Atelier.zip',
-      'Entpacken, dann <code dir="ltr">start-windows.cmd</code> per Doppelklick bzw. <code dir="ltr">./start.sh</code> starten und im Browser <code dir="ltr">localhost:3001</code> öffnen.':
-        'فُكَّ الضغط، ثم انقر نقراً مزدوجاً على <code dir="ltr">start-windows.cmd</code> أو شغِّل <code dir="ltr">./start.sh</code>، وافتح <code dir="ltr">localhost:3001</code> في المتصفح.',
-      'Download (ZIP)': 'تنزيل (ZIP)',
       'Quellcode': 'الشيفرة المصدرية',
-      'MIT-Lizenz auf GitHub': 'رخصة MIT على GitHub',
-      'Quellcode, alle Versionen und Issues im öffentlichen Repository.': 'الشيفرة المصدرية وجميع الإصدارات والمشكلات (Issues) في المستودع العام.',
-      'Zum Repository': 'إلى المستودع',
       'Ebenfalls kostenlos': 'مجاني أيضاً',
       /* Feedback-Mail (feedbackText in index.html; Betreff nutzt
          'BIT-Atelier (Open Source)' von oben mit) */

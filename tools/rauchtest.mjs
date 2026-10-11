@@ -2,7 +2,8 @@
 // Rauchtest der Startseite in echtem Chromium (Stand 06.10.2026, 83-05):
 // Paketfinder, Anfrage-Vorschau / Kopieren / Drucken, <picture>-Quellen,
 // Sprachumschaltung DE/EN/AR, Open-Source-Abschnitt (Download, Quellcode,
-// Feedback, Registrierung), keine Demo-Reste, Querlauf bei 390 px.
+// Feedback, Registrierung), ein Download-Block mit Systemerkennung, Kopierknopf
+// und Fassungszeile (92-09), keine Demo-Reste, Querlauf bei 390 px.
 //
 // Aufruf wie sprachkopien-erzeugen.mjs:
 //   node tools/rauchtest.mjs
@@ -33,6 +34,7 @@ fs.mkdirSync(AUS, { recursive: true });
 // bei einer neuen Adresse hier und in index.html (Kommentar OSS_REPO) tauschen.
 const OSS_REPO = 'https://github.com/mozzi86/bit-atelier-oss';
 const OSS_ZIP = OSS_REPO + '/releases/latest/download/BIT-Atelier.zip';
+const OSS_INSTALLER = OSS_REPO + '/releases/latest/download/BIT-Atelier-Installer.cmd';
 const REGISTRIEREN = 'https://bit-atelier.pages.dev/registrieren';
 
 const TYPEN = {
@@ -174,13 +176,14 @@ try {
   ok(await seite.locator('.kopf__tun a[href="#open-source"]').count() === 1, 'Kopfzeilen-Knopf führt zu #open-source');
   ok(await seite.locator('#menue a[href="#open-source"]').count() === 1, 'Menü führt zu #open-source');
   ok(await seite.locator(`#open-source a[href="${OSS_ZIP}"]`).count() === 1, 'ZIP-Download im Abschnitt');
-  ok(await seite.locator(`#downloads a[href="${OSS_ZIP}"]`).count() === 1, 'ZIP-Download im Downloads-Block');
+  ok(await seite.locator(`a[href="${OSS_ZIP}"]`).count() === 1
+    && await seite.locator(`a[href="${OSS_INSTALLER}"]`).count() === 1, 'ZIP und Installer genau einmal auf der Seite (92-09)');
+  ok(await seite.locator('#downloads a[href="#herunterladen"]').count() === 1, '#downloads verweist auf den einen Download-Block');
   ok(await seite.locator(`#open-source a[href="${OSS_REPO}"]`).count() === 1, 'Quellcode-Link');
   ok(await seite.locator(`#open-source a[href="${OSS_REPO}/issues"]`).count() === 1, 'GitHub-Issues-Link');
   ok(await seite.locator(`#open-source a[href="${REGISTRIEREN}"]`).count() === 1
     && await seite.locator(`#menue a[href="${REGISTRIEREN}"]`).count() === 1, 'Registrieren im Abschnitt und im Menü');
   ok((await text('#open-source')).includes('ohne Gewährleistung'), 'Haftungssatz im Abschnitt');
-  ok((await text('#downloads')).includes('ohne Gewährleistung'), 'Haftungssatz beim Download');
   ok((await text('#open-source')).includes('ein paar Werktage'), 'Hinweis auf Freischaltung von Hand');
   const fb = await seite.evaluate(() => ({ ...feedbackText(), an: rev(_eu) + '@' + rev(_ed) }));
   ok(fb.an === 'me@bit-atelier.de' && fb.betreff.startsWith('[Feedback] ') && fb.koerper.includes('Was passiert ist:'),
@@ -195,6 +198,76 @@ try {
   ok(await seite.evaluate(() => feedbackText().betreff) === '[Feedback] BIT-Atelier (open source)', 'Feedback-Betreff auf Englisch');
   await seite.evaluate(() => window.bitSprache.setze('de'));
   await seite.locator('#open-source').screenshot({ path: path.join(AUS, 'open-source-desktop.png') });
+
+  console.log('\nDownload (92-09)');
+  const fassung = await seite.evaluate(() => {
+    const zeile = document.querySelector('#herunterladen .download__fassung');
+    const sw = [...document.querySelectorAll('script[type="application/ld+json"]')]
+      .map((s) => JSON.parse(s.textContent)).find((x) => x['@type'] === 'SoftwareSourceCode');
+    return {
+      text: zeile ? zeile.textContent.replace(/\s+/g, ' ') : '',
+      version: zeile ? zeile.querySelector('b').textContent.trim() : '',
+      tag: zeile ? zeile.querySelector('a').getAttribute('href') : '',
+      datum: zeile ? zeile.querySelector('time').getAttribute('datetime') : '',
+      ld: sw && sw.targetProduct && sw.targetProduct.softwareVersion,
+      sha: (document.getElementById('dl-sha256') || {}).textContent || '',
+    };
+  });
+  ok(/^\d+\.\d+\.\d+$/.test(fassung.version) && fassung.tag === `${OSS_REPO}/releases/tag/v${fassung.version}`
+    && fassung.ld === fassung.version, `Fassungszeile, Änderungs-Link und JSON-LD nennen dieselbe Fassung (${fassung.version})`);
+  ok(/^\d{4}-\d{2}-\d{2}$/.test(fassung.datum) && /Node\.js 22\.9 oder neuer/.test(fassung.text) && /\d+ MB/.test(fassung.text),
+    'Fassungszeile: ' + fassung.text);
+  ok(/^[0-9a-f]{64}$/.test(fassung.sha.trim()), 'SHA-256 hat 64 Hex-Zeichen');
+  ok(await seite.locator(`#herunterladen a[href="${OSS_ZIP}.sha256"]`).count() === 1, 'Link auf die .sha256 der aktuellen Fassung');
+  for (const pfad of ['index.html', 'en/index.html', 'ar/index.html']) {
+    const roh = fs.readFileSync(path.join(WURZEL, pfad), 'utf8');
+    ok(!/Node\.js (?:>= )?22(?!\.9)/.test(roh), `${pfad}: kein „Node.js 22“ ohne .9`);
+  }
+  // Operating-system detection: override what the page reads, then check order and mark.
+  const systeme = [
+    ['Windows', 'Win32', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)', 0, 'windows'],
+    ['macOS', 'MacIntel', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 14_0)', 0, 'unix'],
+    ['Linux', 'Linux x86_64', 'Mozilla/5.0 (X11; Linux x86_64)', 0, 'unix'],
+    ['Android', 'Linux armv8l', 'Mozilla/5.0 (Linux; Android 14; Pixel 8) Mobile', 5, 'mobil'],
+    ['', '', 'Mozilla/5.0', 0, ''],
+  ];
+  for (const [plattform, platform, ua, touch, erwartet] of systeme) {
+    const k = await browser.newContext({ viewport: { width: 1400, height: 900 } });
+    await k.addInitScript(([p, pl, u, t]) => {
+      Object.defineProperty(navigator, 'userAgentData', { get: () => (p ? { platform: p } : undefined) });
+      Object.defineProperty(navigator, 'platform', { get: () => pl });
+      Object.defineProperty(navigator, 'userAgent', { get: () => u });
+      Object.defineProperty(navigator, 'maxTouchPoints', { get: () => t });
+    }, [plattform, platform, ua, touch]);
+    const p = await k.newPage();
+    await p.goto(B + '?lang=de', { waitUntil: 'load' });
+    const r = await p.evaluate(() => {
+      const d = document.getElementById('herunterladen');
+      const wege = [...d.querySelectorAll('.download__weg')].filter((w) => w.offsetParent)
+        .sort((a, b) => a.getBoundingClientRect().left - b.getBoundingClientRect().left);
+      const marke = [...d.querySelectorAll('.download__empfohlen')].filter((m) => m.offsetParent)
+        .map((m) => m.closest('.download__weg').dataset.fuer);
+      return { sys: d.dataset.system || '', erster: wege[0] && wege[0].dataset.fuer, sichtbar: wege.length, marke,
+        mobil: !!d.querySelector('.download__mobil').offsetParent };
+    });
+    const vorne = erwartet === 'windows' || erwartet === 'unix' ? erwartet : 'windows';
+    ok(r.sys === erwartet && r.erster === vorne && r.sichtbar === 3
+      && r.marke.join() === (vorne === erwartet ? erwartet : '') && r.mobil === (erwartet === 'mobil'),
+      `${plattform || 'unbekannt'}: System „${r.sys}“, vorne ${r.erster}, ${r.sichtbar} Wege sichtbar, Marke ${r.marke.join() || '—'}${r.mobil ? ', Handy-Hinweis' : ''}`);
+    await k.close();
+  }
+  // Copy button for the shell line.
+  await seite.click('#dl-kopieren');
+  await seite.waitForTimeout(200);
+  ok((await text('#dl-kopieren')).includes('Kopiert'), 'Kopierknopf bestätigt');
+  ok((await seite.evaluate(() => navigator.clipboard.readText()).catch(() => ''))
+    === `curl -fsSL ${OSS_REPO}/releases/latest/download/install.sh | sh`, 'Zwischenablage enthält genau die Shell-Zeile');
+  await seite.waitForTimeout(2400);
+  await seite.evaluate(() => window.bitSprache.setze('en'));
+  ok(await text('#dl-kopieren') === 'Copy command' && (await text('#herunterladen .download__fassung')).includes('Version'),
+    'Download-Block auf Englisch');
+  await seite.evaluate(() => window.bitSprache.setze('de'));
+  await seite.locator('#herunterladen').screenshot({ path: path.join(AUS, 'download-desktop.png') });
 
   console.log('\nKeine Demo-Reste, interne Anker, Konsole (DE/EN/AR)');
   ok(!fs.readFileSync(path.join(WURZEL, 'assets/js/sprachen.js'), 'utf8').includes('demo/'), 'sprachen.js ohne "demo/"');
@@ -230,6 +303,7 @@ try {
     'kein Querlauf: scrollWidth ' + await handy.evaluate(() => document.documentElement.scrollWidth));
   await handy.locator('#paketfinder').screenshot({ path: path.join(AUS, 'finder-mobil.png') });
   await handy.locator('.anfrage').screenshot({ path: path.join(AUS, 'anfrage-mobil.png') });
+  await handy.locator('#herunterladen').screenshot({ path: path.join(AUS, 'download-mobil.png') });
 
   console.log('\nSkriptfehler: ' + skriptfehler.length + (skriptfehler.length ? '\n  ' + skriptfehler.join('\n  ') : ''));
   ok(skriptfehler.length === 0, 'keine Skriptfehler');

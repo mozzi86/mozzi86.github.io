@@ -157,6 +157,10 @@ try {
       const video = document.getElementById('buehne-video');
       if (video) { video.removeAttribute('src'); video.removeAttribute('style'); }
       for (const el of document.querySelectorAll('.ebene')) el.removeAttribute('style');
+      // Detected operating system of the generating browser (92-09) — the page
+      // script sets it per visitor on load.
+      const dl = document.getElementById('herunterladen');
+      if (dl) dl.removeAttribute('data-system');
       // Paketfinder-Ergebnis und Anfrage-Vorschau schreibt das Skript beim Laden
       // selbst; eingefroren staenden sie doppelt und in der Sprache des Laufs.
       for (const id of ['finder-ergebnis', 'a-vorschau']) {
