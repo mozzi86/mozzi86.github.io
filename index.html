@@ -1221,11 +1221,14 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
       <div class="gitter gitter--2">
         <article class="karte">
           <p class="karte__nr">01 · Herunterladen</p>
-          <h3>Eine ZIP für Windows, macOS und Linux</h3>
-          <p>Voraussetzung ist Node.js 22. Entpacken, per Doppelklick starten und im Browser
-            arbeiten — alles auf Ihrem Rechner.</p>
-          <div class="karte__fuss">
-            <a class="btn btn--klein" href="https://github.com/mozzi86/bit-atelier-oss/releases/latest/download/BIT-Atelier.zip">BIT-Atelier.zip herunterladen</a>
+          <h3>Installieren mit einem Klick</h3>
+          <p>Windows: Installer herunterladen und doppelklicken — er holt die aktuelle Version, prüft sie,
+            legt eine Verknüpfung auf dem Desktop an und startet die App. Neue Versionen meldet die App
+            danach selbst und installiert sie auf Knopfdruck. macOS/Linux: <code dir="ltr">curl -fsSL https://github.com/mozzi86/bit-atelier-oss/releases/latest/download/install.sh | sh</code>.
+            Voraussetzung ist Node.js 22.</p>
+          <div class="karte__fuss" style="display:flex;gap:.6rem;flex-wrap:wrap">
+            <a class="btn btn--klein" href="https://github.com/mozzi86/bit-atelier-oss/releases/latest/download/BIT-Atelier-Installer.cmd">Installer für Windows</a>
+            <a class="btn btn--geist btn--klein" href="https://github.com/mozzi86/bit-atelier-oss/releases/latest/download/BIT-Atelier.zip">ZIP (manuell)</a>
           </div>
         </article>
         <article class="karte">
@@ -1266,15 +1269,15 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
             </li>
             <li class="station">
               <p class="station__zeit">Schritt 2</p>
-              <h4>ZIP herunterladen und entpacken</h4>
-              <p>BIT-Atelier.zip in einen beliebigen Ordner entpacken.</p>
+              <h4>Installer starten</h4>
+              <p>BIT-Atelier-Installer.cmd doppelklicken (Windows) bzw. den Befehl oben ausführen
+                (macOS, Linux). Ohne Installer: BIT-Atelier.zip entpacken.</p>
             </li>
             <li class="station">
               <p class="station__zeit">Schritt 3</p>
               <h4>Starten und loslegen</h4>
-              <p>Doppelklick auf <code dir="ltr">start-windows.cmd</code> (Windows) bzw.
-                <code dir="ltr">./start.sh</code> ausführen (macOS, Linux), dann im Browser
-                <code dir="ltr">http://localhost:3001</code> öffnen.</p>
+              <p>Die App startet von selbst unter <code dir="ltr">http://localhost:3001</code>;
+                später über die Verknüpfung „BIT-Atelier“. Updates kommen aus der App.</p>
             </li>
           </ol>
         </article>
@@ -1322,10 +1325,12 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
         <article class="karte">
           <p class="karte__nr">Windows · macOS · Linux</p>
           <h3>BIT-Atelier.zip</h3>
-          <p>Entpacken, dann <code dir="ltr">start-windows.cmd</code> per Doppelklick bzw.
-            <code dir="ltr">./start.sh</code> starten und im Browser <code dir="ltr">localhost:3001</code> öffnen.</p>
-          <div class="karte__fuss">
-            <a class="btn btn--klein" href="https://github.com/mozzi86/bit-atelier-oss/releases/latest/download/BIT-Atelier.zip">Download (ZIP)</a>
+          <p>Windows: Installer doppelklicken — installiert, legt Verknüpfungen an, startet; Updates
+            danach per Klick in der App. macOS/Linux: <code dir="ltr">curl -fsSL https://github.com/mozzi86/bit-atelier-oss/releases/latest/download/install.sh | sh</code>. Oder die ZIP entpacken und
+            <code dir="ltr">start-windows.cmd</code> bzw. <code dir="ltr">./start.sh</code> starten.</p>
+          <div class="karte__fuss" style="display:flex;gap:.6rem;flex-wrap:wrap">
+            <a class="btn btn--klein" href="https://github.com/mozzi86/bit-atelier-oss/releases/latest/download/BIT-Atelier-Installer.cmd">Installer für Windows</a>
+            <a class="btn btn--geist btn--klein" href="https://github.com/mozzi86/bit-atelier-oss/releases/latest/download/BIT-Atelier.zip">Download (ZIP)</a>
           </div>
         </article>
         <article class="karte">

@@ -1145,10 +1145,11 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
       <div class="gitter gitter--2">
         <article class="karte">
           <p class="karte__nr">01 · Download</p>
-          <h3>One ZIP for Windows, macOS and Linux</h3>
-          <p>Requires Node.js 22. Unzip, start with a double-click and work in your browser — all on your own computer.</p>
-          <div class="karte__fuss">
-            <a class="btn btn--klein" href="https://github.com/mozzi86/bit-atelier-oss/releases/latest/download/BIT-Atelier.zip">Download BIT-Atelier.zip</a>
+          <h3>Install with one click</h3>
+          <p>Windows: download the installer and double-click it — it fetches the current version, verifies it, adds a desktop shortcut and starts the app. After that the app reports new versions itself and installs them at the push of a button. macOS/Linux: <code dir="ltr">curl -fsSL https://github.com/mozzi86/bit-atelier-oss/releases/latest/download/install.sh | sh</code>. Requires Node.js 22.</p>
+          <div class="karte__fuss" style="display:flex;gap:.6rem;flex-wrap:wrap">
+            <a class="btn btn--klein" href="https://github.com/mozzi86/bit-atelier-oss/releases/latest/download/BIT-Atelier-Installer.cmd">Installer for Windows</a>
+            <a class="btn btn--geist btn--klein" href="https://github.com/mozzi86/bit-atelier-oss/releases/latest/download/BIT-Atelier.zip">ZIP (manual)</a>
           </div>
         </article>
         <article class="karte">
@@ -1184,13 +1185,13 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
             </li>
             <li class="station">
               <p class="station__zeit">Step 2</p>
-              <h4>Download and unzip</h4>
-              <p>Unzip BIT-Atelier.zip into any folder.</p>
+              <h4>Run the installer</h4>
+              <p>Double-click BIT-Atelier-Installer.cmd (Windows) or run the command above (macOS, Linux). Without the installer: unzip BIT-Atelier.zip.</p>
             </li>
             <li class="station">
               <p class="station__zeit">Step 3</p>
               <h4>Start and get going</h4>
-              <p>Double-click <code dir="ltr">start-windows.cmd</code> (Windows) or run <code dir="ltr">./start.sh</code> (macOS, Linux), then open <code dir="ltr">http://localhost:3001</code> in your browser.</p>
+              <p>The app starts by itself at <code dir="ltr">http://localhost:3001</code>; later via the "BIT-Atelier" shortcut. Updates come from inside the app.</p>
             </li>
           </ol>
         </article>
@@ -1234,9 +1235,10 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
         <article class="karte">
           <p class="karte__nr">Windows · macOS · Linux</p>
           <h3>BIT-Atelier.zip</h3>
-          <p>Unzip, then double-click <code dir="ltr">start-windows.cmd</code> or run <code dir="ltr">./start.sh</code>, and open <code dir="ltr">localhost:3001</code> in your browser.</p>
-          <div class="karte__fuss">
-            <a class="btn btn--klein" href="https://github.com/mozzi86/bit-atelier-oss/releases/latest/download/BIT-Atelier.zip">Download (ZIP)</a>
+          <p>Windows: double-click the installer — it installs, adds shortcuts and starts; updates then with one click inside the app. macOS/Linux: <code dir="ltr">curl -fsSL https://github.com/mozzi86/bit-atelier-oss/releases/latest/download/install.sh | sh</code>. Or unzip the ZIP and start <code dir="ltr">start-windows.cmd</code> or <code dir="ltr">./start.sh</code>.</p>
+          <div class="karte__fuss" style="display:flex;gap:.6rem;flex-wrap:wrap">
+            <a class="btn btn--klein" href="https://github.com/mozzi86/bit-atelier-oss/releases/latest/download/BIT-Atelier-Installer.cmd">Installer for Windows</a>
+            <a class="btn btn--geist btn--klein" href="https://github.com/mozzi86/bit-atelier-oss/releases/latest/download/BIT-Atelier.zip">Download (ZIP)</a>
           </div>
         </article>
         <article class="karte">
