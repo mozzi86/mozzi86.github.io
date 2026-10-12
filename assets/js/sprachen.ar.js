@@ -57,8 +57,6 @@
 
   'Kapitel 05 · Technik &amp; Prüfung': 'الفصل 05 · التمديدات والتدقيق',
   'Der Fehler wird gefunden, <em>bevor er teuer wird</em>.': 'يُكتشف الخطأ <em>قبل أن يصبح مُكلِفاً</em>.',
-  'Röntgenblick auf Leitungen, Kanäle und Schächte. Meine eigene Prüf-Engine fährt Kollisionsprüfung und IDS über das Modell und gibt die Befunde als BCF an die Fachplaner zurück. Rot wird grün — im Rechner, nicht auf der Baustelle.':
-    'نظرة نافذة إلى المواسير والمجاري والمناور. محرِّك التدقيق الذي طوَّرته يُجري كشف التعارضات وفحص IDS على النموذج، ويعيد النتائج إلى مهندسي التخصصات بصيغة BCF. الأحمر يصير أخضر — في الحاسوب، لا في الموقع.',
   'Kollisionsprüfung': 'كشف التعارضات',
 
   'Kapitel 06 · Übergabe': 'الفصل 06 · التسليم',
@@ -589,4 +587,8 @@
     'ما ليس عليه هذا الفحص',
   'Kein GEG-Nachweis, kein Nachweis nach DIN 4108-3 oder DIN EN ISO 6946, keine Anlagenplanung. Materialkennwerte sind Annahmen und im Programm als solche gekennzeichnet. Für Förderantrag und Bauantrag braucht es den Nachweis einer dafür berechtigten Fachperson.':
     'ليس إثباتاً وفق GEG، ولا إثباتاً وفق DIN 4108-3 أو DIN EN ISO 6946، ولا تصميماً للتجهيزات. قيم المواد افتراضات ومُعلَّمة كذلك في البرنامج. ويتطلب طلب الدعم وطلب الترخيص إثباتاً من مختص مخوَّل بذلك.',
+
+  /* Stage chapter 05 without the x-ray promise (69-02) */
+  'Leitungen, Kanäle und Schächte gegen Tragwerk und Architektur geprüft: Meine eigene Prüf-Engine fährt Kollisionsprüfung und IDS über das Modell und gibt die Befunde als BCF an die Fachplaner zurück. Rot wird grün — im Rechner, nicht auf der Baustelle.':
+    'المواسير والمجاري والمناور تُدقَّق مقابل الهيكل الإنشائي والعمارة: محرِّك التدقيق الذي طوَّرته يُجري كشف التعارضات وفحص IDS على النموذج، ويعيد النتائج إلى مهندسي التخصصات بصيغة BCF. الأحمر يصير أخضر — في الحاسوب، لا في الموقع.',
 };

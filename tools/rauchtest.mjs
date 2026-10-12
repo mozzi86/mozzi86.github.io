@@ -511,6 +511,14 @@ try {
   const modul = fs.readFileSync(path.join(WURZEL, 'index.html'), 'utf8');
   ok(!/import \* as THREE from 'three'/.test(modul) && modul.includes("await import('three')"), 'kein statischer three-Import, dynamischer Import vorhanden');
   ok(await seite.evaluate(() => performance.getEntriesByType('resource').some((e) => /three\.module/.test(e.name))), '1400 px: three.js geladen (Bühne in Sicht)');
+  // Phones and reduced motion get no 3D x-ray view, so the chapter text must not promise one.
+  for (const pfad of ['', 'en/', 'ar/']) {
+    const p = await browser.newPage({ viewport: { width: 390, height: 844 } });
+    await p.goto(B + pfad, { waitUntil: 'load' });
+    const t = await p.locator('#kap-5 .satz__text').innerText();
+    ok(!/Röntgen|X-ray|نظرة نافذة/i.test(t) && /BCF/.test(t), `/${pfad}: Kapitel 05 ohne Röntgenblick-Versprechen`);
+    await p.close();
+  }
 
   console.log('\nMobil (390 px)');
   const handy = await browser.newPage({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 2, isMobile: true });

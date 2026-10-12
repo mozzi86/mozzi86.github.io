@@ -56,8 +56,6 @@
 
   'Kapitel 05 · Technik &amp; Prüfung': 'Chapter 05 · Services &amp; checking',
   'Der Fehler wird gefunden, <em>bevor er teuer wird</em>.': 'The error is found <em>before it gets expensive</em>.',
-  'Röntgenblick auf Leitungen, Kanäle und Schächte. Meine eigene Prüf-Engine fährt Kollisionsprüfung und IDS über das Modell und gibt die Befunde als BCF an die Fachplaner zurück. Rot wird grün — im Rechner, nicht auf der Baustelle.':
-    'An X-ray view of pipes, ducts and shafts. My own checking engine runs clash detection and IDS across the model and returns the findings to the specialist designers as BCF. Red turns green — in the computer, not on site.',
   'Kollisionsprüfung': 'Clash detection',
 
   'Kapitel 06 · Übergabe': 'Chapter 06 · Handover',
@@ -586,4 +584,8 @@
     'What the screening is not',
   'Kein GEG-Nachweis, kein Nachweis nach DIN 4108-3 oder DIN EN ISO 6946, keine Anlagenplanung. Materialkennwerte sind Annahmen und im Programm als solche gekennzeichnet. Für Förderantrag und Bauantrag braucht es den Nachweis einer dafür berechtigten Fachperson.':
     'Not a GEG proof, not a proof to DIN 4108-3 or DIN EN ISO 6946, not a building services design. Material values are assumptions and are marked as such in the software. Funding and planning applications need the proof of an authorised specialist.',
+
+  /* Stage chapter 05 without the x-ray promise (69-02) */
+  'Leitungen, Kanäle und Schächte gegen Tragwerk und Architektur geprüft: Meine eigene Prüf-Engine fährt Kollisionsprüfung und IDS über das Modell und gibt die Befunde als BCF an die Fachplaner zurück. Rot wird grün — im Rechner, nicht auf der Baustelle.':
+    'Pipes, ducts and shafts checked against structure and architecture: my own checking engine runs clash detection and IDS across the model and returns the findings to the specialist designers as BCF. Red turns green — in the computer, not on site.',
 };
