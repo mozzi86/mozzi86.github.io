@@ -2221,7 +2221,13 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
 </script>
 <script src="assets/js/sprachen.js" defer></script>
 <script type="module">
-import * as THREE from 'three';
+/* 69-02: three.js is NOT imported statically any more. It is loaded with
+   import('three') in buehneStarten() — only when the stage comes into view and
+   none of the guards applies (reduced motion, data saver / 2G, window narrower
+   than DREI_MIN_BREITE). Without it the still images (and on wide screens the
+   video) carry the stage alone; the gap where only the 3D canvas used to show
+   (p 0.635..0.855, the "Prüfung" chapter with the x-ray view) is closed by
+   letting the neighbouring images meet in the middle. */
 
 /* =============================================================================
    Scroll-getriebene Baustelle.
@@ -2326,7 +2332,7 @@ function videoPruefen(){
 }
 
 function ebenenSetzen(p){
-  if (buehnenModus === 'voll3d'){
+  if (buehnenModus === 'voll3d' && drei){
     ebenen.forEach(e=>e.el.style.opacity = 0);
     video.style.opacity = 0;
     canvas.style.opacity = 1;
@@ -2351,6 +2357,16 @@ function ebenenSetzen(p){
       const aus = Math.min(1, Math.max(0, (p - e.bis) / BLENDE));
       e.el.style.opacity = (ein * (1 - aus)).toFixed(3);
     });
+    if (!drei){
+      /* No 3D (not loaded yet, or failed): the video holds its last frame until
+         the closing image takes over at the middle of the old canvas window. */
+      const letzte = ebenen[ebenen.length - 1], f = ebenenOhne3D[ebenen.length - 1];
+      const ein = Math.min(1, Math.max(0, (p - (f.von - BLENDE)) / BLENDE));
+      letzte.el.style.opacity = ein.toFixed(3);
+      video.style.opacity = (1 - ein).toFixed(3);
+      canvas.style.opacity = 0;
+      return 0;
+    }
     const an  = Math.min(1, Math.max(0, (p - CANVAS_AN[0]) / (CANVAS_AN[1]-CANVAS_AN[0])));
     const aus = Math.min(1, Math.max(0, (p - CANVAS_AUS[0]) / (CANVAS_AUS[1]-CANVAS_AUS[0])));
     const deck = an * (1 - aus);
@@ -2358,11 +2374,13 @@ function ebenenSetzen(p){
     return deck;
   }
   video.style.opacity = 0;
-  for (const e of ebenen){
-    const ein  = Math.min(1, Math.max(0, (p - (e.von - BLENDE)) / BLENDE));
-    const aus  = Math.min(1, Math.max(0, (p - e.bis) / BLENDE));
+  ebenen.forEach((e, i) => {
+    const f = drei ? e : ebenenOhne3D[i];
+    const ein  = Math.min(1, Math.max(0, (p - (f.von - BLENDE)) / BLENDE));
+    const aus  = Math.min(1, Math.max(0, (p - f.bis) / BLENDE));
     e.el.style.opacity = (ein * (1 - aus)).toFixed(3);
-  }
+  });
+  if (!drei){ canvas.style.opacity = 0; return 0; }
   const an  = Math.min(1, Math.max(0, (p - CANVAS_AN[0]) / (CANVAS_AN[1]-CANVAS_AN[0])));
   const aus = Math.min(1, Math.max(0, (p - CANVAS_AUS[0]) / (CANVAS_AUS[1]-CANVAS_AUS[0])));
   const deck = an * (1 - aus);
@@ -2376,6 +2394,47 @@ const hudCount = document.getElementById('anzeige-teile');
 const balken   = document.getElementById('fortschritt-balken');
 const hinweis  = document.getElementById('wink');
 hinweis.style.transition = 'opacity .4s';
+
+/* ---------- 69-02: three.js only on demand ---------- */
+let drei = null;                 /* set by buehneStarten(): { anwenden, groesse, render, leseAkzent } */
+const DREI_MIN_BREITE = 900;     /* px — same threshold as the video; below it the x-ray view is dropped */
+function dreiGesperrt(){ return reduced || netzSparsam() || innerWidth < DREI_MIN_BREITE; }
+
+/* Image windows without the 3D canvas: where one image ends before the next one
+   starts (the old canvas window), both meet in the middle — no empty stage. */
+const ebenenOhne3D = ebenen.map((e, i) => {
+  const vor = ebenen[i - 1], nach = ebenen[i + 1];
+  return {
+    von: vor && e.von > vor.bis ? (vor.bis + e.von) / 2 : e.von,
+    bis: nach && nach.von > e.bis ? (e.bis + nach.von) / 2 : e.bis,
+  };
+});
+
+/* HUD count without the 3D scene: the scene's final count is 462 parts (×11 =
+   5.082, measured 12.10.2026 at the end of the stage). [ASSUMED] linear growth up
+   to p = 0.86 — close enough for a decorative counter; the real count comes from
+   the scene as soon as three.js runs. */
+const TEILE_GESAMT = 462;
+function hudSetzen(p, zaehler){
+  const kap = Math.min(KAPITEL.length-1, Math.floor(p*KAPITEL.length));
+  /* Über die Sprachtabelle, falls geladen — sonst deutsch */
+  const uebs = (t) => (window.bitHud && window.bitHud(t)) || t;
+  const anzahl = zaehler !== null ? zaehler : Math.round(TEILE_GESAMT * Math.min(1, p / 0.86));
+  hudPhase.textContent = uebs(KAPITEL[kap].lph);
+  hudStand.textContent = uebs(KAPITEL[kap].stand);
+  hudCount.textContent = String(Math.round(anzahl*11)).replace(/\B(?=(\d{3})+(?!\d))/g,'.');
+  routeBtns.forEach((b,i)=> i===kap ? b.setAttribute('aria-current','step') : b.removeAttribute('aria-current'));
+  balken.style.setProperty('--p', p.toFixed(4));
+  hinweis.style.opacity = p > 0.03 ? 0 : 1;
+}
+
+/* =============================================================================
+   3D-BÜHNE — only after import('three'). The body below is deliberately NOT
+   re-indented (it was top-level module code until 69-02; a re-indent would hide
+   the real change in the diff).
+============================================================================= */
+async function buehneStarten(){
+const THREE = await import('three');
 
 /* =============================================================================
    Szene
@@ -2928,28 +2987,9 @@ function anwenden(p, zeit){
 
   raster.material.opacity = mix(.34,.05,spanne(p,0.06,0.32));
 
-  /* HUD */
-  const kap = Math.min(KAPITEL.length-1, Math.floor(p*KAPITEL.length));
-  /* Über die Sprachtabelle, falls geladen — sonst deutsch */
-  const uebs = (t) => (window.bitHud && window.bitHud(t)) || t;
-  hudPhase.textContent = uebs(KAPITEL[kap].lph);
-  hudStand.textContent = uebs(KAPITEL[kap].stand);
-  hudCount.textContent = String(Math.round(zaehler*11)).replace(/\B(?=(\d{3})+(?!\d))/g,'.');
-  routeBtns.forEach((b,i)=> i===kap ? b.setAttribute('aria-current','step') : b.removeAttribute('aria-current'));
-  balken.style.setProperty('--p', p.toFixed(4));
-  hinweis.style.opacity = p > 0.03 ? 0 : 1;
+  return zaehler;   /* the HUD is set outside (hudSetzen), with or without 3D */
 }
 
-/* =============================================================================
-   SCROLL + RENDER-SCHLEIFE
-============================================================================= */
-let fortschritt = 0, zielP = 0, sichtbar = false, letzteZeit = 0;
-
-function messen(){
-  const r = scrub.getBoundingClientRect();
-  const gesamt = r.height - innerHeight;
-  zielP = gesamt > 0 ? Math.min(1, Math.max(0, -r.top / gesamt)) : 0;
-}
 function groesse(){
   const w = canvas.clientWidth, h = canvas.clientHeight;
   if (!w || !h) return;
@@ -2957,15 +2997,50 @@ function groesse(){
   camera.aspect = w/h; camera.updateProjectionMatrix();
 }
 
+function leseAkzent(){
+  const v = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim();
+  if (v) ACCENT.set(v);
+  akzentMaterialien.forEach(m=>m.color.set(ACCENT));
+}
+
+return { anwenden, groesse, leseAkzent, render: () => renderer.render(scene, camera) };
+}   /* end of buehneStarten() */
+
+/* =============================================================================
+   SCROLL + RENDER-SCHLEIFE — runs with or without three.js
+============================================================================= */
+let fortschritt = 0, zielP = 0, sichtbar = false, letzteZeit = 0, buehneNah = false, startVersucht = false;
+
+function messen(){
+  const r = scrub.getBoundingClientRect();
+  const gesamt = r.height - innerHeight;
+  zielP = gesamt > 0 ? Math.min(1, Math.max(0, -r.top / gesamt)) : 0;
+}
+
+/* Starts the 3D stage once: stage near the viewport and no guard. A guard that
+   stops applying later (window made wider) still lets it start. */
+function vielleichtStarten(){
+  if (startVersucht || !buehneNah || dreiGesperrt()) return;
+  startVersucht = true;
+  buehneStarten().then(d => {
+    drei = d; d.groesse(); d.leseAkzent(); ebenenSetzen(fortschritt);
+  }).catch(f => {
+    console.error('[Bühne] three.js nicht geladen — die Standbilder bleiben: ' + (f && f.message || f));
+  });
+}
+
 new IntersectionObserver(e=>{ sichtbar = e[0].isIntersecting; }, {threshold:0})
   .observe(document.querySelector('.buehne__fix'));
+new IntersectionObserver(e=>{ buehneNah = e.some(x=>x.isIntersecting); vielleichtStarten(); }, {rootMargin:'200px'})
+  .observe(scrub);
 
 addEventListener('scroll', messen, {passive:true});
 let resizeTimer = 0;
 addEventListener('resize', ()=>{
-  groesse(); messen();
+  if (drei) drei.groesse();
+  messen();
   clearTimeout(resizeTimer);
-  resizeTimer = setTimeout(()=>{ videoPruefen(); ebenenSetzen(fortschritt); }, 220);
+  resizeTimer = setTimeout(()=>{ videoPruefen(); ebenenSetzen(fortschritt); vielleichtStarten(); }, 220);
 });
 
 let frames = 0, fpsZeit = 0;
@@ -2979,19 +3054,13 @@ function schleife(ms){
   fortschritt += (zielP - fortschritt) * (reduced ? 1 : Math.min(1, dt*7));
   const p = reduced ? zielP : fortschritt;
   const deck = ebenenSetzen(p);
-  anwenden(p, zeit);
+  hudSetzen(p, drei ? drei.anwenden(p, zeit) : null);
   /* Rechenzeit sparen: das Bild wird nur erzeugt, wenn der Canvas sichtbar ist */
-  if (deck > 0.004) renderer.render(scene, camera);
+  if (drei && deck > 0.004) drei.render();
   frames++;  if (zeit - fpsZeit > 1){ frames = 0; fpsZeit = zeit; }
 }
 
-function leseAkzent(){
-  const v = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim();
-  if (v) ACCENT.set(v);
-  akzentMaterialien.forEach(m=>m.color.set(ACCENT));
-}
-
-groesse(); messen(); leseAkzent(); videoPruefen(); ebenenSetzen(0);
+messen(); videoPruefen(); ebenenSetzen(0); hudSetzen(0, null);
 requestAnimationFrame(schleife);
 </script>
 </body>

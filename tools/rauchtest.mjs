@@ -453,13 +453,21 @@ try {
   ok(fehlendeSchriften.length === 0, 'alle referenzierten Schriftdateien vorhanden' + (fehlendeSchriften.length ? ' — ' + fehlendeSchriften.join(', ') : ''));
   ok(!fs.existsSync(path.join(WURZEL, 'assets/fontawesome')), 'Font Awesome entfernt (0 Referenzen)');
 
+  console.log('\nBühne: three.js nur bei Bedarf (69-02)');
+  const modul = fs.readFileSync(path.join(WURZEL, 'index.html'), 'utf8');
+  ok(!/import \* as THREE from 'three'/.test(modul) && modul.includes("await import('three')"), 'kein statischer three-Import, dynamischer Import vorhanden');
+  ok(await seite.evaluate(() => performance.getEntriesByType('resource').some((e) => /three\.module/.test(e.name))), '1400 px: three.js geladen (Bühne in Sicht)');
+
   console.log('\nMobil (390 px)');
   const handy = await browser.newPage({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 2, isMobile: true });
   handy.on('pageerror', (f) => skriptfehler.push('mobil: ' + f.message));
+  const dreiMobil = [];
+  handy.on('request', (r) => { if (/three\.module/.test(r.url())) dreiMobil.push(r.url()); });
   await handy.goto(B + '?lang=de', { waitUntil: 'networkidle' });
   await handy.waitForTimeout(600);
   ok(await handy.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1),
     'kein Querlauf: scrollWidth ' + await handy.evaluate(() => document.documentElement.scrollWidth));
+  ok(dreiMobil.length === 0, '390 px: three.js nicht geladen (Wächter < 900 px)');
   await handy.locator('#paketfinder').screenshot({ path: path.join(AUS, 'finder-mobil.png') });
   await handy.locator('.anfrage').screenshot({ path: path.join(AUS, 'anfrage-mobil.png') });
   await handy.locator('#herunterladen').screenshot({ path: path.join(AUS, 'download-mobil.png') });
