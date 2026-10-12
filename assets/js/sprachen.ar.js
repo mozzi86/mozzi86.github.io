@@ -4,7 +4,7 @@
    Wird von sprachen.js erst geladen, wenn diese Sprache gebraucht wird — wer
    die Seite auf Deutsch liest, lädt weder Englisch noch Arabisch. Schlüssel ist
    der DEUTSCHE Quelltext (normalisierte Leerzeichen), Wert die Übersetzung.
-   Nach einer Änderung: node tools/sprachkopien-erzeugen.mjs
+   Nach einer Änderung: node tools/unterseiten-erzeugen.mjs (Themenseiten + alle Sprachkopien)
 =========================================================================== */
 (window.bitWoerterbuch = window.bitWoerterbuch || {}).ar = {
   'BIT-ATELIER — Architektur trifft Digitalisierung': 'BIT-ATELIER — حيث تلتقي العمارة بالبيانات',

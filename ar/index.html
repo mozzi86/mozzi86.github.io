@@ -1249,7 +1249,7 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
        Sie steht in dieser Datei in den Links dieses Abschnitts, im
        Downloads-Block "BIT-Atelier (Open Source)" und im JSON-LD (#software)
        oben. Bei einer neuen Adresse alle Vorkommen von OSS_REPO ersetzen und
-       danach node tools/sprachkopien-erzeugen.mjs laufen lassen.
+       danach node tools/unterseiten-erzeugen.mjs laufen lassen (Themenseiten + alle Sprachkopien).
        Feedback-Adresse: dieselbe verdeckte Adresse wie im Kontakt (_eu/_ed). -->
   <section class="abschnitt abschnitt--hoch" id="open-source">
     <div class="mitte">
@@ -1265,7 +1265,7 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
            FASSUNG — on every release update these tokens (all language-neutral,
            so sprachen.js needs no change): version (2x incl. the tag link),
            <time>, size, SHA-256 of BIT-Atelier.zip, JSON-LD softwareVersion; then
-           node tools/sprachkopien-erzeugen.mjs. Values from the GitHub release API
+           node tools/unterseiten-erzeugen.mjs. Values from the GitHub release API
            (asset "digest"). The .sha256 link always matches the current ZIP.
            data-system is set by the script at the end of the page (windows | unix |
            mobil | empty = no recommendation, all ways equal). -->
