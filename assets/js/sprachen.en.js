@@ -1,0 +1,435 @@
+/* ===========================================================================
+   BIT-ATELIER — Wörterbuch Englisch (69-17)
+   ---------------------------------------------------------------------------
+   Wird von sprachen.js erst geladen, wenn diese Sprache gebraucht wird — wer
+   die Seite auf Deutsch liest, lädt weder Englisch noch Arabisch. Schlüssel ist
+   der DEUTSCHE Quelltext (normalisierte Leerzeichen), Wert die Übersetzung.
+   Nach einer Änderung: node tools/sprachkopien-erzeugen.mjs
+=========================================================================== */
+(window.bitWoerterbuch = window.bitWoerterbuch || {}).en = {
+  'BIT-ATELIER — Architektur trifft Digitalisierung': 'BIT-ATELIER — where architecture meets data',
+  'Prinzip': 'Approach',
+  'Leistungen': 'Services',
+  'Pakete': 'Packages',
+  'Werkzeuge': 'Tools',
+  'Erfahrung': 'Experience',
+  'Kontakt': 'Contact',
+  'Open Source': 'Open source',
+  'Open Source · Herunterladen': 'Open source · Download',
+  'Registrieren': 'Register',
+  'Anmelden': 'Sign in',
+  'Projekt anfragen': 'Start a project',
+  'Leistungspakete': 'Service packages',
+  'Baufeld': 'The site',
+  'Scrollen ↓': 'Scroll ↓',
+
+  'Kapitel 01 · Baufeld': 'Chapter 01 · The site',
+  'Architektur trifft <em>Digitalisierung</em>.': 'Where architecture meets <em>data</em>.',
+  'Jedes Projekt beginnt mit den Regeln des Ortes: Grenzen, Himmelsrichtung, Sonnenlauf, Nachbarschaft. Ich halte sie im Modell fest, bevor die erste Linie gezeichnet wird — als eingetragener Architekt mit einem Master für klimaoptimiertes Bauen.':
+    'Every project starts with the rules of its place: boundaries, orientation, the path of the sun, the neighbourhood. I record them in the model before the first line is drawn — as a chartered architect holding a master’s degree in climate-responsive design.',
+  'Bestandsaufnahme': 'Site survey',
+  'Baurecht': 'Planning law',
+  'Sonnenstudie': 'Solar study',
+
+  'Kapitel 02 · Gründung': 'Chapter 02 · Foundations',
+  'Alles Gute steht auf <em>Millimetern</em>.': 'Everything good stands on <em>millimetres</em>.',
+  'Fundamente, Sohlplatte, Durchbrüche für die Technik — im Modell verortet, bevor der erste Kubikmeter Beton fließt. Was hier stimmt, kostet später nichts.':
+    'Footings, base slab, service penetrations — located in the model before the first cubic metre of concrete is poured. What is right here costs nothing later.',
+  'Gründung': 'Foundations',
+  'Durchbruchsplanung': 'Penetration planning',
+  'Mengen': 'Quantities',
+
+  'Kapitel 03 · Tragwerk': 'Chapter 03 · Structure',
+  'Das Haus wächst <em>zuerst im Modell</em>.': 'The building rises <em>in the model first</em>.',
+  'Decken, Stützen, Erschließungskern — Geschoss um Geschoss. Jedes Bauteil trägt seine Daten mit: Material, Schicht, Brandschutz, Kosten. Ein Bauteil, eine Wahrheit.':
+    'Slabs, columns, circulation core — storey by storey. Every component carries its own data: material, layer, fire rating, cost. One component, one truth.',
+  'Tragwerk': 'Structure',
+  'IFC-Struktur': 'IFC structure',
+
+  'Kapitel 04 · Hülle': 'Chapter 04 · Envelope',
+  'Fassade, Fenster, <em>Licht</em>.': 'Facade, windows, <em>light</em>.',
+  'Die Hülle entscheidet, wie sich ein Haus anfühlt — und was es verbraucht. Öffnungen, Verschattung und Aufbau prüfe ich am Modell und rechne die Energiebilanz mit, nicht hinterher.':
+    'The envelope decides how a building feels — and what it consumes. I test openings, shading and build-up on the model and calculate the energy balance alongside, not afterwards.',
+  'Fassadenaufbau': 'Facade build-up',
+  'Verschattung': 'Shading',
+  'Energiebilanz': 'Energy balance',
+
+  'Kapitel 05 · Technik &amp; Prüfung': 'Chapter 05 · Services &amp; checking',
+  'Der Fehler wird gefunden, <em>bevor er teuer wird</em>.': 'The error is found <em>before it gets expensive</em>.',
+  'Röntgenblick auf Leitungen, Kanäle und Schächte. Meine eigene Prüf-Engine fährt Kollisionsprüfung und IDS über das Modell und gibt die Befunde als BCF an die Fachplaner zurück. Rot wird grün — im Rechner, nicht auf der Baustelle.':
+    'An X-ray view of pipes, ducts and shafts. My own checking engine runs clash detection and IDS across the model and returns the findings to the specialist designers as BCF. Red turns green — in the computer, not on site.',
+  'Kollisionsprüfung': 'Clash detection',
+
+  'Kapitel 06 · Übergabe': 'Chapter 06 · Handover',
+  'Fertig ist erst, wenn es <em>stimmt</em>.': 'It is only finished when it is <em>right</em>.',
+  'Am Ende steht ein Haus — und ein Modell, das zu ihm passt. Mengen, Kosten, Bauteile, Wartung: übergeben als offene Daten, nicht als Aktenordner.':
+    'At the end there is a building — and a model that matches it. Quantities, costs, components, maintenance: handed over as open data, not as ring binders.',
+  'Übergabemodell': 'Handover model',
+  'Betrieb': 'Operation',
+
+  'Das BIT-Atelier Prinzip': 'The BIT-Atelier approach',
+  'Präzision trifft <em>Ästhetik</em>.': 'Precision meets <em>design</em>.',
+  'Gutes Design allein reicht im Bauwesen nicht mehr. Mein Ansatz verbindet die gestalterische Arbeit des Architekten mit der Präzision moderner Datenmethoden — von BIM über Energiesimulation bis zur KI-gestützten Projektentwicklung.':
+    'Good design alone is no longer enough in construction. My approach combines the architect’s design work with the precision of modern data methods — from BIM and energy simulation through to AI-assisted project development.',
+  'Als eingetragener Architekt und Absolvent des Masters „Klimaoptimiertes Bauen / ClimaDesign" an der TU München bringe ich wissenschaftliche Methodik in jedes Projekt. Nachhaltigkeit ist dabei kein Schlagwort, sondern rechnerische Grundlage.':
+    'As a chartered architect and graduate of the master’s programme in climate-responsive design (ClimaDesign) at the Technical University of Munich, I bring scientific method to every project. Sustainability is not a slogan here but a basis for calculation.',
+  'Architekt': 'Architect',
+  'Bayerische Architektenkammer, Listen-Nr. 192.197': 'Bavarian Chamber of Architects, reg. no. 192.197',
+  'M.Sc. TUM': 'M.Sc. TUM',
+  'BIM &amp; Digital': 'BIM &amp; digital',
+  '15+ Jahre': '15+ years',
+  'Planung &amp; Projektleitung': 'Design &amp; project management',
+
+  'Zwei Wege, <em>ein Anspruch</em>.': 'Two routes, <em>one standard</em>.',
+  'Ob Sie bauen oder Ihr Großprojekt digital absichern möchten — beides folgt demselben Prinzip: durchdachte, datengestützte Planung ohne Reibungsverluste.':
+    'Whether you are building or want to secure a major project digitally — both follow the same principle: considered, data-driven design without friction.',
+  'Für Generalplaner, Büros &amp; Bauunternehmen': 'For lead designers, practices &amp; contractors',
+  'BIM-Koordination &amp; Modellprüfung': 'BIM coordination &amp; model checking',
+  'Externe BIM-Generalleitung für Großprojekte — von der BAP-Strukturierung bis zur kollisionsfreien IFC-Übergabe. Ziel: Planungsfehler werden <em>vor</em> Baubeginn gefunden, nicht auf der Baustelle bezahlt.':
+    'External BIM management for major projects — from structuring the BIM execution plan to a clash-free IFC handover. The aim: design errors are found <em>before</em> construction starts, not paid for on site.',
+  'Kollisionsfreie IFC-Übergabe vor Ausführungsbeginn — eine verhinderte Rohbau-Kollision spart ein Vielfaches des Honorars':
+    'Clash-free IFC handover before construction begins — one avoided structural clash saves many times the fee',
+  'AIA &amp; BIM-Abwicklungsplan (BAP) — prüffähig strukturiert nach ISO 19650':
+    'Employer’s information requirements &amp; BIM execution plan — structured for auditing to ISO 19650',
+  'Automatisierte Modell- und AIA-Konformitätsprüfung mit eigener Prüf-Engine (IFC/IDS), Befund-Rückgabe als BCF an die Fachplaner':
+    'Automated model and requirements compliance checking with my own engine (IFC/IDS), findings returned to the specialist designers as BCF',
+  'Steuerung der Fachmodelle (Architektur, Tragwerk, TGA) inkl. LOD/LOI':
+    'Coordination of the discipline models (architecture, structure, building services) including LOD/LOI',
+  'Entlastung Ihrer internen Teams — ohne neue Software-Lizenzen':
+    'Relief for your in-house teams — without new software licences',
+  'Zu den Leistungspaketen': 'See the service packages',
+  'Für Bauherren': 'For clients',
+  'Planung &amp; Architektur': 'Design &amp; architecture',
+  'Ganzheitliche Planung von Wohn- und Sanierungsprojekten über alle Leistungsphasen — mit dem Blick fürs Detail und für die Energiebilanz.':
+    'End-to-end design of residential and refurbishment projects across all work stages — with an eye for the detail and for the energy balance.',
+  'Entwurf &amp; Genehmigungsplanung (HOAI 1–4)': 'Concept &amp; planning application design (HOAI stages 1–4)',
+  'Werk-, Ausführungs- &amp; Detailplanung (HOAI 5)': 'Technical, construction &amp; detail design (HOAI stage 5)',
+  'Wohnungsbau, geförderter Wohnungsbau, KfW': 'Housing, subsidised housing, KfW standards',
+  'Sanierung &amp; Denkmalpflege': 'Refurbishment &amp; historic buildings',
+  'Barrierefreies &amp; rollstuhlgerechtes Planen (DIN 18040)': 'Accessible &amp; wheelchair-friendly design (DIN 18040)',
+
+  'BIM-Leistungspakete': 'BIM service packages',
+  'Klarer Umfang. Klares Ergebnis. <em>Klarer Preis.</em>': 'Clear scope. Clear result. <em>Clear price.</em>',
+  'Drei Pakete für Großprojekte ab ca. 5 Mio. € Bausumme — als Festpreis oder monatliches Mandat, bepreist am Projektwert statt nach Stundenzetteln.':
+    'Three packages for major projects from around €5 million construction value — as a fixed price or a monthly retainer, priced on project value rather than timesheets.',
+  'Paket 1 · Festpreis': 'Package 1 · Fixed price',
+  'BIM-Quick-Check &amp; Setup': 'BIM quick check &amp; setup',
+  'ab 8.500 € je Projekt': 'from €8,500 per project',
+  'Der schnelle, prüffähige Einstieg: Ihr Projekt wird BIM-ablieferfähig — in 2–4 Wochen.':
+    'The fast, auditable start: your project becomes fit for BIM delivery — in two to four weeks.',
+  'AIA prüfen bzw. erstellen, BAP strukturieren': 'Review or draft the information requirements, structure the BIM execution plan',
+  'Koordinationsumgebung aufsetzen (IFC-/openBIM-Standards, Namenskonventionen)':
+    'Set up the coordination environment (IFC/openBIM standards, naming conventions)',
+  'Automatisierte Erstprüfung des Modells mit Prüfbericht': 'Automated initial model check with a written report',
+  '<b>Ergebnis:</b> prüffähiger BAP + dokumentierter Modellstatus':
+    '<b>Result:</b> an auditable BIM execution plan and a documented model status',
+  'Paket 2 · Festpreis je Planungsstand · Kernleistung': 'Package 2 · Fixed price per design stage · Core service',
+  'Automatisierte Modellprüfung &amp; QS': 'Automated model checking &amp; QA',
+  'Festpreis je Prüflauf': 'Fixed price per checking run',
+  'Jeder Planungsstand wird maschinell geprüft, bevor er teuer wird — mit eigener Prüf-Engine statt Lizenz-Software.':
+    'Every design stage is checked by machine before it gets expensive — with my own engine instead of licensed software.',
+  'Kollisionsprüfung Architektur / Tragwerk / TGA mit Toleranz- und Duplikatregeln':
+    'Clash detection across architecture, structure and building services with tolerance and duplicate rules',
+  'IDS-Konformitätsprüfung gegen Ihre AIA (buildingSMART-Standard)':
+    'IDS compliance checking against your information requirements (buildingSMART standard)',
+  'Befunde als BCF direkt zurück an die Fachplaner + Prüfbericht als PDF':
+    'Findings returned directly to the specialist designers as BCF, plus a PDF report',
+  '<b>Ergebnis:</b> dokumentiert kollisions- und regelgeprüfter Planungsstand':
+    '<b>Result:</b> a design stage documented as clash-checked and rule-compliant',
+  'Paket 3 · Monatliches Mandat': 'Package 3 · Monthly retainer',
+  'BIM-Gesamtkoordination': 'Overall BIM coordination',
+  'ab 4.500 € / Monat': 'from €4,500 per month',
+  'Die laufende externe BIM-Leitung über die Planungsphasen — Ihre Teams planen, ich halte die Modelle zusammen.':
+    'Ongoing external BIM management across the design stages — your teams design, I hold the models together.',
+  'Steuerung der Fachmodelle inkl. LOD/LOI-Vorgaben': 'Coordination of the discipline models including LOD/LOI requirements',
+  'Regelmäßige Prüfzyklen mit Koordinationssitzung und Maßnahmenliste':
+    'Regular checking cycles with a coordination meeting and an action list',
+  'Berichtswesen für Bauherr und Projektsteuerung': 'Reporting for the client and the project managers',
+  '<b>Ergebnis:</b> ein koordiniertes Modell als verlässliche Ausführungsgrundlage':
+    '<b>Result:</b> a coordinated model as a reliable basis for construction',
+  'Alle Preise netto zzgl. gesetzlicher Umsatzsteuer. Bepreisung orientiert an den Vergütungsempfehlungen für BIM-Management (AHO/DVP: üblich 20–25 % des Projektsteuerungshonorars). Konkretes Angebot nach kurzem Gespräch über Projektgröße und Fachmodelle.':
+    'All prices are net, excluding statutory VAT. Pricing follows the German fee recommendations for BIM management (AHO/DVP: typically 20–25 % of the project management fee). A firm quotation follows a short conversation about project size and discipline models.',
+
+  'Der Unterschied': 'The difference',
+  'Eigene Werkzeuge statt <em>Lizenz-Software</em>.': 'Own tools instead of <em>licensed software</em>.',
+  'Die Prüf- und Auswertungswerkzeuge hinter meinen Leistungen sind im eigenen Haus entwickelt: die BIT-Atelier-Plattform liest IFC-Modelle direkt (buildingSMART-Standards, ohne Cloud-Zwang), ermittelt Mengen filterbasiert nach dem Prinzip WAS ∩ ZUSTAND und prüft Modelle auf Kollisionen und AIA-Konformität (IDS) — mit Befund-Rückgabe als BCF.':
+    'The checking and evaluation tools behind my services are developed in house: the BIT-Atelier platform reads IFC models directly (buildingSMART standards, no cloud required), derives quantities by filter on a WHAT ∩ STATE principle, and checks models for clashes and requirements compliance (IDS) — returning findings as BCF.',
+  'Das heißt für Sie: Prüfregeln, die sich exakt an Ihr Projekt anpassen lassen, keine Lizenzkosten, die auf Ihr Honorar umgelegt werden — und keine Abhängigkeit von Software-Abos Dritter.':
+    'For you that means checking rules tailored precisely to your project, no licence costs passed on through the fee — and no dependence on third-party software subscriptions.',
+  'IFC-Import': 'IFC import',
+  'Geschosse, Bauteile, Eigenschaften, Klassifizierung — direkt aus dem openBIM-Format':
+    'Storeys, components, properties, classification — straight from the openBIM format',
+  'Regel-Matrix je Gewerkepaar, Toleranzen, Duplikat-Erkennung': 'Rule matrix per discipline pair, tolerances, duplicate detection',
+  'IDS-Prüfung': 'IDS checking',
+  'AIA-Anforderungen maschinell prüfbar nach buildingSMART IDS': 'Information requirements made machine-checkable to buildingSMART IDS',
+  'BCF-Rückgabe': 'BCF return',
+  'Befunde landen als offene Issues direkt bei den Fachplanern': 'Findings arrive as open issues directly with the specialist designers',
+  'bit-atelier · prüf-suite — Prüfergebnis': 'bit-atelier · checking suite — result',
+  'bit-atelier · prüf-engine — Beispiel-Prüflauf': 'bit-atelier · checking engine — sample run',
+  'Energiesimulation': 'Energy simulation',
+  'AVA &amp; Kostenplanung': 'Tendering &amp; cost planning',
+  'Python-Automatisierung': 'Python automation',
+  'Prüflauf am mitgelieferten Musterprojekt, direkt im Browser geprüft — harte Kollisionen gefunden, AIA-Anforderungen per IDS kontrolliert, Befunde gehen als BCF zurück an die Fachplaner. Denselben Lauf können Sie mit der Open-Source-Fassung auf Ihrem Rechner selbst starten.':
+    'A checking run on the bundled sample project, checked directly in the browser — hard clashes found, information requirements verified via IDS, findings returned to the specialist designers as BCF. You can run the same check yourself with the open-source version on your own computer.',
+  'So sieht Ihr Befund aus.': 'This is what your findings look like.',
+  'Prüfbericht und Befundliste aus einem Prüflauf über ein mitgeliefertes Musterprojekt — synthetisch erzeugt, keine Projektdaten. Denselben Lauf können Sie in der Open-Source-Fassung mit einem Klick selbst auslösen; das BCF öffnet sich in jeder gängigen Koordinationssoftware.':
+    'Check report and findings list from a run on a bundled sample project — synthetic, no project data. You can trigger the same run yourself in the open-source version with one click; the BCF opens in any common coordination software.',
+  'Musterprüfbericht (PDF)': 'Sample check report (PDF)',
+  'Befunde als BCF': 'Findings as BCF',
+  'BIT-Atelier herunterladen': 'Download BIT-Atelier',
+  'BIT-Atelier ist Open Source (MIT-Lizenz) und läuft lokal auf Ihrem Rechner — ohne Konto und ohne Lizenzkosten. <a href="#open-source" style="color:var(--accent)">Zum Download</a>.':
+    'BIT-Atelier is open source (MIT licence) and runs locally on your computer — no account, no licence fees. <a href="#open-source" style="color:var(--accent)">Go to download</a>.',
+
+  /* Open Source (#open-source, 83-05) */
+  'Open Source · MIT-Lizenz': 'Open source · MIT licence',
+  'BIT-Atelier ist <em>Open Source</em>.': 'BIT-Atelier is <em>open source</em>.',
+  'Die Werkzeuge, mit denen ich Modelle prüfe, stehen allen offen — frei unter der MIT-Lizenz. BIT-Atelier läuft lokal auf Ihrem Rechner, ohne Cloud-Zwang und ohne Lizenzkosten. Ihre Modelle und Projektdaten bleiben auf Ihrem eigenen Gerät.':
+    'The tools I use to check models are open to everyone — free under the MIT licence. BIT-Atelier runs locally on your computer, with no cloud requirement and no licence fees. Your models and project data stay on your own machine.',
+  '01 · Herunterladen': '01 · Download',
+  '02 · Quellcode': '02 · Source code',
+  'Offen auf GitHub': 'Open on GitHub',
+  'Lesen, anpassen, weitergeben. Aus dem Quellcode starten: <code dir="ltr">git clone</code>, <code dir="ltr">npm install</code>, <code dir="ltr">npm run dev</code>. Eigene Prüfregeln und Erweiterungen sind ausdrücklich erwünscht.':
+    'Read it, adapt it, pass it on. To run from source: <code dir="ltr">git clone</code>, <code dir="ltr">npm install</code>, <code dir="ltr">npm run dev</code>. Your own checking rules and extensions are explicitly welcome.',
+  'Quellcode auf GitHub': 'Source code on GitHub',
+  '03 · KI anbinden': '03 · Connect AI',
+  'Ihr Modell, Ihre Wahl': 'Your model, your choice',
+  'Anbieterunabhängig: Anthropic, jede OpenAI-kompatible Schnittstelle, Ollama lokal oder ein eigener Endpunkt. Dazu ein lokaler KI-Harness (Python) mit Profilen u.&nbsp;a. für LM Studio, Ollama, Qwen/DashScope, DeepSeek und Groq.':
+    'Vendor-neutral: Anthropic, any OpenAI-compatible API, Ollama running locally, or your own endpoint. Plus a local AI harness (Python) with profiles for LM Studio, Ollama, Qwen/DashScope, DeepSeek and Groq, among others.',
+  '04 · Feedback': '04 · Feedback',
+  'Feedback erwünscht': 'Feedback wanted',
+  'Fehler gefunden, Idee für eine Prüfregel, etwas unklar? Schreiben Sie mir per E-Mail oder legen Sie ein Issue auf GitHub an — ich lese jede Rückmeldung selbst.':
+    'Found a bug, have an idea for a checking rule, or is something unclear? Email me or open an issue on GitHub — I read every message myself.',
+  'Feedback per E-Mail': 'Feedback by email',
+  'GitHub-Issue anlegen': 'Open a GitHub issue',
+  'Funktionsumfang': 'Features',
+  'Was BIT-Atelier kann': 'What BIT-Atelier does',
+  'IFC lesen — lokal im Browser (web-ifc); IFC4 schreiben aus dem Komplex-Designer': 'Read IFC — locally in the browser (web-ifc); write IFC4 from the complex designer',
+  'IDS 1.0 lesen und schreiben': 'Read and write IDS 1.0',
+  'BCF 2.1 lesen und schreiben — Austausch mit Solibri, BIMcollab und Catenda': 'Read and write BCF 2.1 — exchange with Solibri, BIMcollab and Catenda',
+  'GAEB DA XML X81, X82, X83, X84, X86 und GAEB 90 lesen; X83 schreiben': 'Read GAEB DA XML X81, X82, X83, X84, X86 and GAEB 90; write X83',
+  'Exporte als CSV/Excel (LV, Preisspiegel, Befundliste), Prüfbericht als PDF': 'Exports to CSV/Excel (bill of quantities, bid comparison, findings list), check report as PDF',
+  'Flurstücke aus GeoJSON': 'Land parcels from GeoJSON',
+  'Revit, Archicad, Allplan, Vectorworks u.&nbsp;a. über ihren IFC-Export angebunden': 'Revit, Archicad, Allplan, Vectorworks and others connected through their IFC export',
+  'BIT-Atelier ist freie Software (MIT-Lizenz) und wird ohne Gewährleistung bereitgestellt. Die Nutzung erfolgt auf eigene Gefahr; Prüfergebnisse sind Hinweise und ersetzen keine fachliche Prüfung.':
+    'BIT-Atelier is free software (MIT licence) and is provided without warranty. You use it at your own risk; checking results are pointers and do not replace a professional review.',
+  'Optional: Konto für die gehostete Fassung': 'Optional: an account for the hosted version',
+  'Konten für die gehostete Fassung werden von Hand freigeschaltet — das dauert in der Regel ein paar Werktage. Die lokale Fassung braucht kein Konto.':
+    'Accounts for the hosted version are activated by hand — this usually takes a few working days. The local version needs no account.',
+  /* Download block (92-09) */
+  'Einmalig vorher: Node.js 22.9 oder neuer, kostenlos von <a href="https://nodejs.org/" style="color:var(--accent)">nodejs.org</a>.':
+    'Once beforehand: Node.js 22.9 or newer, free from <a href="https://nodejs.org/" style="color:var(--accent)">nodejs.org</a>.',
+  'BIT-Atelier läuft auf Windows, macOS und Linux, nicht auf dem Handy. Schicken Sie sich den Link an Ihren Rechner.':
+    'BIT-Atelier runs on Windows, macOS and Linux, not on a phone. Send yourself the link to your computer.',
+  'Für Ihr System':
+    'For your system',
+  'Installer herunterladen und doppelklicken — er holt die aktuelle Version, prüft sie, legt eine Verknüpfung auf dem Desktop an und startet die App.':
+    'Download the installer and double-click it — it fetches the current version, verifies it, adds a desktop shortcut and starts the app.',
+  'Im Terminal ausführen — holt die aktuelle Version, prüft sie, installiert nach <code dir="ltr">~/BIT-Atelier</code> und startet die App.':
+    'Run it in a terminal — it fetches the current version, verifies it, installs to <code dir="ltr">~/BIT-Atelier</code> and starts the app.',
+  'Befehl kopieren':
+    'Copy command',
+  'Von Hand (alle Systeme)':
+    'By hand (all systems)',
+  'ZIP entpacken und <code dir="ltr">start-windows.cmd</code> bzw. <code dir="ltr">./start.sh</code> starten.':
+    'Unzip it and start <code dir="ltr">start-windows.cmd</code> or <code dir="ltr">./start.sh</code>.',
+  'Fassung':
+    'Version',
+  'Node.js 22.9 oder neuer':
+    'Node.js 22.9 or newer',
+  'Änderungen':
+    'Changes',
+  'SHA-256 der ZIP:':
+    'SHA-256 of the ZIP:',
+  'Prüfsumme der aktuellen Fassung als Datei':
+    'Checksum of the current version as a file',
+  'Danach läuft die App unter <code dir="ltr">http://localhost:3001</code>, später über die Verknüpfung „BIT-Atelier“. Neue Versionen meldet die App selbst und installiert sie auf Knopfdruck.':
+    'The app then runs at <code dir="ltr">http://localhost:3001</code>, later via the "BIT-Atelier" shortcut. The app reports new versions itself and installs them at the push of a button.',
+  'Bitte den Befehl markieren und kopieren':
+    'Please select the command and copy it',
+  'Installer, ZIP, Fassung und Prüfsumme stehen an einer Stelle — im Abschnitt Open Source.':
+    'Installer, ZIP, version and checksum are in one place — in the open source section.',
+  'Zum Download':
+    'Go to download',
+  /* Installer (76bb5d6, taken verbatim from the en/ar pages) */
+  'Installieren mit einem Klick':
+    'Install with one click',
+  'Installer für Windows':
+    'Installer for Windows',
+  'ZIP (manuell)':
+    'ZIP (manual)',
+  /* Downloads: Block "BIT-Atelier (Open Source)" */
+  'BIT-Atelier (Open Source)': 'BIT-Atelier (open source)',
+  'BIT-Atelier.zip': 'BIT-Atelier.zip',
+  'Quellcode': 'Source code',
+  'Ebenfalls kostenlos': 'Also free',
+  /* Feedback-Mail (feedbackText in index.html; Betreff nutzt
+     'BIT-Atelier (Open Source)' von oben mit) */
+  'Was ich gemacht habe:': 'What I did:',
+  'Was passiert ist:': 'What happened:',
+  'Was ich erwartet hätte:': 'What I expected:',
+  'Fassung, Betriebssystem, Browser:': 'Version, operating system, browser:',
+
+  'Der portable PDF-Editor aus dem BIT-Atelier — bearbeiten, organisieren, konvertieren, signieren und forensisch schwärzen. Läuft vollständig lokal: keine Cloud, keine Uploads, keine Telemetrie — inklusive Offline-OCR (Deutsch/Englisch).':
+    'The portable PDF editor from BIT-Atelier — edit, organise, convert, sign and redact irreversibly. Runs entirely on your machine: no cloud, no uploads, no telemetry — including offline OCR (German and English).',
+  'Portable .exe': 'Portable .exe',
+  'Keine Installation, läuft auch vom USB-Stick.': 'No installation, runs from a USB stick too.',
+  'Download für Windows': 'Download for Windows',
+  'DMG für Apple Silicon': 'DMG for Apple silicon',
+  'Download für macOS': 'Download for macOS',
+
+  'Über den Gründer': 'About the founder',
+  'Das BIT-Atelier wurde von Mohamed Elmokadem gegründet. In über 15 Jahren Planung und Projektleitung hat er Wohnungs-, Schul- und Laborbauten durch alle Leistungsphasen geführt — vom geförderten Wohnungsbau in Nürnberg bis zur Sanierung deutscher Institutionen in Kairo.':
+    'BIT-Atelier was founded by Mohamed Elmokadem. In more than fifteen years of design and project management he has taken housing, school and laboratory buildings through every work stage — from subsidised housing in Nuremberg to the refurbishment of German institutions in Cairo.',
+  'Heute verbindet er die Handschrift des Architekten mit eigener Prüftechnik. Sie arbeiten direkt mit ihm, ohne Zwischenebene. Was ein großes Büro über Personal löst, löst das BIT-Atelier über Werkzeuge: eine im Haus entwickelte Prüf-Engine für Kollisionen und AIA-Konformität — statt zugekaufter Lizenzsoftware.':
+    'Today he combines the hand of the architect with his own checking technology. You work with him directly, with no layer in between. What a large practice solves with staff, BIT-Atelier solves with tools: an in-house checking engine for clashes and requirements compliance — instead of bought-in licensed software.',
+  'Mohamed Elmokadem · Architekt, M.Sc. (TUM) ClimaDesign': 'Mohamed Elmokadem · Architect, M.Sc. (TUM) ClimaDesign',
+  'Ausgewählte Stationen': 'Selected positions',
+  'Über <em>15 Jahre</em> Planung und Projektleitung.': 'More than <em>15 years</em> of design and project management.',
+  'Vom geförderten Wohnungsbau in Nürnberg bis zu Sanierungsprojekten deutscher Institutionen in Kairo.':
+    'From subsidised housing in Nuremberg to refurbishment projects for German institutions in Cairo.',
+  'Volle Leistungsbreite über HOAI 1–9': 'Full scope across HOAI work stages 1–9',
+  'Abstimmung mit Fachingenieuren, Herstellern &amp; Behörden': 'Coordination with engineers, manufacturers &amp; authorities',
+  'Dozent für 3D-/CAD-Planung': 'Lecturer in 3D and CAD design',
+
+  'Lassen Sie uns <em>sprechen</em>.': 'Let’s <em>talk</em>.',
+  'Ob Bauvorhaben oder Digitalisierungs-Projekt — schildern Sie kurz Ihre Idee. Aus Spam-Schutz werden meine Kontaktdaten erst auf Klick angezeigt.':
+    'Whether it is a building project or a digitalisation project — tell me briefly what you have in mind. As protection against spam, my contact details only appear on click.',
+  'Telefon': 'Phone',
+  'Telefon anzeigen<small>Klicken, um die Nummer einzublenden</small>': 'Show phone<small>Click to reveal the number</small>',
+  'E-Mail': 'Email',
+  'E-Mail anzeigen<small>Klicken, um die Adresse einzublenden</small>': 'Show email<small>Click to reveal the address</small>',
+  'Region': 'Region',
+  'Raum Nürnberg / Mittelfranken · Projekte bundesweit': 'Nuremberg region · projects across Germany',
+  'Auf einen Blick': 'At a glance',
+  'Eingetragener Architekt — Bayerische Architektenkammer (Nr. 192.197)': 'Chartered architect — Bavarian Chamber of Architects (no. 192.197)',
+  'M.Sc. ClimaDesign, TU München': 'M.Sc. ClimaDesign, TU Munich',
+  'Volle Planungsbreite HOAI 1–9': 'Full design scope, HOAI stages 1–9',
+  'BIM · IFC · KI-gestützte Projektentwicklung': 'BIM · IFC · AI-assisted project development',
+  'Raum Nürnberg / Mittelfranken': 'Nuremberg region',
+  'Leistungspakete ansehen': 'See the service packages',
+  'Impressum &amp; Datenschutz': 'Legal notice &amp; privacy',
+  'Schließen': 'Close',
+  'BIT-ATELIER Architekturbüro': 'BIT-ATELIER architectural practice',
+  'Alle Rechte vorbehalten.': 'All rights reserved.',
+  'Der portable PDF-Editor': 'The portable PDF editor',
+
+  /* Nachtrag: Stationen, Bühnen-Beschriftungen, Download-Hinweise */
+  'Leistungsphase': 'Work stage',
+  'Bauteile im Modell': 'Components in the model',
+  'Modellstand': 'Model status',
+  'Hülle': 'Envelope',
+  'Prüfung': 'Checking',
+  'Prüflauf': 'Checking run',
+  'Rohbau': 'Structural shell',
+  'Übergabe': 'Handover',
+  'Seit 2025 · Nürnberg': 'Since 2025 · Nuremberg',
+  'Projektleiter · BIM-Koordinator · Bauzeichner-Koordinator · Schwarz Architekturbüro':
+    'Project lead · BIM coordinator · drafting coordinator · Schwarz Architekturbüro',
+  'Alle Projekte · HOAI 1–9': 'All projects · HOAI stages 1–9',
+  '2020 – 2025 · Nürnberg': '2020 – 2025 · Nuremberg',
+  'Architekt / Planer · Schultheiß Projektentwicklung AG': 'Architect / designer · Schultheiß Projektentwicklung AG',
+  'Geförderter Wohnungsbau, u.&nbsp;a. Lichtenreutherzeile WA 19/20 · Werkplanung, KfW-55':
+    'Subsidised housing, including Lichtenreutherzeile WA 19/20 · construction design, KfW-55',
+  '2019 · Wendelstein': '2019 · Wendelstein',
+  'Projektleiter · Gömmel Wieland Architekten': 'Project lead · Gömmel Wieland Architekten',
+  'Bauhof Lauf a. d. Pegnitz, Laborgebäude (Pharma) · Vorentwurf bis Werkplanung':
+    'Municipal depot in Lauf an der Pegnitz, pharmaceutical laboratory · concept through construction design',
+  '2018 – 2019 · Kairo': '2018 – 2019 · Cairo',
+  'Prokurist / Büroleitung · Bit-Design Architekturbüro': 'Authorised officer / practice lead · Bit-Design Architekturbüro',
+  'Sanierung Deutsche Botschaft, DAAD &amp; Goethe-Institut · Brandschutz, Flucht- &amp; Rettungswege':
+    'Refurbishment of the German Embassy, DAAD &amp; Goethe-Institut · fire safety, escape and rescue routes',
+  '2009 – 2017 · Bayern': '2009 – 2017 · Bavaria',
+  'Architekt &amp; Werkplaner · diverse Büros': 'Architect &amp; technical designer · various practices',
+  'Mehrfamilienhäuser mit Tiefgarage, Schulbau, Nutzungsänderungen · Detail- &amp; Ausführungsplanung':
+    'Apartment buildings with underground parking, school buildings, changes of use · detail and construction design',
+  'Ausbildung': 'Education',
+  'M.Sc. Klimaoptimiertes Bauen · TU München': 'M.Sc. Climate-Responsive Building · TU Munich',
+  'Climate Responsive Design · ganzheitliche Gebäudeoptimierung (Konzept, Fassade, Gebäudetechnik)':
+    'Climate-responsive design · whole-building optimisation (concept, facade, building services)',
+  'Intel-Version <a href="https://github.com/mozzi86/NovaPDF/releases/latest/download/BIT-PDF-x64.dmg" style="color:var(--accent)">hier</a>.':
+    'Intel version <a href="https://github.com/mozzi86/NovaPDF/releases/latest/download/BIT-PDF-x64.dmg" style="color:var(--accent)">here</a>.',
+  'Kostenlos · quelloffen entwickelt im BIT-Atelier · alle Versionen <a href="https://github.com/mozzi86/NovaPDF/releases" style="color:var(--accent)">auf GitHub</a>. Die Apps sind nicht signiert bzw. notarisiert — Windows SmartScreen bzw. macOS Gatekeeper beim ersten Start über „Trotzdem ausführen" / Rechtsklick → „Öffnen" bestätigen.':
+    'Free · developed openly at BIT-Atelier · all releases <a href="https://github.com/mozzi86/NovaPDF/releases" style="color:var(--accent)">on GitHub</a>. The apps are not code-signed or notarised — on first launch confirm through Windows SmartScreen (“Run anyway”) or macOS Gatekeeper (right-click → “Open”).',
+
+  /* Paketfinder (#pakete) */
+  'Welches Paket passt zu Ihrem Projekt?': 'Which package fits your project?',
+  'Drei Angaben, keine Anmeldung. Die Einordnung folgt den Regeln, nach denen ich selbst sortiere — und nimmt Ihre Angaben gleich mit in die Anfrage.':
+    'Three answers, no sign-up. The result follows the same rules I use myself — and carries your answers straight into the enquiry.',
+  'Bausumme': 'Construction cost',
+  'Fachmodelle': 'Discipline models',
+  'Phase': 'Stage',
+  'unter 5 Mio. €': 'under €5 m',
+  '5–10 Mio. €': '€5–10 m',
+  '10–30 Mio. €': '€10–30 m',
+  'über 30 Mio. €': 'over €30 m',
+  'Architektur': 'Architecture',
+  'Architektur + Tragwerk': 'Architecture + structure',
+  'Architektur + Tragwerk + TGA': 'Architecture + structure + MEP',
+  'Bestandsmodell / Scan': 'As-built model / scan',
+  'noch keine': 'none yet',
+  'Vorplanung (LPH 2)': 'Concept design (LPH 2)',
+  'Entwurf (LPH 3)': 'Developed design (LPH 3)',
+  'Genehmigung (LPH 4)': 'Planning approval (LPH 4)',
+  'Ausführungsplanung (LPH 5)': 'Technical design (LPH 5)',
+  'Vergabe / Ausführung (LPH 6–8)': 'Tender / construction (LPH 6–8)',
+  'Empfehlung': 'Recommendation',
+  'Im Anschluss:': 'Afterwards:',
+  'Mit diesen Angaben anfragen': 'Enquire with these details',
+  'Zu Planung & Architektur': 'To design & architecture',
+  'Bausumme, Fachmodelle und Phase stehen dann schon im Anfrage-Baukasten.': 'Cost, models and stage are then pre-filled in the enquiry form.',
+  'Alle Leistungsphasen, auch Sanierung und geförderter Wohnungsbau.': 'All work stages, including refurbishment and subsidised housing.',
+  'Paket 1 · BIM-Quick-Check & Setup': 'Package 1 · BIM quick check & setup',
+  'Paket 2 · Automatisierte Modellprüfung & QS': 'Package 2 · Automated model checking & QA',
+  'Paket 3 · BIM-Gesamtkoordination': 'Package 3 · Overall BIM coordination',
+  'Unterhalb der Paketgröße — der Weg ist die Planung': 'Below the package range — the route is design',
+  'Die drei Pakete sind für Großprojekte ab etwa 5 Mio. € Bausumme geschnitten. Für Ihr Vorhaben ist der direkte Weg die Planung aus einer Hand: Entwurf, Genehmigung, Ausführung — mit Energiebilanz und Modell von Anfang an.':
+    'The three packages are cut for large projects from about €5 m construction cost. For your project the direct route is design from one hand: concept, approval, construction — with energy balance and model from day one.',
+  'Ohne Fachmodell beginnt jedes Projekt mit dem Setup: AIA und BAP, Koordinationsumgebung, Namenskonventionen — und der erste Prüflauf, sobald das erste Modell steht.':
+    'Without a discipline model every project starts with the setup: EIR and BEP, coordination environment, naming conventions — and the first checking run as soon as the first model exists.',
+  'Ein Bestandsmodell oder Scan ist eine Grundlage, noch keine Koordinationsbasis. Der Quick-Check legt fest, was die Fachmodelle liefern müssen, und prüft den Bestand gleich mit.':
+    'An as-built model or scan is a basis, not yet a coordination baseline. The quick check defines what the discipline models must deliver and checks the existing model on the way.',
+  'In Vorplanung und Entwurf entscheidet sich, ob das Projekt später prüffähig ist. Der Quick-Check schafft die Grundlage in 2–4 Wochen; über die Planungsphasen hinweg hält dann das Mandat die Fachmodelle zusammen.':
+    'Concept and developed design decide whether the project can be checked later. The quick check lays that foundation in 2–4 weeks; across the design stages the retainer then keeps the discipline models together.',
+  'Bei 5–10 Mio. € ist der Quick-Check die passende Einstiegsgröße. Ein laufendes Mandat lohnt sich hier meist erst, wenn drei Fachmodelle koordiniert werden müssen.':
+    'At €5–10 m the quick check is the right entry size. A running retainer usually pays off here only once three discipline models need coordinating.',
+  'Drei Fachmodelle in Genehmigung und Ausführungsplanung: Hier laufen die meisten Änderungen gleichzeitig. Das Mandat prüft jeden Stand, hält Koordinationssitzung und Maßnahmenliste — die Prüfläufe sind darin enthalten.':
+    'Three discipline models in approval and technical design: this is where most changes run in parallel. The retainer checks every issue, runs the coordination meeting and the action list — the checking runs are included.',
+  'Jeder Planungsstand wird geprüft, bevor er in die nächste Runde geht: Kollisionen, Duplikate, IDS-Konformität — mit Befunden als BCF zurück an die Fachplaner. Als Festpreis je Prüflauf, planbar je Meilenstein.':
+    'Every design issue is checked before it goes into the next round: clashes, duplicates, IDS conformity — with findings returned as BCF to the design teams. Fixed price per run, plannable per milestone.',
+  'Vor Vergabe und Ausführung zählt der dokumentierte Stand: ein Prüflauf mit Prüfbericht und BCF, bevor der erste Auftrag vergeben wird. Was hier gefunden wird, kostet noch keinen Nachtrag.':
+    'Before tender and construction the documented state counts: one checking run with report and BCF before the first contract is awarded. What is found here does not yet cost a variation.',
+
+  /* Anfrage-Baukasten (#kontakt) */
+  'Erstgespräch vorbereiten': 'Prepare a first conversation',
+  'Ein paar Angaben, dann steht Ihr Text fertig darunter — zum Absenden über Ihr Mailprogramm, zum Kopieren oder zum Drucken. Es wird nichts übertragen und nichts gespeichert.':
+    'A few details and your text is ready below — to send from your mail app, to copy, or to print. Nothing is transmitted and nothing is stored.',
+  'Projektart': 'Project type',
+  'Zeitrahmen': 'Timeframe',
+  'Rückmeldung bitte per': 'Reply preferred by',
+  'Kurz zum Vorhaben (freiwillig)': 'About the project (optional)',
+  'So geht Ihr Text ab': 'This is the text you send',
+  'Erstgespräch anfragen': 'Request a first conversation',
+  'Text kopieren': 'Copy text',
+  'Drucken / als PDF sichern': 'Print / save as PDF',
+  'oder direkt in:': 'or straight into:',
+  'Gmail': 'Gmail',
+  'Outlook Web': 'Outlook Web',
+  'Nur beim Weg über Gmail oder Outlook Web steht Ihr Text in der Adresse zum jeweiligen Anbieter — beim Mailprogramm, beim Kopieren und beim Drucken verlässt nichts Ihren Rechner.': 'Only via Gmail or Outlook Web does your text travel in the address to that provider — with your mail program, copying and printing nothing leaves your computer.',
+  'Kennzahlen aus einem Prüflauf mit BIT-Atelier:': 'Key figures from a BIT-Atelier checking run:',
+  'Modell': 'Model',
+  'Bauteile mit Geometrie': 'Elements with geometry',
+  'Geschosse': 'Storeys',
+  'Harte Kollisionen': 'Hard clashes',
+  'Doppelmodellierungen': 'Duplicate modelling',
+  'IDS-Verstöße': 'IDS violations',
+  'Antwort in der Regel innerhalb von 24 Stunden.': 'Reply usually within 24 hours.',
+  'Guten Tag,': 'Dear Mr Elmokadem,',
+  'ich möchte ein Erstgespräch vereinbaren.': 'I would like to arrange a first conversation.',
+  '(offen)': '(open)',
+  'Zum Vorhaben:': 'About the project:',
+  'Mit freundlichen Grüßen': 'Kind regards',
+  'Erstgespräch BIT-ATELIER — ': 'First conversation BIT-ATELIER — ',
+  'Kopiert ✓': 'Copied ✓',
+  'Bitte den Text oben markieren und kopieren': 'Please select and copy the text above',
+  'An': 'To'
+};

@@ -278,6 +278,27 @@ try {
   await seite.evaluate(() => window.bitSprache.setze('de'));
   await seite.locator('#herunterladen').screenshot({ path: path.join(AUS, 'download-desktop.png') });
 
+  console.log('\nWörterbuch pro Sprache, nachgeladen (69-17)');
+  for (const [pfad, erwartet] of [['?lang=de', []], ['en/', ['en']], ['ar/', ['ar']], ['?lang=en', ['en']]]) {
+    const p = await browser.newPage({ viewport: { width: 1400, height: 900 } });
+    const geladen = [];
+    p.on('request', (r) => { const m = r.url().match(/sprachen\.(en|ar)\.js/); if (m) geladen.push(m[1]); });
+    await p.goto(B + pfad, { waitUntil: 'networkidle' });
+    const r = await p.evaluate(() => ({ aktuell: window.bitSprache.aktuell(),
+      finder: document.querySelector('#finder-ergebnis .finder__auge').textContent.trim() }));
+    const sprache = erwartet[0] || 'de';
+    const auge = { de: 'Empfehlung', en: 'Recommendation', ar: 'التوصية' }[sprache];
+    ok(geladen.join() === erwartet.join() && r.aktuell === sprache && r.finder === auge,
+      `/${pfad}: lädt [${geladen.join(', ') || '—'}], Sprache ${r.aktuell}, Finder „${r.finder}“`);
+    await p.close();
+  }
+  for (const k of ['en', 'ar']) {
+    const roh = fs.readFileSync(path.join(WURZEL, k, 'index.html'), 'utf8');
+    ok(!/data-nachgeladen|sprachen\.(en|ar)\.js/.test(roh), `${k}/index.html: kein eingefrorenes Nachlade-Skript`);
+  }
+  const kern = fs.statSync(path.join(WURZEL, 'assets/js/sprachen.js')).size;
+  ok(kern < 20000, `sprachen.js ohne Wörterbuch: ${kern} B`);
+
   console.log('\nSprachknöpfe auf den Kopien /en/ und /ar/');
   for (const [von, knopf, ziel, lang] of [['en/', 'de', '', 'de'], ['en/', 'ar', 'ar/', 'ar'], ['ar/', 'en', 'en/', 'en'], ['ar/', 'de', '', 'de']]) {
     const p = await browser.newPage({ viewport: { width: 1400, height: 900 } });

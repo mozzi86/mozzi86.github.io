@@ -14,7 +14,7 @@
 // Wortlaut-Wechsel auseinanderlaeuft. Also laeuft das echte Skript im echten
 // Browser, und das Ergebnis wird eingefroren.
 //
-// Rein:  index.html + assets/js/sprachen.js
+// Rein:  index.html + assets/js/sprachen.js (+ sprachen.en.js / sprachen.ar.js, nachgeladen)
 // Raus:  en/index.html, ar/index.html — je mit eigenem canonical, wechselseitigem
 //        hreflang, passendem lang/dir und auf ../ umgebogenen relativen Pfaden.
 //
@@ -135,6 +135,8 @@ try {
     const skriptfehler = [];
     seite.on('pageerror', (f) => skriptfehler.push(f.message));
     await seite.goto(`${BASIS}?lang=${s.code}`, { waitUntil: 'networkidle' });
+    // The dictionary is loaded on demand since 69-17 — wait until it is applied.
+    await seite.waitForFunction((c) => window.bitSprache && window.bitSprache.aktuell() === c, s.code, { timeout: 10000 });
     // sprachen.js laeuft ueber alle Blattknoten; kurz Luft lassen.
     await seite.waitForTimeout(1200);
     if (skriptfehler.length) throw new Error(`Skriptfehler auf der Seite (${s.code}):\n  ${skriptfehler.join('\n  ')}`);
@@ -161,6 +163,9 @@ try {
       // script sets it per visitor on load.
       const dl = document.getElementById('herunterladen');
       if (dl) dl.removeAttribute('data-system');
+      // The dictionary script tag injected by sprachen.js (69-17) must not be
+      // frozen into the copy — there sprachen.js loads it itself, with the right path.
+      for (const el of document.querySelectorAll('script[data-nachgeladen]')) el.remove();
       // Paketfinder-Ergebnis und Anfrage-Vorschau schreibt das Skript beim Laden
       // selbst; eingefroren staenden sie doppelt und in der Sprache des Laufs.
       for (const id of ['finder-ergebnis', 'a-vorschau']) {

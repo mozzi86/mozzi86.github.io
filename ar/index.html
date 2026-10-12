@@ -1830,14 +1830,13 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
         }
 
         /* Die Vorschau laeuft mit jeder Eingabe mit — und mit der Sprachwahl.
-           sprachen.js bindet seine Knoepfe erst nach diesem Skript (defer), deshalb
-           einen Tick warten, bis es die Sprache umgestellt hat. */
+           sprachen.js laedt das Woerterbuch einer Sprache erst bei Bedarf (69-17)
+           und meldet sich danach mit dem Ereignis "bit-sprache". */
         document.querySelectorAll('.anfrage select, .anfrage input, .anfrage textarea').forEach(el => {
             el.addEventListener('input', anfrageVorschau);
             el.addEventListener('change', anfrageVorschau);
         });
-        document.querySelectorAll('[data-sprache]').forEach(b =>
-            b.addEventListener('click', () => setTimeout(() => { anfrageVorschau(); finderZeigen(); }, 0)));
+        document.addEventListener('bit-sprache', () => { anfrageVorschau(); finderZeigen(); });
         addEventListener('load', anfrageVorschau);
         anfrageVorschau();
 
