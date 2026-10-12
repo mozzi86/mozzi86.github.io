@@ -49,6 +49,7 @@
   const BLOCK = 'h1,h2,h3,h4,p,li,ul,ol,div,figure,figcaption,button,section,nav';
   const urtext = new Map();          /* Element -> deutsches Original */
   let aktuell = 'de';
+  let urTitel = null;
 
   function blaetter() {
     const alle = [...document.querySelectorAll(AUSWAHL)].filter(el =>
@@ -94,10 +95,12 @@
       el.innerHTML = neu !== undefined ? neu : urtext.get(el);   /* Rückfall: Deutsch */
     }
 
-    /* Seitentitel */
-    const titel = WB[sprache] && WB[sprache]['BIT-ATELIER — Architektur trifft Digitalisierung'];
-    document.title = (sprache === 'de' || !titel)
-      ? 'BIT-ATELIER — Architektur trifft Digitalisierung' : titel;
+    /* Page title: the German title of THIS page is the key (69-10: topic pages
+       have their own titles). On the copies the frozen title is already
+       translated and simply stays. */
+    if (urTitel === null) urTitel = document.title;
+    const titel = WB[sprache] && WB[sprache][urTitel];
+    document.title = (sprache === 'de' || !titel) ? urTitel : titel;
 
     /* Sprache und Leserichtung am Wurzelelement */
     const wurzel = document.documentElement;
@@ -163,9 +166,10 @@
      work there. So the buttons go to the address of the chosen language instead
      (side finding of 92-09: DE/EN/AR did nothing on /en/ and /ar/). */
   function sprachAdresse(ziel) {
-    const m = location.pathname.match(/^(.*\/)(en|ar)\/(?:index\.html)?$/);
-    if (!m || ziel === m[2]) return '';
-    return m[1] + (ziel === 'de' ? '' : ziel + '/') + location.hash;
+    /* /en/, /ar/ and the topic pages below them (/en/bim-koordination/, 69-10) */
+    const m = location.pathname.match(/^\/(en|ar)\/(.*)$/);
+    if (!m || ziel === m[1]) return '';
+    return '/' + (ziel === 'de' ? '' : ziel + '/') + m[2].replace(/index\.html$/, '') + location.hash;
   }
   document.querySelectorAll('[data-sprache]').forEach(b =>
     b.addEventListener('click', () => {

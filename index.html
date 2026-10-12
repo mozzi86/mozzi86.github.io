@@ -179,6 +179,12 @@
 .beleg__unter{color:var(--muted);font-size:.88rem;margin:0 0 .9rem}
 .beleg__links{display:flex;gap:.6rem;flex-wrap:wrap}
 
+/* --- Links to the topic pages and their page heading (69-10) -------------- */
+.mehr{margin-top:1.6rem;font-size:.95rem}
+.mehr a{color:var(--accent);text-decoration:none;border-bottom:1px solid currentColor}
+.seitenkopf{padding-top:clamp(7.5rem,14vw,10rem);padding-bottom:0}
+.seitenkopf h1{font-size:clamp(2.1rem,4.4vw,3.6rem);max-width:22ch}
+
 /* --- Promise block in #werkzeuge (69-03) ---------------------------------- */
 .versprechen{margin-top:2.4rem;border:1px solid var(--accent);padding:clamp(1.4rem,2.6vw,2.1rem);
   background:rgba(45,212,191,.04)}
@@ -1065,6 +1071,8 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
           <div class="karte__fuss"><a class="btn btn--klein" href="#kontakt" data-herkunft="Planung">Projekt anfragen</a></div>
         </article>
       </div>
+      <!-- 69-10: landing page of this topic; dropped on the topic page itself. -->
+      <p class="mehr" data-mehr><a href="bim-koordination/">Mehr zur BIM-Koordination und zu den Paketen →</a></p>
     </div>
   </section>
 
@@ -1253,6 +1261,8 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
         <li>IFC / openBIM</li><li>buildingSMART IDS</li><li>BCF</li>
         <li>Energiesimulation</li><li>AVA &amp; Kostenplanung</li><li>Python-Automatisierung</li>
       </ul>
+      <!-- 69-10: landing page of this topic; dropped on the topic page itself. -->
+      <p class="mehr" data-mehr><a href="modellpruefung-ids-bcf/">Mehr zur Modellprüfung mit IFC, IDS und BCF →</a></p>
     </div>
   </section>
 
@@ -1424,6 +1434,8 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
         Die Apps sind nicht signiert bzw. notarisiert — Windows SmartScreen bzw. macOS
         Gatekeeper beim ersten Start über „Trotzdem ausführen" / Rechtsklick → „Öffnen"
         bestätigen.</p>
+      <!-- 69-10: landing page of this topic; dropped on the topic page itself. -->
+      <p class="mehr" data-mehr><a href="bit-pdf/">Mehr zu BIT-PDF →</a></p>
     </div>
   </section>
 
@@ -1752,6 +1764,17 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
                 }
             });
         })();
+
+        // The topic pages (69-10) link to /#impressum: open the legal notice when
+        // the address asks for it, also on a later hash change.
+        function impressumAusAdresse() {
+            const imp = document.getElementById('impressum');
+            if (location.hash !== '#impressum' || !imp || !imp.classList.contains('verborgen')) return;
+            imp.classList.remove('verborgen');
+            imp.scrollIntoView();
+        }
+        addEventListener('hashchange', impressumAusAdresse);
+        addEventListener('load', impressumAusAdresse);
 
         // Impressum ein-/ausklappen
         function toggleImpressum() {

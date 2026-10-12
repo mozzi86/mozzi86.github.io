@@ -448,4 +448,42 @@
     'Download and check your own model',
   'So sieht der Befund aus':
     'What the findings look like',
+
+  /* Topic pages (69-10): titles, headings, intros, links from the home page */
+  'BIM-Koordination und Leistungspakete — BIT-ATELIER':
+    'BIM coordination and service packages — BIT-ATELIER',
+  'BIM-Koordination mit festen Paketen.':
+    'BIM coordination in fixed packages.',
+  'Vom Quick-Check bis zur Gesamtkoordination: drei Pakete für Großprojekte ab etwa 5 Mio. € Bausumme, als Festpreis oder monatliches Mandat — dazu Planung und Architektur über alle Leistungsphasen.':
+    'From the quick check to full coordination: three packages for major projects from about €5 m construction cost, as a fixed price or a monthly retainer — plus design and architecture across all work stages.',
+  'Modellprüfung mit IFC, IDS und BCF — BIT-ATELIER':
+    'Model checking with IFC, IDS and BCF — BIT-ATELIER',
+  'Modellprüfung mit IFC, IDS und BCF.':
+    'Model checking with IFC, IDS and BCF.',
+  'Kollisionen, Duplikate und AIA-Anforderungen nach buildingSMART IDS prüfen — lokal auf Ihrem Rechner, mit Befunden als BCF zurück an die Fachplaner.':
+    'Check clashes, duplicates and employer\'s information requirements with buildingSMART IDS — locally on your computer, with findings returned to the consultants as BCF.',
+  'BIT-PDF — portabler PDF-Editor — BIT-ATELIER':
+    'BIT-PDF — portable PDF editor — BIT-ATELIER',
+  'BIT-PDF: PDF bearbeiten, ohne dass etwas Ihr Gerät verlässt.':
+    'BIT-PDF: edit PDFs without anything leaving your device.',
+  'Der kostenlose PDF-Editor aus dem BIT-Atelier — im Browser, als portable .exe für Windows oder als DMG für macOS.':
+    'The free PDF editor from BIT-Atelier — in the browser, as a portable .exe for Windows or as a DMG for macOS.',
+  '<a href="bim-koordination/">Mehr zur BIM-Koordination und zu den Paketen →</a>':
+    '<a href="bim-koordination/">More on BIM coordination and the packages →</a>',
+  '<a href="modellpruefung-ids-bcf/">Mehr zur Modellprüfung mit IFC, IDS und BCF →</a>':
+    '<a href="modellpruefung-ids-bcf/">More on model checking with IFC, IDS and BCF →</a>',
+  '<a href="bit-pdf/">Mehr zu BIT-PDF →</a>':
+    '<a href="bit-pdf/">More on BIT-PDF →</a>',
+
+  /* BIT-PDF block (was German on /en/ and /ar/ before 69-10) */
+  'Der portable PDF-Editor aus dem BIT-Atelier — bearbeiten, organisieren, konvertieren, signieren, drucken und forensisch schwärzen. Läuft vollständig lokal: keine Cloud, keine Uploads, keine Telemetrie — inklusive Offline-OCR (Deutsch/Englisch).':
+    'The portable PDF editor from BIT-Atelier — edit, organise, convert, sign, print and redact forensically. Runs entirely locally: no cloud, no uploads, no telemetry — including offline OCR (German/English).',
+  'Ohne Installation testen':
+    'Try it without installing',
+  'Läuft im Browser, auch auf Tablet und Handy — die Dateien bleiben auf Ihrem Gerät.':
+    'Runs in the browser, also on tablets and phones — your files stay on your device.',
+  'Im Browser öffnen':
+    'Open in the browser',
+  'Browser':
+    'Browser',
 };

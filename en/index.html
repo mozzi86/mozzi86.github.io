@@ -3,11 +3,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>BIT-ATELIER — where architecture meets data</title>
-<meta name="description" content="BIT-ATELIER, Architekturbüro von Mohamed Elmokadem: BIM-Koordination und Modellprüfung mit eigener Prüf-Engine, dazu Planung und Architektur über alle Leistungsphasen. Raum Nürnberg, Projekte bundesweit.">
+<meta name="description" content="BIT-ATELIER, the architecture practice of Mohamed Elmokadem: BIM coordination and model checking with an in-house checking engine, plus design and architecture across all work stages. Nuremberg area, projects across Germany.">
 <meta name="theme-color" content="#0c1117">
 <link rel="canonical" href="https://bit-atelier.de/en/">
-<meta property="og:title" content="BIT-ATELIER — Architektur trifft Digitalisierung">
-<meta property="og:description" content="BIM-Koordination, Modellprüfung mit eigener Prüf-Engine, Planung über alle Leistungsphasen.">
+<meta property="og:title" content="BIT-ATELIER — where architecture meets data">
+<meta property="og:description" content="BIT-ATELIER, the architecture practice of Mohamed Elmokadem: BIM coordination and model checking with an in-house checking engine, plus design and architecture across all work stages. Nuremberg area, projects across Germany.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://bit-atelier.de/en/">
 <meta property="og:image" content="https://bit-atelier.de/assets/img/og-bit-atelier.png">
@@ -18,8 +18,8 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="BIT-ATELIER — Architektur trifft Digitalisierung">
-<meta name="twitter:description" content="BIM-Koordination, Modellprüfung mit eigener Prüf-Engine, Planung über alle Leistungsphasen.">
+<meta name="twitter:title" content="BIT-ATELIER — where architecture meets data">
+<meta name="twitter:description" content="BIT-ATELIER, the architecture practice of Mohamed Elmokadem: BIM coordination and model checking with an in-house checking engine, plus design and architecture across all work stages. Nuremberg area, projects across Germany.">
 <meta name="twitter:image" content="https://bit-atelier.de/assets/img/og-bit-atelier.png">
 
 <!-- Sprachfassungen: /en/ und /ar/ werden von tools/sprachkopien-erzeugen.mjs
@@ -177,6 +177,12 @@
 .beleg__titel{font-weight:600;margin:0 0 .3rem}
 .beleg__unter{color:var(--muted);font-size:.88rem;margin:0 0 .9rem}
 .beleg__links{display:flex;gap:.6rem;flex-wrap:wrap}
+
+/* --- Links to the topic pages and their page heading (69-10) -------------- */
+.mehr{margin-top:1.6rem;font-size:.95rem}
+.mehr a{color:var(--accent);text-decoration:none;border-bottom:1px solid currentColor}
+.seitenkopf{padding-top:clamp(7.5rem,14vw,10rem);padding-bottom:0}
+.seitenkopf h1{font-size:clamp(2.1rem,4.4vw,3.6rem);max-width:22ch}
 
 /* --- Promise block in #werkzeuge (69-03) ---------------------------------- */
 .versprechen{margin-top:2.4rem;border:1px solid var(--accent);padding:clamp(1.4rem,2.6vw,2.1rem);
@@ -1019,6 +1025,8 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
           <div class="karte__fuss"><a class="btn btn--klein" href="#kontakt" data-herkunft="Planung">Start a project</a></div>
         </article>
       </div>
+      <!-- 69-10: landing page of this topic; dropped on the topic page itself. -->
+      <p class="mehr" data-mehr=""><a href="bim-koordination/">More on BIM coordination and the packages →</a></p>
     </div>
   </section>
 
@@ -1180,6 +1188,8 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
         <li>IFC / openBIM</li><li>buildingSMART IDS</li><li>BCF</li>
         <li>Energy simulation</li><li>Tendering &amp; cost planning</li><li>Python automation</li>
       </ul>
+      <!-- 69-10: landing page of this topic; dropped on the topic page itself. -->
+      <p class="mehr" data-mehr=""><a href="modellpruefung-ids-bcf/">More on model checking with IFC, IDS and BCF →</a></p>
     </div>
   </section>
 
@@ -1306,17 +1316,15 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
       <div class="kopfzeile" style="margin-top:clamp(3rem,6vw,5rem)">
         <p class="auge">Also free</p>
         <h2>BIT-PDF</h2>
-        <p class="unter">Der portable PDF-Editor aus dem BIT-Atelier — bearbeiten, organisieren,
-          konvertieren, signieren, drucken und forensisch schwärzen. Läuft vollständig lokal: keine
-          Cloud, keine Uploads, keine Telemetrie — inklusive Offline-OCR (Deutsch/Englisch).</p>
+        <p class="unter">The portable PDF editor from BIT-Atelier — edit, organise, convert, sign, print and redact forensically. Runs entirely locally: no cloud, no uploads, no telemetry — including offline OCR (German/English).</p>
       </div>
       <div class="gitter gitter--3">
         <article class="karte">
           <p class="karte__nr">Browser</p>
-          <h3>Ohne Installation testen</h3>
-          <p>Läuft im Browser, auch auf Tablet und Handy — die Dateien bleiben auf Ihrem Gerät.</p>
+          <h3>Try it without installing</h3>
+          <p>Runs in the browser, also on tablets and phones — your files stay on your device.</p>
           <div class="karte__fuss">
-            <a class="btn btn--klein" href="https://bit-atelier.de/NovaPDF/">Im Browser öffnen</a>
+            <a class="btn btn--klein" href="https://bit-atelier.de/NovaPDF/">Open in the browser</a>
           </div>
         </article>
         <article class="karte">
@@ -1337,6 +1345,8 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
         </article>
       </div>
       <p class="fussnote">Free · developed openly at BIT-Atelier · all releases <a href="https://github.com/mozzi86/NovaPDF/releases" style="color:var(--accent)">on GitHub</a>. The apps are not code-signed or notarised — on first launch confirm through Windows SmartScreen (“Run anyway”) or macOS Gatekeeper (right-click → “Open”).</p>
+      <!-- 69-10: landing page of this topic; dropped on the topic page itself. -->
+      <p class="mehr" data-mehr=""><a href="bit-pdf/">More on BIT-PDF →</a></p>
     </div>
   </section>
 
@@ -1640,6 +1650,17 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
                 }
             });
         })();
+
+        // The topic pages (69-10) link to /#impressum: open the legal notice when
+        // the address asks for it, also on a later hash change.
+        function impressumAusAdresse() {
+            const imp = document.getElementById('impressum');
+            if (location.hash !== '#impressum' || !imp || !imp.classList.contains('verborgen')) return;
+            imp.classList.remove('verborgen');
+            imp.scrollIntoView();
+        }
+        addEventListener('hashchange', impressumAusAdresse);
+        addEventListener('load', impressumAusAdresse);
 
         // Impressum ein-/ausklappen
         function toggleImpressum() {

@@ -451,4 +451,42 @@
     'نزِّلوا البرنامج ودقِّقوا نموذجكم',
   'So sieht der Befund aus':
     'هكذا تبدو النتائج',
+
+  /* Topic pages (69-10): titles, headings, intros, links from the home page */
+  'BIM-Koordination und Leistungspakete — BIT-ATELIER':
+    'تنسيق BIM وحزم الخدمات — BIT-ATELIER',
+  'BIM-Koordination mit festen Paketen.':
+    'تنسيق BIM بحزم محددة.',
+  'Vom Quick-Check bis zur Gesamtkoordination: drei Pakete für Großprojekte ab etwa 5 Mio. € Bausumme, als Festpreis oder monatliches Mandat — dazu Planung und Architektur über alle Leistungsphasen.':
+    'من الفحص السريع إلى التنسيق الشامل: ثلاث حزم للمشاريع الكبيرة بتكلفة بناء تبدأ من نحو 5 ملايين يورو، بسعر ثابت أو بعقد شهري — إضافةً إلى التصميم المعماري في جميع مراحل الخدمة.',
+  'Modellprüfung mit IFC, IDS und BCF — BIT-ATELIER':
+    'تدقيق النماذج باستخدام IFC وIDS وBCF — BIT-ATELIER',
+  'Modellprüfung mit IFC, IDS und BCF.':
+    'تدقيق النماذج باستخدام IFC وIDS وBCF.',
+  'Kollisionen, Duplikate und AIA-Anforderungen nach buildingSMART IDS prüfen — lokal auf Ihrem Rechner, mit Befunden als BCF zurück an die Fachplaner.':
+    'تدقيق التصادمات والتكرارات ومتطلبات المعلومات وفق buildingSMART IDS — محلياً على حاسوبكم، مع إعادة النتائج إلى المصممين بصيغة BCF.',
+  'BIT-PDF — portabler PDF-Editor — BIT-ATELIER':
+    'BIT-PDF — محرِّر PDF محمول — BIT-ATELIER',
+  'BIT-PDF: PDF bearbeiten, ohne dass etwas Ihr Gerät verlässt.':
+    'BIT-PDF: حرِّروا ملفات PDF دون أن يغادر شيءٌ جهازكم.',
+  'Der kostenlose PDF-Editor aus dem BIT-Atelier — im Browser, als portable .exe für Windows oder als DMG für macOS.':
+    'محرِّر PDF المجاني من BIT-Atelier — في المتصفح، أو كملف exe. محمول لنظام Windows، أو كملف DMG لنظام macOS.',
+  '<a href="bim-koordination/">Mehr zur BIM-Koordination und zu den Paketen →</a>':
+    '<a href="bim-koordination/">المزيد عن تنسيق BIM والحزم ←</a>',
+  '<a href="modellpruefung-ids-bcf/">Mehr zur Modellprüfung mit IFC, IDS und BCF →</a>':
+    '<a href="modellpruefung-ids-bcf/">المزيد عن تدقيق النماذج باستخدام IFC وIDS وBCF ←</a>',
+  '<a href="bit-pdf/">Mehr zu BIT-PDF →</a>':
+    '<a href="bit-pdf/">المزيد عن BIT-PDF ←</a>',
+
+  /* BIT-PDF block (was German on /en/ and /ar/ before 69-10) */
+  'Der portable PDF-Editor aus dem BIT-Atelier — bearbeiten, organisieren, konvertieren, signieren, drucken und forensisch schwärzen. Läuft vollständig lokal: keine Cloud, keine Uploads, keine Telemetrie — inklusive Offline-OCR (Deutsch/Englisch).':
+    'محرِّر PDF المحمول من BIT-Atelier — تحرير وتنظيم وتحويل وتوقيع وطباعة وحجب جنائي للمحتوى. يعمل محلياً بالكامل: لا سحابة، ولا رفع للملفات، ولا قياس عن بُعد — مع التعرف الضوئي على النصوص دون اتصال (الألمانية/الإنجليزية).',
+  'Ohne Installation testen':
+    'جرِّبه دون تثبيت',
+  'Läuft im Browser, auch auf Tablet und Handy — die Dateien bleiben auf Ihrem Gerät.':
+    'يعمل في المتصفح، وعلى الأجهزة اللوحية والهواتف أيضاً — وتبقى ملفاتكم على جهازكم.',
+  'Im Browser öffnen':
+    'افتحه في المتصفح',
+  'Browser':
+    'المتصفح',
 };

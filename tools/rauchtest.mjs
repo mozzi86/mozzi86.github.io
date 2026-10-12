@@ -352,6 +352,70 @@ try {
     await p.close();
   }
 
+  console.log('\nThemenseiten (69-10): 4 Seiten × 3 Sprachen');
+  const { SEITEN, SPRACHEN: SPR, adresse } = await import('./seiten.mjs');
+  const titel = new Map();
+  for (const sd of SEITEN) for (const sp of SPR) {
+    const pfad = (sp.code === 'de' ? '' : sp.code + '/') + (sd.ordner ? sd.ordner + '/' : '');
+    const p = await browser.newPage({ viewport: { width: 1400, height: 900 } });
+    const meldungen = [];
+    const kaputt = [];
+    p.on('pageerror', (f) => meldungen.push(f.message));
+    p.on('console', (m) => { if (m.type() === 'error') meldungen.push(m.text()); });
+    p.on('response', (r) => { if (r.status() >= 400) kaputt.push(r.status() + ' ' + r.url()); });
+    p.on('requestfailed', (r) => { if (r.url().startsWith(B)) kaputt.push('failed ' + r.url()); });
+    const antwort = await p.goto(B + pfad, { waitUntil: 'networkidle' });
+    const r = await p.evaluate(() => ({
+      titel: document.title, lang: document.documentElement.lang, dir: document.documentElement.dir,
+      canonical: [...document.querySelectorAll('link[rel="canonical"]')].map((l) => l.href),
+      hreflang: [...document.querySelectorAll('link[rel="alternate"][hreflang]')].map((l) => l.hreflang + '=' + l.href).sort(),
+      beschreibung: (document.querySelector('meta[name="description"]') || {}).content || '',
+      senden: !!document.getElementById('a-senden'),
+      herkunft: (document.getElementById('a-herkunft') || {}).value,
+      impressum: !!document.getElementById('impressum') || !!document.querySelector('footer a[href$="#impressum"]'),
+      tot: [...document.querySelectorAll('a[href^="#"]')].map((a) => a.getAttribute('href'))
+        .filter((h) => h.length > 1 && !document.getElementById(h.slice(1))),
+      h1: document.querySelectorAll('h1').length,
+    }));
+    const erwartetHref = SPR.map((x) => x.code + '=' + adresse(sd, x.code)).concat('x-default=' + adresse(sd, 'de')).sort();
+    titel.set(pfad, r.titel);
+    ok(antwort.status() === 200 && r.lang === sp.code && (sp.code !== 'ar' || r.dir === 'rtl')
+      && r.canonical.length === 1 && r.canonical[0] === adresse(sd, sp.code)
+      && r.hreflang.join() === erwartetHref.join() && r.beschreibung === sd.beschreibung[sp.code]
+      && r.senden && r.impressum && r.tot.length === 0 && r.h1 === 1
+      && (!sd.ordner || r.herkunft === sd.herkunft) && meldungen.length === 0 && kaputt.length === 0,
+      `/${pfad}: „${r.titel}“` + (r.tot.length ? ' — tote Anker ' + r.tot.join(',') : '')
+      + (meldungen.length || kaputt.length ? ' — ' + [...meldungen, ...kaputt].join(' | ') : ''));
+    await p.close();
+  }
+  ok(new Set(titel.values()).size === titel.size, `${titel.size} Seiten, ${new Set(titel.values()).size} verschiedene Titel`);
+  const sitemap = fs.readFileSync(path.join(WURZEL, 'sitemap.xml'), 'utf8');
+  ok((sitemap.match(/<url>/g) || []).length === SEITEN.length * SPR.length && !/demo/.test(sitemap),
+    `sitemap.xml: ${(sitemap.match(/<url>/g) || []).length} Adressen, kein /demo/`);
+  // Language buttons on a topic page copy go to the same topic in the other language.
+  for (const [von, knopf, ziel] of [['en/bim-koordination/', 'de', 'bim-koordination/'], ['ar/bit-pdf/', 'en', 'en/bit-pdf/']]) {
+    const p = await browser.newPage({ viewport: { width: 1400, height: 900 } });
+    await p.goto(B + von, { waitUntil: 'load' });
+    await Promise.all([p.waitForURL(B + ziel), p.click(`.kopf [data-sprache="${knopf}"]`)]);
+    ok(true, `/${von} → ${knopf}: /${ziel}`);
+    await p.close();
+  }
+  // The legal notice opens from /#impressum (links of the topic pages).
+  {
+    const p = await browser.newPage({ viewport: { width: 1400, height: 900 } });
+    await p.goto(B + 'bim-koordination/', { waitUntil: 'load' });
+    await Promise.all([p.waitForURL(B + '#impressum'), p.click('footer a[href="../#impressum"]')]);
+    await p.waitForTimeout(400);
+    ok(await p.evaluate(() => !document.getElementById('impressum').classList.contains('verborgen')), 'Impressum-Link der Themenseite öffnet das Impressum');
+    await p.close();
+  }
+  for (const [pfad, name] of [['bim-koordination/', 'thema-bim'], ['ar/modellpruefung-ids-bcf/', 'thema-pruefung-ar']]) {
+    const p = await browser.newPage({ viewport: { width: 1400, height: 900 } });
+    await p.goto(B + pfad, { waitUntil: 'networkidle' });
+    await p.screenshot({ path: path.join(AUS, name + '.png') });
+    await p.close();
+  }
+
   console.log('\n404-Seite und Schriften (69-17)');
   for (const [pfad, lang, start, haupt] of [
     ['gibt-es-nicht', 'de', '/', '/'], ['en/gibt-es-nicht', 'en', '/en/', '/en/'], ['ar/x/y', 'ar', '/ar/', '/ar/'],

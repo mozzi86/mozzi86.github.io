@@ -27,6 +27,7 @@ import path from 'node:path';
 import http from 'node:http';
 import { setTimeout as sleep } from 'node:timers/promises';
 import { createRequire } from 'node:module';
+import { SEITEN, adresse } from './seiten.mjs';
 
 // Playwright liegt im App-Repo; die Website bleibt abhaengigkeitsfrei.
 // Ausserhalb des eigenen Rechners (Cloud-Sitzung, CI) zeigt BIT_APP_REPO auf ein
@@ -44,8 +45,8 @@ const PORT = 4188;
 const BASIS = `http://localhost:${PORT}/`;
 
 const SPRACHEN = [
-  { code: 'en', dir: 'ltr', ordner: 'en' },
-  { code: 'ar', dir: 'rtl', ordner: 'ar' },
+  { code: 'en', dir: 'ltr', ogLocale: 'en_US' },
+  { code: 'ar', dir: 'rtl', ogLocale: 'ar_AR' },
 ];
 
 /* Eigener winziger Static-Server statt vite preview: der laesst sich nicht auf
@@ -108,19 +109,40 @@ function pfadeAnheben(html) {
       ' srcset="' + wert.replace(/(^|,\s*)(?!https?:|\/|data:|\.\.\/)(assets\/)/g, '$1../$2') + '"');
 }
 
+/** Escapes text for an HTML attribute. */
+const attr = (t) => t.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
+
 /**
- * Setzt canonical, hreflang und og:locale der Kopie.
+ * Sets canonical, og:url and og:locale of the copy, and (69-10) the meta
+ * description, og/twitter description from tools/seiten.mjs and og/twitter title
+ * from the translated <title> — sprachen.js does not touch <head>, so until 69-10
+ * the English and Arabic copies carried the German description.
+ * The hreflang set is the same in every language and stays as it is.
  * @param {string} html
- * @param {string} code
+ * @param {{code:string, ogLocale:string}} sprache
+ * @param {import('./seiten.mjs').Seite} seiteDef
+ * @param {string} titel  translated document title
  * @returns {string}
  */
-function kopfSetzen(html, code) {
-  const eigen = code === 'de' ? 'https://bit-atelier.de/' : `https://bit-atelier.de/${code}/`;
-  const ogLocale = code === 'en' ? 'en_US' : code === 'ar' ? 'ar_AR' : 'de_DE';
-  return html
-    .replace(/<link rel="canonical" href="[^"]*">/, `<link rel="canonical" href="${eigen}">`)
-    .replace(/<meta property="og:url" content="[^"]*">/, `<meta property="og:url" content="${eigen}">`)
-    .replace(/<meta property="og:locale" content="[^"]*">/, `<meta property="og:locale" content="${ogLocale}">`);
+function kopfSetzen(html, sprache, seiteDef, titel) {
+  const eigen = adresse(seiteDef, sprache.code);
+  const besch = attr(seiteDef.beschreibung[sprache.code]);
+  const t = attr(titel);
+  const regeln = [
+    [/<link rel="canonical" href="[^"]*">/, `<link rel="canonical" href="${eigen}">`],
+    [/<meta property="og:url" content="[^"]*">/, `<meta property="og:url" content="${eigen}">`],
+    [/<meta property="og:locale" content="[^"]*">/, `<meta property="og:locale" content="${sprache.ogLocale}">`],
+    [/<meta name="description" content="[^"]*">/, `<meta name="description" content="${besch}">`],
+    [/<meta property="og:description" content="[^"]*">/, `<meta property="og:description" content="${besch}">`],
+    [/<meta name="twitter:description" content="[^"]*">/, `<meta name="twitter:description" content="${besch}">`],
+    [/<meta property="og:title" content="[^"]*">/, `<meta property="og:title" content="${t}">`],
+    [/<meta name="twitter:title" content="[^"]*">/, `<meta name="twitter:title" content="${t}">`],
+  ];
+  for (const [re, neu] of regeln) {
+    if (!re.test(html)) throw new Error(`head of the copy lacks ${re}`);
+    html = html.replace(re, neu);
+  }
+  return html;
 }
 
 try {
@@ -129,12 +151,14 @@ try {
     process.env.BIT_CHROMIUM ? { executablePath: process.env.BIT_CHROMIUM } : {},
   );
 
-  for (const s of SPRACHEN) {
+  // Every page of tools/seiten.mjs (home page + topic pages, 69-10) in every copy language.
+  for (const seiteDef of SEITEN) for (const s of SPRACHEN) {
+    const pfad = seiteDef.ordner ? seiteDef.ordner + '/' : '';
     const seite = await browser.newPage({ viewport: { width: 1400, height: 900 } });
     // Ein Skriptfehler auf der Seite wuerde sonst still in die Kopie eingefroren.
     const skriptfehler = [];
     seite.on('pageerror', (f) => skriptfehler.push(f.message));
-    await seite.goto(`${BASIS}?lang=${s.code}`, { waitUntil: 'networkidle' });
+    await seite.goto(`${BASIS}${pfad}?lang=${s.code}`, { waitUntil: 'networkidle' });
     // The dictionary is loaded on demand since 69-17 — wait until it is applied.
     await seite.waitForFunction((c) => window.bitSprache && window.bitSprache.aktuell() === c, s.code, { timeout: 10000 });
     // sprachen.js laeuft ueber alle Blattknoten; kurz Luft lassen.
@@ -147,7 +171,7 @@ try {
     // Unuebersetzte Textbloecke zaehlen — die Zahl steht im Protokoll, damit ein
     // neuer Wortlaut ohne Woerterbucheintrag nicht unbemerkt deutsch bleibt.
     const fehlend = await seite.evaluate((c) => window.bitSprache.fehlende(c), s.code);
-    if (fehlend.length) console.log(`  ${fehlend.length} ohne Übersetzung (${s.code}):\n    ${fehlend.map((t) => t.slice(0, 90)).join('\n    ')}`);
+    if (fehlend.length) console.log(`  ${fehlend.length} ohne Übersetzung (/${pfad}, ${s.code}):\n    ${fehlend.map((t) => t.slice(0, 90)).join('\n    ')}`);
 
     // Laufzeit-Spuren entfernen: Kapitelknoepfe und Canvas-Zustand erzeugt das
     // Buehnen-Modul beim Laden selbst neu. Eingefroren waeren sie doppelt.
@@ -175,12 +199,14 @@ try {
       return '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
     });
 
-    const fertig = kopfSetzen(pfadeAnheben(html), s.code);
-    const ziel = path.join(WURZEL, s.ordner);
+    const titel = await seite.evaluate(() => document.title);
+    // Topic pages use root-absolute resource paths; only the home page needs lifting.
+    const fertig = kopfSetzen(seiteDef.ordner ? html : pfadeAnheben(html), s, seiteDef, titel);
+    const ziel = path.join(WURZEL, s.code, seiteDef.ordner);
     fs.mkdirSync(ziel, { recursive: true });
     fs.writeFileSync(path.join(ziel, 'index.html'), fertig, 'utf8');
     console.log(
-      `  ${String((Buffer.byteLength(fertig) / 1024).toFixed(0)).padStart(5)} KB  ${s.ordner}/index.html` +
+      `  ${String((Buffer.byteLength(fertig) / 1024).toFixed(0)).padStart(5)} KB  ${s.code}/${pfad}index.html` +
         `  (lang=${s.code}, dir=${s.dir})`,
     );
     await seite.close();
