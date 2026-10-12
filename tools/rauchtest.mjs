@@ -406,6 +406,19 @@ try {
     await p.close();
   }
   ok(new Set(titel.values()).size === titel.size, `${titel.size} Seiten, ${new Set(titel.values()).size} verschiedene Titel`);
+  // Stale topic pages: their page script and style must equal the home page's
+  // (otherwise node tools/unterseiten-erzeugen.mjs was not run after a change).
+  {
+    const teil = (html, a, e) => { const i = html.indexOf(a); return i < 0 ? '' : html.slice(i, html.indexOf(e, i)); };
+    const norm = (t) => t.replace(/\r\n/g, '\n').replace(/url\((['"]?)\/?assets\//g, 'url($1assets/');
+    const start = fs.readFileSync(path.join(WURZEL, 'index.html'), 'utf8');
+    const veraltet = SEITEN.filter((sd) => sd.ordner).filter((sd) => {
+      const t = fs.readFileSync(path.join(WURZEL, sd.ordner, 'index.html'), 'utf8');
+      return norm(teil(t, '<script>\n// Jahr im Footer', '</script>')) !== norm(teil(start.replace(/\r\n/g, '\n'), '<script>\n// Jahr im Footer', '</script>'))
+        || norm(teil(t, '<style>', '</style>')) !== norm(teil(start.replace(/\r\n/g, '\n'), '<style>', '</style>'));
+    }).map((sd) => sd.ordner);
+    ok(veraltet.length === 0, 'Themenseiten aktuell (Skript + Stil = Startseite)' + (veraltet.length ? ' — neu erzeugen: ' + veraltet.join(', ') : ''));
+  }
   const sitemap = fs.readFileSync(path.join(WURZEL, 'sitemap.xml'), 'utf8');
   ok((sitemap.match(/<url>/g) || []).length === SEITEN.length * SPR.length && !/demo/.test(sitemap),
     `sitemap.xml: ${(sitemap.match(/<url>/g) || []).length} Adressen, kein /demo/`);
