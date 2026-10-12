@@ -588,4 +588,44 @@
   /* Stage chapter 05 without the x-ray promise (69-02) */
   'Leitungen, Kanäle und Schächte gegen Tragwerk und Architektur geprüft: Meine eigene Prüf-Engine fährt Kollisionsprüfung und IDS über das Modell und gibt die Befunde als BCF an die Fachplaner zurück. Rot wird grün — im Rechner, nicht auf der Baustelle.':
     'Pipes, ducts and shafts checked against structure and architecture: my own checking engine runs clash detection and IDS across the model and returns the findings to the specialist designers as BCF. Red turns green — in the computer, not on site.',
+
+  /* System requirements, no AVV, continuity (93-04/05/07) */
+  'Systemanforderungen — gemessen am 12.10.2026 mit Fassung 1.1.0':
+    'System requirements — measured on 12 Oct 2026 with version 1.1.0',
+  'Betriebssystem':
+    'Operating system',
+  'Windows 11 (getestet) · Linux (automatische Tests auf Ubuntu) · Windows 10 und macOS: Installer vorhanden, nicht getestet':
+    'Windows 11 (tested) · Linux (automated tests on Ubuntu) · Windows 10 and macOS: installer available, not tested',
+  'Laufzeit':
+    'Runtime',
+  'Chrome oder Edge (getestet mit Chromium 148); Firefox und Safari nicht systematisch getestet':
+    'Chrome or Edge (tested with Chromium 148); Firefox and Safari not systematically tested',
+  'Speicherplatz':
+    'Disk space',
+  'ZIP 10 MB; installiert 33 MB, davon 3,3 MB Laufzeitpakete aus dem ersten Start':
+    'ZIP 10 MB; installed 33 MB, of which 3.3 MB are runtime packages from the first start',
+  'Datenordner':
+    'Data folder',
+  'frisch 0,12 MB; wächst mit Ihren Projekten, Dokumenten und Fotos':
+    'fresh 0.12 MB; grows with your projects, documents and photos',
+  'Arbeitsspeicher':
+    'Memory',
+  'gemessen: App rund 70 MB, Browser 300–530 MB bei Modellen bis 2 MB; empfohlen 8 GB (abgeleitet). Große Modelle nicht gemessen — der Bedarf wächst mit der Modellgröße.':
+    'measured: app about 70 MB, browser 300–530 MB with models up to 2 MB; recommended 8 GB (derived). Large models not measured — the need grows with model size.',
+  'Kein Auftragsverarbeitungsvertrag nötig':
+    'No data processing agreement needed',
+  'Die lokale Fassung verarbeitet Projekt-, Bauherren- und Personaldaten nur auf Ihrem Rechner — sie liegen in einem Ordner, den Sie selbst verwalten, und erreichen weder mich noch einen anderen Dienst. Wo es keinen Auftragsverarbeiter gibt, braucht es auch keinen Vertrag nach Art. 28 DSGVO. Ausnahmen: die optionale gehostete Fassung und ein KI-Anbieter in der Cloud, den Sie selbst anbinden — dort verarbeitet dieser Dienst Daten, und es braucht eine Vereinbarung mit ihm.':
+    'The local version processes project, client and staff data only on your computer — it sits in a folder you manage yourself and reaches neither me nor any other service. Where there is no processor, no agreement under Art. 28 GDPR is needed. Exceptions: the optional hosted version and a cloud AI provider you connect yourself — that service processes data, and you need an agreement with it.',
+  'Und wenn der Entwickler morgen aufhört?':
+    'And if the developer stops tomorrow?',
+  'Ihre Daten liegen als lesbares JSON in einem Ordner, der Ihrem Büro gehört; Dokumente und Fotos daneben als gewöhnliche Dateien.':
+    'Your data sits as readable JSON in a folder your office owns; documents and photos alongside as ordinary files.',
+  'Alles Wichtige geht in offenen Formaten hinaus: IFC, BCF, IDS, GAEB, CSV und PDF.':
+    'Everything that matters goes out in open formats: IFC, BCF, IDS, GAEB, CSV and PDF.',
+  'Der Quellcode steht unter der MIT-Lizenz — jede und jeder darf ihn weiterführen, anpassen oder abspalten.':
+    'The source code is under the MIT licence — anyone may continue it, adapt it or fork it.',
+  'Alle veröffentlichten Fassungen bleiben auf GitHub zum Herunterladen.':
+    'All published versions remain available for download on GitHub.',
+  'Die App läuft offline und ohne einen Server von mir — sie hängt an nichts, das jemand abschalten könnte.':
+    'The app runs offline and without any server of mine — it depends on nothing that someone could switch off.',
 };

@@ -591,4 +591,44 @@
   /* Stage chapter 05 without the x-ray promise (69-02) */
   'Leitungen, Kanäle und Schächte gegen Tragwerk und Architektur geprüft: Meine eigene Prüf-Engine fährt Kollisionsprüfung und IDS über das Modell und gibt die Befunde als BCF an die Fachplaner zurück. Rot wird grün — im Rechner, nicht auf der Baustelle.':
     'المواسير والمجاري والمناور تُدقَّق مقابل الهيكل الإنشائي والعمارة: محرِّك التدقيق الذي طوَّرته يُجري كشف التعارضات وفحص IDS على النموذج، ويعيد النتائج إلى مهندسي التخصصات بصيغة BCF. الأحمر يصير أخضر — في الحاسوب، لا في الموقع.',
+
+  /* System requirements, no AVV, continuity (93-04/05/07) */
+  'Systemanforderungen — gemessen am 12.10.2026 mit Fassung 1.1.0':
+    'متطلبات النظام — قيست في 12.10.2026 بالإصدار 1.1.0',
+  'Betriebssystem':
+    'نظام التشغيل',
+  'Windows 11 (getestet) · Linux (automatische Tests auf Ubuntu) · Windows 10 und macOS: Installer vorhanden, nicht getestet':
+    'Windows 11 (مُختبَر) · Linux (اختبارات آلية على Ubuntu) · Windows 10 وmacOS: برنامج التثبيت متوفر، غير مُختبَر',
+  'Laufzeit':
+    'بيئة التشغيل',
+  'Chrome oder Edge (getestet mit Chromium 148); Firefox und Safari nicht systematisch getestet':
+    'Chrome أو Edge (مُختبَر مع Chromium 148)؛ Firefox وSafari غير مُختبَرين بشكل منهجي',
+  'Speicherplatz':
+    'مساحة التخزين',
+  'ZIP 10 MB; installiert 33 MB, davon 3,3 MB Laufzeitpakete aus dem ersten Start':
+    'ملف ZIP بحجم 10 MB؛ بعد التثبيت 33 MB، منها 3.3 MB حزم تشغيل من أول تشغيل',
+  'Datenordner':
+    'مجلد البيانات',
+  'frisch 0,12 MB; wächst mit Ihren Projekten, Dokumenten und Fotos':
+    'في البداية 0.12 MB؛ ويكبر مع مشاريعكم ومستنداتكم وصوركم',
+  'Arbeitsspeicher':
+    'الذاكرة',
+  'gemessen: App rund 70 MB, Browser 300–530 MB bei Modellen bis 2 MB; empfohlen 8 GB (abgeleitet). Große Modelle nicht gemessen — der Bedarf wächst mit der Modellgröße.':
+    'قيس: التطبيق نحو 70 MB، والمتصفح 300–530 MB مع نماذج حتى 2 MB؛ المُوصى به 8 GB (مُستنتَج). لم تُقَس النماذج الكبيرة — وتزداد الحاجة مع حجم النموذج.',
+  'Kein Auftragsverarbeitungsvertrag nötig':
+    'لا حاجة إلى اتفاقية معالجة بيانات',
+  'Die lokale Fassung verarbeitet Projekt-, Bauherren- und Personaldaten nur auf Ihrem Rechner — sie liegen in einem Ordner, den Sie selbst verwalten, und erreichen weder mich noch einen anderen Dienst. Wo es keinen Auftragsverarbeiter gibt, braucht es auch keinen Vertrag nach Art. 28 DSGVO. Ausnahmen: die optionale gehostete Fassung und ein KI-Anbieter in der Cloud, den Sie selbst anbinden — dort verarbeitet dieser Dienst Daten, und es braucht eine Vereinbarung mit ihm.':
+    'تعالج النسخة المحلية بيانات المشاريع والمالكين والموظفين على حاسوبكم فقط — فهي في مجلد تديرونه بأنفسكم، ولا تصل إليّ ولا إلى أي خدمة أخرى. وحيث لا يوجد معالِج للبيانات لا حاجة إلى اتفاقية وفق المادة 28 من اللائحة العامة لحماية البيانات. الاستثناءات: النسخة المستضافة الاختيارية، ومزوِّد ذكاء اصطناعي سحابي تربطونه بأنفسكم — فهذه الخدمة تعالج البيانات ويلزم اتفاق معها.',
+  'Und wenn der Entwickler morgen aufhört?':
+    'وماذا لو توقف المطوِّر غداً؟',
+  'Ihre Daten liegen als lesbares JSON in einem Ordner, der Ihrem Büro gehört; Dokumente und Fotos daneben als gewöhnliche Dateien.':
+    'بياناتكم محفوظة بصيغة JSON مقروءة في مجلد يملكه مكتبكم؛ والمستندات والصور بجانبها كملفات عادية.',
+  'Alles Wichtige geht in offenen Formaten hinaus: IFC, BCF, IDS, GAEB, CSV und PDF.':
+    'كل ما هو مهم يُصدَّر بصيغ مفتوحة: IFC وBCF وIDS وGAEB وCSV وPDF.',
+  'Der Quellcode steht unter der MIT-Lizenz — jede und jeder darf ihn weiterführen, anpassen oder abspalten.':
+    'الشيفرة المصدرية مرخَّصة برخصة MIT — ويحق لأي شخص مواصلة تطويرها أو تعديلها أو اشتقاق نسخة منها.',
+  'Alle veröffentlichten Fassungen bleiben auf GitHub zum Herunterladen.':
+    'تبقى جميع الإصدارات المنشورة متاحة للتنزيل على GitHub.',
+  'Die App läuft offline und ohne einen Server von mir — sie hängt an nichts, das jemand abschalten könnte.':
+    'يعمل التطبيق دون اتصال ودون أي خادم تابع لي — ولا يعتمد على شيء يمكن لأحد إيقافه.',
 };

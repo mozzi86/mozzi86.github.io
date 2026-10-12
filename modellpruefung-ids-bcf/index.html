@@ -47,6 +47,20 @@
 .beleg__titel{font-weight:600;margin:0 0 .3rem}
 .beleg__unter{color:var(--muted);font-size:.88rem;margin:0 0 .9rem}
 .beleg__links{display:flex;gap:.6rem;flex-wrap:wrap}
+
+/* --- System requirements and AVV note in the download block (93-04/05) ---- */
+.anforderungen{width:100%;margin-top:1.4rem;border-collapse:collapse;font-size:.86rem}
+.anforderungen caption{text-align:start;font-family:var(--mono);font-size:.72rem;color:var(--accent);
+  letter-spacing:.12em;text-transform:uppercase;padding-bottom:.6rem}
+.anforderungen th,.anforderungen td{border-top:1px solid var(--line);padding:.55rem .6rem .55rem 0;
+  vertical-align:top;text-align:start}
+.anforderungen th{font-weight:600;color:var(--ink);white-space:nowrap;width:1%}
+.anforderungen td{color:var(--muted);font-weight:300}
+@media(max-width:36rem){.anforderungen th,.anforderungen td{display:block;width:auto;padding:.35rem 0}
+  .anforderungen td{border-top:0;padding-bottom:.7rem}}
+.download__avv{margin-top:1.4rem;border-top:1px solid var(--line);padding-top:1.1rem}
+.download__avv p:last-child{font-size:.88rem;margin:0}
+.download__avv .beleg__titel{color:var(--ink);font-weight:600}
 .beleg__lizenz{color:var(--muted);font-size:.82rem;margin:.9rem 0 0}
 
 /* --- Links to the topic pages and their page heading (69-10) -------------- */

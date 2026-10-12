@@ -178,6 +178,20 @@
 .beleg__titel{font-weight:600;margin:0 0 .3rem}
 .beleg__unter{color:var(--muted);font-size:.88rem;margin:0 0 .9rem}
 .beleg__links{display:flex;gap:.6rem;flex-wrap:wrap}
+
+/* --- System requirements and AVV note in the download block (93-04/05) ---- */
+.anforderungen{width:100%;margin-top:1.4rem;border-collapse:collapse;font-size:.86rem}
+.anforderungen caption{text-align:start;font-family:var(--mono);font-size:.72rem;color:var(--accent);
+  letter-spacing:.12em;text-transform:uppercase;padding-bottom:.6rem}
+.anforderungen th,.anforderungen td{border-top:1px solid var(--line);padding:.55rem .6rem .55rem 0;
+  vertical-align:top;text-align:start}
+.anforderungen th{font-weight:600;color:var(--ink);white-space:nowrap;width:1%}
+.anforderungen td{color:var(--muted);font-weight:300}
+@media(max-width:36rem){.anforderungen th,.anforderungen td{display:block;width:auto;padding:.35rem 0}
+  .anforderungen td{border-top:0;padding-bottom:.7rem}}
+.download__avv{margin-top:1.4rem;border-top:1px solid var(--line);padding-top:1.1rem}
+.download__avv p:last-child{font-size:.88rem;margin:0}
+.download__avv .beleg__titel{color:var(--ink);font-weight:600}
 .beleg__lizenz{color:var(--muted);font-size:.82rem;margin:.9rem 0 0}
 
 /* --- Links to the topic pages and their page heading (69-10) -------------- */
@@ -1374,6 +1388,30 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
         <div class="download__fassung"><span>Fassung</span> <b data-nicht-uebersetzen>1.1.0</b> · <time datetime="2026-10-11">11.10.2026</time> · <span data-nicht-uebersetzen>ZIP 10 MB</span> · <span>Node.js 22.9 oder neuer</span> · <a href="https://github.com/mozzi86/bit-atelier-oss/releases/tag/v1.1.0">Änderungen</a></div>
         <div class="download__pruefsumme"><span>SHA-256 der ZIP:</span> <code dir="ltr" id="dl-sha256">3751185f6cb78178c938ebedbed4076ccbd2bfc1fabd9594f37a4ba4679209e2</code> · <a href="https://github.com/mozzi86/bit-atelier-oss/releases/latest/download/BIT-Atelier.zip.sha256">Prüfsumme der aktuellen Fassung als Datei</a></div>
         <p class="download__danach">Danach läuft die App unter <code dir="ltr">http://localhost:3001</code>, später über die Verknüpfung „BIT-Atelier“. Neue Versionen meldet die App selbst und installiert sie auf Knopfdruck.</p>
+
+        <!-- 93-05 (lever 160): system requirements MEASURED 12.10.2026 on release 1.1.0
+             (installed copy, read-only sizes; memory with the app on port 4192, own data
+             folder, Playwright/Chromium 148, Windows 11, i9-10850K/64 GB). Details and
+             raw numbers: app repo .planning/phases/93-hebel-156-164/93-05-SUMMARY.md.
+             Cells carry <span> so that sprachen.js translates them. -->
+        <table class="anforderungen">
+          <caption><span>Systemanforderungen — gemessen am 12.10.2026 mit Fassung 1.1.0</span></caption>
+          <tbody>
+            <tr><th scope="row"><span>Betriebssystem</span></th><td><span>Windows 11 (getestet) · Linux (automatische Tests auf Ubuntu) · Windows 10 und macOS: Installer vorhanden, nicht getestet</span></td></tr>
+            <tr><th scope="row"><span>Laufzeit</span></th><td><span>Node.js 22.9 oder neuer</span></td></tr>
+            <tr><th scope="row"><span>Browser</span></th><td><span>Chrome oder Edge (getestet mit Chromium 148); Firefox und Safari nicht systematisch getestet</span></td></tr>
+            <tr><th scope="row"><span>Speicherplatz</span></th><td><span>ZIP 10 MB; installiert 33 MB, davon 3,3 MB Laufzeitpakete aus dem ersten Start</span></td></tr>
+            <tr><th scope="row"><span>Datenordner</span></th><td><span>frisch 0,12 MB; wächst mit Ihren Projekten, Dokumenten und Fotos</span></td></tr>
+            <tr><th scope="row"><span>Arbeitsspeicher</span></th><td><span>gemessen: App rund 70 MB, Browser 300–530 MB bei Modellen bis 2 MB; empfohlen 8 GB (abgeleitet). Große Modelle nicht gemessen — der Bedarf wächst mit der Modellgröße.</span></td></tr>
+          </tbody>
+        </table>
+
+        <!-- 93-04 (lever 159): why no data-processing agreement is needed — with the
+             honest exceptions. -->
+        <div class="download__avv">
+          <p class="beleg__titel">Kein Auftragsverarbeitungsvertrag nötig</p>
+          <p>Die lokale Fassung verarbeitet Projekt-, Bauherren- und Personaldaten nur auf Ihrem Rechner — sie liegen in einem Ordner, den Sie selbst verwalten, und erreichen weder mich noch einen anderen Dienst. Wo es keinen Auftragsverarbeiter gibt, braucht es auch keinen Vertrag nach Art. 28 DSGVO. Ausnahmen: die optionale gehostete Fassung und ein KI-Anbieter in der Cloud, den Sie selbst anbinden — dort verarbeitet dieser Dienst Daten, und es braucht eine Vereinbarung mit ihm.</p>
+        </div>
       </div>
 
       <div class="gitter gitter--2">
@@ -1422,6 +1460,18 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
       <p class="fussnote">BIT-Atelier ist freie Software (MIT-Lizenz) und wird ohne Gewährleistung
         bereitgestellt. Die Nutzung erfolgt auf eigene Gefahr; Prüfergebnisse sind Hinweise und
         ersetzen keine fachliche Prüfung.</p>
+
+      <!-- 93-07 (lever 162): continuity — what remains if the developer stops. -->
+      <div class="beleg" id="fortbestand">
+        <p class="beleg__titel">Und wenn der Entwickler morgen aufhört?</p>
+        <ul class="liste">
+          <li>Ihre Daten liegen als lesbares JSON in einem Ordner, der Ihrem Büro gehört; Dokumente und Fotos daneben als gewöhnliche Dateien.</li>
+          <li>Alles Wichtige geht in offenen Formaten hinaus: IFC, BCF, IDS, GAEB, CSV und PDF.</li>
+          <li>Der Quellcode steht unter der MIT-Lizenz — jede und jeder darf ihn weiterführen, anpassen oder abspalten.</li>
+          <li>Alle veröffentlichten Fassungen bleiben auf GitHub zum Herunterladen.</li>
+          <li>Die App läuft offline und ohne einen Server von mir — sie hängt an nichts, das jemand abschalten könnte.</li>
+        </ul>
+      </div>
 
       <div class="beleg">
         <p class="beleg__titel">Optional: Konto für die gehostete Fassung</p>

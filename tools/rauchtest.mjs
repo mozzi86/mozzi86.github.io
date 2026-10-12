@@ -270,6 +270,23 @@ try {
       `${plattform || 'unbekannt'}: System „${r.sys}“, vorne ${r.erster}, ${r.sichtbar} Wege sichtbar, Marke ${r.marke.join() || '—'}${r.mobil ? ', Handy-Hinweis' : ''}`);
     await k.close();
   }
+  // 93-05 requirements table, 93-04 AVV note, 93-07 continuity.
+  {
+    const r = await seite.evaluate(() => {
+      const t = document.querySelector('#herunterladen table.anforderungen');
+      const avv = document.querySelector('#herunterladen .download__avv');
+      const fb = document.getElementById('fortbestand');
+      return { zeilen: t ? t.querySelectorAll('tbody tr').length : 0, tab: t ? t.textContent.replace(/\s+/g, ' ') : '',
+        avv: avv ? avv.textContent.replace(/\s+/g, ' ') : '', fb: fb ? [...fb.querySelectorAll('li')].map((l) => l.textContent) : [],
+        fbImOs: !!fb && !!fb.closest('#open-source') };
+    });
+    ok(r.zeilen === 6 && /gemessen am \d/.test(r.tab) && r.tab.includes('Node.js 22.9 oder neuer') && /nicht gemessen/.test(r.tab),
+      `Systemanforderungen: ${r.zeilen} Zeilen, Messdatum, Node.js 22.9, Grenze „nicht gemessen“ (93-05)`);
+    ok(r.avv.includes('Art. 28 DSGVO') && r.avv.includes('Ausnahmen') && r.avv.includes('gehostete Fassung') && r.avv.includes('KI-Anbieter'),
+      'Kein-AVV-Hinweis mit Ausnahmen (93-04)');
+    ok(r.fbImOs && r.fb.length === 5 && /JSON/.test(r.fb[0]) && /IFC, BCF, IDS, GAEB, CSV und PDF/.test(r.fb[1]) && /MIT/.test(r.fb[2])
+      && /GitHub/.test(r.fb[3]) && /offline/.test(r.fb[4]), 'Fortbestand: fünf Sätze unter #open-source (93-07)');
+  }
   // Copy button for the shell line.
   await seite.click('#dl-kopieren');
   await seite.waitForTimeout(200);
