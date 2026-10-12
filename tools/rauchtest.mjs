@@ -76,6 +76,8 @@ try {
   ok((await text('#finder-ergebnis .finder__danach')).includes('Paket 3'), 'Im Anschluss Paket 3 genannt');
   await seite.click('.finder__frage[data-frage="summe"] button[data-wert="u5"]');
   ok((await paket()).includes('Unterhalb'), 'unter 5 Mio -> Planung');
+  ok(!/10 Mio. € Bausumme/.test(await text('#pakete')) && (await text('#finder-ergebnis')).includes('ab etwa 5 Mio.'),
+    'Schwelle der Pakete = Schwelle des Finders: 5 Mio. (69-35)');
   ok(await seite.locator('#finder-ergebnis a.btn[href="#leistungen"]').count() === 1, 'Link zu #leistungen');
   await seite.click('.finder__frage[data-frage="summe"] button[data-wert="ue30"]');
   await seite.click('.finder__frage[data-frage="phase"] button[data-wert="5"]');

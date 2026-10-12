@@ -119,8 +119,8 @@
 
       'BIM-Leistungspakete': 'BIM service packages',
       'Klarer Umfang. Klares Ergebnis. <em>Klarer Preis.</em>': 'Clear scope. Clear result. <em>Clear price.</em>',
-      'Drei Pakete für Großprojekte ab ca. 10 Mio. € Bausumme — als Festpreis oder monatliches Mandat, bepreist am Projektwert statt nach Stundenzetteln.':
-        'Three packages for major projects from around €10 million construction value — as a fixed price or a monthly retainer, priced on project value rather than timesheets.',
+      'Drei Pakete für Großprojekte ab ca. 5 Mio. € Bausumme — als Festpreis oder monatliches Mandat, bepreist am Projektwert statt nach Stundenzetteln.':
+        'Three packages for major projects from around €5 million construction value — as a fixed price or a monthly retainer, priced on project value rather than timesheets.',
       'Paket 1 · Festpreis': 'Package 1 · Fixed price',
       'BIM-Quick-Check &amp; Setup': 'BIM quick check &amp; setup',
       'ab 8.500 € je Projekt': 'from €8,500 per project',
@@ -391,8 +391,8 @@
       'Paket 2 · Automatisierte Modellprüfung & QS': 'Package 2 · Automated model checking & QA',
       'Paket 3 · BIM-Gesamtkoordination': 'Package 3 · Overall BIM coordination',
       'Unterhalb der Paketgröße — der Weg ist die Planung': 'Below the package range — the route is design',
-      'Die drei Pakete sind für Großprojekte ab etwa 10 Mio. € Bausumme geschnitten. Für Ihr Vorhaben ist der direkte Weg die Planung aus einer Hand: Entwurf, Genehmigung, Ausführung — mit Energiebilanz und Modell von Anfang an.':
-        'The three packages are cut for large projects from about €10 m construction cost. For your project the direct route is design from one hand: concept, approval, construction — with energy balance and model from day one.',
+      'Die drei Pakete sind für Großprojekte ab etwa 5 Mio. € Bausumme geschnitten. Für Ihr Vorhaben ist der direkte Weg die Planung aus einer Hand: Entwurf, Genehmigung, Ausführung — mit Energiebilanz und Modell von Anfang an.':
+        'The three packages are cut for large projects from about €5 m construction cost. For your project the direct route is design from one hand: concept, approval, construction — with energy balance and model from day one.',
       'Ohne Fachmodell beginnt jedes Projekt mit dem Setup: AIA und BAP, Koordinationsumgebung, Namenskonventionen — und der erste Prüflauf, sobald das erste Modell steht.':
         'Without a discipline model every project starts with the setup: EIR and BEP, coordination environment, naming conventions — and the first checking run as soon as the first model exists.',
       'Ein Bestandsmodell oder Scan ist eine Grundlage, noch keine Koordinationsbasis. Der Quick-Check legt fest, was die Fachmodelle liefern müssen, und prüft den Bestand gleich mit.':
@@ -550,8 +550,8 @@
 
       'BIM-Leistungspakete': 'حزم خدمات نمذجة معلومات البناء',
       'Klarer Umfang. Klares Ergebnis. <em>Klarer Preis.</em>': 'نطاقٌ واضح. نتيجةٌ واضحة. <em>وسعرٌ واضح.</em>',
-      'Drei Pakete für Großprojekte ab ca. 10 Mio. € Bausumme — als Festpreis oder monatliches Mandat, bepreist am Projektwert statt nach Stundenzetteln.':
-        'ثلاث حزم للمشاريع الكبيرة بقيمة تنفيذ تبدأ من نحو 10 ملايين يورو — بسعر ثابت أو بعقد شهري، والتسعير على قيمة المشروع لا على ساعات العمل.',
+      'Drei Pakete für Großprojekte ab ca. 5 Mio. € Bausumme — als Festpreis oder monatliches Mandat, bepreist am Projektwert statt nach Stundenzetteln.':
+        'ثلاث حزم للمشاريع الكبيرة بقيمة تنفيذ تبدأ من نحو 5 ملايين يورو — بسعر ثابت أو بعقد شهري، والتسعير على قيمة المشروع لا على ساعات العمل.',
       'Paket 1 · Festpreis': 'الحزمة 1 · سعر ثابت',
       'BIM-Quick-Check &amp; Setup': 'تدقيق سريع وتأسيس للنمذجة',
       'ab 8.500 € je Projekt': 'من 8,500 يورو للمشروع',
@@ -822,8 +822,8 @@
       'Paket 2 · Automatisierte Modellprüfung & QS': 'الحزمة 2 · تدقيق النماذج الآلي وضبط الجودة',
       'Paket 3 · BIM-Gesamtkoordination': 'الحزمة 3 · التنسيق الشامل لـ BIM',
       'Unterhalb der Paketgröße — der Weg ist die Planung': 'أقل من حجم الحزم — الطريق هو التصميم',
-      'Die drei Pakete sind für Großprojekte ab etwa 10 Mio. € Bausumme geschnitten. Für Ihr Vorhaben ist der direkte Weg die Planung aus einer Hand: Entwurf, Genehmigung, Ausführung — mit Energiebilanz und Modell von Anfang an.':
-        'الحزم الثلاث مُصمَّمة للمشاريع الكبرى بتكلفة بناء تبدأ من نحو 10 ملايين يورو. الطريق المباشر لمشروعكم هو التصميم من جهة واحدة: التصميم، الترخيص، التنفيذ — مع ميزان الطاقة والنموذج منذ البداية.',
+      'Die drei Pakete sind für Großprojekte ab etwa 5 Mio. € Bausumme geschnitten. Für Ihr Vorhaben ist der direkte Weg die Planung aus einer Hand: Entwurf, Genehmigung, Ausführung — mit Energiebilanz und Modell von Anfang an.':
+        'الحزم الثلاث مُصمَّمة للمشاريع الكبرى بتكلفة بناء تبدأ من نحو 5 ملايين يورو. الطريق المباشر لمشروعكم هو التصميم من جهة واحدة: التصميم، الترخيص، التنفيذ — مع ميزان الطاقة والنموذج منذ البداية.',
       'Ohne Fachmodell beginnt jedes Projekt mit dem Setup: AIA und BAP, Koordinationsumgebung, Namenskonventionen — und der erste Prüflauf, sobald das erste Modell steht.':
         'من دون نموذج تخصصي يبدأ كل مشروع بالإعداد: متطلبات المعلومات (AIA) وخطة التنفيذ (BAP)، بيئة التنسيق، قواعد التسمية — ثم أول جولة تدقيق حين يتوفر أول نموذج.',
       'Ein Bestandsmodell oder Scan ist eine Grundlage, noch keine Koordinationsbasis. Der Quick-Check legt fest, was die Fachmodelle liefern müssen, und prüft den Bestand gleich mit.':
