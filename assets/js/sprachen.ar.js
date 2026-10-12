@@ -499,4 +499,8 @@
   /* Package finder, answer "scan" (69-35, D-HR-20) */
   'Den Scan selbst erstellt ein Vermessungsbüro — das ist eine Vorleistung Dritter, BIT-Atelier scannt nicht. Ich prüfe das daraus aufgebaute Bestandsmodell und lege im Quick-Check fest, was die Fachmodelle darauf liefern müssen.':
     'يُجري المسح نفسه مكتبُ مساحة — فهذه خدمة مسبقة من طرف ثالث، وBIT-Atelier لا يُجري المسح. أنا أدقِّق نموذج الوضع القائم المبني عليه، وأحدِّد في الفحص السريع ما يجب أن تقدمه النماذج التخصصية بناءً عليه.',
+
+  /* Evidence pack licence (69-34, D-HR-21) */
+  'Beide Dateien stehen unter <a href="https://creativecommons.org/licenses/by/4.0/deed.de" style="color:var(--accent)">CC BY 4.0</a> — frei nutzbar mit Namensnennung „BIT-ATELIER (bit-atelier.de)“. <a href="/downloads/LIESMICH.md" style="color:var(--accent)">Was drin ist</a>.':
+    'يخضع الملفان لترخيص <a href="https://creativecommons.org/licenses/by/4.0/deed.ar" style="color:var(--accent)">CC BY 4.0</a> — استخدام حر مع نسبة العمل إلى „BIT-ATELIER (bit-atelier.de)“. <a href="/downloads/LIESMICH.md" style="color:var(--accent)">ما يحتويه البيان</a> (بالألمانية).',
 };

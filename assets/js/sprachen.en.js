@@ -496,4 +496,8 @@
   /* Package finder, answer "scan" (69-35, D-HR-20) */
   'Den Scan selbst erstellt ein Vermessungsbüro — das ist eine Vorleistung Dritter, BIT-Atelier scannt nicht. Ich prüfe das daraus aufgebaute Bestandsmodell und lege im Quick-Check fest, was die Fachmodelle darauf liefern müssen.':
     'The scan itself is made by a surveying firm — that is a third-party input, BIT-Atelier does not scan. I check the as-built model built from it and, in the quick check, set out what the discipline models have to deliver on top of it.',
+
+  /* Evidence pack licence (69-34, D-HR-21) */
+  'Beide Dateien stehen unter <a href="https://creativecommons.org/licenses/by/4.0/deed.de" style="color:var(--accent)">CC BY 4.0</a> — frei nutzbar mit Namensnennung „BIT-ATELIER (bit-atelier.de)“. <a href="/downloads/LIESMICH.md" style="color:var(--accent)">Was drin ist</a>.':
+    'Both files are licensed under <a href="https://creativecommons.org/licenses/by/4.0/deed.en" style="color:var(--accent)">CC BY 4.0</a> — free to use with the attribution "BIT-ATELIER (bit-atelier.de)". <a href="/downloads/LIESMICH.md" style="color:var(--accent)">What is inside</a> (in German).',
 };

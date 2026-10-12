@@ -313,6 +313,15 @@ try {
     `#referenzen vorhanden, verborgen, nicht verlinkt, ${ref.karten} Karten, kein sichtbarer Platzhalter`);
   ok(!fs.readFileSync(path.join(WURZEL, 'sitemap.xml'), 'utf8').includes('referenzen'), 'Referenzen nicht in der Sitemap');
 
+  console.log('\nBelegpaket: Lizenz + LIESMICH (69-34)');
+  ok(await seite.locator('#befund-beispiel a[href^="https://creativecommons.org/licenses/by/4.0/"]').count() === 1
+    && await seite.locator('#befund-beispiel a[href="/downloads/LIESMICH.md"]').count() === 1, 'CC-BY-4.0-Zeile und LIESMICH-Link am Musterbefund');
+  {
+    const r = await seite.request.get(B + 'downloads/LIESMICH.md');
+    const t = r.ok() ? await r.text() : '';
+    ok(r.ok() && t.includes('CC BY 4.0') && t.includes('BCF 2.1') && t.includes('IFC4'), 'downloads/LIESMICH.md erreichbar, nennt Lizenz und Formate');
+  }
+
   console.log('\nWörterbuch pro Sprache, nachgeladen (69-17)');
   for (const [pfad, erwartet] of [['?lang=de', []], ['en/', ['en']], ['ar/', ['ar']], ['?lang=en', ['en']]]) {
     const p = await browser.newPage({ viewport: { width: 1400, height: 900 } });
