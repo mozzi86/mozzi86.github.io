@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<meta name="color-scheme" content="dark">
+<!-- Only own resources: no fonts, scripts or images from elsewhere. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
+<meta name="theme-color" content="#0c1117">
+<title>Seite nicht gefunden — BIT-ATELIER</title>
+<link rel="icon" type="image/svg+xml" href="/assets/img/favicon.svg">
+<!-- 69-17 (register no. 21), taken by hand from branch kleinkram-404-schriften
+     and adapted to the open-source site: there is no online demo any more.
+     The host serves this file for every unknown path, so all URLs are absolute
+     (the page can appear under /en/..., /ar/... or an old demo path). Language
+     comes from location.pathname; no tracking, no external requests. Colours
+     and fonts mirror index.html :root. -->
+<style>
+@font-face{font-family:Montserrat;font-weight:300;font-display:swap;src:url(/assets/fonts/montserrat-300-normal-latin.woff2) format("woff2")}
+@font-face{font-family:"Space Grotesk";font-weight:700;font-display:swap;src:url(/assets/fonts/spacegrotesk-700-normal-latin.woff2) format("woff2")}
+@font-face{font-family:"IBM Plex Mono";font-weight:400;font-display:swap;src:url(/assets/fonts/ibmplexmono-400-normal-latin.woff2) format("woff2")}
+@font-face{font-family:"IBM Plex Sans Arabic";font-weight:400;font-display:swap;src:url(/assets/fonts/ibmplexsansarabic-400-normal-arabic.woff2) format("woff2")}
+:root{--bg:#0c1117;--bg-raise:#111a22;--ink:#f2f6f8;--ink-dim:#c9d6de;--muted:#7d8b9c;--accent:#2dd4bf;--linie:rgba(242,246,248,.14)}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;display:grid;place-items:center;background:var(--bg);color:var(--ink);
+  font:300 17px/1.6 Montserrat,"Segoe UI",system-ui,sans-serif;padding:24px}
+[dir=rtl] body{font-family:"IBM Plex Sans Arabic",Montserrat,system-ui,sans-serif}
+main{max-width:34rem;width:100%}
+.code{font:400 .75rem/1 "IBM Plex Mono",ui-monospace,monospace;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin:0 0 1rem}
+h1{font:700 clamp(1.9rem,6vw,2.6rem)/1.1 "Space Grotesk",Montserrat,sans-serif;letter-spacing:-.02em;margin:0 0 1rem}
+p{color:var(--ink-dim);margin:0 0 1.6rem}
+.pfad{font-family:"IBM Plex Mono",monospace;font-size:.85rem;color:var(--muted);overflow-wrap:anywhere}
+/* Paths and anchors are LTR text — isolate them, or the Arabic page mirrors them. */
+.pfad,nav a span{direction:ltr;unicode-bidi:isolate}
+nav ul{list-style:none;margin:0;padding:0;border-top:1px solid var(--linie)}
+nav li{border-bottom:1px solid var(--linie)}
+nav a{display:flex;justify-content:space-between;gap:1rem;padding:.85rem .2rem;color:var(--ink);text-decoration:none}
+nav a:hover{color:var(--accent)}
+nav a span{color:var(--muted);font-family:"IBM Plex Mono",monospace;font-size:.8rem}
+a.haupt{display:inline-block;margin:0 0 1.8rem;padding:.7rem 1.2rem;border-radius:3px;background:var(--accent);color:#04231f;font-weight:600;text-decoration:none}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+</style>
+</head>
+<body>
+<main>
+  <p class="code">404</p>
+  <h1 id="t-titel">Diese Seite gibt es nicht.</h1>
+  <p id="t-text">Die Adresse <span class="pfad" id="pfad"></span> führt ins Leere — vielleicht ein alter Link oder ein Tippfehler.</p>
+  <a class="haupt" id="t-haupt" href="/">Zur Startseite</a>
+  <nav aria-label="Sprungmarken">
+    <ul id="marken">
+      <li><a href="/#leistungen"><b id="m1">Leistungen</b><span>#leistungen</span></a></li>
+      <li><a href="/#werkzeuge"><b id="m2">Werkzeuge</b><span>#werkzeuge</span></a></li>
+      <li><a href="/#herunterladen"><b id="m3">Open Source · Herunterladen</b><span>#herunterladen</span></a></li>
+      <li><a href="/#kontakt"><b id="m4">Kontakt</b><span>#kontakt</span></a></li>
+    </ul>
+  </nav>
+</main>
+<script>
+// Pick language and targets from the requested path. Plain text nodes only (no innerHTML).
+(function () {
+  var p = location.pathname;
+  document.getElementById("pfad").textContent = p;
+  var L = /^\/en(\/|$)/.test(p) ? "en" : /^\/ar(\/|$)/.test(p) ? "ar" : "de";
+  var T = {
+    de: { base: "/", altDemo: "Die Online-Demo gibt es nicht mehr — BIT-Atelier ist jetzt Open Source und läuft lokal auf Ihrem Rechner.",
+          zumDownload: "Zum Download" },
+    en: { titel: "This page does not exist.", vor: "The address ", nach: " leads nowhere — maybe an old link or a typo.",
+          haupt: "To the home page", m: ["Services", "Tools", "Open source · Download", "Contact"], base: "/en/", nav: "Quick links",
+          altDemo: "The online demo no longer exists — BIT-Atelier is now open source and runs locally on your computer.",
+          zumDownload: "Go to download" },
+    ar: { titel: "هذه الصفحة غير موجودة.", vor: "العنوان ", nach: " لا يؤدي إلى أي مكان — ربما رابط قديم أو خطأ في الكتابة.",
+          haupt: "إلى الصفحة الرئيسية", m: ["الخدمات", "الأدوات", "المصدر المفتوح · التنزيل", "تواصل"], base: "/ar/", nav: "روابط سريعة",
+          altDemo: "لم يعد العرض التجريبي عبر الإنترنت متاحاً — أصبح BIT-Atelier مفتوح المصدر ويعمل محلياً على حاسوبك.",
+          zumDownload: "إلى التنزيل" }
+  };
+  var t = T[L];
+  if (L !== "de") {
+    document.documentElement.lang = L;
+    if (L === "ar") document.documentElement.dir = "rtl";
+    document.title = t.titel + " — BIT-ATELIER";
+    document.getElementById("t-titel").textContent = t.titel;
+    var text = document.getElementById("t-text"), span = document.getElementById("pfad");
+    text.textContent = "";
+    text.append(t.vor, span, t.nach);
+    var h = document.getElementById("t-haupt");
+    h.textContent = t.haupt; h.href = t.base;
+    ["m1", "m2", "m3", "m4"].forEach(function (id, i) { document.getElementById(id).textContent = t.m[i]; });
+    var ziele = ["#leistungen", "#werkzeuge", "#herunterladen", "#kontakt"];
+    document.querySelectorAll("#marken a").forEach(function (a, i) { a.href = t.base + ziele[i]; });
+    document.querySelector("main nav").setAttribute("aria-label", t.nav);
+  }
+  // An old demo link (the demo lived under /demo/ until 83-05) most likely wanted
+  // the software itself: say so and lead straight to the download.
+  if (/^\/(?:en\/|ar\/)?demo(\/|$)/.test(p)) {
+    var hinweis = document.createElement("p");
+    hinweis.id = "t-demo";
+    hinweis.textContent = t.altDemo;
+    document.getElementById("t-text").after(hinweis);
+    var d = document.getElementById("t-haupt");
+    d.href = t.base + "#herunterladen";
+    d.textContent = t.zumDownload;
+  }
+})();
+</script>
+</body>
+</html>

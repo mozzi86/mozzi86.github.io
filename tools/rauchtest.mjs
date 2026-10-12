@@ -48,7 +48,14 @@ const server = http.createServer((req, res) => {
   if (roh.endsWith('/')) p = path.join(p, 'index.html');
   if (!path.resolve(p).startsWith(WURZEL)) { res.writeHead(403).end(); return; }
   fs.readFile(p, (e, d) => {
-    if (e) { res.writeHead(404).end(); return; }
+    if (e) {
+      // Like the host: unknown paths get 404.html with status 404 (69-17).
+      fs.readFile(path.join(WURZEL, '404.html'), (e2, d2) => {
+        if (e2) { res.writeHead(404).end(); return; }
+        res.writeHead(404, { 'Content-Type': TYPEN['.html'] }).end(d2);
+      });
+      return;
+    }
     res.writeHead(200, { 'Content-Type': TYPEN[path.extname(p)] || 'application/octet-stream' });
     res.end(d);
   });
@@ -305,6 +312,43 @@ try {
     ok(meldungen.length === 0, `${name}: keine Konsolenfehler` + (meldungen.length ? '\n    ' + meldungen.join('\n    ') : ''));
     await p.close();
   }
+
+  console.log('\n404-Seite und Schriften (69-17)');
+  for (const [pfad, lang, start, haupt] of [
+    ['gibt-es-nicht', 'de', '/', '/'], ['en/gibt-es-nicht', 'en', '/en/', '/en/'], ['ar/x/y', 'ar', '/ar/', '/ar/'],
+    ['demo/', 'de', '/', '/#herunterladen'], ['demo/EnergyAnalysis', 'de', '/', '/#herunterladen'], ['en/demo/', 'en', '/en/', '/en/#herunterladen'],
+  ]) {
+    const p = await browser.newPage({ viewport: { width: 1000, height: 800 } });
+    const meldungen = [];
+    p.on('pageerror', (f) => meldungen.push(f.message));
+    p.on('console', (m) => { if (m.type() === 'error' && !/404/.test(m.text())) meldungen.push(m.text()); });
+    const fehlgeschlagen = [];
+    p.on('response', (r) => { if (r.status() >= 400 && r.url() !== B + pfad) fehlgeschlagen.push(r.url()); });
+    const antwort = await p.goto(B + pfad, { waitUntil: 'networkidle' });
+    const r = await p.evaluate(() => ({
+      lang: document.documentElement.lang, dir: document.documentElement.dir,
+      haupt: document.getElementById('t-haupt').getAttribute('href'),
+      links: [...document.querySelectorAll('#marken a')].map((a) => a.getAttribute('href')),
+      demoHinweis: !!document.getElementById('t-demo'),
+      fonts: [...document.fonts].filter((f) => f.status === 'error').length,
+    }));
+    ok(antwort.status() === 404 && r.lang === lang && (lang !== 'ar' || r.dir === 'rtl') && r.haupt === haupt
+      && r.links.every((h) => h.startsWith(start + '#')) && !r.links.some((h) => /demo/.test(h))
+      && r.demoHinweis === /demo/.test(pfad) && meldungen.length === 0 && fehlgeschlagen.length === 0 && r.fonts === 0,
+      `/${pfad}: 404, lang=${lang}, Hauptknopf ${r.haupt}${r.demoHinweis ? ', Hinweis „keine Demo mehr“' : ''}`
+      + (meldungen.length || fehlgeschlagen.length ? ' — ' + [...meldungen, ...fehlgeschlagen].join(', ') : ''));
+    if (pfad === 'ar/x/y' || pfad === 'demo/') await p.screenshot({ path: path.join(AUS, `404-${pfad.replace(/\W+/g, '-')}.png`) });
+    await p.close();
+  }
+  // Every font file named in a delivered page or stylesheet exists (fonts were thinned out in 69-17).
+  const fehlendeSchriften = [];
+  for (const datei of ['index.html', 'en/index.html', 'ar/index.html', '404.html', 'assets/css/fonts.css']) {
+    for (const [, n] of fs.readFileSync(path.join(WURZEL, datei), 'utf8').matchAll(/fonts\/([\w.-]+\.woff2)/g)) {
+      if (!fs.existsSync(path.join(WURZEL, 'assets/fonts', n))) fehlendeSchriften.push(`${datei}: ${n}`);
+    }
+  }
+  ok(fehlendeSchriften.length === 0, 'alle referenzierten Schriftdateien vorhanden' + (fehlendeSchriften.length ? ' — ' + fehlendeSchriften.join(', ') : ''));
+  ok(!fs.existsSync(path.join(WURZEL, 'assets/fontawesome')), 'Font Awesome entfernt (0 Referenzen)');
 
   console.log('\nMobil (390 px)');
   const handy = await browser.newPage({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 2, isMobile: true });
