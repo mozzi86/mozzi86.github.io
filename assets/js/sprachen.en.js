@@ -384,8 +384,6 @@
     'The three packages are cut for large projects from about €5 m construction cost. For your project the direct route is design from one hand: concept, approval, construction — with energy balance and model from day one.',
   'Ohne Fachmodell beginnt jedes Projekt mit dem Setup: AIA und BAP, Koordinationsumgebung, Namenskonventionen — und der erste Prüflauf, sobald das erste Modell steht.':
     'Without a discipline model every project starts with the setup: EIR and BEP, coordination environment, naming conventions — and the first checking run as soon as the first model exists.',
-  'Ein Bestandsmodell oder Scan ist eine Grundlage, noch keine Koordinationsbasis. Der Quick-Check legt fest, was die Fachmodelle liefern müssen, und prüft den Bestand gleich mit.':
-    'An as-built model or scan is a basis, not yet a coordination baseline. The quick check defines what the discipline models must deliver and checks the existing model on the way.',
   'In Vorplanung und Entwurf entscheidet sich, ob das Projekt später prüffähig ist. Der Quick-Check schafft die Grundlage in 2–4 Wochen; über die Planungsphasen hinweg hält dann das Mandat die Fachmodelle zusammen.':
     'Concept and developed design decide whether the project can be checked later. The quick check lays that foundation in 2–4 weeks; across the design stages the retainer then keeps the discipline models together.',
   'Bei 5–10 Mio. € ist der Quick-Check die passende Einstiegsgröße. Ein laufendes Mandat lohnt sich hier meist erst, wenn drei Fachmodelle koordiniert werden müssen.':
@@ -494,4 +492,8 @@
     'Selected projects.',
   'Wo ein Bauherr nicht genannt werden darf, ist das Projekt anonymisiert — Bauaufgabe, Rolle und Ergebnis stimmen trotzdem.':
     'Where a client may not be named, the project is anonymised — the building task, my role and the result are still accurate.',
+
+  /* Package finder, answer "scan" (69-35, D-HR-20) */
+  'Den Scan selbst erstellt ein Vermessungsbüro — das ist eine Vorleistung Dritter, BIT-Atelier scannt nicht. Ich prüfe das daraus aufgebaute Bestandsmodell und lege im Quick-Check fest, was die Fachmodelle darauf liefern müssen.':
+    'The scan itself is made by a surveying firm — that is a third-party input, BIT-Atelier does not scan. I check the as-built model built from it and, in the quick check, set out what the discipline models have to deliver on top of it.',
 };

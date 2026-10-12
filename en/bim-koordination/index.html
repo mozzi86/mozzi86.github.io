@@ -1295,7 +1295,8 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
                 paket: 1,
                 grund: w.modelle === 'keine'
                     ? 'Ohne Fachmodell beginnt jedes Projekt mit dem Setup: AIA und BAP, Koordinationsumgebung, Namenskonventionen — und der erste Prüflauf, sobald das erste Modell steht.'
-                    : 'Ein Bestandsmodell oder Scan ist eine Grundlage, noch keine Koordinationsbasis. Der Quick-Check legt fest, was die Fachmodelle liefern müssen, und prüft den Bestand gleich mit.',
+                    : /* 69-35 (D-HR-20): the scan is a third-party input; BIT-Atelier checks the model */
+                    'Den Scan selbst erstellt ein Vermessungsbüro — das ist eine Vorleistung Dritter, BIT-Atelier scannt nicht. Ich prüfe das daraus aufgebaute Bestandsmodell und lege im Quick-Check fest, was die Fachmodelle darauf liefern müssen.',
                 danach: gross ? 3 : null,
             };
             if (w.phase === '2' || w.phase === '3') return {

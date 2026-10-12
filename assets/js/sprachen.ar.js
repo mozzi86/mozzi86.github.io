@@ -387,8 +387,6 @@
     'الحزم الثلاث مُصمَّمة للمشاريع الكبرى بتكلفة بناء تبدأ من نحو 5 ملايين يورو. الطريق المباشر لمشروعكم هو التصميم من جهة واحدة: التصميم، الترخيص، التنفيذ — مع ميزان الطاقة والنموذج منذ البداية.',
   'Ohne Fachmodell beginnt jedes Projekt mit dem Setup: AIA und BAP, Koordinationsumgebung, Namenskonventionen — und der erste Prüflauf, sobald das erste Modell steht.':
     'من دون نموذج تخصصي يبدأ كل مشروع بالإعداد: متطلبات المعلومات (AIA) وخطة التنفيذ (BAP)، بيئة التنسيق، قواعد التسمية — ثم أول جولة تدقيق حين يتوفر أول نموذج.',
-  'Ein Bestandsmodell oder Scan ist eine Grundlage, noch keine Koordinationsbasis. Der Quick-Check legt fest, was die Fachmodelle liefern müssen, und prüft den Bestand gleich mit.':
-    'نموذج الوضع القائم أو المسح أساسٌ، لكنه ليس قاعدة تنسيق بعد. يحدد الفحص السريع ما يجب أن تقدمه النماذج التخصصية ويدقق الوضع القائم في الوقت نفسه.',
   'In Vorplanung und Entwurf entscheidet sich, ob das Projekt später prüffähig ist. Der Quick-Check schafft die Grundlage in 2–4 Wochen; über die Planungsphasen hinweg hält dann das Mandat die Fachmodelle zusammen.':
     'في التصميم الأولي والتطويري يتحدد ما إذا كان المشروع قابلاً للتدقيق لاحقاً. يضع الفحص السريع الأساس خلال 2–4 أسابيع؛ وعبر مراحل التصميم يحفظ التكليف الشهري تماسك النماذج التخصصية.',
   'Bei 5–10 Mio. € ist der Quick-Check die passende Einstiegsgröße. Ein laufendes Mandat lohnt sich hier meist erst, wenn drei Fachmodelle koordiniert werden müssen.':
@@ -497,4 +495,8 @@
     'مشاريع مختارة.',
   'Wo ein Bauherr nicht genannt werden darf, ist das Projekt anonymisiert — Bauaufgabe, Rolle und Ergebnis stimmen trotzdem.':
     'حيث لا يجوز ذكر اسم المالك، يُعرض المشروع دون أسماء — ومع ذلك تبقى مهمة البناء والدور والنتيجة صحيحة.',
+
+  /* Package finder, answer "scan" (69-35, D-HR-20) */
+  'Den Scan selbst erstellt ein Vermessungsbüro — das ist eine Vorleistung Dritter, BIT-Atelier scannt nicht. Ich prüfe das daraus aufgebaute Bestandsmodell und lege im Quick-Check fest, was die Fachmodelle darauf liefern müssen.':
+    'يُجري المسح نفسه مكتبُ مساحة — فهذه خدمة مسبقة من طرف ثالث، وBIT-Atelier لا يُجري المسح. أنا أدقِّق نموذج الوضع القائم المبني عليه، وأحدِّد في الفحص السريع ما يجب أن تقدمه النماذج التخصصية بناءً عليه.',
 };
