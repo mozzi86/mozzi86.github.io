@@ -486,4 +486,12 @@
     'Open in the browser',
   'Browser':
     'Browser',
+
+  /* References section (69-09) — hidden until the owner supplies projects */
+  'Referenzen':
+    'References',
+  'Ausgewählte Projekte.':
+    'Selected projects.',
+  'Wo ein Bauherr nicht genannt werden darf, ist das Projekt anonymisiert — Bauaufgabe, Rolle und Ergebnis stimmen trotzdem.':
+    'Where a client may not be named, the project is anonymised — the building task, my role and the result are still accurate.',
 };

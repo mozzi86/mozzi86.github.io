@@ -489,4 +489,12 @@
     'افتحه في المتصفح',
   'Browser':
     'المتصفح',
+
+  /* References section (69-09) — hidden until the owner supplies projects */
+  'Referenzen':
+    'مراجع',
+  'Ausgewählte Projekte.':
+    'مشاريع مختارة.',
+  'Wo ein Bauherr nicht genannt werden darf, ist das Projekt anonymisiert — Bauaufgabe, Rolle und Ergebnis stimmen trotzdem.':
+    'حيث لا يجوز ذكر اسم المالك، يُعرض المشروع دون أسماء — ومع ذلك تبقى مهمة البناء والدور والنتيجة صحيحة.',
 };

@@ -296,6 +296,18 @@ try {
   await seite.evaluate(() => window.bitSprache.setze('de'));
   await seite.locator('#ihr-modell').screenshot({ path: path.join(AUS, 'versprechen-desktop.png') });
 
+  console.log('\nReferenzen (69-09): Gerüst, verborgen bis Inhalte kommen');
+  const ref = await seite.evaluate(() => {
+    const r = document.getElementById('referenzen');
+    return { da: !!r, versteckt: !!r && getComputedStyle(r).display === 'none',
+      verlinkt: document.querySelectorAll('a[href="#referenzen"], a[href$="/#referenzen"]').length,
+      karten: r ? r.querySelectorAll('article').length : -1,
+      klammern: r ? /\[[^\]]+\]/.test(r.textContent) : true };
+  });
+  ok(ref.da && ref.versteckt && ref.verlinkt === 0 && ref.karten === 0 && !ref.klammern,
+    `#referenzen vorhanden, verborgen, nicht verlinkt, ${ref.karten} Karten, kein sichtbarer Platzhalter`);
+  ok(!fs.readFileSync(path.join(WURZEL, 'sitemap.xml'), 'utf8').includes('referenzen'), 'Referenzen nicht in der Sitemap');
+
   console.log('\nWörterbuch pro Sprache, nachgeladen (69-17)');
   for (const [pfad, erwartet] of [['?lang=de', []], ['en/', ['en']], ['ar/', ['ar']], ['?lang=en', ['en']]]) {
     const p = await browser.newPage({ viewport: { width: 1400, height: 900 } });
@@ -312,7 +324,7 @@ try {
   }
   for (const k of ['en', 'ar']) {
     const roh = fs.readFileSync(path.join(WURZEL, k, 'index.html'), 'utf8');
-    ok(!/data-nachgeladen|sprachen\.(en|ar)\.js/.test(roh), `${k}/index.html: kein eingefrorenes Nachlade-Skript`);
+    ok(!/<script[^>]*(?:data-nachgeladen|sprachen\.(?:en|ar)\.js)/.test(roh), `${k}/index.html: kein eingefrorenes Nachlade-Skript`);
   }
   const kern = fs.statSync(path.join(WURZEL, 'assets/js/sprachen.js')).size;
   ok(kern < 20000, `sprachen.js ohne Wörterbuch: ${kern} B`);

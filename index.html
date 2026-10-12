@@ -1173,6 +1173,48 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
     </div>
   </section>
 
+  <!-- ==================== REFERENZEN (69-09) — VERBORGEN ====================
+       Structure only. The real projects come from the owner (plan 69-09,
+       checkpoint "Inhalte vom Nutzer"); until then this section stays hidden
+       (class "verborgen") and is linked from NOWHERE (no nav anchor, no sitemap).
+       NO project, client or person names may be invented here, and nothing
+       confidential (NDA) may be entered without the client's consent — where a
+       client may not be named, describe the building task neutrally.
+
+       To publish: fill 4-6 cards from the template below, remove "verborgen",
+       add the nav anchor "Referenzen" after "Pakete" (header + mobile menu),
+       add EN/AR texts to assets/js/sprachen.en.js / .ar.js, then run
+       node tools/unterseiten-erzeugen.mjs and node tools/rauchtest.mjs.
+
+       Card template (one <article> per project; every field is required):
+         <article class="karte referenz">
+           <p class="karte__nr">[Jahr] · [Leistungsphasen, z. B. LPH 1–8]</p>
+           <h3>[Bauaufgabe, neutral beschrieben]</h3>
+           <ul class="liste">
+             <li>Rolle: [eigene Rolle im Projekt]</li>
+             <li>Umfang: [Modellgröße in Bauteilen oder Baukostenklasse]</li>
+             <li>Ergebnis: [messbar, z. B. gefundene Kollisionen, Termintreue]</li>
+           </ul>
+         </article>
+
+       Structured data (not added yet — an empty list would be invented markup):
+       one separate JSON-LD block of @type "ItemList" whose itemListElement are
+       {"@type": "CreativeWork", "name": <same title as the card>, "about":
+       <building task>, "dateCreated": <year>, "creator": {"@id":
+       "https://bit-atelier.de/#person"}} — exactly one per card. -->
+  <section class="abschnitt verborgen" id="referenzen" aria-label="Referenzen">
+    <div class="mitte">
+      <div class="kopfzeile">
+        <p class="auge">Referenzen</p>
+        <h2>Ausgewählte Projekte.</h2>
+        <p class="unter">Wo ein Bauherr nicht genannt werden darf, ist das Projekt anonymisiert — Bauaufgabe, Rolle und Ergebnis stimmen trotzdem.</p>
+      </div>
+      <div class="gitter gitter--2" id="referenzen-karten">
+        <!-- cards go here (template above) -->
+      </div>
+    </div>
+  </section>
+
   <!-- ==================== WERKZEUGE ==================== -->
   <section class="abschnitt" id="werkzeuge">
     <div class="mitte">
