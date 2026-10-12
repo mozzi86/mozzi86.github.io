@@ -180,8 +180,6 @@
   'Musterprüfbericht (PDF)': 'تقرير تدقيق نموذجي (PDF)',
   'Befunde als BCF': 'الملاحظات بصيغة BCF',
   'BIT-Atelier herunterladen': 'تنزيل BIT-Atelier',
-  'BIT-Atelier ist Open Source (MIT-Lizenz) und läuft lokal auf Ihrem Rechner — ohne Konto und ohne Lizenzkosten. <a href="#open-source" style="color:var(--accent)">Zum Download</a>.':
-    'BIT-Atelier مفتوح المصدر (رخصة MIT) ويعمل محلياً على حاسوبك — دون حساب ودون رسوم ترخيص. <a href="#open-source" style="color:var(--accent)">إلى التنزيل</a>.',
 
   /* Open Source (#open-source, 83-05) */
   'Open Source · MIT-Lizenz': 'مفتوح المصدر · رخصة MIT',
@@ -434,5 +432,23 @@
   'Erstgespräch BIT-ATELIER — ': 'محادثة أولى BIT-ATELIER — ',
   'Kopiert ✓': 'تم النسخ ✓',
   'Bitte den Text oben markieren und kopieren': 'يُرجى تحديد النص أعلاه ونسخه',
-  'An': 'إلى'
+  'An': 'إلى',
+
+  /* Promise block in #werkzeuge (69-03) */
+  'Ihr Modell, Ihr Befund':
+    'نموذجكم، نتائجكم',
+  'Bei der Modellprüfung verlässt nichts Ihren Rechner.':
+    'أثناء تدقيق النموذج لا يغادر شيءٌ حاسوبكم.',
+  'IFC in BIT-Atelier laden, Prüfung starten — heraus kommen Prüfbericht (PDF), Befundliste (CSV/Excel) und BCF für die Fachplaner. Kein Upload, kein Konto, keine Cloud: gelesen, geprüft und gespeichert wird auf Ihrem Gerät.':
+    'حمِّلوا ملف IFC في BIT-Atelier وابدؤوا التدقيق — فتحصلون على تقرير تدقيق (PDF) وقائمة ملاحظات (CSV/Excel) وملف BCF للمصممين. لا رفع للملفات، ولا حساب، ولا سحابة: القراءة والتدقيق والحفظ كلها على جهازكم.',
+  'Prüfen Sie es selbst: Trennen Sie die Netzverbindung — die Prüfung läuft weiter.':
+    'تحقَّقوا بأنفسكم: افصلوا الاتصال بالشبكة — ويستمر التدقيق.',
+  'Gemessen am 12.10.2026 mit Fassung 1.1.0 auf einem Desktop-Rechner (Intel Core i9-10850K, 64 GB, Chromium 148): Musterprojekt (9 Bauteile, 15 kB) in unter 0,2 s eingelesen und unter 0,15 s geprüft; ein 2-MB-Export aus ArchiCAD (39 Bauteile) in unter 0,5 s eingelesen und unter 0,15 s geprüft — mit und ohne Netz gleich, keine einzige Anfrage nach außen.':
+    'قيس في 12.10.2026 بالإصدار 1.1.0 على حاسوب مكتبي (Intel Core i9-10850K، 64 GB، Chromium 148): المشروع النموذجي (9 عناصر، 15 kB) قُرئ في أقل من 0.2 ث ودُقِّق في أقل من 0.15 ث؛ وملف مُصدَّر من ArchiCAD بحجم 2 MB (39 عنصراً) قُرئ في أقل من 0.5 ث ودُقِّق في أقل من 0.15 ث — بالنتيجة نفسها مع الشبكة ودونها، ودون أي طلب إلى الخارج.',
+  'Die Grenze: Größere Modelle sind noch nicht gemessen, andere Browser auch nicht. Geprüft wird im Browserfenster — Rechner und Arbeitsspeicher bestimmen, wie weit es trägt. Ins Netz geht die App nur für die Update-Prüfung bei GitHub (abschaltbar) und für KI-Funktionen, wenn Sie einen Anbieter einrichten.':
+    'الحدود: لم تُقَس بعد نماذج أكبر، ولا متصفحات أخرى. يجري التدقيق في نافذة المتصفح — والحاسوب وذاكرته يحددان مداه. ولا يتصل التطبيق بالشبكة إلا لفحص التحديثات عبر GitHub (قابل للإيقاف) ولوظائف الذكاء الاصطناعي إن أعددتم مزوِّداً.',
+  'Herunterladen und eigenes Modell prüfen':
+    'نزِّلوا البرنامج ودقِّقوا نموذجكم',
+  'So sieht der Befund aus':
+    'هكذا تبدو النتائج',
 };

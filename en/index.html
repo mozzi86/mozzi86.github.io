@@ -178,6 +178,16 @@
 .beleg__unter{color:var(--muted);font-size:.88rem;margin:0 0 .9rem}
 .beleg__links{display:flex;gap:.6rem;flex-wrap:wrap}
 
+/* --- Promise block in #werkzeuge (69-03) ---------------------------------- */
+.versprechen{margin-top:2.4rem;border:1px solid var(--accent);padding:clamp(1.4rem,2.6vw,2.1rem);
+  background:rgba(45,212,191,.04)}
+.versprechen h3{margin:0 0 .8rem;font-size:clamp(1.35rem,2.4vw,1.8rem)}
+.versprechen p{color:var(--ink-dim);font-weight:300;max-width:72ch;margin:0 0 .9rem}
+.versprechen .auge{color:var(--accent)}
+.versprechen__nachweis{color:var(--ink)!important;font-weight:600!important}
+.versprechen__grenze{font-size:.88rem;color:var(--muted)!important}
+.versprechen .beleg__links{margin-top:1.2rem}
+
 /* --- Download (92-09): one block, the detected system first ---------------
    Without script (or on an unknown system) all three ways stand side by side;
    data-system only reorders and marks, it never hides a way. */
@@ -1112,6 +1122,26 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
         <p class="unter">For you that means checking rules tailored precisely to your project, no licence costs passed on through the fee — and no dependence on third-party software subscriptions.</p>
       </div>
 
+      <!-- 69-03: the strongest checkable promise up front, with a proof sentence
+           and an honest limit. Numbers MEASURED 12.10.2026 against release 1.1.0
+           (installed copy, own data folder, port 4192), Playwright/Chromium 148,
+           Intel Core i9-10850K, 64 GB; 5 runs each, worst value rounded up;
+           foreign hosts blocked and counted (0), second series with the network
+           cut after loading the model (same result, no errors). Details:
+           69-03-SUMMARY.md in the app repo. Re-measure before changing the numbers. -->
+      <div class="versprechen" id="ihr-modell">
+        <p class="auge">Your model, your findings</p>
+        <h3>Nothing leaves your computer while your model is checked.</h3>
+        <p>Load your IFC into BIT-Atelier, start the check — out come a check report (PDF), a findings list (CSV/Excel) and BCF for the consultants. No upload, no account, no cloud: reading, checking and saving all happen on your device.</p>
+        <p class="versprechen__nachweis">Check it yourself: disconnect from the network — the check keeps running.</p>
+        <p class="versprechen__grenze">Measured on 12 Oct 2026 with version 1.1.0 on a desktop computer (Intel Core i9-10850K, 64 GB, Chromium 148): sample project (9 elements, 15 kB) read in under 0.2 s and checked in under 0.15 s; a 2 MB export from ArchiCAD (39 elements) read in under 0.5 s and checked in under 0.15 s — the same with and without network, not a single request leaving the machine.</p>
+        <p class="versprechen__grenze">The limit: larger models have not been measured yet, nor other browsers. The check runs in the browser window — your computer and its memory decide how far it goes. The app only goes online for the update check at GitHub (can be switched off) and for AI features, if you set up a provider.</p>
+        <div class="beleg__links">
+          <a class="btn btn--klein" href="#herunterladen">Download and check your own model</a>
+          <a class="btn btn--geist btn--klein" href="#befund-beispiel">What the findings look like</a>
+        </div>
+      </div>
+
       <div class="gitter gitter--2" style="margin-top:2.4rem">
         <article class="karte"><h3>IFC import</h3><p>Storeys, components, properties, classification — straight from the openBIM format</p></article>
         <article class="karte"><h3>Clash detection</h3><p>Rule matrix per discipline pair, tolerances, duplicate detection</p></article>
@@ -1131,7 +1161,7 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
         <figcaption>A checking run on the bundled sample project, checked directly in the browser — hard clashes found, information requirements verified via IDS, findings returned to the specialist designers as BCF. You can run the same check yourself with the open-source version on your own computer.</figcaption>
       </figure>
 
-      <div class="beleg">
+      <div class="beleg" id="befund-beispiel">
         <p class="beleg__titel">This is what your findings look like.</p>
         <p class="beleg__unter">Check report and findings list from a run on a bundled sample project — synthetic, no project data. You can trigger the same run yourself in the open-source version with one click; the BCF opens in any common coordination software.</p>
         <div class="beleg__links">
@@ -1150,7 +1180,6 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
         <li>IFC / openBIM</li><li>buildingSMART IDS</li><li>BCF</li>
         <li>Energy simulation</li><li>Tendering &amp; cost planning</li><li>Python automation</li>
       </ul>
-      <p class="fussnote">BIT-Atelier is open source (MIT licence) and runs locally on your computer — no account, no licence fees. <a href="#open-source" style="color:var(--accent)">Go to download</a>.</p>
     </div>
   </section>
 

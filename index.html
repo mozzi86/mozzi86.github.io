@@ -179,6 +179,16 @@
 .beleg__unter{color:var(--muted);font-size:.88rem;margin:0 0 .9rem}
 .beleg__links{display:flex;gap:.6rem;flex-wrap:wrap}
 
+/* --- Promise block in #werkzeuge (69-03) ---------------------------------- */
+.versprechen{margin-top:2.4rem;border:1px solid var(--accent);padding:clamp(1.4rem,2.6vw,2.1rem);
+  background:rgba(45,212,191,.04)}
+.versprechen h3{margin:0 0 .8rem;font-size:clamp(1.35rem,2.4vw,1.8rem)}
+.versprechen p{color:var(--ink-dim);font-weight:300;max-width:72ch;margin:0 0 .9rem}
+.versprechen .auge{color:var(--accent)}
+.versprechen__nachweis{color:var(--ink)!important;font-weight:600!important}
+.versprechen__grenze{font-size:.88rem;color:var(--muted)!important}
+.versprechen .beleg__links{margin-top:1.2rem}
+
 /* --- Download (92-09): one block, the detected system first ---------------
    Without script (or on an unknown system) all three ways stand side by side;
    data-system only reorders and marks, it never hides a way. */
@@ -1171,6 +1181,26 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
           Abhängigkeit von Software-Abos Dritter.</p>
       </div>
 
+      <!-- 69-03: the strongest checkable promise up front, with a proof sentence
+           and an honest limit. Numbers MEASURED 12.10.2026 against release 1.1.0
+           (installed copy, own data folder, port 4192), Playwright/Chromium 148,
+           Intel Core i9-10850K, 64 GB; 5 runs each, worst value rounded up;
+           foreign hosts blocked and counted (0), second series with the network
+           cut after loading the model (same result, no errors). Details:
+           69-03-SUMMARY.md in the app repo. Re-measure before changing the numbers. -->
+      <div class="versprechen" id="ihr-modell">
+        <p class="auge">Ihr Modell, Ihr Befund</p>
+        <h3>Bei der Modellprüfung verlässt nichts Ihren Rechner.</h3>
+        <p>IFC in BIT-Atelier laden, Prüfung starten — heraus kommen Prüfbericht (PDF), Befundliste (CSV/Excel) und BCF für die Fachplaner. Kein Upload, kein Konto, keine Cloud: gelesen, geprüft und gespeichert wird auf Ihrem Gerät.</p>
+        <p class="versprechen__nachweis">Prüfen Sie es selbst: Trennen Sie die Netzverbindung — die Prüfung läuft weiter.</p>
+        <p class="versprechen__grenze">Gemessen am 12.10.2026 mit Fassung 1.1.0 auf einem Desktop-Rechner (Intel Core i9-10850K, 64 GB, Chromium 148): Musterprojekt (9 Bauteile, 15 kB) in unter 0,2 s eingelesen und unter 0,15 s geprüft; ein 2-MB-Export aus ArchiCAD (39 Bauteile) in unter 0,5 s eingelesen und unter 0,15 s geprüft — mit und ohne Netz gleich, keine einzige Anfrage nach außen.</p>
+        <p class="versprechen__grenze">Die Grenze: Größere Modelle sind noch nicht gemessen, andere Browser auch nicht. Geprüft wird im Browserfenster — Rechner und Arbeitsspeicher bestimmen, wie weit es trägt. Ins Netz geht die App nur für die Update-Prüfung bei GitHub (abschaltbar) und für KI-Funktionen, wenn Sie einen Anbieter einrichten.</p>
+        <div class="beleg__links">
+          <a class="btn btn--klein" href="#herunterladen">Herunterladen und eigenes Modell prüfen</a>
+          <a class="btn btn--geist btn--klein" href="#befund-beispiel">So sieht der Befund aus</a>
+        </div>
+      </div>
+
       <div class="gitter gitter--2" style="margin-top:2.4rem">
         <article class="karte"><h3>IFC-Import</h3><p>Geschosse, Bauteile, Eigenschaften, Klassifizierung — direkt aus dem openBIM-Format</p></article>
         <article class="karte"><h3>Kollisionsprüfung</h3><p>Regel-Matrix je Gewerkepaar, Toleranzen, Duplikat-Erkennung</p></article>
@@ -1194,7 +1224,7 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
           Open-Source-Fassung auf Ihrem Rechner selbst starten.</figcaption>
       </figure>
 
-      <div class="beleg">
+      <div class="beleg" id="befund-beispiel">
         <p class="beleg__titel">So sieht Ihr Befund aus.</p>
         <p class="beleg__unter">Prüfbericht und Befundliste aus einem Prüflauf über ein
           mitgeliefertes Musterprojekt — synthetisch erzeugt, keine Projektdaten. Denselben
@@ -1223,8 +1253,6 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
         <li>IFC / openBIM</li><li>buildingSMART IDS</li><li>BCF</li>
         <li>Energiesimulation</li><li>AVA &amp; Kostenplanung</li><li>Python-Automatisierung</li>
       </ul>
-      <p class="fussnote">BIT-Atelier ist Open Source (MIT-Lizenz) und läuft lokal auf Ihrem
-        Rechner — ohne Konto und ohne Lizenzkosten. <a href="#open-source" style="color:var(--accent)">Zum Download</a>.</p>
     </div>
   </section>
 

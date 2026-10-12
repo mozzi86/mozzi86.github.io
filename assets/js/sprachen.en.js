@@ -177,8 +177,6 @@
   'Musterprüfbericht (PDF)': 'Sample check report (PDF)',
   'Befunde als BCF': 'Findings as BCF',
   'BIT-Atelier herunterladen': 'Download BIT-Atelier',
-  'BIT-Atelier ist Open Source (MIT-Lizenz) und läuft lokal auf Ihrem Rechner — ohne Konto und ohne Lizenzkosten. <a href="#open-source" style="color:var(--accent)">Zum Download</a>.':
-    'BIT-Atelier is open source (MIT licence) and runs locally on your computer — no account, no licence fees. <a href="#open-source" style="color:var(--accent)">Go to download</a>.',
 
   /* Open Source (#open-source, 83-05) */
   'Open Source · MIT-Lizenz': 'Open source · MIT licence',
@@ -431,5 +429,23 @@
   'Erstgespräch BIT-ATELIER — ': 'First conversation BIT-ATELIER — ',
   'Kopiert ✓': 'Copied ✓',
   'Bitte den Text oben markieren und kopieren': 'Please select and copy the text above',
-  'An': 'To'
+  'An': 'To',
+
+  /* Promise block in #werkzeuge (69-03) */
+  'Ihr Modell, Ihr Befund':
+    'Your model, your findings',
+  'Bei der Modellprüfung verlässt nichts Ihren Rechner.':
+    'Nothing leaves your computer while your model is checked.',
+  'IFC in BIT-Atelier laden, Prüfung starten — heraus kommen Prüfbericht (PDF), Befundliste (CSV/Excel) und BCF für die Fachplaner. Kein Upload, kein Konto, keine Cloud: gelesen, geprüft und gespeichert wird auf Ihrem Gerät.':
+    'Load your IFC into BIT-Atelier, start the check — out come a check report (PDF), a findings list (CSV/Excel) and BCF for the consultants. No upload, no account, no cloud: reading, checking and saving all happen on your device.',
+  'Prüfen Sie es selbst: Trennen Sie die Netzverbindung — die Prüfung läuft weiter.':
+    'Check it yourself: disconnect from the network — the check keeps running.',
+  'Gemessen am 12.10.2026 mit Fassung 1.1.0 auf einem Desktop-Rechner (Intel Core i9-10850K, 64 GB, Chromium 148): Musterprojekt (9 Bauteile, 15 kB) in unter 0,2 s eingelesen und unter 0,15 s geprüft; ein 2-MB-Export aus ArchiCAD (39 Bauteile) in unter 0,5 s eingelesen und unter 0,15 s geprüft — mit und ohne Netz gleich, keine einzige Anfrage nach außen.':
+    'Measured on 12 Oct 2026 with version 1.1.0 on a desktop computer (Intel Core i9-10850K, 64 GB, Chromium 148): sample project (9 elements, 15 kB) read in under 0.2 s and checked in under 0.15 s; a 2 MB export from ArchiCAD (39 elements) read in under 0.5 s and checked in under 0.15 s — the same with and without network, not a single request leaving the machine.',
+  'Die Grenze: Größere Modelle sind noch nicht gemessen, andere Browser auch nicht. Geprüft wird im Browserfenster — Rechner und Arbeitsspeicher bestimmen, wie weit es trägt. Ins Netz geht die App nur für die Update-Prüfung bei GitHub (abschaltbar) und für KI-Funktionen, wenn Sie einen Anbieter einrichten.':
+    'The limit: larger models have not been measured yet, nor other browsers. The check runs in the browser window — your computer and its memory decide how far it goes. The app only goes online for the update check at GitHub (can be switched off) and for AI features, if you set up a provider.',
+  'Herunterladen und eigenes Modell prüfen':
+    'Download and check your own model',
+  'So sieht der Befund aus':
+    'What the findings look like',
 };

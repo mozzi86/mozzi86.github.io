@@ -278,6 +278,24 @@ try {
   await seite.evaluate(() => window.bitSprache.setze('de'));
   await seite.locator('#herunterladen').screenshot({ path: path.join(AUS, 'download-desktop.png') });
 
+  console.log('\nVersprechen vorn (69-03)');
+  const vers = await seite.evaluate(() => {
+    const v = document.getElementById('ihr-modell');
+    const w = document.getElementById('werkzeuge');
+    const karten = w.querySelector('.gitter');
+    return { da: !!v && w.contains(v), vorn: !!v && !!karten && (v.compareDocumentPosition(karten) & Node.DOCUMENT_POSITION_FOLLOWING) > 0,
+      text: v ? v.textContent.replace(/\s+/g, ' ') : '', ziele: v ? [...v.querySelectorAll('a')].map((a) => a.getAttribute('href')) : [],
+      fussnote: [...w.querySelectorAll('.fussnote')].length };
+  });
+  ok(vers.da && vers.vorn, 'Block #ihr-modell steht in #werkzeuge vor den Werkzeug-Karten');
+  ok(vers.text.includes('Trennen Sie die Netzverbindung') && /Gemessen am \d/.test(vers.text) && vers.text.includes('Die Grenze:'),
+    'Nachweissatz, Messung und Grenze stehen im Block');
+  ok(vers.ziele.join() === '#herunterladen,#befund-beispiel' && vers.fussnote === 0, 'Knöpfe zum Download und zum Musterbefund, alte Fußnote weg');
+  await seite.evaluate(() => window.bitSprache.setze('en'));
+  ok((await text('#ihr-modell h3')).startsWith('Nothing leaves your computer'), 'Block auf Englisch');
+  await seite.evaluate(() => window.bitSprache.setze('de'));
+  await seite.locator('#ihr-modell').screenshot({ path: path.join(AUS, 'versprechen-desktop.png') });
+
   console.log('\nWörterbuch pro Sprache, nachgeladen (69-17)');
   for (const [pfad, erwartet] of [['?lang=de', []], ['en/', ['en']], ['ar/', ['ar']], ['?lang=en', ['en']]]) {
     const p = await browser.newPage({ viewport: { width: 1400, height: 900 } });
