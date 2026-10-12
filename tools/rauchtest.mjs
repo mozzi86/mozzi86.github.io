@@ -269,6 +269,16 @@ try {
   await seite.evaluate(() => window.bitSprache.setze('de'));
   await seite.locator('#herunterladen').screenshot({ path: path.join(AUS, 'download-desktop.png') });
 
+  console.log('\nSprachknöpfe auf den Kopien /en/ und /ar/');
+  for (const [von, knopf, ziel, lang] of [['en/', 'de', '', 'de'], ['en/', 'ar', 'ar/', 'ar'], ['ar/', 'en', 'en/', 'en'], ['ar/', 'de', '', 'de']]) {
+    const p = await browser.newPage({ viewport: { width: 1400, height: 900 } });
+    await p.goto(B + von, { waitUntil: 'load' });
+    await Promise.all([p.waitForURL(B + ziel), p.click(`.kopf [data-sprache="${knopf}"]`)]);
+    await p.waitForLoadState('load');
+    ok(await p.evaluate(() => document.documentElement.lang) === lang, `/${von} → ${knopf}: landet auf /${ziel} (lang=${lang})`);
+    await p.close();
+  }
+
   console.log('\nKeine Demo-Reste, interne Anker, Konsole (DE/EN/AR)');
   ok(!fs.readFileSync(path.join(WURZEL, 'assets/js/sprachen.js'), 'utf8').includes('demo/'), 'sprachen.js ohne "demo/"');
   ok(!fs.existsSync(path.join(WURZEL, 'demo')), 'Ordner demo/ entfernt');

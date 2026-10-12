@@ -975,8 +975,26 @@
   }
 
   /* Knöpfe verdrahten */
+  /* On the pre-rendered copies /en/ and /ar/ the frozen text is English or
+     Arabic, but the dictionary is keyed by German — translating in place cannot
+     work there. So the buttons go to the address of the chosen language instead
+     (side finding of 92-09: DE/EN/AR did nothing on /en/ and /ar/). */
+  function sprachAdresse(ziel) {
+    const m = location.pathname.match(/^(.*\/)(en|ar)\/(?:index\.html)?$/);
+    if (!m || ziel === m[2]) return '';
+    return m[1] + (ziel === 'de' ? '' : ziel + '/') + location.hash;
+  }
   document.querySelectorAll('[data-sprache]').forEach(b =>
-    b.addEventListener('click', () => setze(b.dataset.sprache)));
+    b.addEventListener('click', () => {
+      const ziel = b.dataset.sprache;
+      const adresse = sprachAdresse(ziel);
+      if (adresse) {
+        try { localStorage.setItem('bit-sprache', ziel); } catch (e) { /* egal */ }
+        location.href = adresse;
+        return;
+      }
+      setze(ziel);
+    }));
 
   /* Reihenfolge: ?lang= aus der Adresse, dann gemerkte Wahl, dann Browsersprache.
      Die Adresse gewinnt, damit ein geteilter Link beim Empfaenger dieselbe
