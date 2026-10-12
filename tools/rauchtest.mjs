@@ -300,6 +300,54 @@ try {
   await seite.evaluate(() => window.bitSprache.setze('de'));
   await seite.locator('#herunterladen').screenshot({ path: path.join(AUS, 'download-desktop.png') });
 
+  console.log('\nHonorarrechner HOAI 2021 (93-08)');
+  {
+    const p = await browser.newPage({ viewport: { width: 1400, height: 900 } });
+    const anfragen = [];
+    p.on('request', (r) => { if (!r.url().startsWith(B)) anfragen.push(r.url()); });
+    const meld = [];
+    p.on('pageerror', (f) => meld.push(f.message));
+    await p.goto(B + '?lang=de', { waitUntil: 'networkidle' });
+    const vorher = anfragen.length;
+    const betrag = async () => (await p.locator('#h-ergebnis .honorar__summe').textContent()).trim();
+    const erwartet = (k, z, s, bild, ph) => p.evaluate(([k, z, s, bild, ph]) => window.bitHoai.rechne({ kostenEuro: k, zone: z, positionProzent: s, leistungsbild: bild, phasen: ph }).summe.betrag, [k, z, s, bild, ph]);
+    const fmt = (x) => new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0, minimumFractionDigits: 0 }).format(x);
+    ok(await betrag() === fmt(await erwartet(2000000, 'III', 0, 'gebaeude', Array(9).fill(true))), 'Vorbelegung 2 Mio. €, Zone III, Basissatz, LPH 1–9: ' + await betrag());
+    await p.fill('#h-kosten', '425000');
+    await p.click('#honorarrechner [data-hfeld="zone"] button[data-wert="IV"]');
+    await p.locator('#h-satz').evaluate((e) => { e.value = '50'; e.dispatchEvent(new Event('input')); });
+    await p.uncheck('#h-lph input[data-lph="9"]');
+    const ph = [true, true, true, true, true, true, true, true, false];
+    ok(await betrag() === fmt(await erwartet(425000, 'IV', 50, 'gebaeude', ph)), '425.000 €, Zone IV, 50 %, LPH 1–8: ' + await betrag());
+    const herleitung = (await p.locator('#h-ergebnis .honorar__herleitung').innerText()).replace(/\s+/g, ' ');
+    ok(/§ 35 Abs\. 1/.test(herleitung) && /Interpolation/.test(herleitung) && /§ 34 Abs\. 3/.test(herleitung) && herleitung.includes('300.000'),
+      'Herleitung nennt Tafelzeilen, Interpolation und Leistungsanteile');
+    ok(await p.locator('#h-ergebnis tbody tr').count() === 9 && await p.locator('#h-ergebnis tbody tr.aus').count() === 1, 'Tabelle: 9 Phasen, LPH 9 abgewählt');
+    await p.click('#honorarrechner [data-hfeld="bild"] button[data-wert="innenraeume"]');
+    ok(await betrag() === fmt(await erwartet(425000, 'IV', 50, 'innenraeume', ph)), 'Innenräume: eigene Leistungsanteile');
+    await p.click('#honorarrechner [data-hfeld="modus"] button[data-wert="bgf"]');
+    ok((await p.locator('#h-ergebnis').innerText()).includes('keinen Kennwert vor'), 'Schätzung ohne Kennwert: kein vorgegebener Kennwert');
+    await p.fill('#h-bgf', '1200'); await p.fill('#h-kennwert', '2100'); await p.fill('#h-quelle', 'eigener Wert 2025');
+    const sch = (await p.locator('#h-ergebnis').innerText()).replace(/\s+/g, ' ');
+    ok(sch.includes('Schätzung: 1.200 m² BGF × 2.100 €/m² = 2.520.000 €') && sch.includes('eigener Wert 2025') && sch.includes('keine Kostenberechnung'),
+      'Schätzung aus BGF: Rechnung, Quelle, Kennzeichnung');
+    await p.click('#honorarrechner [data-hfeld="modus"] button[data-wert="direkt"]');
+    await p.fill('#h-kosten', '30000000');
+    ok((await betrag()) === 'Außerhalb der Honorartafel', 'über 25 Mio. €: keine Hochrechnung');
+    ok(await p.locator('#h-objekte tbody tr td:first-child').count() === 5, 'Objektliste Innenräume: 5 allgemeine Zeilen');
+    await p.click('#honorarrechner [data-hfeld="bild"] button[data-wert="gebaeude"]');
+    ok(await p.locator('#h-objekte tbody tr td:first-child').count() === 56, 'Objektliste Gebäude: 56 Objekte (Anlage 10.2)');
+    await p.fill('#h-kosten', '2000000');
+    await p.evaluate(() => window.bitSprache.setze('en'));
+    await p.waitForTimeout(200);
+    ok((await p.locator('#honorarrechner h3').innerText()).includes('HOAI') && (await p.locator('#h-ergebnis').innerText()).includes('Derivation')
+      && /^€\d{1,3}(,\d{3})+$/.test(await betrag()), 'Rechner auf Englisch, Beträge englisch formatiert: ' + await betrag());
+    ok(anfragen.length === vorher && meld.length === 0, `keine Netzanfrage beim Rechnen (${anfragen.length - vorher}), keine Skriptfehler`);
+    await p.evaluate(() => window.bitSprache.setze('de'));
+    await p.locator('#honorarrechner').screenshot({ path: path.join(AUS, 'honorarrechner-desktop.png') });
+    await p.close();
+  }
+
   console.log('\nVersprechen vorn (69-03)');
   const vers = await seite.evaluate(() => {
     const v = document.getElementById('ihr-modell');

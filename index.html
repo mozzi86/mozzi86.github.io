@@ -179,6 +179,36 @@
 .beleg__unter{color:var(--muted);font-size:.88rem;margin:0 0 .9rem}
 .beleg__links{display:flex;gap:.6rem;flex-wrap:wrap}
 
+/* --- HOAI fee calculator (93-08) ------------------------------------------ */
+.honorar__felder{display:grid;gap:1.1rem}
+#h-satz{accent-color:var(--accent);padding:0;min-height:0}
+@media(min-width:60rem){.honorar__felder{grid-template-columns:repeat(2,minmax(0,1fr));gap:1.2rem 1.6rem}
+  .honorar__lph-feld{grid-column:1/-1}}
+.honorar__eingaben{display:grid;gap:.6rem;margin-top:.7rem}
+.honorar__klein{font-size:.8rem;color:var(--muted);margin:.5rem 0 0}
+.honorar__objekte{margin-top:.7rem;font-size:.84rem}
+.honorar__objekte summary{cursor:pointer;color:var(--accent)}
+.honorar__objekte table{width:100%;border-collapse:collapse;margin-top:.5rem;font-size:.8rem}
+.honorar__objekte td,.honorar__objekte th{border-top:1px solid var(--line);padding:.3rem .4rem .3rem 0;vertical-align:top;text-align:start}
+.honorar__objekte th{color:var(--accent);font-weight:600;padding-top:.7rem}
+.honorar__objekte td:last-child{white-space:nowrap;color:var(--ink)}
+.honorar__lph{display:grid;gap:.35rem}
+@media(min-width:44rem){.honorar__lph{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.honorar__lph label{display:flex;gap:.5rem;align-items:flex-start;font-size:.86rem;color:var(--ink-dim);cursor:pointer}
+.honorar__lph input{accent-color:var(--accent);margin-top:.2rem}
+.honorar__ergebnis{margin-top:1.3rem;border-top:1px solid var(--line);padding-top:1.2rem}
+.honorar__summe{font-family:var(--display);font-weight:700;font-size:1.35rem;color:var(--accent);margin:.2rem 0}
+.honorar__tabelle-rahmen{overflow-x:auto}
+.honorar__tabelle{width:100%;border-collapse:collapse;font-size:.84rem;margin-top:.9rem;font-variant-numeric:tabular-nums}
+.honorar__tabelle th,.honorar__tabelle td{border-top:1px solid var(--line);padding:.4rem .5rem .4rem 0;text-align:end}
+.honorar__tabelle th:first-child,.honorar__tabelle td:first-child{text-align:start}
+.honorar__tabelle tr.aus td{color:var(--muted);opacity:.55}
+.honorar__tabelle tfoot td{font-weight:600;color:var(--ink)}
+.honorar__herleitung{margin-top:1rem;font-size:.84rem;color:var(--muted)}
+.honorar__herleitung summary{cursor:pointer;color:var(--accent)}
+.honorar__herleitung ol{margin:.6rem 0 0;padding-inline-start:1.2rem;display:grid;gap:.35rem}
+.honorar__fuss{margin:1rem 0 0;font-size:.78rem;color:var(--muted);max-width:80ch}
+
 /* --- System requirements and AVV note in the download block (93-04/05) ---- */
 .anforderungen{width:100%;margin-top:1.4rem;border-collapse:collapse;font-size:.86rem}
 .anforderungen caption{text-align:start;font-family:var(--mono);font-size:.72rem;color:var(--accent);
@@ -293,12 +323,12 @@
 .finder__frage{border:0;margin:0;padding:0;min-width:0}
 .finder__frage legend{padding:0;margin-bottom:.45rem}
 .finder__frage legend span{font-size:.76rem;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
-.finder__wahl{display:flex;flex-wrap:wrap;gap:.4rem}
-.finder__wahl button{font:inherit;font-size:.84rem;min-height:2.5rem;padding:.45rem .75rem;border-radius:9px;
+.finder__wahl,.honorar__wahl{display:flex;flex-wrap:wrap;gap:.4rem}
+.finder__wahl button,.honorar__wahl button{font:inherit;font-size:.84rem;min-height:2.5rem;padding:.45rem .75rem;border-radius:9px;
   cursor:pointer;background:var(--bg-deep);color:var(--ink-dim);border:1px solid rgba(255,255,255,.14)}
-.finder__wahl button:hover{border-color:var(--line-strong);color:var(--ink)}
-.finder__wahl button[aria-pressed="true"]{border-color:var(--accent);color:var(--accent);background:rgba(45,212,191,.08)}
-.finder__wahl button:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.finder__wahl button:hover,.honorar__wahl button:hover{border-color:var(--line-strong);color:var(--ink)}
+.finder__wahl button[aria-pressed="true"],.honorar__wahl button[aria-pressed="true"]{border-color:var(--accent);color:var(--accent);background:rgba(45,212,191,.08)}
+.finder__wahl button:focus-visible,.honorar__wahl button:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
 .finder__ergebnis{margin-top:1.3rem;border-top:1px solid var(--line);padding-top:1.2rem;display:grid;gap:.9rem}
 @media(min-width:60rem){.finder__ergebnis{grid-template-columns:1.2fr .8fr;gap:2rem;align-items:start}}
 .finder__auge{margin:0 0 .4rem;color:var(--accent);font-family:var(--mono);font-size:.72rem;
@@ -1185,6 +1215,71 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
           </fieldset>
         </div>
         <div class="finder__ergebnis" id="finder-ergebnis" data-nicht-uebersetzen aria-live="polite"></div>
+      </div>
+
+      <!-- ==== HONORARRECHNER HOAI 2021 (93-08, lever 163) ====
+           Third calculator next to the package finder. Computes in the browser
+           with assets/js/hoai2021.js (table § 35 Abs. 1 and shares § 34 Abs. 3
+           verbatim from the app; checked by tools/hoai-pruefen.mjs) and
+           assets/js/honorar-ui.js (inputs, result, derivation). No login,
+           no request — nothing leaves the device. Own classes (honorar__…),
+           because the package finder binds every .finder__wahl on the page. -->
+      <div class="finder honorar" id="honorarrechner">
+        <h3>Was kostet die Planung nach HOAI?</h3>
+        <p class="finder__unter">Ein Überschlag nach der Honorartafel der HOAI 2021 — ohne Anmeldung, gerechnet in Ihrem Browser; nichts verlässt Ihr Gerät. Jede Zahl steht mit ihrer Herleitung da.</p>
+        <div class="honorar__felder">
+          <fieldset class="finder__frage honorar__frage">
+            <legend><span>Leistungsbild</span></legend>
+            <div class="honorar__wahl" data-hfeld="bild">
+              <button type="button" data-wert="gebaeude" aria-pressed="true">Gebäude</button>
+              <button type="button" data-wert="innenraeume" aria-pressed="false">Innenräume</button>
+            </div>
+          </fieldset>
+          <fieldset class="finder__frage honorar__frage">
+            <legend><span>Anrechenbare Kosten</span></legend>
+            <div class="honorar__wahl" data-hfeld="modus">
+              <button type="button" data-wert="direkt" aria-pressed="true">Betrag bekannt</button>
+              <button type="button" data-wert="bgf" aria-pressed="false">Schätzung aus BGF</button>
+            </div>
+            <div class="honorar__eingaben">
+              <label class="anfrage__feld" data-hmodus="direkt"><span>Anrechenbare Kosten in € (netto, KG 300 + 400 nach § 33)</span>
+                <input id="h-kosten" type="number" min="0" step="1000" value="2000000" inputmode="decimal"></label>
+              <label class="anfrage__feld verborgen" data-hmodus="bgf"><span>Brutto-Grundfläche (m²)</span>
+                <input id="h-bgf" type="number" min="0" step="10" value="1000" inputmode="decimal"></label>
+              <label class="anfrage__feld verborgen" data-hmodus="bgf"><span>Kostenkennwert KG 300 + 400 (€/m² BGF, netto)</span>
+                <input id="h-kennwert" type="number" min="0" step="10" value="" inputmode="decimal"></label>
+              <label class="anfrage__feld verborgen" data-hmodus="bgf"><span>Quelle und Jahr des Kennwerts</span>
+                <input id="h-quelle" type="text" maxlength="80" value=""></label>
+            </div>
+          </fieldset>
+          <fieldset class="finder__frage honorar__frage">
+            <legend><span>Honorarzone</span></legend>
+            <div class="honorar__wahl" data-hfeld="zone">
+              <button type="button" data-wert="I" aria-pressed="false">I</button>
+              <button type="button" data-wert="II" aria-pressed="false">II</button>
+              <button type="button" data-wert="III" aria-pressed="true">III</button>
+              <button type="button" data-wert="IV" aria-pressed="false">IV</button>
+              <button type="button" data-wert="V" aria-pressed="false">V</button>
+            </div>
+            <details class="honorar__objekte">
+              <summary>Welche Zone? Objektliste der HOAI (Anlage 10)</summary>
+              <p class="honorar__klein">Wortlaut der HOAI 2021, Anlage 10.2 (Gebäude) und 10.3 (Innenräume, allgemeine Zeilen). Die Objektliste gibt die Regel an; im Zweifel entscheidet die Bewertung nach § 35 Abs. 4–6.</p>
+              <div id="h-objekte" data-nicht-uebersetzen></div>
+            </details>
+          </fieldset>
+          <fieldset class="finder__frage honorar__frage">
+            <legend><span>Honorarsatz</span></legend>
+            <label class="anfrage__feld"><span>Lage zwischen Basissatz (0 %) und oberem Satz (100 %)</span>
+              <input id="h-satz" type="range" min="0" max="100" step="5" value="0"></label>
+            <p class="honorar__klein" id="h-satz-wert" data-nicht-uebersetzen aria-live="polite"></p>
+          </fieldset>
+          <fieldset class="finder__frage honorar__frage honorar__lph-feld">
+            <legend><span>Leistungsphasen</span></legend>
+            <div class="honorar__lph" id="h-lph" data-nicht-uebersetzen></div>
+          </fieldset>
+        </div>
+        <div class="honorar__ergebnis" id="h-ergebnis" data-nicht-uebersetzen aria-live="polite"></div>
+        <p class="honorar__fuss">Unverbindlicher Überschlag. HOAI 2021, Honorartafel § 35 Abs. 1 (Gebäude und Innenräume) und Leistungsanteile § 34 Abs. 3; Tafel geprüft am 27.09.2026, Stand dieser Seite 12.10.2026. Netto, ohne Umbauzuschlag, Nebenkosten, Besondere Leistungen und Umsatzsteuer. Unter 25.000 € und über 25 Mio. € anrechenbarer Kosten ist das Honorar frei vereinbar.</p>
       </div>
       <p class="fussnote">Alle Preise netto zzgl. gesetzlicher Umsatzsteuer. Bepreisung
         orientiert an den Vergütungsempfehlungen für BIM-Management (AHO/DVP: üblich 20–25 %
@@ -2322,6 +2417,8 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
         })();
 </script>
 <script src="assets/js/sprachen.js" defer></script>
+<script src="assets/js/hoai2021.js" defer></script>
+<script src="assets/js/honorar-ui.js" defer></script>
 <script type="module">
 /* 69-02: three.js is NOT imported statically any more. It is loaded with
    import('three') in buehneStarten() — only when the stage comes into view and

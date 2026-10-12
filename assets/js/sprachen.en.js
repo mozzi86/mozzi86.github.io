@@ -628,4 +628,108 @@
     'All published versions remain available for download on GitHub.',
   'Die App läuft offline und ohne einen Server von mir — sie hängt an nichts, das jemand abschalten könnte.':
     'The app runs offline and without any server of mine — it depends on nothing that someone could switch off.',
+
+  /* HOAI fee calculator (93-08) */
+  'Was kostet die Planung nach HOAI?':
+    'What does the design cost under the HOAI?',
+  'Ein Überschlag nach der Honorartafel der HOAI 2021 — ohne Anmeldung, gerechnet in Ihrem Browser; nichts verlässt Ihr Gerät. Jede Zahl steht mit ihrer Herleitung da.':
+    'An estimate from the fee table of the German HOAI 2021 (fee scale for architects and engineers) — no sign-up, calculated in your browser; nothing leaves your device. Every figure comes with its derivation.',
+  'Leistungsbild':
+    'Service profile',
+  'Gebäude':
+    'Buildings',
+  'Innenräume':
+    'Interiors',
+  'Anrechenbare Kosten':
+    'Chargeable costs',
+  'Betrag bekannt':
+    'Amount known',
+  'Schätzung aus BGF':
+    'Estimate from gross floor area',
+  'Anrechenbare Kosten in € (netto, KG 300 + 400 nach § 33)':
+    'Chargeable costs in € (net, cost groups 300 + 400 under § 33)',
+  'Brutto-Grundfläche (m²)':
+    'Gross floor area (m²)',
+  'Kostenkennwert KG 300 + 400 (€/m² BGF, netto)':
+    'Cost benchmark CG 300 + 400 (€/m² GFA, net)',
+  'Quelle und Jahr des Kennwerts':
+    'Source and year of the benchmark',
+  'Honorarzone':
+    'Fee zone',
+  'Welche Zone? Objektliste der HOAI (Anlage 10)':
+    'Which zone? HOAI object list (Annex 10)',
+  'Wortlaut der HOAI 2021, Anlage 10.2 (Gebäude) und 10.3 (Innenräume, allgemeine Zeilen). Die Objektliste gibt die Regel an; im Zweifel entscheidet die Bewertung nach § 35 Abs. 4–6.':
+    'Wording of the HOAI 2021, Annex 10.2 (buildings) and 10.3 (interiors, general lines), quoted in German. The list gives the usual zone; in case of doubt the assessment under § 35 (4)–(6) decides.',
+  'Honorarsatz':
+    'Fee rate',
+  'Lage zwischen Basissatz (0 %) und oberem Satz (100 %)':
+    'Position between base rate (0 %) and upper rate (100 %)',
+  'Leistungsphasen':
+    'Work stages',
+  'Unverbindlicher Überschlag. HOAI 2021, Honorartafel § 35 Abs. 1 (Gebäude und Innenräume) und Leistungsanteile § 34 Abs. 3; Tafel geprüft am 27.09.2026, Stand dieser Seite 12.10.2026. Netto, ohne Umbauzuschlag, Nebenkosten, Besondere Leistungen und Umsatzsteuer. Unter 25.000 € und über 25 Mio. € anrechenbarer Kosten ist das Honorar frei vereinbar.':
+    'Non-binding estimate. HOAI 2021, fee table § 35 (1) (buildings and interiors) and work-stage shares § 34 (3); table checked on 27 Sep 2026, page as of 12 Oct 2026. Net, without refurbishment surcharge, incidental costs, special services and VAT. Below €25,000 and above €25 m chargeable costs the fee is freely negotiable.',
+  'Vollständige Anlage 10 auf gesetze-im-internet.de':
+    'Full Annex 10 on gesetze-im-internet.de (German)',
+  'LPH':
+    'Stage',
+  'Grundlagenermittlung':
+    'Establishing the basis',
+  'Vorplanung':
+    'Preliminary design',
+  'Entwurfsplanung':
+    'Design',
+  'Genehmigungsplanung':
+    'Planning approval',
+  'Ausführungsplanung':
+    'Detailed design',
+  'Vorbereitung der Vergabe':
+    'Preparing the award',
+  'Mitwirkung bei der Vergabe':
+    'Assisting with the award',
+  'Objektüberwachung – Bauüberwachung und Dokumentation':
+    'Site supervision and documentation',
+  'Objektbetreuung':
+    'Post-completion services',
+  'Basissatz':
+    'Base rate',
+  'Oberer Honorarsatz':
+    'Upper fee rate',
+  '{p} % zwischen Basissatz und oberem Satz':
+    '{p} % between base and upper rate',
+  'Anrechenbare Kosten: {k} (Ihre Eingabe).':
+    'Chargeable costs: {k} (your input).',
+  'Für die Schätzung bitte BGF und einen Kostenkennwert eintragen — der Rechner gibt bewusst keinen Kennwert vor.':
+    'For the estimate please enter the floor area and a cost benchmark — the calculator deliberately does not suggest one.',
+  'Schätzung: {b} m² BGF × {w} €/m² = {k} — Quelle des Kennwerts: {q}. Eine Schätzung, keine Kostenberechnung nach DIN 276.':
+    'Estimate: {b} m² GFA × {w} €/m² = {k} — benchmark source: {q}. An estimate, not a cost calculation to DIN 276.',
+  'nicht angegeben':
+    'not given',
+  'Bitte anrechenbare Kosten eintragen.':
+    'Please enter the chargeable costs.',
+  'Außerhalb der Honorartafel':
+    'Outside the fee table',
+  'Die Tafel des § 35 reicht von {a} bis {b} anrechenbarer Kosten. Darunter und darüber ist das Honorar frei vereinbar — hier wird nichts hochgerechnet.':
+    'The § 35 table covers {a} to {b} of chargeable costs. Below and above, the fee is freely negotiable — nothing is extrapolated here.',
+  'Honorar der gewählten Leistungsphasen ({p} %)':
+    'Fee for the selected stages ({p} %)',
+  'Spanne Basissatz bis oberer Satz: {a} – {b}':
+    'Range base rate to upper rate: {a} – {b}',
+  'Anteil':
+    'Share',
+  'oberer Satz':
+    'upper rate',
+  'gewählt':
+    'selected',
+  'Summe':
+    'Total',
+  'Herleitung':
+    'Derivation',
+  'Honorartafel § 35 Abs. 1, Honorarzone {z}: bei {k1} anrechenbaren Kosten {a1} – {b1}, bei {k2} {a2} – {b2}.':
+    'Fee table § 35 (1), fee zone {z}: at {k1} chargeable costs {a1} – {b1}, at {k2} {a2} – {b2}.',
+  'Lineare Interpolation zwischen den beiden Tafelzeilen (§ 13 Abs. 1): Anteil {f} → Basissatz {a}, oberer Satz {b}.':
+    'Linear interpolation between the two table rows (§ 13 (1)): share {f} → base rate {a}, upper rate {b}.',
+  'Honorar für alle Leistungsphasen = Basissatz + {p} % × (oberer Satz − Basissatz) = {h}.':
+    'Fee for all work stages = base rate + {p} % × (upper rate − base rate) = {h}.',
+  'Je Leistungsphase: Honorar × Anteil nach § 34 Abs. 3 ({l}), auf Cent gerundet; Summe der gewählten Phasen.':
+    'Per work stage: fee × share under § 34 (3) ({l}), rounded to the cent; total of the selected stages.',
 };

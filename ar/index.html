@@ -178,6 +178,36 @@
 .beleg__unter{color:var(--muted);font-size:.88rem;margin:0 0 .9rem}
 .beleg__links{display:flex;gap:.6rem;flex-wrap:wrap}
 
+/* --- HOAI fee calculator (93-08) ------------------------------------------ */
+.honorar__felder{display:grid;gap:1.1rem}
+#h-satz{accent-color:var(--accent);padding:0;min-height:0}
+@media(min-width:60rem){.honorar__felder{grid-template-columns:repeat(2,minmax(0,1fr));gap:1.2rem 1.6rem}
+  .honorar__lph-feld{grid-column:1/-1}}
+.honorar__eingaben{display:grid;gap:.6rem;margin-top:.7rem}
+.honorar__klein{font-size:.8rem;color:var(--muted);margin:.5rem 0 0}
+.honorar__objekte{margin-top:.7rem;font-size:.84rem}
+.honorar__objekte summary{cursor:pointer;color:var(--accent)}
+.honorar__objekte table{width:100%;border-collapse:collapse;margin-top:.5rem;font-size:.8rem}
+.honorar__objekte td,.honorar__objekte th{border-top:1px solid var(--line);padding:.3rem .4rem .3rem 0;vertical-align:top;text-align:start}
+.honorar__objekte th{color:var(--accent);font-weight:600;padding-top:.7rem}
+.honorar__objekte td:last-child{white-space:nowrap;color:var(--ink)}
+.honorar__lph{display:grid;gap:.35rem}
+@media(min-width:44rem){.honorar__lph{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.honorar__lph label{display:flex;gap:.5rem;align-items:flex-start;font-size:.86rem;color:var(--ink-dim);cursor:pointer}
+.honorar__lph input{accent-color:var(--accent);margin-top:.2rem}
+.honorar__ergebnis{margin-top:1.3rem;border-top:1px solid var(--line);padding-top:1.2rem}
+.honorar__summe{font-family:var(--display);font-weight:700;font-size:1.35rem;color:var(--accent);margin:.2rem 0}
+.honorar__tabelle-rahmen{overflow-x:auto}
+.honorar__tabelle{width:100%;border-collapse:collapse;font-size:.84rem;margin-top:.9rem;font-variant-numeric:tabular-nums}
+.honorar__tabelle th,.honorar__tabelle td{border-top:1px solid var(--line);padding:.4rem .5rem .4rem 0;text-align:end}
+.honorar__tabelle th:first-child,.honorar__tabelle td:first-child{text-align:start}
+.honorar__tabelle tr.aus td{color:var(--muted);opacity:.55}
+.honorar__tabelle tfoot td{font-weight:600;color:var(--ink)}
+.honorar__herleitung{margin-top:1rem;font-size:.84rem;color:var(--muted)}
+.honorar__herleitung summary{cursor:pointer;color:var(--accent)}
+.honorar__herleitung ol{margin:.6rem 0 0;padding-inline-start:1.2rem;display:grid;gap:.35rem}
+.honorar__fuss{margin:1rem 0 0;font-size:.78rem;color:var(--muted);max-width:80ch}
+
 /* --- System requirements and AVV note in the download block (93-04/05) ---- */
 .anforderungen{width:100%;margin-top:1.4rem;border-collapse:collapse;font-size:.86rem}
 .anforderungen caption{text-align:start;font-family:var(--mono);font-size:.72rem;color:var(--accent);
@@ -292,12 +322,12 @@
 .finder__frage{border:0;margin:0;padding:0;min-width:0}
 .finder__frage legend{padding:0;margin-bottom:.45rem}
 .finder__frage legend span{font-size:.76rem;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
-.finder__wahl{display:flex;flex-wrap:wrap;gap:.4rem}
-.finder__wahl button{font:inherit;font-size:.84rem;min-height:2.5rem;padding:.45rem .75rem;border-radius:9px;
+.finder__wahl,.honorar__wahl{display:flex;flex-wrap:wrap;gap:.4rem}
+.finder__wahl button,.honorar__wahl button{font:inherit;font-size:.84rem;min-height:2.5rem;padding:.45rem .75rem;border-radius:9px;
   cursor:pointer;background:var(--bg-deep);color:var(--ink-dim);border:1px solid rgba(255,255,255,.14)}
-.finder__wahl button:hover{border-color:var(--line-strong);color:var(--ink)}
-.finder__wahl button[aria-pressed="true"]{border-color:var(--accent);color:var(--accent);background:rgba(45,212,191,.08)}
-.finder__wahl button:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.finder__wahl button:hover,.honorar__wahl button:hover{border-color:var(--line-strong);color:var(--ink)}
+.finder__wahl button[aria-pressed="true"],.honorar__wahl button[aria-pressed="true"]{border-color:var(--accent);color:var(--accent);background:rgba(45,212,191,.08)}
+.finder__wahl button:focus-visible,.honorar__wahl button:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
 .finder__ergebnis{margin-top:1.3rem;border-top:1px solid var(--line);padding-top:1.2rem;display:grid;gap:.9rem}
 @media(min-width:60rem){.finder__ergebnis{grid-template-columns:1.2fr .8fr;gap:2rem;align-items:start}}
 .finder__auge{margin:0 0 .4rem;color:var(--accent);font-family:var(--mono);font-size:.72rem;
@@ -1135,6 +1165,71 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
           </fieldset>
         </div>
         <div class="finder__ergebnis" id="finder-ergebnis" data-nicht-uebersetzen="" aria-live="polite"></div>
+      </div>
+
+      <!-- ==== HONORARRECHNER HOAI 2021 (93-08, lever 163) ====
+           Third calculator next to the package finder. Computes in the browser
+           with assets/js/hoai2021.js (table § 35 Abs. 1 and shares § 34 Abs. 3
+           verbatim from the app; checked by tools/hoai-pruefen.mjs) and
+           assets/js/honorar-ui.js (inputs, result, derivation). No login,
+           no request — nothing leaves the device. Own classes (honorar__…),
+           because the package finder binds every .finder__wahl on the page. -->
+      <div class="finder honorar" id="honorarrechner">
+        <h3>كم تكلفة التصميم وفق HOAI؟</h3>
+        <p class="finder__unter">تقدير وفق جدول الأتعاب في لائحة HOAI 2021 الألمانية (أتعاب المعماريين والمهندسين) — دون تسجيل، ويُحسب في متصفحكم؛ ولا يغادر شيء جهازكم. وكل رقم مرفق بطريقة اشتقاقه.</p>
+        <div class="honorar__felder">
+          <fieldset class="finder__frage honorar__frage">
+            <legend><span>نوع الخدمة</span></legend>
+            <div class="honorar__wahl" data-hfeld="bild">
+              <button type="button" data-wert="gebaeude" aria-pressed="true">المباني</button>
+              <button type="button" data-wert="innenraeume" aria-pressed="false">التصميم الداخلي</button>
+            </div>
+          </fieldset>
+          <fieldset class="finder__frage honorar__frage">
+            <legend><span>التكاليف المحتسبة</span></legend>
+            <div class="honorar__wahl" data-hfeld="modus">
+              <button type="button" data-wert="direkt" aria-pressed="true">المبلغ معروف</button>
+              <button type="button" data-wert="bgf" aria-pressed="false">تقدير من إجمالي المساحة الطابقية</button>
+            </div>
+            <div class="honorar__eingaben">
+              <label class="anfrage__feld" data-hmodus="direkt"><span>التكاليف المحتسبة باليورو (صافية، مجموعتا التكاليف 300 + 400 وفق المادة 33)</span>
+                <input id="h-kosten" type="number" min="0" step="1000" value="2000000" inputmode="decimal"></label>
+              <label class="anfrage__feld verborgen" data-hmodus="bgf"><span>إجمالي المساحة الطابقية (م²)</span>
+                <input id="h-bgf" type="number" min="0" step="10" value="1000" inputmode="decimal"></label>
+              <label class="anfrage__feld verborgen" data-hmodus="bgf"><span>مؤشر التكلفة للمجموعتين 300 + 400 (يورو/م²، صافٍ)</span>
+                <input id="h-kennwert" type="number" min="0" step="10" value="" inputmode="decimal"></label>
+              <label class="anfrage__feld verborgen" data-hmodus="bgf"><span>مصدر المؤشر وسنته</span>
+                <input id="h-quelle" type="text" maxlength="80" value=""></label>
+            </div>
+          </fieldset>
+          <fieldset class="finder__frage honorar__frage">
+            <legend><span>فئة الأتعاب</span></legend>
+            <div class="honorar__wahl" data-hfeld="zone">
+              <button type="button" data-wert="I" aria-pressed="false">I</button>
+              <button type="button" data-wert="II" aria-pressed="false">II</button>
+              <button type="button" data-wert="III" aria-pressed="true">III</button>
+              <button type="button" data-wert="IV" aria-pressed="false">IV</button>
+              <button type="button" data-wert="V" aria-pressed="false">V</button>
+            </div>
+            <details class="honorar__objekte">
+              <summary>Welche Zone? Objektliste der HOAI (Anlage 10)</summary>
+              <p class="honorar__klein">نص لائحة HOAI 2021، الملحق 10.2 (المباني) و10.3 (التصميم الداخلي، البنود العامة)، مقتبس بالألمانية. تحدد القائمة الفئة المعتادة؛ وعند الشك يُحسم الأمر بالتقييم وفق المادة 35 الفقرات 4–6.</p>
+              <div id="h-objekte" data-nicht-uebersetzen=""><table><tbody><tr><th colspan="2">Wohnen</th></tr><tr><td>Einfache Behelfsbauten für vorübergehende Nutzung</td><td>I</td></tr><tr><td>Einfache Wohnbauten mit gemeinschaftlichen Sanitär- und Kücheneinrichtungen</td><td>II</td></tr><tr><td>Einfamilienhäuser, Wohnhäuser oder Hausgruppen in verdichteter Bauweise</td><td>III/IV</td></tr><tr><td>Wohnheime, Gemeinschaftsunterkünfte, Jugendherbergen, -freizeitzentren, -stätten</td><td>III/IV</td></tr><tr><th colspan="2">Ausbildung/Wissenschaft/Forschung</th></tr><tr><td>Offene Pausen-, Spielhallen</td><td>I</td></tr><tr><td>Studentenhäuser</td><td>III/IV</td></tr><tr><td>Schulen mit durchschnittlichen Planungsanforderungen, zum Beispiel Grundschulen, weiterführende Schulen und Berufsschulen</td><td>III</td></tr><tr><td>Schulen mit hohen Planungsanforderungen, Bildungszentren, Hochschulen, Universitäten, Akademien</td><td>IV</td></tr><tr><td>Hörsaal-, Kongresszentren</td><td>IV</td></tr><tr><td>Labor- oder Institutsgebäude</td><td>IV/V</td></tr><tr><th colspan="2">Büro/Verwaltung/Staat/Kommune</th></tr><tr><td>Büro-, Verwaltungsgebäude</td><td>III/IV</td></tr><tr><td>Wirtschaftsgebäude, Bauhöfe</td><td>III/IV</td></tr><tr><td>Parlaments-, Gerichtsgebäude</td><td>IV</td></tr><tr><td>Bauten für den Strafvollzug</td><td>IV/V</td></tr><tr><td>Feuerwachen, Rettungsstationen</td><td>III/IV</td></tr><tr><td>Sparkassen- oder Bankfilialen</td><td>III/IV</td></tr><tr><td>Büchereien, Bibliotheken, Archive</td><td>III/IV</td></tr><tr><th colspan="2">Gesundheit/Betreuung</th></tr><tr><td>Liege- oder Wandelhallen</td><td>I</td></tr><tr><td>Kindergärten, Kinderhorte</td><td>III</td></tr><tr><td>Jugendzentren, Jugendfreizeitstätten</td><td>III</td></tr><tr><td>Betreuungseinrichtungen, Altentagesstätten</td><td>III</td></tr><tr><td>Pflegeheime oder Bettenhäuser, ohne oder mit medizinisch-technischer Einrichtungen</td><td>III/IV</td></tr><tr><td>Unfall-, Sanitätswachen, Ambulatorien</td><td>II/III</td></tr><tr><td>Therapie- oder Rehabilitations-Einrichtungen, Gebäude für Erholung, Kur oder Genesung</td><td>III/IV</td></tr><tr><td>Hilfskrankenhäuser</td><td>III</td></tr><tr><td>Krankenhäuser der Versorgungsstufe I oder II, Krankenhäuser besonderer Zweckbestimmung</td><td>IV</td></tr><tr><td>Krankenhäuser der Versorgungsstufe III, Universitätskliniken</td><td>V</td></tr><tr><th colspan="2">Handel und Verkauf/Gastgewerbe</th></tr><tr><td>Einfache Verkaufslager, Verkaufsstände, Kioske</td><td>II</td></tr><tr><td>Ladenbauten, Discounter, Einkaufszentren, Märkte, Messehallen</td><td>III/IV</td></tr><tr><td>Gebäude für Gastronomie, Kantinen oder Mensen</td><td>III/IV</td></tr><tr><td>Großküchen, mit oder ohne Speiseräume</td><td>IV</td></tr><tr><td>Pensionen, Hotels</td><td>III/IV</td></tr><tr><th colspan="2">Freizeit/Sport</th></tr><tr><td>Einfache Tribünenbauten</td><td>II</td></tr><tr><td>Bootshäuser</td><td>II</td></tr><tr><td>Turn- oder Sportgebäude</td><td>III/IV</td></tr><tr><td>Mehrzweckhallen, Hallenschwimmbäder, Großsportstätten</td><td>IV/V</td></tr><tr><th colspan="2">Gewerbe/Industrie/Landwirtschaft</th></tr><tr><td>Einfache Landwirtschaftliche Gebäude, zum Beispiel Feldscheunen, Einstellhallen</td><td>I</td></tr><tr><td>Landwirtschaftliche Betriebsgebäude, Stallanlagen</td><td>II/III/IV</td></tr><tr><td>Gewächshäuser für die Produktion</td><td>II</td></tr><tr><td>Einfache geschlossene, eingeschossige Hallen, Werkstätten</td><td>II</td></tr><tr><td>Spezielle Lagergebäude, zum Beispiel Kühlhäuser</td><td>III</td></tr><tr><td>Werkstätten, Fertigungsgebäude des Handwerks oder der Industrie</td><td>II/III/IV</td></tr><tr><td>Produktionsgebäude der Industrie</td><td>III/IV/V</td></tr><tr><th colspan="2">Infrastruktur</th></tr><tr><td>Offene Verbindungsgänge, Überdachungen, zum Beispiel Wetterschutzhäuser, Carports</td><td>I</td></tr><tr><td>Einfache Garagenbauten</td><td>II</td></tr><tr><td>Parkhäuser, -garagen, Tiefgaragen, jeweils mit integrierten weiteren Nutzungsarten</td><td>II/III</td></tr><tr><td>Bahnhöfe oder Stationen verschiedener öffentlicher Verkehrsmittel</td><td>IV</td></tr><tr><td>Flughäfen</td><td>IV/V</td></tr><tr><td>Energieversorgungszentralen, Kraftwerksgebäude, Großkraftwerke</td><td>IV/V</td></tr><tr><th colspan="2">Kultur-/Sakralbauten</th></tr><tr><td>Pavillons für kulturelle Zwecke</td><td>II/III</td></tr><tr><td>Bürger-, Gemeindezentren, Kultur-/Sakralbauten, Kirchen</td><td>IV</td></tr><tr><td>Mehrzweckhallen für religiöse oder kulturelle Zwecke</td><td>IV</td></tr><tr><td>Ausstellungsgebäude, Lichtspielhäuser</td><td>III/IV</td></tr><tr><td>Museen</td><td>IV/V</td></tr><tr><td>Theater-, Opern-, Konzertgebäude</td><td>IV/V</td></tr><tr><td>Studiogebäude für Rundfunk oder Fernsehen</td><td>IV/V</td></tr></tbody></table><p class="honorar__klein"><a href="https://www.gesetze-im-internet.de/hoai_2013/anlage_10.html" style="color:var(--accent)">الملحق 10 كاملاً على gesetze-im-internet.de (بالألمانية)</a></p></div>
+            </details>
+          </fieldset>
+          <fieldset class="finder__frage honorar__frage">
+            <legend><span>معدل الأتعاب</span></legend>
+            <label class="anfrage__feld"><span>الموضع بين المعدل الأساسي (0 %) والمعدل الأعلى (100 %)</span>
+              <input id="h-satz" type="range" min="0" max="100" step="5" value="0"></label>
+            <p class="honorar__klein" id="h-satz-wert" data-nicht-uebersetzen="" aria-live="polite">المعدل الأساسي</p>
+          </fieldset>
+          <fieldset class="finder__frage honorar__frage honorar__lph-feld">
+            <legend><span>مراحل الخدمة</span></legend>
+            <div class="honorar__lph" id="h-lph" data-nicht-uebersetzen=""><label><input type="checkbox" data-lph="1"><span>المرحلة 1 · تحديد الأسس (2 %)</span></label><label><input type="checkbox" data-lph="2"><span>المرحلة 2 · التصميم الأولي (7 %)</span></label><label><input type="checkbox" data-lph="3"><span>المرحلة 3 · التصميم التطويري (15 %)</span></label><label><input type="checkbox" data-lph="4"><span>المرحلة 4 · تخطيط الترخيص (3 %)</span></label><label><input type="checkbox" data-lph="5"><span>المرحلة 5 · التصميم التنفيذي (25 %)</span></label><label><input type="checkbox" data-lph="6"><span>المرحلة 6 · التحضير للترسية (10 %)</span></label><label><input type="checkbox" data-lph="7"><span>المرحلة 7 · المشاركة في الترسية (4 %)</span></label><label><input type="checkbox" data-lph="8"><span>المرحلة 8 · الإشراف على التنفيذ والتوثيق (32 %)</span></label><label><input type="checkbox" data-lph="9"><span>المرحلة 9 · متابعة ما بعد التسليم (2 %)</span></label></div>
+          </fieldset>
+        </div>
+        <div class="honorar__ergebnis" id="h-ergebnis" data-nicht-uebersetzen="" aria-live="polite"><div><p class="finder__auge">أتعاب المراحل المختارة (100 %)</p><p class="honorar__summe">‏214,108&nbsp;€</p><p class="honorar__klein">النطاق من المعدل الأساسي إلى الأعلى: ‏214,108&nbsp;€ – ‏267,034&nbsp;€</p></div><div class="honorar__tabelle-rahmen"><table class="honorar__tabelle"><thead><tr><th>مرحلة الخدمة</th><th>الحصة</th><th>المعدل الأساسي</th><th>المعدل الأعلى</th><th>المختار</th></tr></thead><tbody><tr><td>1 · تحديد الأسس</td><td>2 %</td><td>‏4,282.16&nbsp;€</td><td>‏5,340.68&nbsp;€</td><td>‏4,282.16&nbsp;€</td></tr><tr><td>2 · التصميم الأولي</td><td>7 %</td><td>‏14,987.56&nbsp;€</td><td>‏18,692.38&nbsp;€</td><td>‏14,987.56&nbsp;€</td></tr><tr><td>3 · التصميم التطويري</td><td>15 %</td><td>‏32,116.20&nbsp;€</td><td>‏40,055.10&nbsp;€</td><td>‏32,116.20&nbsp;€</td></tr><tr><td>4 · تخطيط الترخيص</td><td>3 %</td><td>‏6,423.24&nbsp;€</td><td>‏8,011.02&nbsp;€</td><td>‏6,423.24&nbsp;€</td></tr><tr><td>5 · التصميم التنفيذي</td><td>25 %</td><td>‏53,527.00&nbsp;€</td><td>‏66,758.50&nbsp;€</td><td>‏53,527.00&nbsp;€</td></tr><tr><td>6 · التحضير للترسية</td><td>10 %</td><td>‏21,410.80&nbsp;€</td><td>‏26,703.40&nbsp;€</td><td>‏21,410.80&nbsp;€</td></tr><tr><td>7 · المشاركة في الترسية</td><td>4 %</td><td>‏8,564.32&nbsp;€</td><td>‏10,681.36&nbsp;€</td><td>‏8,564.32&nbsp;€</td></tr><tr><td>8 · الإشراف على التنفيذ والتوثيق</td><td>32 %</td><td>‏68,514.56&nbsp;€</td><td>‏85,450.88&nbsp;€</td><td>‏68,514.56&nbsp;€</td></tr><tr><td>9 · متابعة ما بعد التسليم</td><td>2 %</td><td>‏4,282.16&nbsp;€</td><td>‏5,340.68&nbsp;€</td><td>‏4,282.16&nbsp;€</td></tr></tbody><tfoot><tr><td>المجموع</td><td>100 %</td><td>‏214,108.00&nbsp;€</td><td>‏267,034.00&nbsp;€</td><td>‏214,108.00&nbsp;€</td></tr></tfoot></table></div><details class="honorar__herleitung" open=""><summary>طريقة الاشتقاق</summary><ol><li>التكاليف المحتسبة: ‏2,000,000&nbsp;€ (من إدخالكم).</li><li>جدول الأتعاب المادة 35 الفقرة 1، الفئة III: عند ‏1,500,000&nbsp;€ من التكاليف المحتسبة ‏165,911&nbsp;€ – ‏206,923&nbsp;€، وعند ‏2,000,000&nbsp;€ ‏214,108&nbsp;€ – ‏267,034&nbsp;€.</li><li>استيفاء خطي بين سطري الجدول (المادة 13 الفقرة 1): النسبة 1.000 ← المعدل الأساسي ‏214,108.00&nbsp;€، والمعدل الأعلى ‏267,034.00&nbsp;€.</li><li>أتعاب جميع المراحل = المعدل الأساسي + 0 % × (المعدل الأعلى − المعدل الأساسي) = ‏214,108.00&nbsp;€.</li><li>لكل مرحلة: الأتعاب × الحصة وفق المادة 34 الفقرة 3 (المباني)، مقرَّبة إلى السنت؛ ثم مجموع المراحل المختارة.</li></ol></details></div>
+        <p class="honorar__fuss">تقدير غير مُلزِم. لائحة HOAI 2021، جدول الأتعاب المادة 35 الفقرة 1 (المباني والتصميم الداخلي) وحصص مراحل الخدمة المادة 34 الفقرة 3؛ جرى التحقق من الجدول في 27.09.2026، وحالة هذه الصفحة 12.10.2026. صافٍ، دون علاوة الترميم والمصاريف الجانبية والخدمات الخاصة وضريبة القيمة المضافة. تحت 25.000 يورو وفوق 25 مليون يورو من التكاليف المحتسبة تكون الأتعاب بالاتفاق الحر.</p>
       </div>
       <p class="fussnote">جميع الأسعار صافية بدون ضريبة القيمة المضافة. التسعير يستند إلى التوصيات الألمانية لأتعاب إدارة النمذجة (AHO/DVP: عادةً 20–25 ٪ من أتعاب إدارة المشروع). العرض النهائي يُقدَّم بعد حديث قصير عن حجم المشروع ونماذج التخصصات.</p>
     </div>
@@ -2208,6 +2303,8 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
         })();
 </script>
 <script src="../assets/js/sprachen.js" defer=""></script>
+<script src="../assets/js/hoai2021.js" defer=""></script>
+<script src="../assets/js/honorar-ui.js" defer=""></script>
 <script type="module">
 /* 69-02: three.js is NOT imported statically any more. It is loaded with
    import('three') in buehneStarten() — only when the stage comes into view and

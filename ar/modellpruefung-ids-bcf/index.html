@@ -47,6 +47,36 @@
 .beleg__unter{color:var(--muted);font-size:.88rem;margin:0 0 .9rem}
 .beleg__links{display:flex;gap:.6rem;flex-wrap:wrap}
 
+/* --- HOAI fee calculator (93-08) ------------------------------------------ */
+.honorar__felder{display:grid;gap:1.1rem}
+#h-satz{accent-color:var(--accent);padding:0;min-height:0}
+@media(min-width:60rem){.honorar__felder{grid-template-columns:repeat(2,minmax(0,1fr));gap:1.2rem 1.6rem}
+  .honorar__lph-feld{grid-column:1/-1}}
+.honorar__eingaben{display:grid;gap:.6rem;margin-top:.7rem}
+.honorar__klein{font-size:.8rem;color:var(--muted);margin:.5rem 0 0}
+.honorar__objekte{margin-top:.7rem;font-size:.84rem}
+.honorar__objekte summary{cursor:pointer;color:var(--accent)}
+.honorar__objekte table{width:100%;border-collapse:collapse;margin-top:.5rem;font-size:.8rem}
+.honorar__objekte td,.honorar__objekte th{border-top:1px solid var(--line);padding:.3rem .4rem .3rem 0;vertical-align:top;text-align:start}
+.honorar__objekte th{color:var(--accent);font-weight:600;padding-top:.7rem}
+.honorar__objekte td:last-child{white-space:nowrap;color:var(--ink)}
+.honorar__lph{display:grid;gap:.35rem}
+@media(min-width:44rem){.honorar__lph{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.honorar__lph label{display:flex;gap:.5rem;align-items:flex-start;font-size:.86rem;color:var(--ink-dim);cursor:pointer}
+.honorar__lph input{accent-color:var(--accent);margin-top:.2rem}
+.honorar__ergebnis{margin-top:1.3rem;border-top:1px solid var(--line);padding-top:1.2rem}
+.honorar__summe{font-family:var(--display);font-weight:700;font-size:1.35rem;color:var(--accent);margin:.2rem 0}
+.honorar__tabelle-rahmen{overflow-x:auto}
+.honorar__tabelle{width:100%;border-collapse:collapse;font-size:.84rem;margin-top:.9rem;font-variant-numeric:tabular-nums}
+.honorar__tabelle th,.honorar__tabelle td{border-top:1px solid var(--line);padding:.4rem .5rem .4rem 0;text-align:end}
+.honorar__tabelle th:first-child,.honorar__tabelle td:first-child{text-align:start}
+.honorar__tabelle tr.aus td{color:var(--muted);opacity:.55}
+.honorar__tabelle tfoot td{font-weight:600;color:var(--ink)}
+.honorar__herleitung{margin-top:1rem;font-size:.84rem;color:var(--muted)}
+.honorar__herleitung summary{cursor:pointer;color:var(--accent)}
+.honorar__herleitung ol{margin:.6rem 0 0;padding-inline-start:1.2rem;display:grid;gap:.35rem}
+.honorar__fuss{margin:1rem 0 0;font-size:.78rem;color:var(--muted);max-width:80ch}
+
 /* --- System requirements and AVV note in the download block (93-04/05) ---- */
 .anforderungen{width:100%;margin-top:1.4rem;border-collapse:collapse;font-size:.86rem}
 .anforderungen caption{text-align:start;font-family:var(--mono);font-size:.72rem;color:var(--accent);
@@ -161,12 +191,12 @@
 .finder__frage{border:0;margin:0;padding:0;min-width:0}
 .finder__frage legend{padding:0;margin-bottom:.45rem}
 .finder__frage legend span{font-size:.76rem;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
-.finder__wahl{display:flex;flex-wrap:wrap;gap:.4rem}
-.finder__wahl button{font:inherit;font-size:.84rem;min-height:2.5rem;padding:.45rem .75rem;border-radius:9px;
+.finder__wahl,.honorar__wahl{display:flex;flex-wrap:wrap;gap:.4rem}
+.finder__wahl button,.honorar__wahl button{font:inherit;font-size:.84rem;min-height:2.5rem;padding:.45rem .75rem;border-radius:9px;
   cursor:pointer;background:var(--bg-deep);color:var(--ink-dim);border:1px solid rgba(255,255,255,.14)}
-.finder__wahl button:hover{border-color:var(--line-strong);color:var(--ink)}
-.finder__wahl button[aria-pressed="true"]{border-color:var(--accent);color:var(--accent);background:rgba(45,212,191,.08)}
-.finder__wahl button:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.finder__wahl button:hover,.honorar__wahl button:hover{border-color:var(--line-strong);color:var(--ink)}
+.finder__wahl button[aria-pressed="true"],.honorar__wahl button[aria-pressed="true"]{border-color:var(--accent);color:var(--accent);background:rgba(45,212,191,.08)}
+.finder__wahl button:focus-visible,.honorar__wahl button:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
 .finder__ergebnis{margin-top:1.3rem;border-top:1px solid var(--line);padding-top:1.2rem;display:grid;gap:.9rem}
 @media(min-width:60rem){.finder__ergebnis{grid-template-columns:1.2fr .8fr;gap:2rem;align-items:start}}
 .finder__auge{margin:0 0 .4rem;color:var(--accent);font-family:var(--mono);font-size:.72rem;
@@ -1407,6 +1437,8 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
         })();
 </script>
 <script src="/assets/js/sprachen.js" defer=""></script>
+<script src="/assets/js/hoai2021.js" defer=""></script>
+<script src="/assets/js/honorar-ui.js" defer=""></script>
 
 
 </body></html>

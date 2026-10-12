@@ -135,7 +135,11 @@ function koerper(seite) {
   if (!fuss.includes('../#impressum')) throw new Error('footer: legal notice link not set');
   const skript = schneide(quelle, '<script>\n// Jahr im Footer', '</script>');
 
-  let html = `<body>\n\n${logo}\n\n${kopfzeile}\n\n<main id="top">\n\n${seitenkopf}\n\n${inhalt}\n\n${kontakt}\n\n  ${fuss}\n\n</main>\n\n${skript}\n<script src="/assets/js/sprachen.js" defer></script>\n</body>\n</html>\n`;
+  // Every deferred script of the home page (sprachen.js, and since 93-08 the HOAI
+  // calculator) — the module script of the 3D stage is not deferred and stays out.
+  const deferSkripte = [...quelle.matchAll(/<script src="assets\/js\/[^"]+" defer><\/script>/g)].map((m) => m[0]).join('\n');
+  if (!deferSkripte.includes('sprachen.js')) throw new Error('sprachen.js script tag not found');
+  let html = `<body>\n\n${logo}\n\n${kopfzeile}\n\n<main id="top">\n\n${seitenkopf}\n\n${inhalt}\n\n${kontakt}\n\n  ${fuss}\n\n</main>\n\n${skript}\n${deferSkripte}\n</body>\n</html>\n`;
 
   // Anchors to sections that are not on this page go to the home page.
   const ids = new Set([...html.matchAll(/\sid="([^"]+)"/g)].map((m) => m[1]));

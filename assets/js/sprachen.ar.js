@@ -631,4 +631,108 @@
     'تبقى جميع الإصدارات المنشورة متاحة للتنزيل على GitHub.',
   'Die App läuft offline und ohne einen Server von mir — sie hängt an nichts, das jemand abschalten könnte.':
     'يعمل التطبيق دون اتصال ودون أي خادم تابع لي — ولا يعتمد على شيء يمكن لأحد إيقافه.',
+
+  /* HOAI fee calculator (93-08) */
+  'Was kostet die Planung nach HOAI?':
+    'كم تكلفة التصميم وفق HOAI؟',
+  'Ein Überschlag nach der Honorartafel der HOAI 2021 — ohne Anmeldung, gerechnet in Ihrem Browser; nichts verlässt Ihr Gerät. Jede Zahl steht mit ihrer Herleitung da.':
+    'تقدير وفق جدول الأتعاب في لائحة HOAI 2021 الألمانية (أتعاب المعماريين والمهندسين) — دون تسجيل، ويُحسب في متصفحكم؛ ولا يغادر شيء جهازكم. وكل رقم مرفق بطريقة اشتقاقه.',
+  'Leistungsbild':
+    'نوع الخدمة',
+  'Gebäude':
+    'المباني',
+  'Innenräume':
+    'التصميم الداخلي',
+  'Anrechenbare Kosten':
+    'التكاليف المحتسبة',
+  'Betrag bekannt':
+    'المبلغ معروف',
+  'Schätzung aus BGF':
+    'تقدير من إجمالي المساحة الطابقية',
+  'Anrechenbare Kosten in € (netto, KG 300 + 400 nach § 33)':
+    'التكاليف المحتسبة باليورو (صافية، مجموعتا التكاليف 300 + 400 وفق المادة 33)',
+  'Brutto-Grundfläche (m²)':
+    'إجمالي المساحة الطابقية (م²)',
+  'Kostenkennwert KG 300 + 400 (€/m² BGF, netto)':
+    'مؤشر التكلفة للمجموعتين 300 + 400 (يورو/م²، صافٍ)',
+  'Quelle und Jahr des Kennwerts':
+    'مصدر المؤشر وسنته',
+  'Honorarzone':
+    'فئة الأتعاب',
+  'Welche Zone? Objektliste der HOAI (Anlage 10)':
+    'أي فئة؟ قائمة المباني في HOAI (الملحق 10)',
+  'Wortlaut der HOAI 2021, Anlage 10.2 (Gebäude) und 10.3 (Innenräume, allgemeine Zeilen). Die Objektliste gibt die Regel an; im Zweifel entscheidet die Bewertung nach § 35 Abs. 4–6.':
+    'نص لائحة HOAI 2021، الملحق 10.2 (المباني) و10.3 (التصميم الداخلي، البنود العامة)، مقتبس بالألمانية. تحدد القائمة الفئة المعتادة؛ وعند الشك يُحسم الأمر بالتقييم وفق المادة 35 الفقرات 4–6.',
+  'Honorarsatz':
+    'معدل الأتعاب',
+  'Lage zwischen Basissatz (0 %) und oberem Satz (100 %)':
+    'الموضع بين المعدل الأساسي (0 %) والمعدل الأعلى (100 %)',
+  'Leistungsphasen':
+    'مراحل الخدمة',
+  'Unverbindlicher Überschlag. HOAI 2021, Honorartafel § 35 Abs. 1 (Gebäude und Innenräume) und Leistungsanteile § 34 Abs. 3; Tafel geprüft am 27.09.2026, Stand dieser Seite 12.10.2026. Netto, ohne Umbauzuschlag, Nebenkosten, Besondere Leistungen und Umsatzsteuer. Unter 25.000 € und über 25 Mio. € anrechenbarer Kosten ist das Honorar frei vereinbar.':
+    'تقدير غير مُلزِم. لائحة HOAI 2021، جدول الأتعاب المادة 35 الفقرة 1 (المباني والتصميم الداخلي) وحصص مراحل الخدمة المادة 34 الفقرة 3؛ جرى التحقق من الجدول في 27.09.2026، وحالة هذه الصفحة 12.10.2026. صافٍ، دون علاوة الترميم والمصاريف الجانبية والخدمات الخاصة وضريبة القيمة المضافة. تحت 25.000 يورو وفوق 25 مليون يورو من التكاليف المحتسبة تكون الأتعاب بالاتفاق الحر.',
+  'Vollständige Anlage 10 auf gesetze-im-internet.de':
+    'الملحق 10 كاملاً على gesetze-im-internet.de (بالألمانية)',
+  'LPH':
+    'المرحلة',
+  'Grundlagenermittlung':
+    'تحديد الأسس',
+  'Vorplanung':
+    'التصميم الأولي',
+  'Entwurfsplanung':
+    'التصميم التطويري',
+  'Genehmigungsplanung':
+    'تخطيط الترخيص',
+  'Ausführungsplanung':
+    'التصميم التنفيذي',
+  'Vorbereitung der Vergabe':
+    'التحضير للترسية',
+  'Mitwirkung bei der Vergabe':
+    'المشاركة في الترسية',
+  'Objektüberwachung – Bauüberwachung und Dokumentation':
+    'الإشراف على التنفيذ والتوثيق',
+  'Objektbetreuung':
+    'متابعة ما بعد التسليم',
+  'Basissatz':
+    'المعدل الأساسي',
+  'Oberer Honorarsatz':
+    'المعدل الأعلى للأتعاب',
+  '{p} % zwischen Basissatz und oberem Satz':
+    '{p} % بين المعدل الأساسي والأعلى',
+  'Anrechenbare Kosten: {k} (Ihre Eingabe).':
+    'التكاليف المحتسبة: {k} (من إدخالكم).',
+  'Für die Schätzung bitte BGF und einen Kostenkennwert eintragen — der Rechner gibt bewusst keinen Kennwert vor.':
+    'للتقدير يُرجى إدخال المساحة ومؤشر للتكلفة — فالحاسبة لا تقترح مؤشراً عمداً.',
+  'Schätzung: {b} m² BGF × {w} €/m² = {k} — Quelle des Kennwerts: {q}. Eine Schätzung, keine Kostenberechnung nach DIN 276.':
+    'تقدير: {b} م² × {w} يورو/م² = {k} — مصدر المؤشر: {q}. هذا تقدير، وليس حساباً للتكاليف وفق DIN 276.',
+  'nicht angegeben':
+    'غير مذكور',
+  'Bitte anrechenbare Kosten eintragen.':
+    'يُرجى إدخال التكاليف المحتسبة.',
+  'Außerhalb der Honorartafel':
+    'خارج جدول الأتعاب',
+  'Die Tafel des § 35 reicht von {a} bis {b} anrechenbarer Kosten. Darunter und darüber ist das Honorar frei vereinbar — hier wird nichts hochgerechnet.':
+    'يغطي جدول المادة 35 من {a} إلى {b} من التكاليف المحتسبة. وما دون ذلك وما فوقه تكون الأتعاب بالاتفاق الحر — ولا يُستقرأ هنا شيء.',
+  'Honorar der gewählten Leistungsphasen ({p} %)':
+    'أتعاب المراحل المختارة ({p} %)',
+  'Spanne Basissatz bis oberer Satz: {a} – {b}':
+    'النطاق من المعدل الأساسي إلى الأعلى: {a} – {b}',
+  'Anteil':
+    'الحصة',
+  'oberer Satz':
+    'المعدل الأعلى',
+  'gewählt':
+    'المختار',
+  'Summe':
+    'المجموع',
+  'Herleitung':
+    'طريقة الاشتقاق',
+  'Honorartafel § 35 Abs. 1, Honorarzone {z}: bei {k1} anrechenbaren Kosten {a1} – {b1}, bei {k2} {a2} – {b2}.':
+    'جدول الأتعاب المادة 35 الفقرة 1، الفئة {z}: عند {k1} من التكاليف المحتسبة {a1} – {b1}، وعند {k2} {a2} – {b2}.',
+  'Lineare Interpolation zwischen den beiden Tafelzeilen (§ 13 Abs. 1): Anteil {f} → Basissatz {a}, oberer Satz {b}.':
+    'استيفاء خطي بين سطري الجدول (المادة 13 الفقرة 1): النسبة {f} ← المعدل الأساسي {a}، والمعدل الأعلى {b}.',
+  'Honorar für alle Leistungsphasen = Basissatz + {p} % × (oberer Satz − Basissatz) = {h}.':
+    'أتعاب جميع المراحل = المعدل الأساسي + {p} % × (المعدل الأعلى − المعدل الأساسي) = {h}.',
+  'Je Leistungsphase: Honorar × Anteil nach § 34 Abs. 3 ({l}), auf Cent gerundet; Summe der gewählten Phasen.':
+    'لكل مرحلة: الأتعاب × الحصة وفق المادة 34 الفقرة 3 ({l})، مقرَّبة إلى السنت؛ ثم مجموع المراحل المختارة.',
 };
