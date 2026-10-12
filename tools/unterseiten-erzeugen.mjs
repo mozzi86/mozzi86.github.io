@@ -118,7 +118,11 @@ function koerper(seite) {
       <p class="unter">${esc(seite.intro)}</p>
     </div>
   </section>`;
-  const teile = seite.abschnitte.map(abschnitt);
+  // A topic page shows sections cut from the home page, or (69-33) its own
+  // content fragment tools/seiten/<ordner>.html when the home page has no such section.
+  const teile = seite.inhalt
+    ? [fs.readFileSync(path.join(WURZEL, 'tools/seiten', seite.ordner + '.html'), 'utf8').replace(/\r\n/g, '\n').trimEnd()]
+    : seite.abschnitte.map(abschnitt);
   // The "more on …" links of the home page point to the topic pages themselves.
   const inhalt = teile.join('\n\n').replace(/\n\s*<p class="mehr" data-mehr[^>]*>[\s\S]*?<\/p>/g, '');
   let kontakt = abschnitt('kontakt');

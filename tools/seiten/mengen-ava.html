@@ -1,0 +1,46 @@
+  <!-- Topic page "Mengen & AVA" (69-33, register no. 123, decision D-HR-16).
+       Content fragment for tools/unterseiten-erzeugen.mjs — German only; EN/AR
+       through the dictionaries. Claims checked against release 1.1.0:
+       GAEB writing = X83 only (gaebX83.js); reading X81/X82/X84/X86 + GAEB 90
+       (gaebXmlRead.js, gaeb90.js); DIN 276 cost groups (kostenJeKg.js, catalogue);
+       offer import/check (AngebotImportDialog/AngebotPruefungDialog), bid
+       comparison (PriceComparison), measurement & billing (SettlementPanel).
+       The AVA does NOT write X81 — never claim it. -->
+  <section class="abschnitt abschnitt--hoch" id="mengen-ava">
+    <div class="mitte">
+      <div class="kopfzeile">
+        <p class="auge">Mengen &amp; AVA</p>
+        <h2>Vom Modell zur <em>Ausschreibung</em>.</h2>
+        <p class="unter">Mengen kommen aus dem IFC-Modell, nicht aus dem Taschenrechner. Daraus entstehen Leistungsverzeichnis, Kostenberechnung und Preisspiegel — in BIT-Atelier, lokal auf Ihrem Rechner.</p>
+      </div>
+      <div class="gitter gitter--2">
+        <article class="karte">
+          <p class="karte__nr">01 · Mengen</p>
+          <h3>Aus dem Modell ermittelt</h3>
+          <p>Filterbasiert nach dem Prinzip WAS ∩ ZUSTAND: Welche Bauteile zählen, und in welchem Zustand. Die Menge bleibt mit ihren Bauteilen verbunden und lässt sich nachprüfen.</p>
+        </article>
+        <article class="karte">
+          <p class="karte__nr">02 · GAEB</p>
+          <h3>Schreibt X83, liest X81/82/84/86</h3>
+          <p>Das Leistungsverzeichnis geht als GAEB DA XML X83 an die Bieter. Gelesen werden X81, X82, X84 und X86 sowie GAEB 90 — so kommen vorhandene LVs und Angebote herein. Ein X81 schreibt die AVA nicht.</p>
+        </article>
+        <article class="karte">
+          <p class="karte__nr">03 · Kosten</p>
+          <h3>Kostenberechnung nach DIN 276</h3>
+          <p>Positionen werden Kostengruppen der DIN 276 zugeordnet; die Kostenberechnung folgt dieser Gliederung.</p>
+        </article>
+        <article class="karte">
+          <p class="karte__nr">04 · Vergabe</p>
+          <h3>Angebote, Preisspiegel, Abrechnung</h3>
+          <p>Angebote (X84) einlesen und prüfen, im Preisspiegel vergleichen, später Aufmaß und Abrechnung. Leistungsverzeichnis und Preisspiegel lassen sich als CSV oder Excel ausgeben.</p>
+        </article>
+      </div>
+      <div class="beleg">
+        <p class="beleg__titel">Selbst ausprobieren</p>
+        <p class="beleg__unter">Die AVA ist Teil der Open-Source-Fassung von BIT-Atelier — ohne Konto und ohne Lizenzkosten.</p>
+        <div class="beleg__links">
+          <a class="btn btn--klein" href="#herunterladen">BIT-Atelier herunterladen</a>
+        </div>
+      </div>
+    </div>
+  </section>

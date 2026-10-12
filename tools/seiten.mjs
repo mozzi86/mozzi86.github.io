@@ -24,6 +24,7 @@ export const SPRACHEN = [
  * @typedef {Object} Seite
  * @property {string} ordner        folder below the language root ('' = home page)
  * @property {string[]} [abschnitte] section ids taken from index.html (topic pages only)
+ * @property {boolean} [inhalt]    own content from tools/seiten/<ordner>.html instead of sections (69-33)
  * @property {string} [titel]       German <title>; translated via the dictionary
  * @property {string} [h1]          German page heading of a topic page
  * @property {string} [intro]       German intro paragraph of a topic page
@@ -69,6 +70,36 @@ export const SEITEN = [
       de: 'Modellprüfung mit eigener Prüf-Engine: IFC lesen, Kollisionen und Duplikate finden, IDS-Anforderungen prüfen, Befunde als BCF. Lokal, ohne Upload — mit Musterbericht zum Herunterladen.',
       en: 'Model checking with an in-house engine: read IFC, find clashes and duplicates, check IDS requirements, return findings as BCF. Local, no upload — with a sample report to download.',
       ar: 'تدقيق النماذج بمحرِّك مُطوَّر داخلياً: قراءة IFC، وكشف التصادمات والتكرارات، وفحص متطلبات IDS، وإعادة النتائج بصيغة BCF. محلياً ودون رفع ملفات — مع تقرير نموذجي للتنزيل.',
+    },
+  },
+  {
+    // 69-33 (D-HR-16): own content in tools/seiten/mengen-ava.html.
+    ordner: 'mengen-ava',
+    inhalt: true,
+    titel: 'Mengen und AVA aus dem Modell — BIT-ATELIER',
+    h1: 'Mengen und AVA aus dem Modell.',
+    intro: 'Mengen aus dem IFC-Modell, Leistungsverzeichnis als GAEB X83, Kostenberechnung nach DIN 276, Preisspiegel und Abrechnung — lokal auf Ihrem Rechner.',
+    herkunft: 'Mengen & AVA',
+    prioritaet: 0.6,
+    beschreibung: {
+      de: 'Mengen aus dem IFC-Modell und AVA in BIT-Atelier: Leistungsverzeichnis als GAEB DA XML X83, liest X81/82/84/86 und GAEB 90, Kostenberechnung nach DIN 276, Preisspiegel, Aufmaß und Abrechnung.',
+      en: 'Quantities from the IFC model and tendering in BIT-Atelier: bill of quantities as GAEB DA XML X83, reads X81/82/84/86 and GAEB 90, cost calculation to DIN 276, bid comparison, measurement and billing.',
+      ar: 'الكميات من نموذج IFC وإعداد المناقصات في BIT-Atelier: جدول الكميات بصيغة GAEB DA XML X83، وقراءة X81/82/84/86 وGAEB 90، وحساب التكاليف وفق DIN 276، ومقارنة العروض، والقياس والفوترة.',
+    },
+  },
+  {
+    // 69-33 (D-HR-17): strictly a screening on the model, never a GEG proof.
+    ordner: 'energie-screening',
+    inhalt: true,
+    titel: 'Energie-Screening am Modell — BIT-ATELIER',
+    h1: 'Energie-Screening am Modell — kein GEG-Nachweis.',
+    intro: 'Hülle, Technik und Versorgung früh am Modell vergleichen, mit Richtwerten statt Nachweisen. Den Nachweis stellt die Energieberatung.',
+    herkunft: 'Energie-Screening',
+    prioritaet: 0.6,
+    beschreibung: {
+      de: 'Energie-Screening am Gebäudemodell in BIT-Atelier: U-Wert und Tauwasser, Heizlast bis PV-Ertrag, Wärmebrücken als Richtwert — zum Vergleichen in der frühen Planung, ausdrücklich kein GEG-Nachweis.',
+      en: 'Energy screening on the building model in BIT-Atelier: U value and condensation, heating load to PV yield, thermal bridges as guide values — for comparing early design options, explicitly not a GEG compliance proof.',
+      ar: 'فحص أولي للطاقة على نموذج المبنى في BIT-Atelier: قيمة U والتكاثف، من الحمل الحراري إلى إنتاج الطاقة الشمسية، والجسور الحرارية كقيم استرشادية — للمقارنة في مراحل التصميم المبكرة، وليس إثباتاً وفق قانون GEG.',
     },
   },
   {

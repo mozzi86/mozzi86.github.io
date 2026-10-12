@@ -500,4 +500,90 @@
   /* Evidence pack licence (69-34, D-HR-21) */
   'Beide Dateien stehen unter <a href="https://creativecommons.org/licenses/by/4.0/deed.de" style="color:var(--accent)">CC BY 4.0</a> — frei nutzbar mit Namensnennung „BIT-ATELIER (bit-atelier.de)“. <a href="/downloads/LIESMICH.md" style="color:var(--accent)">Was drin ist</a>.':
     'Both files are licensed under <a href="https://creativecommons.org/licenses/by/4.0/deed.en" style="color:var(--accent)">CC BY 4.0</a> — free to use with the attribution "BIT-ATELIER (bit-atelier.de)". <a href="/downloads/LIESMICH.md" style="color:var(--accent)">What is inside</a> (in German).',
+
+  /* Topic pages II (69-33): quantities & tendering, energy screening */
+  'Mengen und AVA aus dem Modell — BIT-ATELIER':
+    'Quantities and tendering from the model — BIT-ATELIER',
+  'Mengen und AVA aus dem Modell.':
+    'Quantities and tendering from the model.',
+  'Mengen aus dem IFC-Modell, Leistungsverzeichnis als GAEB X83, Kostenberechnung nach DIN 276, Preisspiegel und Abrechnung — lokal auf Ihrem Rechner.':
+    'Quantities from the IFC model, the bill of quantities as GAEB X83, cost calculation to DIN 276, bid comparison and billing — locally on your computer.',
+  'Energie-Screening am Modell — BIT-ATELIER':
+    'Energy screening on the model — BIT-ATELIER',
+  'Energie-Screening am Modell — kein GEG-Nachweis.':
+    'Energy screening on the model — not a GEG proof.',
+  'Hülle, Technik und Versorgung früh am Modell vergleichen, mit Richtwerten statt Nachweisen. Den Nachweis stellt die Energieberatung.':
+    'Compare envelope, building services and supply early on the model, with guide values instead of proofs. The proof comes from the energy consultant.',
+  '<a href="mengen-ava/">Mehr zu Mengen und AVA aus dem Modell →</a>':
+    '<a href="mengen-ava/">More on quantities and tendering from the model →</a>',
+  '<a href="energie-screening/">Mehr zum Energie-Screening am Modell (kein GEG-Nachweis) →</a>':
+    '<a href="energie-screening/">More on energy screening on the model (not a GEG proof) →</a>',
+  'Mengen &amp; AVA':
+    'Quantities &amp; tendering',
+  'Vom Modell zur <em>Ausschreibung</em>.':
+    'From the model to the <em>tender</em>.',
+  'Mengen kommen aus dem IFC-Modell, nicht aus dem Taschenrechner. Daraus entstehen Leistungsverzeichnis, Kostenberechnung und Preisspiegel — in BIT-Atelier, lokal auf Ihrem Rechner.':
+    'Quantities come from the IFC model, not from a pocket calculator. From them come the bill of quantities, the cost calculation and the bid comparison — in BIT-Atelier, locally on your computer.',
+  '01 · Mengen':
+    '01 · Quantities',
+  'Aus dem Modell ermittelt':
+    'Taken from the model',
+  'Filterbasiert nach dem Prinzip WAS ∩ ZUSTAND: Welche Bauteile zählen, und in welchem Zustand. Die Menge bleibt mit ihren Bauteilen verbunden und lässt sich nachprüfen.':
+    'Filter-based on the principle WHAT ∩ STATUS: which elements count, and in which status. Each quantity stays linked to its elements and can be checked.',
+  '02 · GAEB':
+    '02 · GAEB',
+  'Schreibt X83, liest X81/82/84/86':
+    'Writes X83, reads X81/82/84/86',
+  'Das Leistungsverzeichnis geht als GAEB DA XML X83 an die Bieter. Gelesen werden X81, X82, X84 und X86 sowie GAEB 90 — so kommen vorhandene LVs und Angebote herein. Ein X81 schreibt die AVA nicht.':
+    'The bill of quantities goes to bidders as GAEB DA XML X83. X81, X82, X84 and X86 as well as GAEB 90 are read — that is how existing bills and offers come in. The tendering module does not write X81.',
+  '03 · Kosten':
+    '03 · Costs',
+  'Kostenberechnung nach DIN 276':
+    'Cost calculation to DIN 276',
+  'Positionen werden Kostengruppen der DIN 276 zugeordnet; die Kostenberechnung folgt dieser Gliederung.':
+    'Items are assigned to DIN 276 cost groups; the cost calculation follows that structure.',
+  '04 · Vergabe':
+    '04 · Award',
+  'Angebote, Preisspiegel, Abrechnung':
+    'Offers, bid comparison, billing',
+  'Angebote (X84) einlesen und prüfen, im Preisspiegel vergleichen, später Aufmaß und Abrechnung. Leistungsverzeichnis und Preisspiegel lassen sich als CSV oder Excel ausgeben.':
+    'Read in and check offers (X84), compare them in the bid comparison, later measurement and billing. The bill of quantities and the bid comparison can be exported as CSV or Excel.',
+  'Selbst ausprobieren':
+    'Try it yourself',
+  'Die AVA ist Teil der Open-Source-Fassung von BIT-Atelier — ohne Konto und ohne Lizenzkosten.':
+    'Tendering is part of the open-source version of BIT-Atelier — no account, no licence fees.',
+  'Energie-Screening':
+    'Energy screening',
+  'Früh vergleichen, <em>nicht nachweisen</em>.':
+    'Compare early, <em>don\'t certify</em>.',
+  'Ein Screening am Modell: Varianten in der frühen Planung vergleichen, solange Änderungen noch wenig kosten. Es ersetzt keinen Nachweis — den GEG-Nachweis stellt die Energieberatung oder Fachplanung.':
+    'A screening on the model: compare options in early design while changes are still cheap. It does not replace a proof — the GEG compliance proof comes from the energy consultant or the specialist engineer.',
+  '01 · Hülle':
+    '01 · Envelope',
+  'Schichtaufbau, U-Wert, Tauwasser':
+    'Layer build-up, U value, condensation',
+  'Bauteilaufbau aus dem Gebäudemodell, U-Wert aus der Summe der Schichten, Temperatur- und Taupunktverlauf im Querschnitt — als Richtwert.':
+    'Element build-up from the building model, U value from the sum of its layers, temperature and dew-point profile through the section — as a guide value.',
+  '02 · Technik':
+    '02 · Services',
+  'Von der Heizlast bis zum PV-Ertrag':
+    'From heating load to PV yield',
+  'Konzept-Überschlag für Heizlast, Heizwärmebedarf, Strombedarf einer Wärmepumpe, Lüftung, Trink- und Warmwasser, Elektro-Anschlusswert sowie PV-Leistung und -Ertrag.':
+    'Concept estimate for heating load, heating demand, heat-pump electricity, ventilation, drinking and hot water, electrical connected load, and PV output and yield.',
+  '03 · Details':
+    '03 · Details',
+  'Wärmebrücken als Richtwert':
+    'Thermal bridges as guide values',
+  'Konzept-Richtwerte für typische Anschlüsse, damit kritische Details früh auffallen — kein Wärmebrückennachweis.':
+    'Concept guide values for typical junctions, so that critical details show up early — not a thermal bridge proof.',
+  '04 · Versorgung':
+    '04 · Supply',
+  'Versorgung im Überblick':
+    'Supply at a glance',
+  'Systeme mit Leistung und Deckungsanteil erfassen; die Übersicht zeigt installierte Leistung in kW, Bedarfsdeckung, spezifische Leistung in W/m² und wie viele Systeme erneuerbar sind.':
+    'Enter systems with their output and share of demand; the overview shows installed output in kW, demand coverage, specific output in W/m² and how many systems are renewable.',
+  'Was das Screening nicht ist':
+    'What the screening is not',
+  'Kein GEG-Nachweis, kein Nachweis nach DIN 4108-3 oder DIN EN ISO 6946, keine Anlagenplanung. Materialkennwerte sind Annahmen und im Programm als solche gekennzeichnet. Für Förderantrag und Bauantrag braucht es den Nachweis einer dafür berechtigten Fachperson.':
+    'Not a GEG proof, not a proof to DIN 4108-3 or DIN EN ISO 6946, not a building services design. Material values are assumptions and are marked as such in the software. Funding and planning applications need the proof of an authorised specialist.',
 };

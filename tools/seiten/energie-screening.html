@@ -1,0 +1,49 @@
+  <!-- Topic page "Energie-Screening" (69-33, register no. 129, decision D-HR-17:
+       strictly "Screening am Modell, kein GEG-Nachweis").
+       Content fragment for tools/unterseiten-erzeugen.mjs — German only; EN/AR
+       through the dictionaries. Claims checked against release 1.1.0:
+       BauphysikStudio.jsx (layer build-up from the building model, U value from
+       the d/λ sum, dew point; "kein Nachweis nach DIN 4108-3, DIN EN ISO 6946
+       oder GEG"), HaustechnikPlanner.jsx (concept estimates: heating load ... PV
+       yield; "kein GEG-/DIN-Nachweis"), WaermebrueckenPlanner.jsx (concept
+       values, "kein Wärmebrückennachweis und kein GEG-Nachweis"), EnergyPlanner.jsx
+       (installed kW, coverage %, W/m², count of renewable systems — NOT a renewable
+       share). Never call any of it a proof. -->
+  <section class="abschnitt abschnitt--hoch" id="energie-screening">
+    <div class="mitte">
+      <div class="kopfzeile">
+        <p class="auge">Energie-Screening</p>
+        <h2>Früh vergleichen, <em>nicht nachweisen</em>.</h2>
+        <p class="unter">Ein Screening am Modell: Varianten in der frühen Planung vergleichen, solange Änderungen noch wenig kosten. Es ersetzt keinen Nachweis — den GEG-Nachweis stellt die Energieberatung oder Fachplanung.</p>
+      </div>
+      <div class="gitter gitter--2">
+        <article class="karte">
+          <p class="karte__nr">01 · Hülle</p>
+          <h3>Schichtaufbau, U-Wert, Tauwasser</h3>
+          <p>Bauteilaufbau aus dem Gebäudemodell, U-Wert aus der Summe der Schichten, Temperatur- und Taupunktverlauf im Querschnitt — als Richtwert.</p>
+        </article>
+        <article class="karte">
+          <p class="karte__nr">02 · Technik</p>
+          <h3>Von der Heizlast bis zum PV-Ertrag</h3>
+          <p>Konzept-Überschlag für Heizlast, Heizwärmebedarf, Strombedarf einer Wärmepumpe, Lüftung, Trink- und Warmwasser, Elektro-Anschlusswert sowie PV-Leistung und -Ertrag.</p>
+        </article>
+        <article class="karte">
+          <p class="karte__nr">03 · Details</p>
+          <h3>Wärmebrücken als Richtwert</h3>
+          <p>Konzept-Richtwerte für typische Anschlüsse, damit kritische Details früh auffallen — kein Wärmebrückennachweis.</p>
+        </article>
+        <article class="karte">
+          <p class="karte__nr">04 · Versorgung</p>
+          <h3>Versorgung im Überblick</h3>
+          <p>Systeme mit Leistung und Deckungsanteil erfassen; die Übersicht zeigt installierte Leistung in kW, Bedarfsdeckung, spezifische Leistung in W/m² und wie viele Systeme erneuerbar sind.</p>
+        </article>
+      </div>
+      <div class="beleg">
+        <p class="beleg__titel">Was das Screening nicht ist</p>
+        <p class="beleg__unter">Kein GEG-Nachweis, kein Nachweis nach DIN 4108-3 oder DIN EN ISO 6946, keine Anlagenplanung. Materialkennwerte sind Annahmen und im Programm als solche gekennzeichnet. Für Förderantrag und Bauantrag braucht es den Nachweis einer dafür berechtigten Fachperson.</p>
+        <div class="beleg__links">
+          <a class="btn btn--klein" href="#herunterladen">BIT-Atelier herunterladen</a>
+        </div>
+      </div>
+    </div>
+  </section>

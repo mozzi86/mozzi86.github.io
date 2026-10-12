@@ -503,4 +503,90 @@
   /* Evidence pack licence (69-34, D-HR-21) */
   'Beide Dateien stehen unter <a href="https://creativecommons.org/licenses/by/4.0/deed.de" style="color:var(--accent)">CC BY 4.0</a> — frei nutzbar mit Namensnennung „BIT-ATELIER (bit-atelier.de)“. <a href="/downloads/LIESMICH.md" style="color:var(--accent)">Was drin ist</a>.':
     'يخضع الملفان لترخيص <a href="https://creativecommons.org/licenses/by/4.0/deed.ar" style="color:var(--accent)">CC BY 4.0</a> — استخدام حر مع نسبة العمل إلى „BIT-ATELIER (bit-atelier.de)“. <a href="/downloads/LIESMICH.md" style="color:var(--accent)">ما يحتويه البيان</a> (بالألمانية).',
+
+  /* Topic pages II (69-33): quantities & tendering, energy screening */
+  'Mengen und AVA aus dem Modell — BIT-ATELIER':
+    'الكميات والمناقصات من النموذج — BIT-ATELIER',
+  'Mengen und AVA aus dem Modell.':
+    'الكميات والمناقصات من النموذج.',
+  'Mengen aus dem IFC-Modell, Leistungsverzeichnis als GAEB X83, Kostenberechnung nach DIN 276, Preisspiegel und Abrechnung — lokal auf Ihrem Rechner.':
+    'الكميات من نموذج IFC، وجدول الكميات بصيغة GAEB X83، وحساب التكاليف وفق DIN 276، ومقارنة العروض والفوترة — محلياً على حاسوبكم.',
+  'Energie-Screening am Modell — BIT-ATELIER':
+    'فحص أولي للطاقة على النموذج — BIT-ATELIER',
+  'Energie-Screening am Modell — kein GEG-Nachweis.':
+    'فحص أولي للطاقة على النموذج — وليس إثباتاً وفق GEG.',
+  'Hülle, Technik und Versorgung früh am Modell vergleichen, mit Richtwerten statt Nachweisen. Den Nachweis stellt die Energieberatung.':
+    'قارنوا الغلاف والتجهيزات الفنية ومصادر الإمداد مبكراً على النموذج، بقيم استرشادية لا بإثباتات. أما الإثبات فيقدمه مستشار الطاقة.',
+  '<a href="mengen-ava/">Mehr zu Mengen und AVA aus dem Modell →</a>':
+    '<a href="mengen-ava/">المزيد عن الكميات والمناقصات من النموذج ←</a>',
+  '<a href="energie-screening/">Mehr zum Energie-Screening am Modell (kein GEG-Nachweis) →</a>':
+    '<a href="energie-screening/">المزيد عن الفحص الأولي للطاقة على النموذج (ليس إثباتاً وفق GEG) ←</a>',
+  'Mengen &amp; AVA':
+    'الكميات والمناقصات',
+  'Vom Modell zur <em>Ausschreibung</em>.':
+    'من النموذج إلى <em>المناقصة</em>.',
+  'Mengen kommen aus dem IFC-Modell, nicht aus dem Taschenrechner. Daraus entstehen Leistungsverzeichnis, Kostenberechnung und Preisspiegel — in BIT-Atelier, lokal auf Ihrem Rechner.':
+    'تأتي الكميات من نموذج IFC، لا من الآلة الحاسبة. ومنها يُعدّ جدول الكميات وحساب التكاليف ومقارنة العروض — في BIT-Atelier، محلياً على حاسوبكم.',
+  '01 · Mengen':
+    '01 · الكميات',
+  'Aus dem Modell ermittelt':
+    'مستخرجة من النموذج',
+  'Filterbasiert nach dem Prinzip WAS ∩ ZUSTAND: Welche Bauteile zählen, und in welchem Zustand. Die Menge bleibt mit ihren Bauteilen verbunden und lässt sich nachprüfen.':
+    'بالتصفية وفق مبدأ «ماذا ∩ الحالة»: أي العناصر تُحتسب، وفي أي حالة. وتبقى كل كمية مرتبطة بعناصرها ويمكن التحقق منها.',
+  '02 · GAEB':
+    '02 · GAEB',
+  'Schreibt X83, liest X81/82/84/86':
+    'يكتب X83، ويقرأ X81/82/84/86',
+  'Das Leistungsverzeichnis geht als GAEB DA XML X83 an die Bieter. Gelesen werden X81, X82, X84 und X86 sowie GAEB 90 — so kommen vorhandene LVs und Angebote herein. Ein X81 schreibt die AVA nicht.':
+    'يُرسل جدول الكميات إلى المتقدمين بصيغة GAEB DA XML X83. ويُقرأ X81 وX82 وX84 وX86 وكذلك GAEB 90 — وهكذا تدخل الجداول والعروض الموجودة. ولا تكتب وحدة المناقصات ملف X81.',
+  '03 · Kosten':
+    '03 · التكاليف',
+  'Kostenberechnung nach DIN 276':
+    'حساب التكاليف وفق DIN 276',
+  'Positionen werden Kostengruppen der DIN 276 zugeordnet; die Kostenberechnung folgt dieser Gliederung.':
+    'تُنسب البنود إلى مجموعات التكاليف وفق DIN 276، ويتبع حساب التكاليف هذا التقسيم.',
+  '04 · Vergabe':
+    '04 · الترسية',
+  'Angebote, Preisspiegel, Abrechnung':
+    'العروض ومقارنة الأسعار والفوترة',
+  'Angebote (X84) einlesen und prüfen, im Preisspiegel vergleichen, später Aufmaß und Abrechnung. Leistungsverzeichnis und Preisspiegel lassen sich als CSV oder Excel ausgeben.':
+    'قراءة العروض (X84) وتدقيقها، ومقارنتها في جدول مقارنة الأسعار، ثم القياس والفوترة لاحقاً. ويمكن تصدير جدول الكميات وجدول المقارنة بصيغة CSV أو Excel.',
+  'Selbst ausprobieren':
+    'جرِّبوه بأنفسكم',
+  'Die AVA ist Teil der Open-Source-Fassung von BIT-Atelier — ohne Konto und ohne Lizenzkosten.':
+    'وحدة المناقصات جزء من النسخة مفتوحة المصدر من BIT-Atelier — دون حساب ودون رسوم ترخيص.',
+  'Energie-Screening':
+    'الفحص الأولي للطاقة',
+  'Früh vergleichen, <em>nicht nachweisen</em>.':
+    'قارنوا مبكراً، <em>دون إثبات</em>.',
+  'Ein Screening am Modell: Varianten in der frühen Planung vergleichen, solange Änderungen noch wenig kosten. Es ersetzt keinen Nachweis — den GEG-Nachweis stellt die Energieberatung oder Fachplanung.':
+    'فحص أولي على النموذج: مقارنة البدائل في التصميم المبكر ما دامت التعديلات قليلة الكلفة. ولا يغني عن الإثبات — فإثبات GEG يقدمه مستشار الطاقة أو المهندس المختص.',
+  '01 · Hülle':
+    '01 · الغلاف',
+  'Schichtaufbau, U-Wert, Tauwasser':
+    'طبقات البناء وقيمة U والتكاثف',
+  'Bauteilaufbau aus dem Gebäudemodell, U-Wert aus der Summe der Schichten, Temperatur- und Taupunktverlauf im Querschnitt — als Richtwert.':
+    'تركيب العنصر من نموذج المبنى، وقيمة U من مجموع الطبقات، ومنحنى الحرارة ونقطة الندى عبر المقطع — كقيمة استرشادية.',
+  '02 · Technik':
+    '02 · التجهيزات',
+  'Von der Heizlast bis zum PV-Ertrag':
+    'من الحمل الحراري إلى إنتاج الطاقة الشمسية',
+  'Konzept-Überschlag für Heizlast, Heizwärmebedarf, Strombedarf einer Wärmepumpe, Lüftung, Trink- und Warmwasser, Elektro-Anschlusswert sowie PV-Leistung und -Ertrag.':
+    'تقدير مفاهيمي للحمل الحراري، والطلب على التدفئة، واستهلاك المضخة الحرارية من الكهرباء، والتهوية، ومياه الشرب والمياه الساخنة، والقدرة الكهربائية الموصولة، وقدرة وإنتاج الألواح الشمسية.',
+  '03 · Details':
+    '03 · التفاصيل',
+  'Wärmebrücken als Richtwert':
+    'الجسور الحرارية كقيم استرشادية',
+  'Konzept-Richtwerte für typische Anschlüsse, damit kritische Details früh auffallen — kein Wärmebrückennachweis.':
+    'قيم استرشادية مفاهيمية للوصلات النموذجية، لتظهر التفاصيل الحرجة مبكراً — وليست إثباتاً للجسور الحرارية.',
+  '04 · Versorgung':
+    '04 · الإمداد',
+  'Versorgung im Überblick':
+    'الإمداد في لمحة',
+  'Systeme mit Leistung und Deckungsanteil erfassen; die Übersicht zeigt installierte Leistung in kW, Bedarfsdeckung, spezifische Leistung in W/m² und wie viele Systeme erneuerbar sind.':
+    'أدخلوا الأنظمة بقدرتها وحصتها من تغطية الطلب؛ وتعرض النظرة العامة القدرة المركَّبة بالكيلوواط، وتغطية الطلب، والقدرة النوعية بالواط لكل متر مربع، وعدد الأنظمة المتجددة.',
+  'Was das Screening nicht ist':
+    'ما ليس عليه هذا الفحص',
+  'Kein GEG-Nachweis, kein Nachweis nach DIN 4108-3 oder DIN EN ISO 6946, keine Anlagenplanung. Materialkennwerte sind Annahmen und im Programm als solche gekennzeichnet. Für Förderantrag und Bauantrag braucht es den Nachweis einer dafür berechtigten Fachperson.':
+    'ليس إثباتاً وفق GEG، ولا إثباتاً وفق DIN 4108-3 أو DIN EN ISO 6946، ولا تصميماً للتجهيزات. قيم المواد افتراضات ومُعلَّمة كذلك في البرنامج. ويتطلب طلب الدعم وطلب الترخيص إثباتاً من مختص مخوَّل بذلك.',
 };

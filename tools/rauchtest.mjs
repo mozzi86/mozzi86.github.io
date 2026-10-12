@@ -431,6 +431,21 @@ try {
   const sitemap = fs.readFileSync(path.join(WURZEL, 'sitemap.xml'), 'utf8');
   ok((sitemap.match(/<url>/g) || []).length === SEITEN.length * SPR.length && !/demo/.test(sitemap),
     `sitemap.xml: ${(sitemap.match(/<url>/g) || []).length} Adressen, kein /demo/`);
+  // Content guard rails of the topic pages II (69-33, D-HR-16/17).
+  {
+    const p = await browser.newPage({ viewport: { width: 1400, height: 900 } });
+    await p.goto(B + 'energie-screening/', { waitUntil: 'load' });
+    const energie = (await p.locator('main').innerText()).replace(/\s+/g, ' ');
+    ok((await p.locator('h1').innerText()).includes('kein GEG-Nachweis') && energie.includes('Kein GEG-Nachweis')
+      && !/GEG-Nachweis (bestanden|erfüllt|erbracht)/i.test(energie), 'Energie-Screening: „kein GEG-Nachweis“ in Überschrift und Abgrenzung, nichts anderes behauptet');
+    await p.goto(B + 'mengen-ava/', { waitUntil: 'load' });
+    const ava = (await p.locator('main').innerText()).replace(/\s+/g, ' ');
+    ok(ava.includes('Schreibt X83') && ava.includes('Ein X81 schreibt die AVA nicht')
+      && !/schreibt X81|X81[^.]{0,20}(schreiben|exportier|erzeug)|(schreibt|exportiert|erzeugt) (GAEB )?(DA XML )?X8[1246]/i.test(ava),
+      'Mengen & AVA: schreibt X83, liest X81/82/84/86 — kein Satz, der X81-Schreiben behauptet');
+    ok(!fs.existsSync(path.join(WURZEL, 'eignung')), 'kein Eignungsblatt (D-HR-18: später)');
+    await p.close();
+  }
   // Language buttons on a topic page copy go to the same topic in the other language.
   for (const [von, knopf, ziel] of [['en/bim-koordination/', 'de', 'bim-koordination/'], ['ar/bit-pdf/', 'en', 'en/bit-pdf/']]) {
     const p = await browser.newPage({ viewport: { width: 1400, height: 900 } });
