@@ -133,7 +133,7 @@
 
     const zu = t.zeileUnten, zo = t.zeileOben;
     const herleitung = el('details', { class: 'honorar__herleitung', open: '' }, [
-      el('summary', { text: wort('Herleitung') }),
+      el('summary', {}, [el('span', { text: wort('Herleitung') })]),
       el('ol', {}, [
         el('li', { text: kostenZeile }),
         el('li', { text: muster('Honorartafel § 35 Abs. 1, Honorarzone {z}: bei {k1} anrechenbaren Kosten {a1} – {b1}, bei {k2} {a2} – {b2}.',
