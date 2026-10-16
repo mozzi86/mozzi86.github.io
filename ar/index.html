@@ -149,7 +149,7 @@
     "name": "BIT-Atelier",
     "applicationCategory": "BusinessApplication",
     "operatingSystem": "Windows, macOS, Linux",
-    "softwareVersion": "1.5.0",
+    "softwareVersion": "1.5.1",
     "downloadUrl": "https://github.com/mozzi86/bit-atelier-oss/releases/latest/download/BIT-Atelier.zip",
     "license": "https://opensource.org/licenses/MIT",
     "isAccessibleForFree": true
@@ -221,7 +221,8 @@ html.perspektive-wechsel main>:not(#perspektive),html.perspektive-wechsel .persp
 .download__gruppe{margin-top:1.6rem;font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
 .download__gruppe b{color:var(--ink);font-weight:600}
 .download__gruppe+.download__wege{margin-top:.6rem}
-@media(min-width:60rem){.download__wege--2{grid-template-columns:repeat(2,minmax(0,1fr))}}
+/* Two selectors on purpose: the older .download__wege rule (3 columns) comes later in the file. */
+@media(min-width:60rem){.download__wege.download__wege--2{grid-template-columns:repeat(2,minmax(0,1fr))}}
 /* --- Beleg-Kasten unter dem Pruefergebnis (Phase 65-06) -------------------
    Beide Dateien stammen aus dem Beispiel-Prueflauf am mitgelieferten
    Musterprojekt, den der Besucher in der Open-Source-Fassung selbst ausloesen
@@ -1621,7 +1622,7 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
           <p>BIT-Atelier وBIT-PDF وسكربتات التثبيت برمجيات حرة بموجب رخصة MIT وتُقدَّم دون أي ضمان؛ والاستخدام على مسؤوليتك. نتائج الأدوات والسكربتات — تقارير الفحص والكميات والمؤشرات — وسائل مساعدة للعمل، ولا تحلّ محل الفحص الفني أو الإنشائي أو القانوني الرسمي من قِبل المخططين المسؤولين عن المشروع والتخصصات.</p>
         </aside>
         <p class="download__gruppe"><b>بدء سريع</b> · تنزيل مباشر لمستخدمي المكاتب</p>
-        <div class="download__wege download__wege--2">
+        <div class="download__wege">
           <div class="download__weg" data-fuer="windows">
             <p class="download__empfohlen">لنظامك</p>
             <h4>Windows</h4>
@@ -1632,6 +1633,13 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
             <h4>يدوياً (جميع الأنظمة)</h4>
             <p>فُكَّ ضغط الملف وشغِّل <code dir="ltr">start-windows.cmd</code> أو <code dir="ltr">./start.sh</code>.</p>
             <a class="btn btn--geist btn--klein" href="https://github.com/mozzi86/bit-atelier-oss/releases/latest/download/BIT-Atelier.zip">ZIP (يدوياً)</a>
+          </div>
+          <!-- 1.5.1 (94-09): Tauri desktop client, Windows only, unsigned — a preview next to the
+               recommended installer. Asset name is version-free like the zip. -->
+          <div class="download__weg" data-fuer="desktop">
+            <h4>تطبيق سطح المكتب (ويندوز، نسخة تجريبية)</h4>
+            <p>نافذة مستقلة دون Node.js؛ تُحفظ بياناتك في مجلد تختاره عند أول تشغيل. غير موقَّع — سيسألك ويندوز مرة واحدة („مزيد من المعلومات“ ← „التشغيل على أي حال“).</p>
+            <a class="btn btn--geist btn--klein" href="https://github.com/mozzi86/bit-atelier-oss/releases/latest/download/BIT-Atelier-Desktop-Setup.exe">تطبيق سطح المكتب لويندوز</a>
           </div>
         </div>
         <p class="download__gruppe"><b>للمطوّرين</b> · إعداد عبر سطر الأوامر مع Node.js</p>
@@ -1653,8 +1661,8 @@ npm run dev</code></pre>
             <button class="btn btn--klein" type="button" data-kopiere="dl-quellcode" onclick="befehlKopieren(this)">نسخ الأوامر</button>
           </div>
         </div>
-        <div class="download__fassung"><span>الإصدار</span> <b data-nicht-uebersetzen="">1.5.0</b> · <time datetime="2026-10-16">16.10.2026</time> · <span data-nicht-uebersetzen="">ZIP 13 MB</span> · <span>Node.js 22.9 أو أحدث</span> · <a href="https://github.com/mozzi86/bit-atelier-oss/releases/tag/v1.5.0">التغييرات</a></div>
-        <div class="download__pruefsumme"><span>SHA-256 لملف ZIP:</span> <code dir="ltr" id="dl-sha256">7f0c09971cd8f8e63fcc0320ab936b4a0af3fddb36df3501d4609642f3b92863</code> · <a href="https://github.com/mozzi86/bit-atelier-oss/releases/latest/download/BIT-Atelier.zip.sha256">المجموع الاختباري للإصدار الحالي كملف</a></div>
+        <div class="download__fassung"><span>الإصدار</span> <b data-nicht-uebersetzen="">1.5.1</b> · <time datetime="2026-10-16">16.10.2026</time> · <span data-nicht-uebersetzen="">ZIP 13 MB</span> · <span>Node.js 22.9 أو أحدث</span> · <a href="https://github.com/mozzi86/bit-atelier-oss/releases/tag/v1.5.1">التغييرات</a></div>
+        <div class="download__pruefsumme"><span>SHA-256 لملف ZIP:</span> <code dir="ltr" id="dl-sha256">c0442dbd9fce818754d70c2fc8eb116611d4bdc9bf76ebffa4059a0b318397cb</code> · <a href="https://github.com/mozzi86/bit-atelier-oss/releases/latest/download/BIT-Atelier.zip.sha256">المجموع الاختباري للإصدار الحالي كملف</a></div>
         <p class="download__danach">بعد ذلك يعمل التطبيق على <code dir="ltr">http://localhost:3001</code>، ولاحقاً عبر الاختصار „BIT-Atelier“. يُبلغ التطبيق نفسه عن الإصدارات الجديدة ويثبِّتها بضغطة زر.</p>
 
         <!-- 93-05 (lever 160): system requirements MEASURED 12.10.2026 on release 1.1.0

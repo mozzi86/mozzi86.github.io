@@ -91,7 +91,8 @@ html.perspektive-wechsel main>:not(#perspektive),html.perspektive-wechsel .persp
 .download__gruppe{margin-top:1.6rem;font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
 .download__gruppe b{color:var(--ink);font-weight:600}
 .download__gruppe+.download__wege{margin-top:.6rem}
-@media(min-width:60rem){.download__wege--2{grid-template-columns:repeat(2,minmax(0,1fr))}}
+/* Two selectors on purpose: the older .download__wege rule (3 columns) comes later in the file. */
+@media(min-width:60rem){.download__wege.download__wege--2{grid-template-columns:repeat(2,minmax(0,1fr))}}
 /* --- Beleg-Kasten unter dem Pruefergebnis (Phase 65-06) -------------------
    Beide Dateien stammen aus dem Beispiel-Prueflauf am mitgelieferten
    Musterprojekt, den der Besucher in der Open-Source-Fassung selbst ausloesen

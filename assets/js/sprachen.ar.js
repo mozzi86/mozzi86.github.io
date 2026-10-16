@@ -820,4 +820,11 @@
     'نسخ الأوامر',
   'Lesen, anpassen, weitergeben — eigene Prüfregeln und Erweiterungen sind ausdrücklich erwünscht. Die Befehle für den Start aus dem Quellcode stehen oben im Developer-Block.':
     'اقرأ، عدّل، شارك — قواعد الفحص والإضافات الخاصة بك مرحَّب بها صراحةً. أوامر التشغيل من الشيفرة المصدرية موجودة في قسم المطوّرين أعلاه.',
+  /* 1.5.1: desktop app download */
+  'Desktop-App (Windows, Vorschau)':
+    'تطبيق سطح المكتب (ويندوز، نسخة تجريبية)',
+  'Eigenes Fenster, ohne Node.js; Ihre Daten liegen in einem Ordner, den Sie beim ersten Start wählen. Nicht signiert — Windows fragt einmal nach („Weitere Informationen“ → „Trotzdem ausführen“).':
+    'نافذة مستقلة دون Node.js؛ تُحفظ بياناتك في مجلد تختاره عند أول تشغيل. غير موقَّع — سيسألك ويندوز مرة واحدة („مزيد من المعلومات“ ← „التشغيل على أي حال“).',
+  'Desktop-App für Windows':
+    'تطبيق سطح المكتب لويندوز',
 };

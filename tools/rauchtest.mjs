@@ -272,7 +272,7 @@ try {
         mobil: !!d.querySelector('.download__mobil').offsetParent };
     });
     const vorne = erwartet === 'windows' || erwartet === 'unix' ? erwartet : 'windows';
-    ok(r.sys === erwartet && r.ersteJeGruppe.includes(vorne) && r.sichtbar === 4
+    ok(r.sys === erwartet && r.ersteJeGruppe.includes(vorne) && r.sichtbar === 5
       && r.marke.join() === (vorne === erwartet ? erwartet : '') && r.mobil === (erwartet === 'mobil'),
       `${plattform || 'unbekannt'}: System „${r.sys}“, vorne ${r.erster}, ${r.sichtbar} Wege sichtbar, Marke ${r.marke.join() || '—'}${r.mobil ? ', Handy-Hinweis' : ''}`);
     await k.close();
@@ -655,6 +655,11 @@ try {
       '?view=planer: Open Source + Downloads, kein HOAI-Rechner');
     ok(await pp.locator('#open-source .haftung').isVisible() && await pp.locator('#downloads .haftung').isVisible(),
       'Planer: Haftungsausschluss bei Open Source und BIT-PDF');
+    ok(await pp.evaluate(() => [...document.querySelectorAll('#herunterladen .download__wege')].every((g) => {
+      const spalten = getComputedStyle(g).gridTemplateColumns.split(' ').length;
+      const n = [...g.children].filter((c) => c.offsetParent).length;
+      return n % spalten === 0 || spalten === 1;
+    })), 'Download-Raster ohne leere Zelle (Spalten passen zur Zahl der Wege)');
     ok(await pp.locator('#herunterladen .download__gruppe').count() === 2 && await pp.locator('#dl-quellcode').isVisible(),
       'Planer: Schnellstart und Developer/CLI getrennt, Quellcode-Befehle sichtbar');
     await pp.locator('#tab-planer').focus();

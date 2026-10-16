@@ -817,4 +817,11 @@
     'Copy commands',
   'Lesen, anpassen, weitergeben — eigene Prüfregeln und Erweiterungen sind ausdrücklich erwünscht. Die Befehle für den Start aus dem Quellcode stehen oben im Developer-Block.':
     'Read, adapt, pass on — your own check rules and extensions are expressly welcome. The commands to start from source are in the developer block above.',
+  /* 1.5.1: desktop app download */
+  'Desktop-App (Windows, Vorschau)':
+    'Desktop app (Windows, preview)',
+  'Eigenes Fenster, ohne Node.js; Ihre Daten liegen in einem Ordner, den Sie beim ersten Start wählen. Nicht signiert — Windows fragt einmal nach („Weitere Informationen“ → „Trotzdem ausführen“).':
+    'Its own window, no Node.js; your data live in a folder you choose at first start. Not signed — Windows asks once (“More info” → “Run anyway”).',
+  'Desktop-App für Windows':
+    'Desktop app for Windows',
 };

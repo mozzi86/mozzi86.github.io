@@ -150,7 +150,7 @@
     "name": "BIT-Atelier",
     "applicationCategory": "BusinessApplication",
     "operatingSystem": "Windows, macOS, Linux",
-    "softwareVersion": "1.5.0",
+    "softwareVersion": "1.5.1",
     "downloadUrl": "https://github.com/mozzi86/bit-atelier-oss/releases/latest/download/BIT-Atelier.zip",
     "license": "https://opensource.org/licenses/MIT",
     "isAccessibleForFree": true
@@ -222,7 +222,8 @@ html.perspektive-wechsel main>:not(#perspektive),html.perspektive-wechsel .persp
 .download__gruppe{margin-top:1.6rem;font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
 .download__gruppe b{color:var(--ink);font-weight:600}
 .download__gruppe+.download__wege{margin-top:.6rem}
-@media(min-width:60rem){.download__wege--2{grid-template-columns:repeat(2,minmax(0,1fr))}}
+/* Two selectors on purpose: the older .download__wege rule (3 columns) comes later in the file. */
+@media(min-width:60rem){.download__wege.download__wege--2{grid-template-columns:repeat(2,minmax(0,1fr))}}
 /* --- Beleg-Kasten unter dem Pruefergebnis (Phase 65-06) -------------------
    Beide Dateien stammen aus dem Beispiel-Prueflauf am mitgelieferten
    Musterprojekt, den der Besucher in der Open-Source-Fassung selbst ausloesen
@@ -1696,7 +1697,7 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
           <p>BIT-Atelier, BIT-PDF und die Installationsskripte sind freie Software unter der MIT-Lizenz und werden ohne Gewährleistung bereitgestellt; die Nutzung erfolgt auf eigene Gefahr. Ergebnisse der Werkzeuge und Skripte — Prüfberichte, Mengen, Kennwerte — sind Arbeitshilfen. Sie ersetzen keine formelle bautechnische, statische oder rechtliche Prüfung durch die verantwortlichen Objekt- und Fachplaner.</p>
         </aside>
         <p class="download__gruppe"><b>Schnellstart</b> · Direkt-Download für Büro-Anwender</p>
-        <div class="download__wege download__wege--2">
+        <div class="download__wege">
           <div class="download__weg" data-fuer="windows">
             <p class="download__empfohlen">Für Ihr System</p>
             <h4>Windows</h4>
@@ -1707,6 +1708,13 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
             <h4>Von Hand (alle Systeme)</h4>
             <p>ZIP entpacken und <code dir="ltr">start-windows.cmd</code> bzw. <code dir="ltr">./start.sh</code> starten.</p>
             <a class="btn btn--geist btn--klein" href="https://github.com/mozzi86/bit-atelier-oss/releases/latest/download/BIT-Atelier.zip">ZIP (manuell)</a>
+          </div>
+          <!-- 1.5.1 (94-09): Tauri desktop client, Windows only, unsigned — a preview next to the
+               recommended installer. Asset name is version-free like the zip. -->
+          <div class="download__weg" data-fuer="desktop">
+            <h4>Desktop-App (Windows, Vorschau)</h4>
+            <p>Eigenes Fenster, ohne Node.js; Ihre Daten liegen in einem Ordner, den Sie beim ersten Start wählen. Nicht signiert — Windows fragt einmal nach („Weitere Informationen“ → „Trotzdem ausführen“).</p>
+            <a class="btn btn--geist btn--klein" href="https://github.com/mozzi86/bit-atelier-oss/releases/latest/download/BIT-Atelier-Desktop-Setup.exe">Desktop-App für Windows</a>
           </div>
         </div>
         <p class="download__gruppe"><b>Developer</b> · CLI-Setup mit Node.js</p>
@@ -1728,8 +1736,8 @@ npm run dev</code></pre>
             <button class="btn btn--klein" type="button" data-kopiere="dl-quellcode" onclick="befehlKopieren(this)">Befehle kopieren</button>
           </div>
         </div>
-        <div class="download__fassung"><span>Fassung</span> <b data-nicht-uebersetzen>1.5.0</b> · <time datetime="2026-10-16">16.10.2026</time> · <span data-nicht-uebersetzen>ZIP 13 MB</span> · <span>Node.js 22.9 oder neuer</span> · <a href="https://github.com/mozzi86/bit-atelier-oss/releases/tag/v1.5.0">Änderungen</a></div>
-        <div class="download__pruefsumme"><span>SHA-256 der ZIP:</span> <code dir="ltr" id="dl-sha256">7f0c09971cd8f8e63fcc0320ab936b4a0af3fddb36df3501d4609642f3b92863</code> · <a href="https://github.com/mozzi86/bit-atelier-oss/releases/latest/download/BIT-Atelier.zip.sha256">Prüfsumme der aktuellen Fassung als Datei</a></div>
+        <div class="download__fassung"><span>Fassung</span> <b data-nicht-uebersetzen>1.5.1</b> · <time datetime="2026-10-16">16.10.2026</time> · <span data-nicht-uebersetzen>ZIP 13 MB</span> · <span>Node.js 22.9 oder neuer</span> · <a href="https://github.com/mozzi86/bit-atelier-oss/releases/tag/v1.5.1">Änderungen</a></div>
+        <div class="download__pruefsumme"><span>SHA-256 der ZIP:</span> <code dir="ltr" id="dl-sha256">c0442dbd9fce818754d70c2fc8eb116611d4bdc9bf76ebffa4059a0b318397cb</code> · <a href="https://github.com/mozzi86/bit-atelier-oss/releases/latest/download/BIT-Atelier.zip.sha256">Prüfsumme der aktuellen Fassung als Datei</a></div>
         <p class="download__danach">Danach läuft die App unter <code dir="ltr">http://localhost:3001</code>, später über die Verknüpfung „BIT-Atelier“. Neue Versionen meldet die App selbst und installiert sie auf Knopfdruck.</p>
 
         <!-- 93-05 (lever 160): system requirements MEASURED 12.10.2026 on release 1.1.0
