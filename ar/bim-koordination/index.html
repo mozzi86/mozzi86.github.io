@@ -35,6 +35,57 @@
 <link rel="manifest" href="/site.webmanifest">
 
 <style>
+/* --- Perspektive / persona view (persona routing 16.10.2026) ---------------
+   One page, four views. The view is an attribute on <html> (data-ansicht),
+   set by the script right after the band — before any section is parsed, so
+   nothing flashes. Elements carry data-persona="<views>" (space separated);
+   in "alle" (or without a view) everything shows. No library, no reload. */
+.perspektive{padding:clamp(6.2rem,11vw,8rem) var(--pad) clamp(2rem,4vw,3rem);background:var(--bg-deep);
+  border-bottom:1px solid var(--line)}
+.perspektive__kopf{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:.6rem 2rem}
+.perspektive__tabs{display:flex;gap:1px;background:var(--line);border:1px solid var(--line);margin-top:.2rem;
+  overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.perspektive__tabs::-webkit-scrollbar{display:none}
+.perspektive__tab{flex:1 0 auto;scroll-snap-align:start;min-height:2.9rem;padding:.7rem 1rem;background:var(--bg-deep);
+  color:var(--ink-dim);border:0;cursor:pointer;font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;
+  text-transform:uppercase;text-align:center;white-space:nowrap;transition:background .15s,color .15s}
+.perspektive__tab:hover{color:var(--ink);background:var(--bg-raise)}
+.perspektive__tab[aria-selected="true"]{background:var(--accent);color:var(--accent-ink)}
+.perspektive__tab:focus-visible{outline:2px solid var(--accent);outline-offset:-4px}
+/* Phones: a 2 x 2 grid instead of side scrolling — all four views stay visible,
+   the selected one can never sit off screen. */
+@media(max-width:44rem){.perspektive__tabs{display:grid;grid-template-columns:1fr 1fr;overflow:visible}
+  .perspektive__tab{white-space:normal;line-height:1.35;padding:.75rem .6rem;font-size:.66rem;letter-spacing:.08em}}
+.perspektive__panel{margin-top:clamp(1.6rem,3vw,2.4rem);display:grid;gap:1.6rem}
+@media(min-width:64rem){.perspektive__panel{grid-template-columns:1.25fr 1fr;gap:3rem;align-items:start}}
+.perspektive__panel[hidden]{display:none}
+.perspektive__panel h2{font-size:clamp(1.7rem,3.2vw,2.6rem)}
+.perspektive__panel h2 em{font-style:normal;color:var(--accent)}
+.perspektive__text{color:var(--ink-dim);font-weight:300;max-width:62ch;margin-top:.9rem}
+.perspektive__hinweis{color:var(--muted);font-size:.86rem;margin-top:.8rem;max-width:62ch}
+.perspektive__tun{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.3rem}
+.perspektive__werte{list-style:none;margin:0;padding:0;display:grid;gap:1px;background:var(--line);border:1px solid var(--line)}
+.perspektive__werte li{background:var(--bg-deep);padding:.9rem 1rem;display:grid;gap:.15rem}
+.perspektive__werte b{font-family:var(--display);font-size:1.15rem;letter-spacing:-.02em;color:var(--ink)}
+.perspektive__werte span{color:var(--muted);font-size:.84rem}
+html[data-ansicht="bauherren"] [data-persona]:not([data-persona~="bauherren"]),
+html[data-ansicht="entwickler"] [data-persona]:not([data-persona~="entwickler"]),
+html[data-ansicht="planer"] [data-persona]:not([data-persona~="planer"]){display:none !important}
+@keyframes perspektiveEin{from{opacity:0}to{opacity:1}}
+html.perspektive-wechsel main>:not(#perspektive),html.perspektive-wechsel .perspektive__panel:not([hidden]){animation:perspektiveEin .15s ease-out}
+@media(prefers-reduced-motion:reduce){html.perspektive-wechsel *{animation:none !important}}
+
+/* --- Disclaimer at downloads and scripts --------------------------------- */
+.haftung{margin-top:1.4rem;border:1px solid var(--warn);border-inline-start-width:4px;padding:1rem 1.15rem;
+  background:rgba(240,180,41,.05)}
+.haftung__titel{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--warn);margin:0 0 .4rem}
+.haftung p:last-child{color:var(--ink-dim);font-size:.9rem;max-width:80ch}
+
+/* --- Download groups: quick start vs. developer / CLI --------------------- */
+.download__gruppe{margin-top:1.6rem;font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.download__gruppe b{color:var(--ink);font-weight:600}
+.download__gruppe+.download__wege{margin-top:.6rem}
+@media(min-width:60rem){.download__wege--2{grid-template-columns:repeat(2,minmax(0,1fr))}}
 /* --- Beleg-Kasten unter dem Pruefergebnis (Phase 65-06) -------------------
    Beide Dateien stammen aus dem Beispiel-Prueflauf am mitgelieferten
    Musterprojekt, den der Besucher in der Open-Source-Fassung selbst ausloesen
@@ -699,8 +750,8 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
       <a href="../#prinzip">المنهج</a>
       <a href="#leistungen">الخدمات</a>
       <a href="#pakete">الحزم</a>
-      <a href="../#werkzeuge">الأدوات</a>
-      <a href="../#downloads">التنزيلات</a>
+      <a href="../#werkzeuge" data-persona="entwickler planer">الأدوات</a>
+      <a href="../#downloads" data-persona="planer">التنزيلات</a>
       <a href="../#erfahrung">الخبرة</a>
       <a href="#kontakt">اتصل بنا</a>
     </nav>
@@ -732,11 +783,11 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
     <a href="../#prinzip">المنهج</a>
     <a href="#leistungen">الخدمات</a>
     <a href="#pakete">حزم الخدمات</a>
-    <a href="../#werkzeuge">الأدوات</a>
-    <a href="../#downloads">التنزيلات</a>
+    <a href="../#werkzeuge" data-persona="entwickler planer">الأدوات</a>
+    <a href="../#downloads" data-persona="planer">التنزيلات</a>
     <a href="../#erfahrung">الخبرة</a>
     <a href="#kontakt">اتصل بنا</a>
-    <a href="../#open-source">مفتوح المصدر · تنزيل</a>
+    <a href="../#open-source" data-persona="planer">مفتوح المصدر · تنزيل</a>
     <a href="https://bit-atelier.pages.dev/registrieren">إنشاء حساب</a>
     <a href="https://bit-atelier.pages.dev/anmeldung">تسجيل الدخول</a>
   </nav>
@@ -761,7 +812,7 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
         <p class="unter">سواء كنت تبني أو ترغب في تأمين مشروعك الكبير رقمياً — كلا المسارين يتبع المبدأ ذاته: تصميم مدروس مبني على البيانات، بلا هدرٍ في الاحتكاك.</p>
       </div>
       <div class="gitter gitter--2">
-        <article class="karte">
+        <article class="karte" data-persona="entwickler planer">
           <p class="karte__nr">للمكاتب الرئيسية والمكاتب الهندسية وشركات المقاولات</p>
           <h3>تنسيق نمذجة معلومات البناء وتدقيق النماذج</h3>
           <p>إدارة خارجية لنمذجة معلومات البناء في المشاريع الكبيرة — من هيكلة خطة تنفيذ النمذجة إلى تسليم IFC خالٍ من التعارضات. الهدف: أن تُكتشف أخطاء التصميم <em>قبل</em> بدء التنفيذ، لا أن تُدفَع في الموقع.</p>
@@ -774,7 +825,7 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
           </ul>
           <div class="karte__fuss"><a class="btn btn--geist btn--klein" href="#pakete">إلى حزم الخدمات</a></div>
         </article>
-        <article class="karte">
+        <article class="karte" data-persona="bauherren entwickler">
           <p class="karte__nr">لأصحاب المشاريع</p>
           <h3>التصميم والعمارة</h3>
           <p>تصميم متكامل لمشاريع الإسكان والترميم عبر جميع مراحل الخدمات — بعينٍ على التفصيل وعلى الموازنة الطاقية.</p>
@@ -794,12 +845,19 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
 
   <section class="abschnitt abschnitt--hoch" id="pakete">
     <div class="mitte">
-      <div class="kopfzeile">
+      <!-- Bauherren see only the HOAI calculator (no package or retainer prices — they are
+           no total fee and would be read as one). -->
+      <div class="kopfzeile" data-persona="bauherren">
+        <p class="auge">الأتعاب</p>
+        <h2>بشفافية <em>وفق HOAI</em>.</h2>
+        <p class="unter">تُحدَّد أتعاب المعماري وفق لائحة الأتعاب الألمانية (HOAI 2021): حسب التكاليف المحتسبة، وفئة الأتعاب، ومراحل العمل المكلَّف بها. احسب التقدير هنا بنفسك — ويأتي العرض الملزم بعد اللقاء الأول.</p>
+      </div>
+      <div class="kopfzeile" data-persona="entwickler planer">
         <p class="auge">حزم خدمات نمذجة معلومات البناء</p>
         <h2>نطاقٌ واضح. نتيجةٌ واضحة. <em>وسعرٌ واضح.</em></h2>
         <p class="unter">ثلاث حزم للمشاريع الكبيرة بقيمة تنفيذ تبدأ من نحو 5 ملايين يورو — بسعر ثابت أو بعقد شهري، والتسعير على قيمة المشروع لا على ساعات العمل.</p>
       </div>
-      <div class="gitter gitter--3">
+      <div class="gitter gitter--3" data-persona="entwickler planer">
         <article class="karte">
           <p class="karte__nr">الحزمة 1 · سعر ثابت</p>
           <h3>تدقيق سريع وتأسيس للنمذجة</h3>
@@ -841,7 +899,7 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
            Leser aus "ab"-Preisen und einer AHO-Fussnote selbst schliessen, ob er
            gemeint ist. Die Regeln stehen im Skript unten (finderEmpfehlung); die
            Preise sind die der Karten darueber — hier wird nichts hochgerechnet. -->
-      <div class="finder" id="paketfinder">
+      <div class="finder" id="paketfinder" data-persona="entwickler planer">
         <h3>أي حزمة تناسب مشروعكم؟</h3>
         <p class="finder__unter">ثلاث إجابات، دون تسجيل. يتبع التصنيف القواعد نفسها التي أعتمدها بنفسي — وينقل إجاباتكم مباشرةً إلى نموذج الطلب.</p>
         <div class="finder__fragen">
@@ -885,7 +943,7 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
            assets/js/honorar-ui.js (inputs, result, derivation). No login,
            no request — nothing leaves the device. Own classes (honorar__…),
            because the package finder binds every .finder__wahl on the page. -->
-      <div class="finder honorar" id="honorarrechner">
+      <div class="finder honorar" id="honorarrechner" data-persona="bauherren entwickler">
         <h3>كم تكلفة التصميم وفق HOAI؟</h3>
         <p class="finder__unter">تقدير وفق جدول الأتعاب في لائحة HOAI 2021 الألمانية (أتعاب المعماريين والمهندسين) — دون تسجيل، ويُحسب في متصفحكم؛ ولا يغادر شيء جهازكم. وكل رقم مرفق بطريقة اشتقاقه.</p>
         <div class="honorar__felder">
@@ -942,7 +1000,7 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
         <div class="honorar__ergebnis" id="h-ergebnis" data-nicht-uebersetzen="" aria-live="polite"><div><p class="finder__auge">أتعاب المراحل المختارة (100 %)</p><p class="honorar__summe">‏214,108&nbsp;€</p><p class="honorar__klein">النطاق من المعدل الأساسي إلى الأعلى: ‏214,108&nbsp;€ – ‏267,034&nbsp;€</p></div><div class="honorar__tabelle-rahmen"><table class="honorar__tabelle"><thead><tr><th>مرحلة الخدمة</th><th>الحصة</th><th>المعدل الأساسي</th><th>المعدل الأعلى</th><th>المختار</th></tr></thead><tbody><tr><td>1 · تحديد الأسس</td><td>2 %</td><td>‏4,282.16&nbsp;€</td><td>‏5,340.68&nbsp;€</td><td>‏4,282.16&nbsp;€</td></tr><tr><td>2 · التصميم الأولي</td><td>7 %</td><td>‏14,987.56&nbsp;€</td><td>‏18,692.38&nbsp;€</td><td>‏14,987.56&nbsp;€</td></tr><tr><td>3 · التصميم التطويري</td><td>15 %</td><td>‏32,116.20&nbsp;€</td><td>‏40,055.10&nbsp;€</td><td>‏32,116.20&nbsp;€</td></tr><tr><td>4 · تخطيط الترخيص</td><td>3 %</td><td>‏6,423.24&nbsp;€</td><td>‏8,011.02&nbsp;€</td><td>‏6,423.24&nbsp;€</td></tr><tr><td>5 · التصميم التنفيذي</td><td>25 %</td><td>‏53,527.00&nbsp;€</td><td>‏66,758.50&nbsp;€</td><td>‏53,527.00&nbsp;€</td></tr><tr><td>6 · التحضير للترسية</td><td>10 %</td><td>‏21,410.80&nbsp;€</td><td>‏26,703.40&nbsp;€</td><td>‏21,410.80&nbsp;€</td></tr><tr><td>7 · المشاركة في الترسية</td><td>4 %</td><td>‏8,564.32&nbsp;€</td><td>‏10,681.36&nbsp;€</td><td>‏8,564.32&nbsp;€</td></tr><tr><td>8 · الإشراف على التنفيذ والتوثيق</td><td>32 %</td><td>‏68,514.56&nbsp;€</td><td>‏85,450.88&nbsp;€</td><td>‏68,514.56&nbsp;€</td></tr><tr><td>9 · متابعة ما بعد التسليم</td><td>2 %</td><td>‏4,282.16&nbsp;€</td><td>‏5,340.68&nbsp;€</td><td>‏4,282.16&nbsp;€</td></tr></tbody><tfoot><tr><td>المجموع</td><td>100 %</td><td>‏214,108.00&nbsp;€</td><td>‏267,034.00&nbsp;€</td><td>‏214,108.00&nbsp;€</td></tr></tfoot></table></div><details class="honorar__herleitung" open=""><summary><span>طريقة الاشتقاق</span></summary><ol><li>التكاليف المحتسبة: ‏2,000,000&nbsp;€ (من إدخالكم).</li><li>جدول الأتعاب المادة 35 الفقرة 1، الفئة III: عند ‏1,500,000&nbsp;€ من التكاليف المحتسبة ‏165,911&nbsp;€ – ‏206,923&nbsp;€، وعند ‏2,000,000&nbsp;€ ‏214,108&nbsp;€ – ‏267,034&nbsp;€.</li><li>استيفاء خطي بين سطري الجدول (المادة 13 الفقرة 1): النسبة 1.000 ← المعدل الأساسي ‏214,108.00&nbsp;€، والمعدل الأعلى ‏267,034.00&nbsp;€.</li><li>أتعاب جميع المراحل = المعدل الأساسي + 0 % × (المعدل الأعلى − المعدل الأساسي) = ‏214,108.00&nbsp;€.</li><li>لكل مرحلة: الأتعاب × الحصة وفق المادة 34 الفقرة 3 (المباني)، مقرَّبة إلى السنت؛ ثم مجموع المراحل المختارة.</li></ol></details></div>
         <p class="honorar__fuss">تقدير غير مُلزِم. لائحة HOAI 2021، جدول الأتعاب المادة 35 الفقرة 1 (المباني والتصميم الداخلي) وحصص مراحل الخدمة المادة 34 الفقرة 3؛ جرى التحقق من الجدول في 27.09.2026، وحالة هذه الصفحة 12.10.2026. صافٍ، دون علاوة الترميم والمصاريف الجانبية والخدمات الخاصة وضريبة القيمة المضافة. تحت 25.000 يورو وفوق 25 مليون يورو من التكاليف المحتسبة تكون الأتعاب بالاتفاق الحر.</p>
       </div>
-      <p class="fussnote">جميع الأسعار صافية بدون ضريبة القيمة المضافة. التسعير يستند إلى التوصيات الألمانية لأتعاب إدارة النمذجة (AHO/DVP: عادةً 20–25 ٪ من أتعاب إدارة المشروع). العرض النهائي يُقدَّم بعد حديث قصير عن حجم المشروع ونماذج التخصصات.</p>
+      <p class="fussnote" data-persona="entwickler planer">جميع الأسعار صافية بدون ضريبة القيمة المضافة. التسعير يستند إلى التوصيات الألمانية لأتعاب إدارة النمذجة (AHO/DVP: عادةً 20–25 ٪ من أتعاب إدارة المشروع). العرض النهائي يُقدَّم بعد حديث قصير عن حجم المشروع ونماذج التخصصات.</p>
     </div>
   </section>
 
@@ -1225,7 +1283,7 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
         systemErkennen();
 
         async function befehlKopieren(knopf) {
-            const code = document.getElementById('dl-befehl');
+            const code = document.getElementById((knopf && knopf.dataset.kopiere) || 'dl-befehl');
             const text = code ? code.textContent.trim() : '';
             let ok = false;
             try { await navigator.clipboard.writeText(text); ok = true; }

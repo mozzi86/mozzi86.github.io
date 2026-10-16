@@ -35,6 +35,57 @@
 <link rel="manifest" href="/site.webmanifest">
 
 <style>
+/* --- Perspektive / persona view (persona routing 16.10.2026) ---------------
+   One page, four views. The view is an attribute on <html> (data-ansicht),
+   set by the script right after the band — before any section is parsed, so
+   nothing flashes. Elements carry data-persona="<views>" (space separated);
+   in "alle" (or without a view) everything shows. No library, no reload. */
+.perspektive{padding:clamp(6.2rem,11vw,8rem) var(--pad) clamp(2rem,4vw,3rem);background:var(--bg-deep);
+  border-bottom:1px solid var(--line)}
+.perspektive__kopf{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:.6rem 2rem}
+.perspektive__tabs{display:flex;gap:1px;background:var(--line);border:1px solid var(--line);margin-top:.2rem;
+  overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.perspektive__tabs::-webkit-scrollbar{display:none}
+.perspektive__tab{flex:1 0 auto;scroll-snap-align:start;min-height:2.9rem;padding:.7rem 1rem;background:var(--bg-deep);
+  color:var(--ink-dim);border:0;cursor:pointer;font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;
+  text-transform:uppercase;text-align:center;white-space:nowrap;transition:background .15s,color .15s}
+.perspektive__tab:hover{color:var(--ink);background:var(--bg-raise)}
+.perspektive__tab[aria-selected="true"]{background:var(--accent);color:var(--accent-ink)}
+.perspektive__tab:focus-visible{outline:2px solid var(--accent);outline-offset:-4px}
+/* Phones: a 2 x 2 grid instead of side scrolling — all four views stay visible,
+   the selected one can never sit off screen. */
+@media(max-width:44rem){.perspektive__tabs{display:grid;grid-template-columns:1fr 1fr;overflow:visible}
+  .perspektive__tab{white-space:normal;line-height:1.35;padding:.75rem .6rem;font-size:.66rem;letter-spacing:.08em}}
+.perspektive__panel{margin-top:clamp(1.6rem,3vw,2.4rem);display:grid;gap:1.6rem}
+@media(min-width:64rem){.perspektive__panel{grid-template-columns:1.25fr 1fr;gap:3rem;align-items:start}}
+.perspektive__panel[hidden]{display:none}
+.perspektive__panel h2{font-size:clamp(1.7rem,3.2vw,2.6rem)}
+.perspektive__panel h2 em{font-style:normal;color:var(--accent)}
+.perspektive__text{color:var(--ink-dim);font-weight:300;max-width:62ch;margin-top:.9rem}
+.perspektive__hinweis{color:var(--muted);font-size:.86rem;margin-top:.8rem;max-width:62ch}
+.perspektive__tun{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.3rem}
+.perspektive__werte{list-style:none;margin:0;padding:0;display:grid;gap:1px;background:var(--line);border:1px solid var(--line)}
+.perspektive__werte li{background:var(--bg-deep);padding:.9rem 1rem;display:grid;gap:.15rem}
+.perspektive__werte b{font-family:var(--display);font-size:1.15rem;letter-spacing:-.02em;color:var(--ink)}
+.perspektive__werte span{color:var(--muted);font-size:.84rem}
+html[data-ansicht="bauherren"] [data-persona]:not([data-persona~="bauherren"]),
+html[data-ansicht="entwickler"] [data-persona]:not([data-persona~="entwickler"]),
+html[data-ansicht="planer"] [data-persona]:not([data-persona~="planer"]){display:none !important}
+@keyframes perspektiveEin{from{opacity:0}to{opacity:1}}
+html.perspektive-wechsel main>:not(#perspektive),html.perspektive-wechsel .perspektive__panel:not([hidden]){animation:perspektiveEin .15s ease-out}
+@media(prefers-reduced-motion:reduce){html.perspektive-wechsel *{animation:none !important}}
+
+/* --- Disclaimer at downloads and scripts --------------------------------- */
+.haftung{margin-top:1.4rem;border:1px solid var(--warn);border-inline-start-width:4px;padding:1rem 1.15rem;
+  background:rgba(240,180,41,.05)}
+.haftung__titel{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--warn);margin:0 0 .4rem}
+.haftung p:last-child{color:var(--ink-dim);font-size:.9rem;max-width:80ch}
+
+/* --- Download groups: quick start vs. developer / CLI --------------------- */
+.download__gruppe{margin-top:1.6rem;font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.download__gruppe b{color:var(--ink);font-weight:600}
+.download__gruppe+.download__wege{margin-top:.6rem}
+@media(min-width:60rem){.download__wege--2{grid-template-columns:repeat(2,minmax(0,1fr))}}
 /* --- Beleg-Kasten unter dem Pruefergebnis (Phase 65-06) -------------------
    Beide Dateien stammen aus dem Beispiel-Prueflauf am mitgelieferten
    Musterprojekt, den der Besucher in der Open-Source-Fassung selbst ausloesen
@@ -699,8 +750,8 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
       <a href="../#prinzip">Approach</a>
       <a href="#leistungen">Services</a>
       <a href="#pakete">Packages</a>
-      <a href="../#werkzeuge">Tools</a>
-      <a href="../#downloads">Downloads</a>
+      <a href="../#werkzeuge" data-persona="entwickler planer">Tools</a>
+      <a href="../#downloads" data-persona="planer">Downloads</a>
       <a href="../#erfahrung">Experience</a>
       <a href="#kontakt">Contact</a>
     </nav>
@@ -732,11 +783,11 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
     <a href="../#prinzip">Approach</a>
     <a href="#leistungen">Services</a>
     <a href="#pakete">Service packages</a>
-    <a href="../#werkzeuge">Tools</a>
-    <a href="../#downloads">Downloads</a>
+    <a href="../#werkzeuge" data-persona="entwickler planer">Tools</a>
+    <a href="../#downloads" data-persona="planer">Downloads</a>
     <a href="../#erfahrung">Experience</a>
     <a href="#kontakt">Contact</a>
-    <a href="../#open-source">Open source · Download</a>
+    <a href="../#open-source" data-persona="planer">Open source · Download</a>
     <a href="https://bit-atelier.pages.dev/registrieren">Register</a>
     <a href="https://bit-atelier.pages.dev/anmeldung">Sign in</a>
   </nav>
@@ -761,7 +812,7 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
         <p class="unter">Whether you are building or want to secure a major project digitally — both follow the same principle: considered, data-driven design without friction.</p>
       </div>
       <div class="gitter gitter--2">
-        <article class="karte">
+        <article class="karte" data-persona="entwickler planer">
           <p class="karte__nr">For lead designers, practices &amp; contractors</p>
           <h3>BIM coordination &amp; model checking</h3>
           <p>External BIM management for major projects — from structuring the BIM execution plan to a clash-free IFC handover. The aim: design errors are found <em>before</em> construction starts, not paid for on site.</p>
@@ -774,7 +825,7 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
           </ul>
           <div class="karte__fuss"><a class="btn btn--geist btn--klein" href="#pakete">See the service packages</a></div>
         </article>
-        <article class="karte">
+        <article class="karte" data-persona="bauherren entwickler">
           <p class="karte__nr">For clients</p>
           <h3>Design &amp; architecture</h3>
           <p>End-to-end design of residential and refurbishment projects across all work stages — with an eye for the detail and for the energy balance.</p>
@@ -794,12 +845,19 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
 
   <section class="abschnitt abschnitt--hoch" id="pakete">
     <div class="mitte">
-      <div class="kopfzeile">
+      <!-- Bauherren see only the HOAI calculator (no package or retainer prices — they are
+           no total fee and would be read as one). -->
+      <div class="kopfzeile" data-persona="bauherren">
+        <p class="auge">Fees</p>
+        <h2>Transparent, <em>under the HOAI</em>.</h2>
+        <p class="unter">Your architect's fee follows the German fee scale (HOAI 2021): the eligible costs, the fee zone and the commissioned work stages. Work out the estimate here yourself — the binding offer follows after the first meeting.</p>
+      </div>
+      <div class="kopfzeile" data-persona="entwickler planer">
         <p class="auge">BIM service packages</p>
         <h2>Clear scope. Clear result. <em>Clear price.</em></h2>
         <p class="unter">Three packages for major projects from around €5 million construction value — as a fixed price or a monthly retainer, priced on project value rather than timesheets.</p>
       </div>
-      <div class="gitter gitter--3">
+      <div class="gitter gitter--3" data-persona="entwickler planer">
         <article class="karte">
           <p class="karte__nr">Package 1 · Fixed price</p>
           <h3>BIM quick check &amp; setup</h3>
@@ -841,7 +899,7 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
            Leser aus "ab"-Preisen und einer AHO-Fussnote selbst schliessen, ob er
            gemeint ist. Die Regeln stehen im Skript unten (finderEmpfehlung); die
            Preise sind die der Karten darueber — hier wird nichts hochgerechnet. -->
-      <div class="finder" id="paketfinder">
+      <div class="finder" id="paketfinder" data-persona="entwickler planer">
         <h3>Which package fits your project?</h3>
         <p class="finder__unter">Three answers, no sign-up. The result follows the same rules I use myself — and carries your answers straight into the enquiry.</p>
         <div class="finder__fragen">
@@ -885,7 +943,7 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
            assets/js/honorar-ui.js (inputs, result, derivation). No login,
            no request — nothing leaves the device. Own classes (honorar__…),
            because the package finder binds every .finder__wahl on the page. -->
-      <div class="finder honorar" id="honorarrechner">
+      <div class="finder honorar" id="honorarrechner" data-persona="bauherren entwickler">
         <h3>What does the design cost under the HOAI?</h3>
         <p class="finder__unter">An estimate from the fee table of the German HOAI 2021 (fee scale for architects and engineers) — no sign-up, calculated in your browser; nothing leaves your device. Every figure comes with its derivation.</p>
         <div class="honorar__felder">
@@ -942,7 +1000,7 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
         <div class="honorar__ergebnis" id="h-ergebnis" data-nicht-uebersetzen="" aria-live="polite"><div><p class="finder__auge">Fee for the selected stages (100 %)</p><p class="honorar__summe">€214,108</p><p class="honorar__klein">Range base rate to upper rate: €214,108 – €267,034</p></div><div class="honorar__tabelle-rahmen"><table class="honorar__tabelle"><thead><tr><th>Work stage</th><th>Share</th><th>Base rate</th><th>upper rate</th><th>selected</th></tr></thead><tbody><tr><td>1 · Establishing the basis</td><td>2 %</td><td>€4,282.16</td><td>€5,340.68</td><td>€4,282.16</td></tr><tr><td>2 · Preliminary design</td><td>7 %</td><td>€14,987.56</td><td>€18,692.38</td><td>€14,987.56</td></tr><tr><td>3 · Design</td><td>15 %</td><td>€32,116.20</td><td>€40,055.10</td><td>€32,116.20</td></tr><tr><td>4 · Planning approval</td><td>3 %</td><td>€6,423.24</td><td>€8,011.02</td><td>€6,423.24</td></tr><tr><td>5 · Detailed design</td><td>25 %</td><td>€53,527.00</td><td>€66,758.50</td><td>€53,527.00</td></tr><tr><td>6 · Preparing the award</td><td>10 %</td><td>€21,410.80</td><td>€26,703.40</td><td>€21,410.80</td></tr><tr><td>7 · Assisting with the award</td><td>4 %</td><td>€8,564.32</td><td>€10,681.36</td><td>€8,564.32</td></tr><tr><td>8 · Site supervision and documentation</td><td>32 %</td><td>€68,514.56</td><td>€85,450.88</td><td>€68,514.56</td></tr><tr><td>9 · Post-completion services</td><td>2 %</td><td>€4,282.16</td><td>€5,340.68</td><td>€4,282.16</td></tr></tbody><tfoot><tr><td>Total</td><td>100 %</td><td>€214,108.00</td><td>€267,034.00</td><td>€214,108.00</td></tr></tfoot></table></div><details class="honorar__herleitung" open=""><summary><span>Derivation</span></summary><ol><li>Chargeable costs: €2,000,000 (your input).</li><li>Fee table § 35 (1), fee zone III: at €1,500,000 chargeable costs €165,911 – €206,923, at €2,000,000 €214,108 – €267,034.</li><li>Linear interpolation between the two table rows (§ 13 (1)): share 1.000 → base rate €214,108.00, upper rate €267,034.00.</li><li>Fee for all work stages = base rate + 0 % × (upper rate − base rate) = €214,108.00.</li><li>Per work stage: fee × share under § 34 (3) (Buildings), rounded to the cent; total of the selected stages.</li></ol></details></div>
         <p class="honorar__fuss">Non-binding estimate. HOAI 2021, fee table § 35 (1) (buildings and interiors) and work-stage shares § 34 (3); table checked on 27 Sep 2026, page as of 12 Oct 2026. Net, without refurbishment surcharge, incidental costs, special services and VAT. Below €25,000 and above €25 m chargeable costs the fee is freely negotiable.</p>
       </div>
-      <p class="fussnote">All prices are net, excluding statutory VAT. Pricing follows the German fee recommendations for BIM management (AHO/DVP: typically 20–25 % of the project management fee). A firm quotation follows a short conversation about project size and discipline models.</p>
+      <p class="fussnote" data-persona="entwickler planer">All prices are net, excluding statutory VAT. Pricing follows the German fee recommendations for BIM management (AHO/DVP: typically 20–25 % of the project management fee). A firm quotation follows a short conversation about project size and discipline models.</p>
     </div>
   </section>
 
@@ -1225,7 +1283,7 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
         systemErkennen();
 
         async function befehlKopieren(knopf) {
-            const code = document.getElementById('dl-befehl');
+            const code = document.getElementById((knopf && knopf.dataset.kopiere) || 'dl-befehl');
             const text = code ? code.textContent.trim() : '';
             let ok = false;
             try { await navigator.clipboard.writeText(text); ok = true; }

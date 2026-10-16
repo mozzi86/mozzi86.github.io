@@ -167,6 +167,57 @@
      zwischen r161 und r17x haben sich Farbverwaltung und Renderer-Optionen
      geaendert. -->
 <style>
+/* --- Perspektive / persona view (persona routing 16.10.2026) ---------------
+   One page, four views. The view is an attribute on <html> (data-ansicht),
+   set by the script right after the band — before any section is parsed, so
+   nothing flashes. Elements carry data-persona="<views>" (space separated);
+   in "alle" (or without a view) everything shows. No library, no reload. */
+.perspektive{padding:clamp(6.2rem,11vw,8rem) var(--pad) clamp(2rem,4vw,3rem);background:var(--bg-deep);
+  border-bottom:1px solid var(--line)}
+.perspektive__kopf{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:.6rem 2rem}
+.perspektive__tabs{display:flex;gap:1px;background:var(--line);border:1px solid var(--line);margin-top:.2rem;
+  overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.perspektive__tabs::-webkit-scrollbar{display:none}
+.perspektive__tab{flex:1 0 auto;scroll-snap-align:start;min-height:2.9rem;padding:.7rem 1rem;background:var(--bg-deep);
+  color:var(--ink-dim);border:0;cursor:pointer;font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;
+  text-transform:uppercase;text-align:center;white-space:nowrap;transition:background .15s,color .15s}
+.perspektive__tab:hover{color:var(--ink);background:var(--bg-raise)}
+.perspektive__tab[aria-selected="true"]{background:var(--accent);color:var(--accent-ink)}
+.perspektive__tab:focus-visible{outline:2px solid var(--accent);outline-offset:-4px}
+/* Phones: a 2 x 2 grid instead of side scrolling — all four views stay visible,
+   the selected one can never sit off screen. */
+@media(max-width:44rem){.perspektive__tabs{display:grid;grid-template-columns:1fr 1fr;overflow:visible}
+  .perspektive__tab{white-space:normal;line-height:1.35;padding:.75rem .6rem;font-size:.66rem;letter-spacing:.08em}}
+.perspektive__panel{margin-top:clamp(1.6rem,3vw,2.4rem);display:grid;gap:1.6rem}
+@media(min-width:64rem){.perspektive__panel{grid-template-columns:1.25fr 1fr;gap:3rem;align-items:start}}
+.perspektive__panel[hidden]{display:none}
+.perspektive__panel h2{font-size:clamp(1.7rem,3.2vw,2.6rem)}
+.perspektive__panel h2 em{font-style:normal;color:var(--accent)}
+.perspektive__text{color:var(--ink-dim);font-weight:300;max-width:62ch;margin-top:.9rem}
+.perspektive__hinweis{color:var(--muted);font-size:.86rem;margin-top:.8rem;max-width:62ch}
+.perspektive__tun{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.3rem}
+.perspektive__werte{list-style:none;margin:0;padding:0;display:grid;gap:1px;background:var(--line);border:1px solid var(--line)}
+.perspektive__werte li{background:var(--bg-deep);padding:.9rem 1rem;display:grid;gap:.15rem}
+.perspektive__werte b{font-family:var(--display);font-size:1.15rem;letter-spacing:-.02em;color:var(--ink)}
+.perspektive__werte span{color:var(--muted);font-size:.84rem}
+html[data-ansicht="bauherren"] [data-persona]:not([data-persona~="bauherren"]),
+html[data-ansicht="entwickler"] [data-persona]:not([data-persona~="entwickler"]),
+html[data-ansicht="planer"] [data-persona]:not([data-persona~="planer"]){display:none !important}
+@keyframes perspektiveEin{from{opacity:0}to{opacity:1}}
+html.perspektive-wechsel main>:not(#perspektive),html.perspektive-wechsel .perspektive__panel:not([hidden]){animation:perspektiveEin .15s ease-out}
+@media(prefers-reduced-motion:reduce){html.perspektive-wechsel *{animation:none !important}}
+
+/* --- Disclaimer at downloads and scripts --------------------------------- */
+.haftung{margin-top:1.4rem;border:1px solid var(--warn);border-inline-start-width:4px;padding:1rem 1.15rem;
+  background:rgba(240,180,41,.05)}
+.haftung__titel{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--warn);margin:0 0 .4rem}
+.haftung p:last-child{color:var(--ink-dim);font-size:.9rem;max-width:80ch}
+
+/* --- Download groups: quick start vs. developer / CLI --------------------- */
+.download__gruppe{margin-top:1.6rem;font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.download__gruppe b{color:var(--ink);font-weight:600}
+.download__gruppe+.download__wege{margin-top:.6rem}
+@media(min-width:60rem){.download__wege--2{grid-template-columns:repeat(2,minmax(0,1fr))}}
 /* --- Beleg-Kasten unter dem Pruefergebnis (Phase 65-06) -------------------
    Beide Dateien stammen aus dem Beispiel-Prueflauf am mitgelieferten
    Musterprojekt, den der Besucher in der Open-Source-Fassung selbst ausloesen
@@ -831,8 +882,8 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
       <a href="#prinzip">Prinzip</a>
       <a href="#leistungen">Leistungen</a>
       <a href="#pakete">Pakete</a>
-      <a href="#werkzeuge">Werkzeuge</a>
-      <a href="#downloads">Downloads</a>
+      <a href="#werkzeuge" data-persona="entwickler planer">Werkzeuge</a>
+      <a href="#downloads" data-persona="planer">Downloads</a>
       <a href="#erfahrung">Erfahrung</a>
       <a href="#kontakt">Kontakt</a>
     </nav>
@@ -865,11 +916,11 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
     <a href="#prinzip">Prinzip</a>
     <a href="#leistungen">Leistungen</a>
     <a href="#pakete">Leistungspakete</a>
-    <a href="#werkzeuge">Werkzeuge</a>
-    <a href="#downloads">Downloads</a>
+    <a href="#werkzeuge" data-persona="entwickler planer">Werkzeuge</a>
+    <a href="#downloads" data-persona="planer">Downloads</a>
     <a href="#erfahrung">Erfahrung</a>
     <a href="#kontakt">Kontakt</a>
-    <a href="#open-source">Open Source · Herunterladen</a>
+    <a href="#open-source" data-persona="planer">Open Source · Herunterladen</a>
     <a href="https://bit-atelier.pages.dev/registrieren">Registrieren</a>
     <a href="https://bit-atelier.pages.dev/anmeldung">Anmelden</a>
   </nav>
@@ -902,6 +953,174 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
   })();
 </script>
 <main id="top">
+
+  <!-- ==================== PERSPEKTIVE (persona routing) ====================
+       Four views of the same page: alle | bauherren | entwickler | planer.
+       Selection: ?view=… > localStorage "bit-ansicht" > alle. Sections and
+       elements below carry data-persona="<views>"; the rules sit in the CSS
+       block "Perspektive". Facts in the panels are the ones stated elsewhere on
+       this page (chamber number, TUM degree, package prices) — nothing new. -->
+  <section class="perspektive" id="perspektive" aria-labelledby="perspektive-titel">
+    <div class="mitte">
+      <div class="perspektive__kopf">
+        <p class="auge" id="perspektive-titel">Ihre Perspektive</p>
+      </div>
+      <div class="perspektive__tabs" role="tablist" aria-labelledby="perspektive-titel">
+        <button class="perspektive__tab" role="tab" type="button" id="tab-alle" data-ansicht="alle" aria-controls="panel-alle" aria-selected="true" tabindex="0">Alle Bereiche</button>
+        <button class="perspektive__tab" role="tab" type="button" id="tab-bauherren" data-ansicht="bauherren" aria-controls="panel-bauherren" aria-selected="false" tabindex="-1">Für Bauherren &amp; Eigentümer</button>
+        <button class="perspektive__tab" role="tab" type="button" id="tab-entwickler" data-ansicht="entwickler" aria-controls="panel-entwickler" aria-selected="false" tabindex="-1">Für Projektentwickler</button>
+        <button class="perspektive__tab" role="tab" type="button" id="tab-planer" data-ansicht="planer" aria-controls="panel-planer" aria-selected="false" tabindex="-1">Für Planer &amp; BIM-Spezialisten</button>
+      </div>
+
+      <div class="perspektive__panel" role="tabpanel" id="panel-alle" aria-labelledby="tab-alle" tabindex="0">
+        <div>
+          <h2>Ein Atelier, <em>drei Blickwinkel</em>.</h2>
+          <p class="perspektive__text">Architektur nach HOAI, BIM-Management für Großprojekte und offene Werkzeuge für die Modellprüfung. Wählen Sie oben Ihre Perspektive — dann zeigt die Seite nur, was für Sie zählt.</p>
+          <div class="perspektive__tun"><a class="btn" href="#kontakt" data-herkunft="Perspektive alle">Projekt anfragen</a></div>
+        </div>
+        <ul class="perspektive__werte">
+          <li><b>HOAI · LPH 1–9</b><span>Planung und Architektur</span></li>
+          <li><b>IFC · IDS · BCF</b><span>BIM-Koordination und Modellprüfung</span></li>
+          <li><b>MIT-Lizenz</b><span>Open-Source-Werkzeuge, lokal ohne Cloud</span></li>
+        </ul>
+      </div>
+
+      <div class="perspektive__panel" role="tabpanel" id="panel-bauherren" aria-labelledby="tab-bauherren" tabindex="0" hidden>
+        <div>
+          <h2>Ihr Bauvorhaben, <em>sicher geplant</em>.</h2>
+          <p class="perspektive__text">Ich begleite Neubau, Umbau und Sanierung von der ersten Idee bis zur Übergabe — als eingetragener Architekt und mit einem Master in klimaoptimiertem Bauen der TU München. Gestaltung, Genehmigung und Energiebilanz denke ich von Anfang an zusammen, damit Ihr Haus gut aussieht, sich gut anfühlt und wenig verbraucht.</p>
+          <p class="perspektive__hinweis">Abgerechnet wird transparent nach der Honorarordnung (HOAI). Den Überschlag rechnen Sie weiter unten selbst — ohne Anmeldung.</p>
+          <div class="perspektive__tun"><a class="btn" href="#kontakt" data-herkunft="Bauherren" data-art="Planung (LPH 1–9)">Erstgespräch zum Bauvorhaben vereinbaren</a></div>
+        </div>
+        <ul class="perspektive__werte">
+          <li><b>LPH 1–9</b><span>alle Leistungsphasen der HOAI — Entwurf, Genehmigung, Ausführung, Bauüberwachung</span></li>
+          <li><b>M.Sc. ClimaDesign</b><span>TU München — Energie, Licht und Behaglichkeit</span></li>
+          <li><b>Nr. 192.197</b><span>Bayerische Architektenkammer</span></li>
+        </ul>
+      </div>
+
+      <div class="perspektive__panel" role="tabpanel" id="panel-entwickler" aria-labelledby="tab-entwickler" tabindex="0" hidden>
+        <div>
+          <h2>Kosten und Termine sichern, <em>bevor gebaut wird</em>.</h2>
+          <p class="perspektive__text">Für Projektentwickler und Bauträger zählt, was sich realisieren lässt. Ich prüfe die Machbarkeit, plane die Ausführung (LPH 5) und führe das BIM-Management über alle Fachplaner — mit einer Kostenstruktur nach DIN 276 und Modellen, die vor Baubeginn auf Kollisionen geprüft sind.</p>
+          <p class="perspektive__hinweis">Planung nach HOAI und BIM-Leistung als klar kalkulierbare Pakete — beides steht unten nebeneinander.</p>
+          <div class="perspektive__tun"><a class="btn" href="#kontakt" data-herkunft="Projektentwickler" data-art="BIM-Koordination">Projekt- &amp; Machbarkeits-Check anfragen</a></div>
+        </div>
+        <ul class="perspektive__werte">
+          <li><b>DIN 276</b><span>Kostenstruktur von der Machbarkeit bis zur Ausführung</span></li>
+          <li><b>Vor Baubeginn</b><span>Kollisionen im Modell gefunden, nicht auf der Baustelle bezahlt</span></li>
+          <li><b>Ab 8.500 €</b><span>BIM-Quick-Check zum Festpreis, Mandat ab 4.500 € im Monat</span></li>
+        </ul>
+      </div>
+
+      <div class="perspektive__panel" role="tabpanel" id="panel-planer" aria-labelledby="tab-planer" tabindex="0" hidden>
+        <div>
+          <h2>OpenBIM <em>auf Augenhöhe</em>.</h2>
+          <p class="perspektive__text">BIM-Koordination auf Zuruf, Modellprüfung gegen Ihre AIA und Python-Automatisierung für ArchiCAD- und IFC-Workflows. Die Werkzeuge dafür sind Open Source und laufen lokal — Ihre Modelle verlassen Ihren Rechner nicht.</p>
+          <div class="perspektive__tun">
+            <a class="btn" href="#kontakt" data-herkunft="Planer" data-art="Modellprüfung / QS">BIM-Support anfragen</a>
+            <a class="btn btn--geist" href="#open-source">Zu den Open-Source-Tools</a>
+          </div>
+        </div>
+        <ul class="perspektive__werte">
+          <li><b>IFC · IDS · BCF · GAEB</b><span>offene Formate statt Austausch per Screenshot</span></li>
+          <li><b>Lokal</b><span>ohne Cloud-Zwang, ohne Konto, ohne Lizenzkosten</span></li>
+          <li><b>MIT-Lizenz</b><span>BIT-Atelier und BIT-PDF zum Herunterladen</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <script>
+  /* Persona routing: applies the view before the sections below are parsed
+     (no flash), then wires the tabs once the page is there. */
+  (function(){
+    var ANSICHTEN = ['alle','bauherren','entwickler','planer'], SCHLUESSEL = 'bit-ansicht';
+    var wurzel = document.documentElement;
+    function gueltig(v){ return ANSICHTEN.indexOf(v) >= 0 ? v : null; }
+    function gespeichert(){ try { return gueltig(localStorage.getItem(SCHLUESSEL)); } catch (e) { return null; } }
+    var ausUrl = null;
+    try { ausUrl = gueltig(new URLSearchParams(location.search).get('view')); } catch (e) { ausUrl = null; }
+    var aktuell = ausUrl || gespeichert() || 'alle';
+    wurzel.setAttribute('data-ansicht', aktuell);
+    if (ausUrl) { try { localStorage.setItem(SCHLUESSEL, ausUrl); } catch (e) {} }
+
+    function setze(v, optionen){
+      v = gueltig(v) || 'alle';
+      var o = optionen || {};
+      aktuell = v;
+      wurzel.setAttribute('data-ansicht', v);
+      if (o.uebergang) { wurzel.classList.remove('perspektive-wechsel'); void wurzel.offsetWidth; wurzel.classList.add('perspektive-wechsel'); }
+      try { localStorage.setItem(SCHLUESSEL, v); } catch (e) {}
+      document.querySelectorAll('.perspektive__tab').forEach(function(t){
+        var an = t.getAttribute('data-ansicht') === v;
+        t.setAttribute('aria-selected', an ? 'true' : 'false');
+        t.tabIndex = an ? 0 : -1;
+        if (an && o.fokus) t.focus();
+      });
+      document.querySelectorAll('.perspektive__panel').forEach(function(p){ p.hidden = p.id !== 'panel-' + v; });
+      if (o.url !== false) {
+        try {
+          var u = new URL(location.href);
+          if (v === 'alle') u.searchParams.delete('view'); else u.searchParams.set('view', v);
+          history.replaceState(history.state, '', u.pathname + u.search + u.hash);
+        } catch (e) {}
+      }
+    }
+    window.bitAnsicht = { setze: setze, aktuell: function(){ return aktuell; } };
+
+    /* An element hidden by the current view (a link target, a hash on load). */
+    function versteckt(el){
+      if (!el || aktuell === 'alle') return false;
+      var halter = el.closest('[data-persona]');
+      while (halter) {
+        if ((' ' + halter.getAttribute('data-persona') + ' ').indexOf(' ' + aktuell + ' ') < 0) return true;
+        halter = halter.parentElement && halter.parentElement.closest('[data-persona]');
+      }
+      return false;
+    }
+
+    function verdrahten(){
+      setze(aktuell, { url: false });
+      var tabs = [].slice.call(document.querySelectorAll('.perspektive__tab'));
+      tabs.forEach(function(t, i){
+        t.addEventListener('click', function(){ setze(t.getAttribute('data-ansicht'), { uebergang: true }); });
+        t.addEventListener('keydown', function(e){
+          var ziel = null;
+          if (e.key === 'ArrowRight' || e.key === 'ArrowDown') ziel = tabs[(i + 1) % tabs.length];
+          else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') ziel = tabs[(i - 1 + tabs.length) % tabs.length];
+          else if (e.key === 'Home') ziel = tabs[0];
+          else if (e.key === 'End') ziel = tabs[tabs.length - 1];
+          if (!ziel) return;
+          e.preventDefault();
+          setze(ziel.getAttribute('data-ansicht'), { uebergang: true, fokus: true });
+        });
+      });
+      /* A link into a section this view hides switches to "Alle Bereiche" first. */
+      document.addEventListener('click', function(e){
+        var a = e.target.closest && e.target.closest('a[href^="#"]');
+        if (!a) return;
+        var id = a.getAttribute('href').slice(1);
+        if (id && versteckt(document.getElementById(id))) setze('alle', { uebergang: true });
+      }, true);
+      /* CTA with a project type preselects it in the enquiry builder. */
+      document.querySelectorAll('[data-art]').forEach(function(a){
+        a.addEventListener('click', function(){
+          var feld = document.getElementById('a-art'), wert = a.getAttribute('data-art');
+          if (!feld) return;
+          [].forEach.call(feld.options, function(o){ if (o.value === wert || o.text === wert) feld.value = o.value; });
+          feld.dispatchEvent(new Event('change', { bubbles: true }));
+        });
+      });
+      var hash = location.hash.slice(1);
+      if (hash && versteckt(document.getElementById(hash))) {
+        setze('alle');
+        var ziel = document.getElementById(hash);
+        if (ziel) ziel.scrollIntoView();
+      }
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', verdrahten); else verdrahten();
+  })();
+  </script>
 
   <!-- ==================== BÜHNE: VOM BAUFELD ZUM HAUS ==================== -->
   <section class="buehne" id="buehne" aria-label="Vom Baufeld zum fertigen Wohnhaus">
@@ -1089,7 +1308,7 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
           folgt demselben Prinzip: durchdachte, datengestützte Planung ohne Reibungsverluste.</p>
       </div>
       <div class="gitter gitter--2">
-        <article class="karte">
+        <article class="karte" data-persona="entwickler planer">
           <p class="karte__nr">Für Generalplaner, Büros &amp; Bauunternehmen</p>
           <h3>BIM-Koordination &amp; Modellprüfung</h3>
           <p>Externe BIM-Generalleitung für Großprojekte — von der BAP-Strukturierung bis zur
@@ -1104,7 +1323,7 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
           </ul>
           <div class="karte__fuss"><a class="btn btn--geist btn--klein" href="#pakete">Zu den Leistungspaketen</a></div>
         </article>
-        <article class="karte">
+        <article class="karte" data-persona="bauherren entwickler">
           <p class="karte__nr">Für Bauherren</p>
           <h3>Planung &amp; Architektur</h3>
           <p>Ganzheitliche Planung von Wohn- und Sanierungsprojekten über alle Leistungsphasen —
@@ -1120,22 +1339,29 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
         </article>
       </div>
       <!-- 69-10: landing page of this topic; dropped on the topic page itself. -->
-      <p class="mehr" data-mehr><a href="bim-koordination/">Mehr zur BIM-Koordination und zu den Paketen →</a></p>
-      <p class="mehr" data-mehr><a href="mengen-ava/">Mehr zu Mengen und AVA aus dem Modell →</a></p>
-      <p class="mehr" data-mehr><a href="energie-screening/">Mehr zum Energie-Screening am Modell (kein GEG-Nachweis) →</a></p>
+      <p class="mehr" data-mehr data-persona="entwickler planer"><a href="bim-koordination/">Mehr zur BIM-Koordination und zu den Paketen →</a></p>
+      <p class="mehr" data-mehr data-persona="entwickler planer"><a href="mengen-ava/">Mehr zu Mengen und AVA aus dem Modell →</a></p>
+      <p class="mehr" data-mehr data-persona="bauherren planer"><a href="energie-screening/">Mehr zum Energie-Screening am Modell (kein GEG-Nachweis) →</a></p>
     </div>
   </section>
 
   <!-- ==================== PAKETE ==================== -->
   <section class="abschnitt abschnitt--hoch" id="pakete">
     <div class="mitte">
-      <div class="kopfzeile">
+      <!-- Bauherren see only the HOAI calculator (no package or retainer prices — they are
+           no total fee and would be read as one). -->
+      <div class="kopfzeile" data-persona="bauherren">
+        <p class="auge">Honorar</p>
+        <h2>Transparent <em>nach HOAI</em>.</h2>
+        <p class="unter">Ihr Architektenhonorar richtet sich nach der Honorarordnung (HOAI 2021): nach den anrechenbaren Kosten, der Honorarzone und den beauftragten Leistungsphasen. Den Überschlag rechnen Sie hier selbst — das verbindliche Angebot folgt nach dem Erstgespräch.</p>
+      </div>
+      <div class="kopfzeile" data-persona="entwickler planer">
         <p class="auge">BIM-Leistungspakete</p>
         <h2>Klarer Umfang. Klares Ergebnis. <em>Klarer Preis.</em></h2>
         <p class="unter">Drei Pakete für Großprojekte ab ca. 5 Mio. € Bausumme — als Festpreis
           oder monatliches Mandat, bepreist am Projektwert statt nach Stundenzetteln.</p>
       </div>
-      <div class="gitter gitter--3">
+      <div class="gitter gitter--3" data-persona="entwickler planer">
         <article class="karte">
           <p class="karte__nr">Paket 1 · Festpreis</p>
           <h3>BIM-Quick-Check &amp; Setup</h3>
@@ -1179,7 +1405,7 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
            Leser aus "ab"-Preisen und einer AHO-Fussnote selbst schliessen, ob er
            gemeint ist. Die Regeln stehen im Skript unten (finderEmpfehlung); die
            Preise sind die der Karten darueber — hier wird nichts hochgerechnet. -->
-      <div class="finder" id="paketfinder">
+      <div class="finder" id="paketfinder" data-persona="entwickler planer">
         <h3>Welches Paket passt zu Ihrem Projekt?</h3>
         <p class="finder__unter">Drei Angaben, keine Anmeldung. Die Einordnung folgt den Regeln,
           nach denen ich selbst sortiere — und nimmt Ihre Angaben gleich mit in die Anfrage.</p>
@@ -1224,7 +1450,7 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
            assets/js/honorar-ui.js (inputs, result, derivation). No login,
            no request — nothing leaves the device. Own classes (honorar__…),
            because the package finder binds every .finder__wahl on the page. -->
-      <div class="finder honorar" id="honorarrechner">
+      <div class="finder honorar" id="honorarrechner" data-persona="bauherren entwickler">
         <h3>Was kostet die Planung nach HOAI?</h3>
         <p class="finder__unter">Ein Überschlag nach der Honorartafel der HOAI 2021 — ohne Anmeldung, gerechnet in Ihrem Browser; nichts verlässt Ihr Gerät. Jede Zahl steht mit ihrer Herleitung da.</p>
         <div class="honorar__felder">
@@ -1281,7 +1507,7 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
         <div class="honorar__ergebnis" id="h-ergebnis" data-nicht-uebersetzen aria-live="polite"></div>
         <p class="honorar__fuss">Unverbindlicher Überschlag. HOAI 2021, Honorartafel § 35 Abs. 1 (Gebäude und Innenräume) und Leistungsanteile § 34 Abs. 3; Tafel geprüft am 27.09.2026, Stand dieser Seite 12.10.2026. Netto, ohne Umbauzuschlag, Nebenkosten, Besondere Leistungen und Umsatzsteuer. Unter 25.000 € und über 25 Mio. € anrechenbarer Kosten ist das Honorar frei vereinbar.</p>
       </div>
-      <p class="fussnote">Alle Preise netto zzgl. gesetzlicher Umsatzsteuer. Bepreisung
+      <p class="fussnote" data-persona="entwickler planer">Alle Preise netto zzgl. gesetzlicher Umsatzsteuer. Bepreisung
         orientiert an den Vergütungsempfehlungen für BIM-Management (AHO/DVP: üblich 20–25 %
         des Projektsteuerungshonorars). Konkretes Angebot nach kurzem Gespräch über
         Projektgröße und Fachmodelle.</p>
@@ -1331,7 +1557,7 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
   </section>
 
   <!-- ==================== WERKZEUGE ==================== -->
-  <section class="abschnitt" id="werkzeuge">
+  <section class="abschnitt" id="werkzeuge" data-persona="entwickler planer">
     <div class="mitte">
       <div class="kopfzeile">
         <p class="auge">Der Unterschied</p>
@@ -1435,7 +1661,7 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
        oben. Bei einer neuen Adresse alle Vorkommen von OSS_REPO ersetzen und
        danach node tools/unterseiten-erzeugen.mjs laufen lassen (Themenseiten + alle Sprachkopien).
        Feedback-Adresse: dieselbe verdeckte Adresse wie im Kontakt (_eu/_ed). -->
-  <section class="abschnitt abschnitt--hoch" id="open-source">
+  <section class="abschnitt abschnitt--hoch" id="open-source" data-persona="planer">
     <div class="mitte">
       <div class="kopfzeile">
         <p class="auge">Open Source · MIT-Lizenz</p>
@@ -1460,13 +1686,26 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
         <h3>Installieren mit einem Klick</h3>
         <p class="download__vorher">Einmalig vorher: Node.js 22.9 oder neuer, kostenlos von <a href="https://nodejs.org/" style="color:var(--accent)">nodejs.org</a>.</p>
         <p class="download__mobil">BIT-Atelier läuft auf Windows, macOS und Linux, nicht auf dem Handy. Schicken Sie sich den Link an Ihren Rechner.</p>
-        <div class="download__wege">
+        <aside class="haftung" role="note" aria-label="Haftungsausschluss">
+          <p class="haftung__titel">Haftungsausschluss</p>
+          <p>BIT-Atelier, BIT-PDF und die Installationsskripte sind freie Software unter der MIT-Lizenz und werden ohne Gewährleistung bereitgestellt; die Nutzung erfolgt auf eigene Gefahr. Ergebnisse der Werkzeuge und Skripte — Prüfberichte, Mengen, Kennwerte — sind Arbeitshilfen. Sie ersetzen keine formelle bautechnische, statische oder rechtliche Prüfung durch die verantwortlichen Objekt- und Fachplaner.</p>
+        </aside>
+        <p class="download__gruppe"><b>Schnellstart</b> · Direkt-Download für Büro-Anwender</p>
+        <div class="download__wege download__wege--2">
           <div class="download__weg" data-fuer="windows">
             <p class="download__empfohlen">Für Ihr System</p>
             <h4>Windows</h4>
             <p>Installer herunterladen und doppelklicken — er holt die aktuelle Version, prüft sie, legt eine Verknüpfung auf dem Desktop an und startet die App.</p>
             <a class="btn btn--klein" href="https://github.com/mozzi86/bit-atelier-oss/releases/latest/download/BIT-Atelier-Installer.cmd">Installer für Windows</a>
           </div>
+          <div class="download__weg" data-fuer="zip">
+            <h4>Von Hand (alle Systeme)</h4>
+            <p>ZIP entpacken und <code dir="ltr">start-windows.cmd</code> bzw. <code dir="ltr">./start.sh</code> starten.</p>
+            <a class="btn btn--geist btn--klein" href="https://github.com/mozzi86/bit-atelier-oss/releases/latest/download/BIT-Atelier.zip">ZIP (manuell)</a>
+          </div>
+        </div>
+        <p class="download__gruppe"><b>Developer</b> · CLI-Setup mit Node.js</p>
+        <div class="download__wege download__wege--2">
           <div class="download__weg" data-fuer="unix">
             <p class="download__empfohlen">Für Ihr System</p>
             <h4>macOS · Linux</h4>
@@ -1474,10 +1713,14 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
             <pre class="download__befehl" dir="ltr"><code id="dl-befehl">curl -fsSL https://github.com/mozzi86/bit-atelier-oss/releases/latest/download/install.sh | sh</code></pre>
             <button class="btn btn--klein" type="button" id="dl-kopieren" onclick="befehlKopieren(this)">Befehl kopieren</button>
           </div>
-          <div class="download__weg" data-fuer="zip">
-            <h4>Von Hand (alle Systeme)</h4>
-            <p>ZIP entpacken und <code dir="ltr">start-windows.cmd</code> bzw. <code dir="ltr">./start.sh</code> starten.</p>
-            <a class="btn btn--geist btn--klein" href="https://github.com/mozzi86/bit-atelier-oss/releases/latest/download/BIT-Atelier.zip">ZIP (manuell)</a>
+          <div class="download__weg" data-fuer="quellcode">
+            <h4>Aus dem Quellcode</h4>
+            <p>Klonen, Pakete installieren, Entwicklungsserver starten — für eigene Prüfregeln und Erweiterungen.</p>
+            <pre class="download__befehl" dir="ltr"><code id="dl-quellcode">git clone https://github.com/mozzi86/bit-atelier-oss.git
+cd bit-atelier-oss
+npm install
+npm run dev</code></pre>
+            <button class="btn btn--klein" type="button" data-kopiere="dl-quellcode" onclick="befehlKopieren(this)">Befehle kopieren</button>
           </div>
         </div>
         <div class="download__fassung"><span>Fassung</span> <b data-nicht-uebersetzen>1.5.0</b> · <time datetime="2026-10-16">16.10.2026</time> · <span data-nicht-uebersetzen>ZIP 13 MB</span> · <span>Node.js 22.9 oder neuer</span> · <a href="https://github.com/mozzi86/bit-atelier-oss/releases/tag/v1.5.0">Änderungen</a></div>
@@ -1513,9 +1756,7 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
         <article class="karte">
           <p class="karte__nr">02 · Quellcode</p>
           <h3>Offen auf GitHub</h3>
-          <p>Lesen, anpassen, weitergeben. Aus dem Quellcode starten: <code dir="ltr">git clone</code>,
-            <code dir="ltr">npm install</code>, <code dir="ltr">npm run dev</code>. Eigene Prüfregeln
-            und Erweiterungen sind ausdrücklich erwünscht.</p>
+          <p>Lesen, anpassen, weitergeben — eigene Prüfregeln und Erweiterungen sind ausdrücklich erwünscht. Die Befehle für den Start aus dem Quellcode stehen oben im Developer-Block.</p>
           <div class="karte__fuss">
             <a class="btn btn--geist btn--klein" href="https://github.com/mozzi86/bit-atelier-oss">Quellcode auf GitHub</a>
           </div>
@@ -1581,7 +1822,7 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
   </section>
 
   <!-- ==================== DOWNLOADS ==================== -->
-  <section class="abschnitt abschnitt--hoch" id="downloads">
+  <section class="abschnitt abschnitt--hoch" id="downloads" data-persona="planer">
     <div class="mitte">
       <div class="kopfzeile">
         <p class="auge">Downloads</p>
@@ -1625,6 +1866,10 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
           </div>
         </article>
       </div>
+      <aside class="haftung" role="note" aria-label="Haftungsausschluss">
+          <p class="haftung__titel">Haftungsausschluss</p>
+          <p>BIT-Atelier, BIT-PDF und die Installationsskripte sind freie Software unter der MIT-Lizenz und werden ohne Gewährleistung bereitgestellt; die Nutzung erfolgt auf eigene Gefahr. Ergebnisse der Werkzeuge und Skripte — Prüfberichte, Mengen, Kennwerte — sind Arbeitshilfen. Sie ersetzen keine formelle bautechnische, statische oder rechtliche Prüfung durch die verantwortlichen Objekt- und Fachplaner.</p>
+        </aside>
       <p class="fussnote">Kostenlos · quelloffen entwickelt im BIT-Atelier · alle Versionen
         <a href="https://github.com/mozzi86/NovaPDF/releases" style="color:var(--accent)">auf GitHub</a>.
         Die Apps sind nicht signiert bzw. notarisiert — Windows SmartScreen bzw. macOS
@@ -2086,7 +2331,7 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
         systemErkennen();
 
         async function befehlKopieren(knopf) {
-            const code = document.getElementById('dl-befehl');
+            const code = document.getElementById((knopf && knopf.dataset.kopiere) || 'dl-befehl');
             const text = code ? code.textContent.trim() : '';
             let ok = false;
             try { await navigator.clipboard.writeText(text); ok = true; }

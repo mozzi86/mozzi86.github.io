@@ -735,4 +735,89 @@
     'أتعاب جميع المراحل = المعدل الأساسي + {p} % × (المعدل الأعلى − المعدل الأساسي) = {h}.',
   'Je Leistungsphase: Honorar × Anteil nach § 34 Abs. 3 ({l}), auf Cent gerundet; Summe der gewählten Phasen.':
     'لكل مرحلة: الأتعاب × الحصة وفق المادة 34 الفقرة 3 ({l})، مقرَّبة إلى السنت؛ ثم مجموع المراحل المختارة.',
+  /* Persona routing 16.10.2026: band, panels, HOAI heading, disclaimer, download groups. */
+  'Ihre Perspektive':
+    'منظورك',
+  'Alle Bereiche':
+    'جميع المجالات',
+  'Für Bauherren &amp; Eigentümer':
+    'للمالكين وأصحاب المشاريع',
+  'Für Projektentwickler':
+    'لمطوّري المشاريع',
+  'Für Planer &amp; BIM-Spezialisten':
+    'للمخططين وأخصائيي BIM',
+  'Ein Atelier, <em>drei Blickwinkel</em>.':
+    'مكتب واحد، <em>ثلاث زوايا نظر</em>.',
+  'Architektur nach HOAI, BIM-Management für Großprojekte und offene Werkzeuge für die Modellprüfung. Wählen Sie oben Ihre Perspektive — dann zeigt die Seite nur, was für Sie zählt.':
+    'عمارة وفق لائحة أتعاب المهندسين المعماريين (HOAI)، وإدارة BIM للمشاريع الكبيرة، وأدوات مفتوحة لفحص النماذج. اختر منظورك في الأعلى، فتعرض الصفحة ما يهمّك فقط.',
+  '<b>HOAI · LPH 1–9</b><span>Planung und Architektur</span>':
+    '<b>HOAI · المراحل 1–9</b><span>التخطيط والعمارة</span>',
+  '<b>IFC · IDS · BCF</b><span>BIM-Koordination und Modellprüfung</span>':
+    '<b>IFC · IDS · BCF</b><span>تنسيق BIM وفحص النماذج</span>',
+  '<b>MIT-Lizenz</b><span>Open-Source-Werkzeuge, lokal ohne Cloud</span>':
+    '<b>رخصة MIT</b><span>أدوات مفتوحة المصدر، محلياً ودون سحابة</span>',
+  'Ihr Bauvorhaben, <em>sicher geplant</em>.':
+    'مشروعك البنائي، <em>بتخطيط آمن</em>.',
+  'Ich begleite Neubau, Umbau und Sanierung von der ersten Idee bis zur Übergabe — als eingetragener Architekt und mit einem Master in klimaoptimiertem Bauen der TU München. Gestaltung, Genehmigung und Energiebilanz denke ich von Anfang an zusammen, damit Ihr Haus gut aussieht, sich gut anfühlt und wenig verbraucht.':
+    'أرافق البناء الجديد والتحويل والترميم من الفكرة الأولى حتى التسليم، بصفتي معمارياً مسجّلاً وحاصلاً على ماجستير في البناء المتوافق مع المناخ من جامعة ميونخ التقنية. أفكر في التصميم والترخيص وميزان الطاقة معاً منذ البداية، ليبدو بيتك جميلاً ويكون مريحاً وقليل الاستهلاك.',
+  'Abgerechnet wird transparent nach der Honorarordnung (HOAI). Den Überschlag rechnen Sie weiter unten selbst — ohne Anmeldung.':
+    'تُحتسب الأتعاب بشفافية وفق لائحة الأتعاب الألمانية (HOAI). يمكنك حساب التقدير بنفسك في الأسفل، دون تسجيل.',
+  'Erstgespräch zum Bauvorhaben vereinbaren':
+    'حدّد موعداً لأول لقاء حول مشروعك',
+  '<b>LPH 1–9</b><span>alle Leistungsphasen der HOAI — Entwurf, Genehmigung, Ausführung, Bauüberwachung</span>':
+    '<b>المراحل 1–9</b><span>جميع مراحل HOAI — التصميم، الترخيص، التنفيذ، الإشراف على الموقع</span>',
+  '<b>M.Sc. ClimaDesign</b><span>TU München — Energie, Licht und Behaglichkeit</span>':
+    '<b>ماجستير ClimaDesign</b><span>جامعة ميونخ التقنية — الطاقة والضوء والراحة</span>',
+  '<b>Nr. 192.197</b><span>Bayerische Architektenkammer</span>':
+    '<b>رقم 192.197</b><span>غرفة المهندسين المعماريين في بافاريا</span>',
+  'Kosten und Termine sichern, <em>bevor gebaut wird</em>.':
+    'ضمان التكلفة والمواعيد <em>قبل بدء البناء</em>.',
+  'Für Projektentwickler und Bauträger zählt, was sich realisieren lässt. Ich prüfe die Machbarkeit, plane die Ausführung (LPH 5) und führe das BIM-Management über alle Fachplaner — mit einer Kostenstruktur nach DIN 276 und Modellen, die vor Baubeginn auf Kollisionen geprüft sind.':
+    'لمطوّري المشاريع وشركات البناء، المهم هو ما يمكن تنفيذه. أفحص الجدوى، وأعدّ مخططات التنفيذ (المرحلة 5)، وأدير BIM عبر جميع المخططين المختصين — بهيكل تكاليف وفق DIN 276 ونماذج مفحوصة من التعارضات قبل بدء البناء.',
+  'Planung nach HOAI und BIM-Leistung als klar kalkulierbare Pakete — beides steht unten nebeneinander.':
+    'التخطيط وفق HOAI وخدمات BIM كباقات واضحة التكلفة — كلاهما معروض جنباً إلى جنب في الأسفل.',
+  'Projekt- &amp; Machbarkeits-Check anfragen':
+    'اطلب فحص المشروع والجدوى',
+  '<b>DIN 276</b><span>Kostenstruktur von der Machbarkeit bis zur Ausführung</span>':
+    '<b>DIN 276</b><span>هيكل التكاليف من الجدوى حتى التنفيذ</span>',
+  '<b>Vor Baubeginn</b><span>Kollisionen im Modell gefunden, nicht auf der Baustelle bezahlt</span>':
+    '<b>قبل البناء</b><span>تعارضات تُكتشف في النموذج، لا تُدفع في الموقع</span>',
+  '<b>Ab 8.500 €</b><span>BIM-Quick-Check zum Festpreis, Mandat ab 4.500 € im Monat</span>':
+    '<b>من 8,500 €</b><span>فحص BIM سريع بسعر ثابت، وتكليف شهري من 4,500 €</span>',
+  'OpenBIM <em>auf Augenhöhe</em>.':
+    'OpenBIM <em>على قدم المساواة</em>.',
+  'BIM-Koordination auf Zuruf, Modellprüfung gegen Ihre AIA und Python-Automatisierung für ArchiCAD- und IFC-Workflows. Die Werkzeuge dafür sind Open Source und laufen lokal — Ihre Modelle verlassen Ihren Rechner nicht.':
+    'تنسيق BIM عند الطلب، وفحص النماذج مقابل متطلبات المعلومات لديك، وأتمتة بلغة Python لسير عمل ArchiCAD وIFC. الأدوات مفتوحة المصدر وتعمل محلياً — لا تغادر نماذجك حاسوبك.',
+  'BIM-Support anfragen':
+    'اطلب دعم BIM',
+  'Zu den Open-Source-Tools':
+    'إلى الأدوات مفتوحة المصدر',
+  '<b>IFC · IDS · BCF · GAEB</b><span>offene Formate statt Austausch per Screenshot</span>':
+    '<b>IFC · IDS · BCF · GAEB</b><span>صيغ مفتوحة بدلاً من لقطات الشاشة</span>',
+  '<b>Lokal</b><span>ohne Cloud-Zwang, ohne Konto, ohne Lizenzkosten</span>':
+    '<b>محلياً</b><span>دون سحابة إلزامية، دون حساب، دون رسوم ترخيص</span>',
+  '<b>MIT-Lizenz</b><span>BIT-Atelier und BIT-PDF zum Herunterladen</span>':
+    '<b>رخصة MIT</b><span>BIT-Atelier وBIT-PDF للتنزيل</span>',
+  'Honorar':
+    'الأتعاب',
+  'Transparent <em>nach HOAI</em>.':
+    'بشفافية <em>وفق HOAI</em>.',
+  'Ihr Architektenhonorar richtet sich nach der Honorarordnung (HOAI 2021): nach den anrechenbaren Kosten, der Honorarzone und den beauftragten Leistungsphasen. Den Überschlag rechnen Sie hier selbst — das verbindliche Angebot folgt nach dem Erstgespräch.':
+    'تُحدَّد أتعاب المعماري وفق لائحة الأتعاب الألمانية (HOAI 2021): حسب التكاليف المحتسبة، وفئة الأتعاب، ومراحل العمل المكلَّف بها. احسب التقدير هنا بنفسك — ويأتي العرض الملزم بعد اللقاء الأول.',
+  'Haftungsausschluss':
+    'إخلاء المسؤولية',
+  'BIT-Atelier, BIT-PDF und die Installationsskripte sind freie Software unter der MIT-Lizenz und werden ohne Gewährleistung bereitgestellt; die Nutzung erfolgt auf eigene Gefahr. Ergebnisse der Werkzeuge und Skripte — Prüfberichte, Mengen, Kennwerte — sind Arbeitshilfen. Sie ersetzen keine formelle bautechnische, statische oder rechtliche Prüfung durch die verantwortlichen Objekt- und Fachplaner.':
+    'BIT-Atelier وBIT-PDF وسكربتات التثبيت برمجيات حرة بموجب رخصة MIT وتُقدَّم دون أي ضمان؛ والاستخدام على مسؤوليتك. نتائج الأدوات والسكربتات — تقارير الفحص والكميات والمؤشرات — وسائل مساعدة للعمل، ولا تحلّ محل الفحص الفني أو الإنشائي أو القانوني الرسمي من قِبل المخططين المسؤولين عن المشروع والتخصصات.',
+  '<b>Schnellstart</b> · Direkt-Download für Büro-Anwender':
+    '<b>بدء سريع</b> · تنزيل مباشر لمستخدمي المكاتب',
+  '<b>Developer</b> · CLI-Setup mit Node.js':
+    '<b>للمطوّرين</b> · إعداد عبر سطر الأوامر مع Node.js',
+  'Aus dem Quellcode':
+    'من الشيفرة المصدرية',
+  'Klonen, Pakete installieren, Entwicklungsserver starten — für eigene Prüfregeln und Erweiterungen.':
+    'استنسخ، ثبّت الحزم، شغّل خادم التطوير — لقواعد فحص وإضافات خاصة بك.',
+  'Befehle kopieren':
+    'نسخ الأوامر',
+  'Lesen, anpassen, weitergeben — eigene Prüfregeln und Erweiterungen sind ausdrücklich erwünscht. Die Befehle für den Start aus dem Quellcode stehen oben im Developer-Block.':
+    'اقرأ، عدّل، شارك — قواعد الفحص والإضافات الخاصة بك مرحَّب بها صراحةً. أوامر التشغيل من الشيفرة المصدرية موجودة في قسم المطوّرين أعلاه.',
 };

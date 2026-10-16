@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl" style="--bh: 900px;"><head>
+<html lang="ar" data-ansicht="alle" dir="rtl" style="--bh: 900px;"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>BIT-ATELIER — حيث تلتقي العمارة بالبيانات</title>
@@ -166,6 +166,57 @@
      zwischen r161 und r17x haben sich Farbverwaltung und Renderer-Optionen
      geaendert. -->
 <style>
+/* --- Perspektive / persona view (persona routing 16.10.2026) ---------------
+   One page, four views. The view is an attribute on <html> (data-ansicht),
+   set by the script right after the band — before any section is parsed, so
+   nothing flashes. Elements carry data-persona="<views>" (space separated);
+   in "alle" (or without a view) everything shows. No library, no reload. */
+.perspektive{padding:clamp(6.2rem,11vw,8rem) var(--pad) clamp(2rem,4vw,3rem);background:var(--bg-deep);
+  border-bottom:1px solid var(--line)}
+.perspektive__kopf{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:.6rem 2rem}
+.perspektive__tabs{display:flex;gap:1px;background:var(--line);border:1px solid var(--line);margin-top:.2rem;
+  overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.perspektive__tabs::-webkit-scrollbar{display:none}
+.perspektive__tab{flex:1 0 auto;scroll-snap-align:start;min-height:2.9rem;padding:.7rem 1rem;background:var(--bg-deep);
+  color:var(--ink-dim);border:0;cursor:pointer;font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;
+  text-transform:uppercase;text-align:center;white-space:nowrap;transition:background .15s,color .15s}
+.perspektive__tab:hover{color:var(--ink);background:var(--bg-raise)}
+.perspektive__tab[aria-selected="true"]{background:var(--accent);color:var(--accent-ink)}
+.perspektive__tab:focus-visible{outline:2px solid var(--accent);outline-offset:-4px}
+/* Phones: a 2 x 2 grid instead of side scrolling — all four views stay visible,
+   the selected one can never sit off screen. */
+@media(max-width:44rem){.perspektive__tabs{display:grid;grid-template-columns:1fr 1fr;overflow:visible}
+  .perspektive__tab{white-space:normal;line-height:1.35;padding:.75rem .6rem;font-size:.66rem;letter-spacing:.08em}}
+.perspektive__panel{margin-top:clamp(1.6rem,3vw,2.4rem);display:grid;gap:1.6rem}
+@media(min-width:64rem){.perspektive__panel{grid-template-columns:1.25fr 1fr;gap:3rem;align-items:start}}
+.perspektive__panel[hidden]{display:none}
+.perspektive__panel h2{font-size:clamp(1.7rem,3.2vw,2.6rem)}
+.perspektive__panel h2 em{font-style:normal;color:var(--accent)}
+.perspektive__text{color:var(--ink-dim);font-weight:300;max-width:62ch;margin-top:.9rem}
+.perspektive__hinweis{color:var(--muted);font-size:.86rem;margin-top:.8rem;max-width:62ch}
+.perspektive__tun{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.3rem}
+.perspektive__werte{list-style:none;margin:0;padding:0;display:grid;gap:1px;background:var(--line);border:1px solid var(--line)}
+.perspektive__werte li{background:var(--bg-deep);padding:.9rem 1rem;display:grid;gap:.15rem}
+.perspektive__werte b{font-family:var(--display);font-size:1.15rem;letter-spacing:-.02em;color:var(--ink)}
+.perspektive__werte span{color:var(--muted);font-size:.84rem}
+html[data-ansicht="bauherren"] [data-persona]:not([data-persona~="bauherren"]),
+html[data-ansicht="entwickler"] [data-persona]:not([data-persona~="entwickler"]),
+html[data-ansicht="planer"] [data-persona]:not([data-persona~="planer"]){display:none !important}
+@keyframes perspektiveEin{from{opacity:0}to{opacity:1}}
+html.perspektive-wechsel main>:not(#perspektive),html.perspektive-wechsel .perspektive__panel:not([hidden]){animation:perspektiveEin .15s ease-out}
+@media(prefers-reduced-motion:reduce){html.perspektive-wechsel *{animation:none !important}}
+
+/* --- Disclaimer at downloads and scripts --------------------------------- */
+.haftung{margin-top:1.4rem;border:1px solid var(--warn);border-inline-start-width:4px;padding:1rem 1.15rem;
+  background:rgba(240,180,41,.05)}
+.haftung__titel{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--warn);margin:0 0 .4rem}
+.haftung p:last-child{color:var(--ink-dim);font-size:.9rem;max-width:80ch}
+
+/* --- Download groups: quick start vs. developer / CLI --------------------- */
+.download__gruppe{margin-top:1.6rem;font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.download__gruppe b{color:var(--ink);font-weight:600}
+.download__gruppe+.download__wege{margin-top:.6rem}
+@media(min-width:60rem){.download__wege--2{grid-template-columns:repeat(2,minmax(0,1fr))}}
 /* --- Beleg-Kasten unter dem Pruefergebnis (Phase 65-06) -------------------
    Beide Dateien stammen aus dem Beispiel-Prueflauf am mitgelieferten
    Musterprojekt, den der Besucher in der Open-Source-Fassung selbst ausloesen
@@ -830,8 +881,8 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
       <a href="#prinzip">المنهج</a>
       <a href="#leistungen">الخدمات</a>
       <a href="#pakete">الحزم</a>
-      <a href="#werkzeuge">الأدوات</a>
-      <a href="#downloads">التنزيلات</a>
+      <a href="#werkzeuge" data-persona="entwickler planer">الأدوات</a>
+      <a href="#downloads" data-persona="planer">التنزيلات</a>
       <a href="#erfahrung">الخبرة</a>
       <a href="#kontakt">اتصل بنا</a>
     </nav>
@@ -863,11 +914,11 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
     <a href="#prinzip">المنهج</a>
     <a href="#leistungen">الخدمات</a>
     <a href="#pakete">حزم الخدمات</a>
-    <a href="#werkzeuge">الأدوات</a>
-    <a href="#downloads">التنزيلات</a>
+    <a href="#werkzeuge" data-persona="entwickler planer">الأدوات</a>
+    <a href="#downloads" data-persona="planer">التنزيلات</a>
     <a href="#erfahrung">الخبرة</a>
     <a href="#kontakt">اتصل بنا</a>
-    <a href="#open-source">مفتوح المصدر · تنزيل</a>
+    <a href="#open-source" data-persona="planer">مفتوح المصدر · تنزيل</a>
     <a href="https://bit-atelier.pages.dev/registrieren">إنشاء حساب</a>
     <a href="https://bit-atelier.pages.dev/anmeldung">تسجيل الدخول</a>
   </nav>
@@ -900,6 +951,174 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
   })();
 </script>
 <main id="top">
+
+  <!-- ==================== PERSPEKTIVE (persona routing) ====================
+       Four views of the same page: alle | bauherren | entwickler | planer.
+       Selection: ?view=… > localStorage "bit-ansicht" > alle. Sections and
+       elements below carry data-persona="<views>"; the rules sit in the CSS
+       block "Perspektive". Facts in the panels are the ones stated elsewhere on
+       this page (chamber number, TUM degree, package prices) — nothing new. -->
+  <section class="perspektive" id="perspektive" aria-labelledby="perspektive-titel">
+    <div class="mitte">
+      <div class="perspektive__kopf">
+        <p class="auge" id="perspektive-titel">منظورك</p>
+      </div>
+      <div class="perspektive__tabs" role="tablist" aria-labelledby="perspektive-titel">
+        <button class="perspektive__tab" role="tab" type="button" id="tab-alle" data-ansicht="alle" aria-controls="panel-alle" aria-selected="true" tabindex="0">جميع المجالات</button>
+        <button class="perspektive__tab" role="tab" type="button" id="tab-bauherren" data-ansicht="bauherren" aria-controls="panel-bauherren" aria-selected="false" tabindex="-1">للمالكين وأصحاب المشاريع</button>
+        <button class="perspektive__tab" role="tab" type="button" id="tab-entwickler" data-ansicht="entwickler" aria-controls="panel-entwickler" aria-selected="false" tabindex="-1">لمطوّري المشاريع</button>
+        <button class="perspektive__tab" role="tab" type="button" id="tab-planer" data-ansicht="planer" aria-controls="panel-planer" aria-selected="false" tabindex="-1">للمخططين وأخصائيي BIM</button>
+      </div>
+
+      <div class="perspektive__panel" role="tabpanel" id="panel-alle" aria-labelledby="tab-alle" tabindex="0">
+        <div>
+          <h2>مكتب واحد، <em>ثلاث زوايا نظر</em>.</h2>
+          <p class="perspektive__text">عمارة وفق لائحة أتعاب المهندسين المعماريين (HOAI)، وإدارة BIM للمشاريع الكبيرة، وأدوات مفتوحة لفحص النماذج. اختر منظورك في الأعلى، فتعرض الصفحة ما يهمّك فقط.</p>
+          <div class="perspektive__tun"><a class="btn" href="#kontakt" data-herkunft="Perspektive alle">اطلب استشارة لمشروعك</a></div>
+        </div>
+        <ul class="perspektive__werte">
+          <li><b>HOAI · المراحل 1–9</b><span>التخطيط والعمارة</span></li>
+          <li><b>IFC · IDS · BCF</b><span>تنسيق BIM وفحص النماذج</span></li>
+          <li><b>رخصة MIT</b><span>أدوات مفتوحة المصدر، محلياً ودون سحابة</span></li>
+        </ul>
+      </div>
+
+      <div class="perspektive__panel" role="tabpanel" id="panel-bauherren" aria-labelledby="tab-bauherren" tabindex="0" hidden="">
+        <div>
+          <h2>مشروعك البنائي، <em>بتخطيط آمن</em>.</h2>
+          <p class="perspektive__text">أرافق البناء الجديد والتحويل والترميم من الفكرة الأولى حتى التسليم، بصفتي معمارياً مسجّلاً وحاصلاً على ماجستير في البناء المتوافق مع المناخ من جامعة ميونخ التقنية. أفكر في التصميم والترخيص وميزان الطاقة معاً منذ البداية، ليبدو بيتك جميلاً ويكون مريحاً وقليل الاستهلاك.</p>
+          <p class="perspektive__hinweis">تُحتسب الأتعاب بشفافية وفق لائحة الأتعاب الألمانية (HOAI). يمكنك حساب التقدير بنفسك في الأسفل، دون تسجيل.</p>
+          <div class="perspektive__tun"><a class="btn" href="#kontakt" data-herkunft="Bauherren" data-art="Planung (LPH 1–9)">حدّد موعداً لأول لقاء حول مشروعك</a></div>
+        </div>
+        <ul class="perspektive__werte">
+          <li><b>المراحل 1–9</b><span>جميع مراحل HOAI — التصميم، الترخيص، التنفيذ، الإشراف على الموقع</span></li>
+          <li><b>ماجستير ClimaDesign</b><span>جامعة ميونخ التقنية — الطاقة والضوء والراحة</span></li>
+          <li><b>رقم 192.197</b><span>غرفة المهندسين المعماريين في بافاريا</span></li>
+        </ul>
+      </div>
+
+      <div class="perspektive__panel" role="tabpanel" id="panel-entwickler" aria-labelledby="tab-entwickler" tabindex="0" hidden="">
+        <div>
+          <h2>ضمان التكلفة والمواعيد <em>قبل بدء البناء</em>.</h2>
+          <p class="perspektive__text">لمطوّري المشاريع وشركات البناء، المهم هو ما يمكن تنفيذه. أفحص الجدوى، وأعدّ مخططات التنفيذ (المرحلة 5)، وأدير BIM عبر جميع المخططين المختصين — بهيكل تكاليف وفق DIN 276 ونماذج مفحوصة من التعارضات قبل بدء البناء.</p>
+          <p class="perspektive__hinweis">التخطيط وفق HOAI وخدمات BIM كباقات واضحة التكلفة — كلاهما معروض جنباً إلى جنب في الأسفل.</p>
+          <div class="perspektive__tun"><a class="btn" href="#kontakt" data-herkunft="Projektentwickler" data-art="BIM-Koordination">اطلب فحص المشروع والجدوى</a></div>
+        </div>
+        <ul class="perspektive__werte">
+          <li><b>DIN 276</b><span>هيكل التكاليف من الجدوى حتى التنفيذ</span></li>
+          <li><b>قبل البناء</b><span>تعارضات تُكتشف في النموذج، لا تُدفع في الموقع</span></li>
+          <li><b>من 8,500 €</b><span>فحص BIM سريع بسعر ثابت، وتكليف شهري من 4,500 €</span></li>
+        </ul>
+      </div>
+
+      <div class="perspektive__panel" role="tabpanel" id="panel-planer" aria-labelledby="tab-planer" tabindex="0" hidden="">
+        <div>
+          <h2>OpenBIM <em>على قدم المساواة</em>.</h2>
+          <p class="perspektive__text">تنسيق BIM عند الطلب، وفحص النماذج مقابل متطلبات المعلومات لديك، وأتمتة بلغة Python لسير عمل ArchiCAD وIFC. الأدوات مفتوحة المصدر وتعمل محلياً — لا تغادر نماذجك حاسوبك.</p>
+          <div class="perspektive__tun">
+            <a class="btn" href="#kontakt" data-herkunft="Planer" data-art="Modellprüfung / QS">اطلب دعم BIM</a>
+            <a class="btn btn--geist" href="#open-source">إلى الأدوات مفتوحة المصدر</a>
+          </div>
+        </div>
+        <ul class="perspektive__werte">
+          <li><b>IFC · IDS · BCF · GAEB</b><span>صيغ مفتوحة بدلاً من لقطات الشاشة</span></li>
+          <li><b>محلياً</b><span>دون سحابة إلزامية، دون حساب، دون رسوم ترخيص</span></li>
+          <li><b>رخصة MIT</b><span>BIT-Atelier وBIT-PDF للتنزيل</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <script>
+  /* Persona routing: applies the view before the sections below are parsed
+     (no flash), then wires the tabs once the page is there. */
+  (function(){
+    var ANSICHTEN = ['alle','bauherren','entwickler','planer'], SCHLUESSEL = 'bit-ansicht';
+    var wurzel = document.documentElement;
+    function gueltig(v){ return ANSICHTEN.indexOf(v) >= 0 ? v : null; }
+    function gespeichert(){ try { return gueltig(localStorage.getItem(SCHLUESSEL)); } catch (e) { return null; } }
+    var ausUrl = null;
+    try { ausUrl = gueltig(new URLSearchParams(location.search).get('view')); } catch (e) { ausUrl = null; }
+    var aktuell = ausUrl || gespeichert() || 'alle';
+    wurzel.setAttribute('data-ansicht', aktuell);
+    if (ausUrl) { try { localStorage.setItem(SCHLUESSEL, ausUrl); } catch (e) {} }
+
+    function setze(v, optionen){
+      v = gueltig(v) || 'alle';
+      var o = optionen || {};
+      aktuell = v;
+      wurzel.setAttribute('data-ansicht', v);
+      if (o.uebergang) { wurzel.classList.remove('perspektive-wechsel'); void wurzel.offsetWidth; wurzel.classList.add('perspektive-wechsel'); }
+      try { localStorage.setItem(SCHLUESSEL, v); } catch (e) {}
+      document.querySelectorAll('.perspektive__tab').forEach(function(t){
+        var an = t.getAttribute('data-ansicht') === v;
+        t.setAttribute('aria-selected', an ? 'true' : 'false');
+        t.tabIndex = an ? 0 : -1;
+        if (an && o.fokus) t.focus();
+      });
+      document.querySelectorAll('.perspektive__panel').forEach(function(p){ p.hidden = p.id !== 'panel-' + v; });
+      if (o.url !== false) {
+        try {
+          var u = new URL(location.href);
+          if (v === 'alle') u.searchParams.delete('view'); else u.searchParams.set('view', v);
+          history.replaceState(history.state, '', u.pathname + u.search + u.hash);
+        } catch (e) {}
+      }
+    }
+    window.bitAnsicht = { setze: setze, aktuell: function(){ return aktuell; } };
+
+    /* An element hidden by the current view (a link target, a hash on load). */
+    function versteckt(el){
+      if (!el || aktuell === 'alle') return false;
+      var halter = el.closest('[data-persona]');
+      while (halter) {
+        if ((' ' + halter.getAttribute('data-persona') + ' ').indexOf(' ' + aktuell + ' ') < 0) return true;
+        halter = halter.parentElement && halter.parentElement.closest('[data-persona]');
+      }
+      return false;
+    }
+
+    function verdrahten(){
+      setze(aktuell, { url: false });
+      var tabs = [].slice.call(document.querySelectorAll('.perspektive__tab'));
+      tabs.forEach(function(t, i){
+        t.addEventListener('click', function(){ setze(t.getAttribute('data-ansicht'), { uebergang: true }); });
+        t.addEventListener('keydown', function(e){
+          var ziel = null;
+          if (e.key === 'ArrowRight' || e.key === 'ArrowDown') ziel = tabs[(i + 1) % tabs.length];
+          else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') ziel = tabs[(i - 1 + tabs.length) % tabs.length];
+          else if (e.key === 'Home') ziel = tabs[0];
+          else if (e.key === 'End') ziel = tabs[tabs.length - 1];
+          if (!ziel) return;
+          e.preventDefault();
+          setze(ziel.getAttribute('data-ansicht'), { uebergang: true, fokus: true });
+        });
+      });
+      /* A link into a section this view hides switches to "Alle Bereiche" first. */
+      document.addEventListener('click', function(e){
+        var a = e.target.closest && e.target.closest('a[href^="#"]');
+        if (!a) return;
+        var id = a.getAttribute('href').slice(1);
+        if (id && versteckt(document.getElementById(id))) setze('alle', { uebergang: true });
+      }, true);
+      /* CTA with a project type preselects it in the enquiry builder. */
+      document.querySelectorAll('[data-art]').forEach(function(a){
+        a.addEventListener('click', function(){
+          var feld = document.getElementById('a-art'), wert = a.getAttribute('data-art');
+          if (!feld) return;
+          [].forEach.call(feld.options, function(o){ if (o.value === wert || o.text === wert) feld.value = o.value; });
+          feld.dispatchEvent(new Event('change', { bubbles: true }));
+        });
+      });
+      var hash = location.hash.slice(1);
+      if (hash && versteckt(document.getElementById(hash))) {
+        setze('alle');
+        var ziel = document.getElementById(hash);
+        if (ziel) ziel.scrollIntoView();
+      }
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', verdrahten); else verdrahten();
+  })();
+  </script>
 
   <!-- ==================== BÜHNE: VOM BAUFELD ZUM HAUS ==================== -->
   <section class="buehne" id="buehne" aria-label="Vom Baufeld zum fertigen Wohnhaus">
@@ -1046,7 +1265,7 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
         <p class="unter">سواء كنت تبني أو ترغب في تأمين مشروعك الكبير رقمياً — كلا المسارين يتبع المبدأ ذاته: تصميم مدروس مبني على البيانات، بلا هدرٍ في الاحتكاك.</p>
       </div>
       <div class="gitter gitter--2">
-        <article class="karte">
+        <article class="karte" data-persona="entwickler planer">
           <p class="karte__nr">للمكاتب الرئيسية والمكاتب الهندسية وشركات المقاولات</p>
           <h3>تنسيق نمذجة معلومات البناء وتدقيق النماذج</h3>
           <p>إدارة خارجية لنمذجة معلومات البناء في المشاريع الكبيرة — من هيكلة خطة تنفيذ النمذجة إلى تسليم IFC خالٍ من التعارضات. الهدف: أن تُكتشف أخطاء التصميم <em>قبل</em> بدء التنفيذ، لا أن تُدفَع في الموقع.</p>
@@ -1059,7 +1278,7 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
           </ul>
           <div class="karte__fuss"><a class="btn btn--geist btn--klein" href="#pakete">إلى حزم الخدمات</a></div>
         </article>
-        <article class="karte">
+        <article class="karte" data-persona="bauherren entwickler">
           <p class="karte__nr">لأصحاب المشاريع</p>
           <h3>التصميم والعمارة</h3>
           <p>تصميم متكامل لمشاريع الإسكان والترميم عبر جميع مراحل الخدمات — بعينٍ على التفصيل وعلى الموازنة الطاقية.</p>
@@ -1074,21 +1293,28 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
         </article>
       </div>
       <!-- 69-10: landing page of this topic; dropped on the topic page itself. -->
-      <p class="mehr" data-mehr=""><a href="bim-koordination/">المزيد عن تنسيق BIM والحزم ←</a></p>
-      <p class="mehr" data-mehr=""><a href="mengen-ava/">المزيد عن الكميات والمناقصات من النموذج ←</a></p>
-      <p class="mehr" data-mehr=""><a href="energie-screening/">المزيد عن الفحص الأولي للطاقة على النموذج (ليس إثباتاً وفق GEG) ←</a></p>
+      <p class="mehr" data-mehr="" data-persona="entwickler planer"><a href="bim-koordination/">المزيد عن تنسيق BIM والحزم ←</a></p>
+      <p class="mehr" data-mehr="" data-persona="entwickler planer"><a href="mengen-ava/">المزيد عن الكميات والمناقصات من النموذج ←</a></p>
+      <p class="mehr" data-mehr="" data-persona="bauherren planer"><a href="energie-screening/">المزيد عن الفحص الأولي للطاقة على النموذج (ليس إثباتاً وفق GEG) ←</a></p>
     </div>
   </section>
 
   <!-- ==================== PAKETE ==================== -->
   <section class="abschnitt abschnitt--hoch" id="pakete">
     <div class="mitte">
-      <div class="kopfzeile">
+      <!-- Bauherren see only the HOAI calculator (no package or retainer prices — they are
+           no total fee and would be read as one). -->
+      <div class="kopfzeile" data-persona="bauherren">
+        <p class="auge">الأتعاب</p>
+        <h2>بشفافية <em>وفق HOAI</em>.</h2>
+        <p class="unter">تُحدَّد أتعاب المعماري وفق لائحة الأتعاب الألمانية (HOAI 2021): حسب التكاليف المحتسبة، وفئة الأتعاب، ومراحل العمل المكلَّف بها. احسب التقدير هنا بنفسك — ويأتي العرض الملزم بعد اللقاء الأول.</p>
+      </div>
+      <div class="kopfzeile" data-persona="entwickler planer">
         <p class="auge">حزم خدمات نمذجة معلومات البناء</p>
         <h2>نطاقٌ واضح. نتيجةٌ واضحة. <em>وسعرٌ واضح.</em></h2>
         <p class="unter">ثلاث حزم للمشاريع الكبيرة بقيمة تنفيذ تبدأ من نحو 5 ملايين يورو — بسعر ثابت أو بعقد شهري، والتسعير على قيمة المشروع لا على ساعات العمل.</p>
       </div>
-      <div class="gitter gitter--3">
+      <div class="gitter gitter--3" data-persona="entwickler planer">
         <article class="karte">
           <p class="karte__nr">الحزمة 1 · سعر ثابت</p>
           <h3>تدقيق سريع وتأسيس للنمذجة</h3>
@@ -1130,7 +1356,7 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
            Leser aus "ab"-Preisen und einer AHO-Fussnote selbst schliessen, ob er
            gemeint ist. Die Regeln stehen im Skript unten (finderEmpfehlung); die
            Preise sind die der Karten darueber — hier wird nichts hochgerechnet. -->
-      <div class="finder" id="paketfinder">
+      <div class="finder" id="paketfinder" data-persona="entwickler planer">
         <h3>أي حزمة تناسب مشروعكم؟</h3>
         <p class="finder__unter">ثلاث إجابات، دون تسجيل. يتبع التصنيف القواعد نفسها التي أعتمدها بنفسي — وينقل إجاباتكم مباشرةً إلى نموذج الطلب.</p>
         <div class="finder__fragen">
@@ -1174,7 +1400,7 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
            assets/js/honorar-ui.js (inputs, result, derivation). No login,
            no request — nothing leaves the device. Own classes (honorar__…),
            because the package finder binds every .finder__wahl on the page. -->
-      <div class="finder honorar" id="honorarrechner">
+      <div class="finder honorar" id="honorarrechner" data-persona="bauherren entwickler">
         <h3>كم تكلفة التصميم وفق HOAI؟</h3>
         <p class="finder__unter">تقدير وفق جدول الأتعاب في لائحة HOAI 2021 الألمانية (أتعاب المعماريين والمهندسين) — دون تسجيل، ويُحسب في متصفحكم؛ ولا يغادر شيء جهازكم. وكل رقم مرفق بطريقة اشتقاقه.</p>
         <div class="honorar__felder">
@@ -1231,7 +1457,7 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
         <div class="honorar__ergebnis" id="h-ergebnis" data-nicht-uebersetzen="" aria-live="polite"><div><p class="finder__auge">أتعاب المراحل المختارة (100 %)</p><p class="honorar__summe">‏214,108&nbsp;€</p><p class="honorar__klein">النطاق من المعدل الأساسي إلى الأعلى: ‏214,108&nbsp;€ – ‏267,034&nbsp;€</p></div><div class="honorar__tabelle-rahmen"><table class="honorar__tabelle"><thead><tr><th>مرحلة الخدمة</th><th>الحصة</th><th>المعدل الأساسي</th><th>المعدل الأعلى</th><th>المختار</th></tr></thead><tbody><tr><td>1 · تحديد الأسس</td><td>2 %</td><td>‏4,282.16&nbsp;€</td><td>‏5,340.68&nbsp;€</td><td>‏4,282.16&nbsp;€</td></tr><tr><td>2 · التصميم الأولي</td><td>7 %</td><td>‏14,987.56&nbsp;€</td><td>‏18,692.38&nbsp;€</td><td>‏14,987.56&nbsp;€</td></tr><tr><td>3 · التصميم التطويري</td><td>15 %</td><td>‏32,116.20&nbsp;€</td><td>‏40,055.10&nbsp;€</td><td>‏32,116.20&nbsp;€</td></tr><tr><td>4 · تخطيط الترخيص</td><td>3 %</td><td>‏6,423.24&nbsp;€</td><td>‏8,011.02&nbsp;€</td><td>‏6,423.24&nbsp;€</td></tr><tr><td>5 · التصميم التنفيذي</td><td>25 %</td><td>‏53,527.00&nbsp;€</td><td>‏66,758.50&nbsp;€</td><td>‏53,527.00&nbsp;€</td></tr><tr><td>6 · التحضير للترسية</td><td>10 %</td><td>‏21,410.80&nbsp;€</td><td>‏26,703.40&nbsp;€</td><td>‏21,410.80&nbsp;€</td></tr><tr><td>7 · المشاركة في الترسية</td><td>4 %</td><td>‏8,564.32&nbsp;€</td><td>‏10,681.36&nbsp;€</td><td>‏8,564.32&nbsp;€</td></tr><tr><td>8 · الإشراف على التنفيذ والتوثيق</td><td>32 %</td><td>‏68,514.56&nbsp;€</td><td>‏85,450.88&nbsp;€</td><td>‏68,514.56&nbsp;€</td></tr><tr><td>9 · متابعة ما بعد التسليم</td><td>2 %</td><td>‏4,282.16&nbsp;€</td><td>‏5,340.68&nbsp;€</td><td>‏4,282.16&nbsp;€</td></tr></tbody><tfoot><tr><td>المجموع</td><td>100 %</td><td>‏214,108.00&nbsp;€</td><td>‏267,034.00&nbsp;€</td><td>‏214,108.00&nbsp;€</td></tr></tfoot></table></div><details class="honorar__herleitung" open=""><summary><span>طريقة الاشتقاق</span></summary><ol><li>التكاليف المحتسبة: ‏2,000,000&nbsp;€ (من إدخالكم).</li><li>جدول الأتعاب المادة 35 الفقرة 1، الفئة III: عند ‏1,500,000&nbsp;€ من التكاليف المحتسبة ‏165,911&nbsp;€ – ‏206,923&nbsp;€، وعند ‏2,000,000&nbsp;€ ‏214,108&nbsp;€ – ‏267,034&nbsp;€.</li><li>استيفاء خطي بين سطري الجدول (المادة 13 الفقرة 1): النسبة 1.000 ← المعدل الأساسي ‏214,108.00&nbsp;€، والمعدل الأعلى ‏267,034.00&nbsp;€.</li><li>أتعاب جميع المراحل = المعدل الأساسي + 0 % × (المعدل الأعلى − المعدل الأساسي) = ‏214,108.00&nbsp;€.</li><li>لكل مرحلة: الأتعاب × الحصة وفق المادة 34 الفقرة 3 (المباني)، مقرَّبة إلى السنت؛ ثم مجموع المراحل المختارة.</li></ol></details></div>
         <p class="honorar__fuss">تقدير غير مُلزِم. لائحة HOAI 2021، جدول الأتعاب المادة 35 الفقرة 1 (المباني والتصميم الداخلي) وحصص مراحل الخدمة المادة 34 الفقرة 3؛ جرى التحقق من الجدول في 27.09.2026، وحالة هذه الصفحة 12.10.2026. صافٍ، دون علاوة الترميم والمصاريف الجانبية والخدمات الخاصة وضريبة القيمة المضافة. تحت 25.000 يورو وفوق 25 مليون يورو من التكاليف المحتسبة تكون الأتعاب بالاتفاق الحر.</p>
       </div>
-      <p class="fussnote">جميع الأسعار صافية بدون ضريبة القيمة المضافة. التسعير يستند إلى التوصيات الألمانية لأتعاب إدارة النمذجة (AHO/DVP: عادةً 20–25 ٪ من أتعاب إدارة المشروع). العرض النهائي يُقدَّم بعد حديث قصير عن حجم المشروع ونماذج التخصصات.</p>
+      <p class="fussnote" data-persona="entwickler planer">جميع الأسعار صافية بدون ضريبة القيمة المضافة. التسعير يستند إلى التوصيات الألمانية لأتعاب إدارة النمذجة (AHO/DVP: عادةً 20–25 ٪ من أتعاب إدارة المشروع). العرض النهائي يُقدَّم بعد حديث قصير عن حجم المشروع ونماذج التخصصات.</p>
     </div>
   </section>
 
@@ -1278,7 +1504,7 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
   </section>
 
   <!-- ==================== WERKZEUGE ==================== -->
-  <section class="abschnitt" id="werkzeuge">
+  <section class="abschnitt" id="werkzeuge" data-persona="entwickler planer">
     <div class="mitte">
       <div class="kopfzeile">
         <p class="auge">الفارق</p>
@@ -1362,7 +1588,7 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
        oben. Bei einer neuen Adresse alle Vorkommen von OSS_REPO ersetzen und
        danach node tools/unterseiten-erzeugen.mjs laufen lassen (Themenseiten + alle Sprachkopien).
        Feedback-Adresse: dieselbe verdeckte Adresse wie im Kontakt (_eu/_ed). -->
-  <section class="abschnitt abschnitt--hoch" id="open-source">
+  <section class="abschnitt abschnitt--hoch" id="open-source" data-persona="planer">
     <div class="mitte">
       <div class="kopfzeile">
         <p class="auge">مفتوح المصدر · رخصة MIT</p>
@@ -1385,13 +1611,26 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
         <h3>التثبيت بنقرة واحدة</h3>
         <p class="download__vorher">مرة واحدة مسبقاً: Node.js 22.9 أو أحدث، مجاناً من <a href="https://nodejs.org/" style="color:var(--accent)">nodejs.org</a>.</p>
         <p class="download__mobil">يعمل BIT-Atelier على Windows وmacOS وLinux، وليس على الهاتف. أرسل الرابط إلى حاسوبك.</p>
-        <div class="download__wege">
+        <aside class="haftung" role="note" aria-label="Haftungsausschluss">
+          <p class="haftung__titel">إخلاء المسؤولية</p>
+          <p>BIT-Atelier وBIT-PDF وسكربتات التثبيت برمجيات حرة بموجب رخصة MIT وتُقدَّم دون أي ضمان؛ والاستخدام على مسؤوليتك. نتائج الأدوات والسكربتات — تقارير الفحص والكميات والمؤشرات — وسائل مساعدة للعمل، ولا تحلّ محل الفحص الفني أو الإنشائي أو القانوني الرسمي من قِبل المخططين المسؤولين عن المشروع والتخصصات.</p>
+        </aside>
+        <p class="download__gruppe"><b>بدء سريع</b> · تنزيل مباشر لمستخدمي المكاتب</p>
+        <div class="download__wege download__wege--2">
           <div class="download__weg" data-fuer="windows">
             <p class="download__empfohlen">لنظامك</p>
             <h4>Windows</h4>
             <p>نزِّل برنامج التثبيت وانقر عليه نقراً مزدوجاً — يجلب الإصدار الحالي ويتحقق منه ويضع اختصاراً على سطح المكتب ويشغِّل التطبيق.</p>
             <a class="btn btn--klein" href="https://github.com/mozzi86/bit-atelier-oss/releases/latest/download/BIT-Atelier-Installer.cmd">برنامج التثبيت لنظام Windows</a>
           </div>
+          <div class="download__weg" data-fuer="zip">
+            <h4>يدوياً (جميع الأنظمة)</h4>
+            <p>فُكَّ ضغط الملف وشغِّل <code dir="ltr">start-windows.cmd</code> أو <code dir="ltr">./start.sh</code>.</p>
+            <a class="btn btn--geist btn--klein" href="https://github.com/mozzi86/bit-atelier-oss/releases/latest/download/BIT-Atelier.zip">ZIP (يدوياً)</a>
+          </div>
+        </div>
+        <p class="download__gruppe"><b>للمطوّرين</b> · إعداد عبر سطر الأوامر مع Node.js</p>
+        <div class="download__wege download__wege--2">
           <div class="download__weg" data-fuer="unix">
             <p class="download__empfohlen">لنظامك</p>
             <h4>macOS · Linux</h4>
@@ -1399,10 +1638,14 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
             <pre class="download__befehl" dir="ltr"><code id="dl-befehl">curl -fsSL https://github.com/mozzi86/bit-atelier-oss/releases/latest/download/install.sh | sh</code></pre>
             <button class="btn btn--klein" type="button" id="dl-kopieren" onclick="befehlKopieren(this)">نسخ الأمر</button>
           </div>
-          <div class="download__weg" data-fuer="zip">
-            <h4>يدوياً (جميع الأنظمة)</h4>
-            <p>فُكَّ ضغط الملف وشغِّل <code dir="ltr">start-windows.cmd</code> أو <code dir="ltr">./start.sh</code>.</p>
-            <a class="btn btn--geist btn--klein" href="https://github.com/mozzi86/bit-atelier-oss/releases/latest/download/BIT-Atelier.zip">ZIP (يدوياً)</a>
+          <div class="download__weg" data-fuer="quellcode">
+            <h4>من الشيفرة المصدرية</h4>
+            <p>استنسخ، ثبّت الحزم، شغّل خادم التطوير — لقواعد فحص وإضافات خاصة بك.</p>
+            <pre class="download__befehl" dir="ltr"><code id="dl-quellcode">git clone https://github.com/mozzi86/bit-atelier-oss.git
+cd bit-atelier-oss
+npm install
+npm run dev</code></pre>
+            <button class="btn btn--klein" type="button" data-kopiere="dl-quellcode" onclick="befehlKopieren(this)">نسخ الأوامر</button>
           </div>
         </div>
         <div class="download__fassung"><span>الإصدار</span> <b data-nicht-uebersetzen="">1.5.0</b> · <time datetime="2026-10-16">16.10.2026</time> · <span data-nicht-uebersetzen="">ZIP 13 MB</span> · <span>Node.js 22.9 أو أحدث</span> · <a href="https://github.com/mozzi86/bit-atelier-oss/releases/tag/v1.5.0">التغييرات</a></div>
@@ -1438,7 +1681,7 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
         <article class="karte">
           <p class="karte__nr">02 · الشيفرة المصدرية</p>
           <h3>مفتوحة على GitHub</h3>
-          <p>اقرأها وعدِّلها وشاركها. للتشغيل من الشيفرة المصدرية: <code dir="ltr">git clone</code> ثم <code dir="ltr">npm install</code> ثم <code dir="ltr">npm run dev</code>. قواعد التدقيق والإضافات الخاصة بك مُرحَّب بها صراحةً.</p>
+          <p>اقرأ، عدّل، شارك — قواعد الفحص والإضافات الخاصة بك مرحَّب بها صراحةً. أوامر التشغيل من الشيفرة المصدرية موجودة في قسم المطوّرين أعلاه.</p>
           <div class="karte__fuss">
             <a class="btn btn--geist btn--klein" href="https://github.com/mozzi86/bit-atelier-oss">الشيفرة المصدرية على GitHub</a>
           </div>
@@ -1498,7 +1741,7 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
   </section>
 
   <!-- ==================== DOWNLOADS ==================== -->
-  <section class="abschnitt abschnitt--hoch" id="downloads">
+  <section class="abschnitt abschnitt--hoch" id="downloads" data-persona="planer">
     <div class="mitte">
       <div class="kopfzeile">
         <p class="auge">التنزيلات</p>
@@ -1540,6 +1783,10 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
           </div>
         </article>
       </div>
+      <aside class="haftung" role="note" aria-label="Haftungsausschluss">
+          <p class="haftung__titel">إخلاء المسؤولية</p>
+          <p>BIT-Atelier وBIT-PDF وسكربتات التثبيت برمجيات حرة بموجب رخصة MIT وتُقدَّم دون أي ضمان؛ والاستخدام على مسؤوليتك. نتائج الأدوات والسكربتات — تقارير الفحص والكميات والمؤشرات — وسائل مساعدة للعمل، ولا تحلّ محل الفحص الفني أو الإنشائي أو القانوني الرسمي من قِبل المخططين المسؤولين عن المشروع والتخصصات.</p>
+        </aside>
       <p class="fussnote">مجاني · مُطوَّر بشكل مفتوح في BIT-Atelier · جميع الإصدارات <a href="https://github.com/mozzi86/NovaPDF/releases" style="color:var(--accent)">على GitHub</a>. التطبيقات غير موقَّعة رقمياً — عند أول تشغيل أكِّد عبر Windows SmartScreen («تشغيل على أي حال») أو macOS Gatekeeper (نقر بالزر الأيمن ← «فتح»).</p>
       <!-- 69-10: landing page of this topic; dropped on the topic page itself. -->
       <p class="mehr" data-mehr=""><a href="bit-pdf/">المزيد عن BIT-PDF ←</a></p>
@@ -1972,7 +2219,7 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
         systemErkennen();
 
         async function befehlKopieren(knopf) {
-            const code = document.getElementById('dl-befehl');
+            const code = document.getElementById((knopf && knopf.dataset.kopiere) || 'dl-befehl');
             const text = code ? code.textContent.trim() : '';
             let ok = false;
             try { await navigator.clipboard.writeText(text); ok = true; }

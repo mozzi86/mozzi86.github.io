@@ -732,4 +732,89 @@
     'Fee for all work stages = base rate + {p} % × (upper rate − base rate) = {h}.',
   'Je Leistungsphase: Honorar × Anteil nach § 34 Abs. 3 ({l}), auf Cent gerundet; Summe der gewählten Phasen.':
     'Per work stage: fee × share under § 34 (3) ({l}), rounded to the cent; total of the selected stages.',
+  /* Persona routing 16.10.2026: band, panels, HOAI heading, disclaimer, download groups. */
+  'Ihre Perspektive':
+    'Your perspective',
+  'Alle Bereiche':
+    'All areas',
+  'Für Bauherren &amp; Eigentümer':
+    'For clients &amp; owners',
+  'Für Projektentwickler':
+    'For developers',
+  'Für Planer &amp; BIM-Spezialisten':
+    'For designers &amp; BIM specialists',
+  'Ein Atelier, <em>drei Blickwinkel</em>.':
+    'One studio, <em>three perspectives</em>.',
+  'Architektur nach HOAI, BIM-Management für Großprojekte und offene Werkzeuge für die Modellprüfung. Wählen Sie oben Ihre Perspektive — dann zeigt die Seite nur, was für Sie zählt.':
+    'Architecture under the HOAI, BIM management for large projects and open tools for model checking. Choose your perspective above — the page then shows only what matters to you.',
+  '<b>HOAI · LPH 1–9</b><span>Planung und Architektur</span>':
+    '<b>HOAI · stages 1–9</b><span>Design and architecture</span>',
+  '<b>IFC · IDS · BCF</b><span>BIM-Koordination und Modellprüfung</span>':
+    '<b>IFC · IDS · BCF</b><span>BIM coordination and model checking</span>',
+  '<b>MIT-Lizenz</b><span>Open-Source-Werkzeuge, lokal ohne Cloud</span>':
+    '<b>MIT licence</b><span>Open-source tools, local, no cloud</span>',
+  'Ihr Bauvorhaben, <em>sicher geplant</em>.':
+    'Your building project, <em>planned with certainty</em>.',
+  'Ich begleite Neubau, Umbau und Sanierung von der ersten Idee bis zur Übergabe — als eingetragener Architekt und mit einem Master in klimaoptimiertem Bauen der TU München. Gestaltung, Genehmigung und Energiebilanz denke ich von Anfang an zusammen, damit Ihr Haus gut aussieht, sich gut anfühlt und wenig verbraucht.':
+    'I accompany new builds, conversions and refurbishments from the first idea to handover — as a registered architect with a master\'s degree in climate-responsive design from TU Munich. Design, permit and energy balance are thought through together from the start, so your house looks good, feels good and uses little energy.',
+  'Abgerechnet wird transparent nach der Honorarordnung (HOAI). Den Überschlag rechnen Sie weiter unten selbst — ohne Anmeldung.':
+    'Fees are charged transparently under the German fee scale (HOAI). You can work out the estimate yourself further down — no sign-up.',
+  'Erstgespräch zum Bauvorhaben vereinbaren':
+    'Book a first meeting about your project',
+  '<b>LPH 1–9</b><span>alle Leistungsphasen der HOAI — Entwurf, Genehmigung, Ausführung, Bauüberwachung</span>':
+    '<b>Stages 1–9</b><span>all HOAI work stages — design, permit, construction documents, site supervision</span>',
+  '<b>M.Sc. ClimaDesign</b><span>TU München — Energie, Licht und Behaglichkeit</span>':
+    '<b>M.Sc. ClimaDesign</b><span>TU Munich — energy, daylight and comfort</span>',
+  '<b>Nr. 192.197</b><span>Bayerische Architektenkammer</span>':
+    '<b>No. 192.197</b><span>Bavarian Chamber of Architects</span>',
+  'Kosten und Termine sichern, <em>bevor gebaut wird</em>.':
+    'Secure cost and schedule <em>before construction starts</em>.',
+  'Für Projektentwickler und Bauträger zählt, was sich realisieren lässt. Ich prüfe die Machbarkeit, plane die Ausführung (LPH 5) und führe das BIM-Management über alle Fachplaner — mit einer Kostenstruktur nach DIN 276 und Modellen, die vor Baubeginn auf Kollisionen geprüft sind.':
+    'For developers and builders, what counts is what can be built. I check feasibility, produce the construction documents (stage 5) and run BIM management across all consultants — with a cost structure under DIN 276 and models checked for clashes before construction starts.',
+  'Planung nach HOAI und BIM-Leistung als klar kalkulierbare Pakete — beides steht unten nebeneinander.':
+    'Design under the HOAI and BIM services as clearly priced packages — both are shown side by side below.',
+  'Projekt- &amp; Machbarkeits-Check anfragen':
+    'Request a project &amp; feasibility check',
+  '<b>DIN 276</b><span>Kostenstruktur von der Machbarkeit bis zur Ausführung</span>':
+    '<b>DIN 276</b><span>cost structure from feasibility to construction</span>',
+  '<b>Vor Baubeginn</b><span>Kollisionen im Modell gefunden, nicht auf der Baustelle bezahlt</span>':
+    '<b>Before construction</b><span>clashes found in the model, not paid for on site</span>',
+  '<b>Ab 8.500 €</b><span>BIM-Quick-Check zum Festpreis, Mandat ab 4.500 € im Monat</span>':
+    '<b>From €8,500</b><span>BIM quick check at a fixed price, retainer from €4,500 a month</span>',
+  'OpenBIM <em>auf Augenhöhe</em>.':
+    'OpenBIM <em>between peers</em>.',
+  'BIM-Koordination auf Zuruf, Modellprüfung gegen Ihre AIA und Python-Automatisierung für ArchiCAD- und IFC-Workflows. Die Werkzeuge dafür sind Open Source und laufen lokal — Ihre Modelle verlassen Ihren Rechner nicht.':
+    'BIM coordination on call, model checking against your EIR and Python automation for ArchiCAD and IFC workflows. The tools for it are open source and run locally — your models never leave your computer.',
+  'BIM-Support anfragen':
+    'Request BIM support',
+  'Zu den Open-Source-Tools':
+    'To the open-source tools',
+  '<b>IFC · IDS · BCF · GAEB</b><span>offene Formate statt Austausch per Screenshot</span>':
+    '<b>IFC · IDS · BCF · GAEB</b><span>open formats instead of screenshots</span>',
+  '<b>Lokal</b><span>ohne Cloud-Zwang, ohne Konto, ohne Lizenzkosten</span>':
+    '<b>Local</b><span>no cloud, no account, no licence fees</span>',
+  '<b>MIT-Lizenz</b><span>BIT-Atelier und BIT-PDF zum Herunterladen</span>':
+    '<b>MIT licence</b><span>BIT-Atelier and BIT-PDF to download</span>',
+  'Honorar':
+    'Fees',
+  'Transparent <em>nach HOAI</em>.':
+    'Transparent, <em>under the HOAI</em>.',
+  'Ihr Architektenhonorar richtet sich nach der Honorarordnung (HOAI 2021): nach den anrechenbaren Kosten, der Honorarzone und den beauftragten Leistungsphasen. Den Überschlag rechnen Sie hier selbst — das verbindliche Angebot folgt nach dem Erstgespräch.':
+    'Your architect\'s fee follows the German fee scale (HOAI 2021): the eligible costs, the fee zone and the commissioned work stages. Work out the estimate here yourself — the binding offer follows after the first meeting.',
+  'Haftungsausschluss':
+    'Disclaimer',
+  'BIT-Atelier, BIT-PDF und die Installationsskripte sind freie Software unter der MIT-Lizenz und werden ohne Gewährleistung bereitgestellt; die Nutzung erfolgt auf eigene Gefahr. Ergebnisse der Werkzeuge und Skripte — Prüfberichte, Mengen, Kennwerte — sind Arbeitshilfen. Sie ersetzen keine formelle bautechnische, statische oder rechtliche Prüfung durch die verantwortlichen Objekt- und Fachplaner.':
+    'BIT-Atelier, BIT-PDF and the install scripts are free software under the MIT licence and are provided without warranty; use is at your own risk. Results of the tools and scripts — check reports, quantities, key figures — are working aids. They do not replace a formal technical, structural or legal review by the responsible architects and engineers.',
+  '<b>Schnellstart</b> · Direkt-Download für Büro-Anwender':
+    '<b>Quick start</b> · direct download for office users',
+  '<b>Developer</b> · CLI-Setup mit Node.js':
+    '<b>Developer</b> · CLI setup with Node.js',
+  'Aus dem Quellcode':
+    'From source',
+  'Klonen, Pakete installieren, Entwicklungsserver starten — für eigene Prüfregeln und Erweiterungen.':
+    'Clone, install packages, start the development server — for your own check rules and extensions.',
+  'Befehle kopieren':
+    'Copy commands',
+  'Lesen, anpassen, weitergeben — eigene Prüfregeln und Erweiterungen sind ausdrücklich erwünscht. Die Befehle für den Start aus dem Quellcode stehen oben im Developer-Block.':
+    'Read, adapt, pass on — your own check rules and extensions are expressly welcome. The commands to start from source are in the developer block above.',
 };

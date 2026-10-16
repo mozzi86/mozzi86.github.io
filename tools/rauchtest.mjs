@@ -261,11 +261,18 @@ try {
         .sort((a, b) => a.getBoundingClientRect().left - b.getBoundingClientRect().left);
       const marke = [...d.querySelectorAll('.download__empfohlen')].filter((m) => m.offsetParent)
         .map((m) => m.closest('.download__weg').dataset.fuer);
-      return { sys: d.dataset.system || '', erster: wege[0] && wege[0].dataset.fuer, sichtbar: wege.length, marke,
+      /* Persona routing 16.10.2026: two groups (quick start, developer/CLI) — the
+         recommended way comes first WITHIN its group. */
+      const ersteJeGruppe = [...d.querySelectorAll('.download__wege')].map((g) => {
+        const w = [...g.querySelectorAll('.download__weg')].filter((x) => x.offsetParent)
+          .sort((a, b) => a.getBoundingClientRect().left - b.getBoundingClientRect().left);
+        return w[0] && w[0].dataset.fuer;
+      });
+      return { sys: d.dataset.system || '', erster: ersteJeGruppe.join('+'), ersteJeGruppe, sichtbar: wege.length, marke,
         mobil: !!d.querySelector('.download__mobil').offsetParent };
     });
     const vorne = erwartet === 'windows' || erwartet === 'unix' ? erwartet : 'windows';
-    ok(r.sys === erwartet && r.erster === vorne && r.sichtbar === 3
+    ok(r.sys === erwartet && r.ersteJeGruppe.includes(vorne) && r.sichtbar === 4
       && r.marke.join() === (vorne === erwartet ? erwartet : '') && r.mobil === (erwartet === 'mobil'),
       `${plattform || 'unbekannt'}: System „${r.sys}“, vorne ${r.erster}, ${r.sichtbar} Wege sichtbar, Marke ${r.marke.join() || '—'}${r.mobil ? ', Handy-Hinweis' : ''}`);
     await k.close();
@@ -598,6 +605,78 @@ try {
   await handy.locator('#paketfinder').screenshot({ path: path.join(AUS, 'finder-mobil.png') });
   await handy.locator('.anfrage').screenshot({ path: path.join(AUS, 'anfrage-mobil.png') });
   await handy.locator('#herunterladen').screenshot({ path: path.join(AUS, 'download-mobil.png') });
+
+  console.log('\nPerspektive (Persona-Routing 16.10.2026)');
+  {
+    /* Own context per step: the view is stored in localStorage and must not leak
+       into the other checks of this test. */
+    const sichtbar = (pp, sel) => pp.evaluate((q) => {
+      const el = document.querySelector(q);
+      return !!(el && el.offsetParent !== null && getComputedStyle(el).display !== 'none');
+    }, sel);
+    const kontext = await browser.newContext({ viewport: { width: 1400, height: 900 } });
+    const pp = await kontext.newPage();
+    pp.on('pageerror', (f) => skriptfehler.push('perspektive: ' + f.message));
+    await pp.goto(B + '?lang=de', { waitUntil: 'load' });
+    ok(await pp.evaluate(() => document.documentElement.dataset.ansicht) === 'alle', 'Standard: Alle Bereiche');
+    ok(await pp.locator('[role="tablist"] [role="tab"]').count() === 4, 'vier Tabs (ARIA tablist)');
+    ok(await sichtbar(pp, '#open-source') && await sichtbar(pp, '#paketfinder') && await sichtbar(pp, '#honorarrechner'),
+      'Alle: Open Source, Paketfinder und HOAI-Rechner sichtbar');
+
+    await pp.locator('#tab-bauherren').click();
+    ok(await pp.evaluate(() => document.documentElement.dataset.ansicht) === 'bauherren'
+      && await pp.locator('#tab-bauherren').getAttribute('aria-selected') === 'true'
+      && await sichtbar(pp, '#panel-bauherren') && !(await sichtbar(pp, '#panel-alle')), 'Bauherren: Tab gewählt, Panel gewechselt');
+    ok(await pp.evaluate(() => [...document.querySelectorAll('.karte__preis')].every((e) => !e.offsetParent)),
+      'Bauherren: keine Paket- und Retainer-Preise sichtbar');
+    ok(!(await sichtbar(pp, '#open-source')) && !(await sichtbar(pp, '#downloads')) && !(await sichtbar(pp, '#paketfinder')),
+      'Bauherren: keine Downloads, kein Paketfinder');
+    ok(await sichtbar(pp, '#honorarrechner'), 'Bauherren: HOAI-Rechner sichtbar');
+    ok(/view=bauherren/.test(pp.url()) && await pp.evaluate(() => localStorage.getItem('bit-ansicht')) === 'bauherren',
+      'Bauherren: URL ?view= und localStorage gesetzt');
+    ok(await pp.locator('footer button', { hasText: 'Impressum' }).isVisible(), 'Bauherren: Impressum im Fuß erreichbar');
+
+    await pp.goto(B + '?lang=de', { waitUntil: 'load' });
+    ok(await pp.evaluate(() => document.documentElement.dataset.ansicht) === 'bauherren', 'Wiederkehr: gespeicherte Ansicht bleibt');
+    await pp.locator('#panel-bauherren a[data-art]').click();
+    ok(await pp.evaluate(() => document.getElementById('a-art').value) === 'Planung (LPH 1–9)', 'CTA Bauherren belegt die Projektart vor');
+    await pp.evaluate(() => { location.hash = ''; });
+    await pp.locator('.kopf__tun a[href="#open-source"]').click();
+    ok(await pp.evaluate(() => document.documentElement.dataset.ansicht) === 'alle' && await sichtbar(pp, '#open-source'),
+      'Link auf ausgeblendeten Abschnitt schaltet auf Alle Bereiche');
+
+    await pp.goto(B + '?lang=de&view=planer', { waitUntil: 'load' });
+    ok(await sichtbar(pp, '#open-source') && await sichtbar(pp, '#downloads') && !(await sichtbar(pp, '#honorarrechner')),
+      '?view=planer: Open Source + Downloads, kein HOAI-Rechner');
+    ok(await pp.locator('#open-source .haftung').isVisible() && await pp.locator('#downloads .haftung').isVisible(),
+      'Planer: Haftungsausschluss bei Open Source und BIT-PDF');
+    ok(await pp.locator('#herunterladen .download__gruppe').count() === 2 && await pp.locator('#dl-quellcode').isVisible(),
+      'Planer: Schnellstart und Developer/CLI getrennt, Quellcode-Befehle sichtbar');
+    await pp.locator('#tab-planer').focus();
+    await pp.keyboard.press('ArrowRight');
+    ok(await pp.evaluate(() => document.activeElement && document.activeElement.id) === 'tab-alle'
+      && await pp.evaluate(() => document.documentElement.dataset.ansicht) === 'alle', 'Tastatur: Pfeil rechts springt zum nächsten Tab');
+
+    await pp.goto(B + '?lang=de&view=entwickler', { waitUntil: 'load' });
+    ok(await sichtbar(pp, '#paketfinder') && await sichtbar(pp, '#honorarrechner') && !(await sichtbar(pp, '#downloads')),
+      '?view=entwickler: Pakete und HOAI-Rechner, keine Downloads');
+    await pp.goto(B + '?lang=de&view=unsinn', { waitUntil: 'load' });
+    ok(await pp.evaluate(() => document.documentElement.dataset.ansicht) === 'entwickler', 'unbekannter ?view= wird ignoriert');
+    await kontext.close();
+
+    const mk = await browser.newContext({ viewport: { width: 375, height: 812 }, isMobile: true, deviceScaleFactor: 2 });
+    const mp = await mk.newPage();
+    for (const v of ['alle', 'bauherren', 'entwickler', 'planer']) {
+      await mp.goto(B + '?lang=de&view=' + v, { waitUntil: 'load' });
+      const breite = await mp.evaluate(() => document.documentElement.scrollWidth);
+      ok(breite <= 376, `375 px, ${v}: kein Querlauf (scrollWidth ${breite})`);
+    }
+    await mp.goto(B + '?lang=de&view=planer', { waitUntil: 'load' });
+    await mp.locator('#perspektive').screenshot({ path: path.join(AUS, 'perspektive-mobil.png') });
+    await mk.close();
+    const fehltEn = await seite.evaluate(() => window.bitSprache.fehlende('en'));
+    console.log('  ohne Übersetzung (en): ' + fehltEn.slice(0, 40).join(' | '));
+  }
 
   console.log('\nSkriptfehler: ' + skriptfehler.length + (skriptfehler.length ? '\n  ' + skriptfehler.join('\n  ') : ''));
   ok(skriptfehler.length === 0, 'keine Skriptfehler');
