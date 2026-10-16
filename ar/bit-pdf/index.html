@@ -71,6 +71,11 @@
 html[data-ansicht="bauherren"] [data-persona]:not([data-persona~="bauherren"]),
 html[data-ansicht="entwickler"] [data-persona]:not([data-persona~="entwickler"]),
 html[data-ansicht="planer"] [data-persona]:not([data-persona~="planer"]){display:none !important}
+/* A two-column grid whose other card this view hides: the remaining card takes the full
+   width — otherwise the empty cell shows the grid's line colour as a grey block. */
+html[data-ansicht="bauherren"] .gitter--2:has(> [data-persona]:not([data-persona~="bauherren"])) > [data-persona~="bauherren"]{grid-column:1/-1}
+html[data-ansicht="entwickler"] .gitter--2:has(> [data-persona]:not([data-persona~="entwickler"])) > [data-persona~="entwickler"]{grid-column:1/-1}
+html[data-ansicht="planer"] .gitter--2:has(> [data-persona]:not([data-persona~="planer"])) > [data-persona~="planer"]{grid-column:1/-1}
 @keyframes perspektiveEin{from{opacity:0}to{opacity:1}}
 html.perspektive-wechsel main>:not(#perspektive),html.perspektive-wechsel .perspektive__panel:not([hidden]){animation:perspektiveEin .15s ease-out}
 @media(prefers-reduced-motion:reduce){html.perspektive-wechsel *{animation:none !important}}

@@ -632,6 +632,11 @@ try {
     ok(!(await sichtbar(pp, '#open-source')) && !(await sichtbar(pp, '#downloads')) && !(await sichtbar(pp, '#paketfinder')),
       'Bauherren: keine Downloads, kein Paketfinder');
     ok(await sichtbar(pp, '#honorarrechner'), 'Bauherren: HOAI-Rechner sichtbar');
+    ok(await pp.evaluate(() => {
+      const g = document.querySelector('#leistungen .gitter');
+      const k = [...g.children].find((c) => c.offsetParent);
+      return Math.abs(k.getBoundingClientRect().width - g.getBoundingClientRect().width) < 2;
+    }), 'Bauherren: Leistungen-Karte füllt die Zeile (kein graues Leerfeld)');
     ok(/view=bauherren/.test(pp.url()) && await pp.evaluate(() => localStorage.getItem('bit-ansicht')) === 'bauherren',
       'Bauherren: URL ?view= und localStorage gesetzt');
     ok(await pp.locator('footer button', { hasText: 'Impressum' }).isVisible(), 'Bauherren: Impressum im Fuß erreichbar');
