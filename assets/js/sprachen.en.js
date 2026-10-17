@@ -824,4 +824,13 @@
     'Its own window, no Node.js; your data live in a folder you choose at first start. Not signed — Windows asks once (“More info” → “Run anyway”).',
   'Desktop-App für Windows':
     'Desktop app for Windows',
+  // Questionnaire page /anfrage/ (title, heading, intro, home-page link)
+  "Fragenkatalog Einfamilienhaus — BIT-ATELIER":
+    "Single-family house questionnaire — BIT-ATELIER",
+  "Ihr Einfamilienhaus: Fragenkatalog und Kostenrahmen.":
+    "Your single-family house: questionnaire and cost frame.",
+  "Bereiten Sie Ihr Bauvorhaben in Ruhe vor: Kosten überschlagen, Fragen beantworten, als PDF sichern oder direkt anfragen — ohne Anmeldung, nichts wird gespeichert.":
+    "Prepare your building project at your own pace: estimate costs, answer the questions, save as PDF or send an enquiry — no sign-up, nothing is stored.",
+  "Fragenkatalog Einfamilienhaus":
+    "Single-family house questionnaire",
 };

@@ -827,4 +827,13 @@
     'نافذة مستقلة دون Node.js؛ تُحفظ بياناتك في مجلد تختاره عند أول تشغيل. غير موقَّع — سيسألك ويندوز مرة واحدة („مزيد من المعلومات“ ← „التشغيل على أي حال“).',
   'Desktop-App für Windows':
     'تطبيق سطح المكتب لويندوز',
+  // Questionnaire page /anfrage/ (title, heading, intro, home-page link)
+  "Fragenkatalog Einfamilienhaus — BIT-ATELIER":
+    "استبيان البيت العائلي — BIT-ATELIER",
+  "Ihr Einfamilienhaus: Fragenkatalog und Kostenrahmen.":
+    "بيتك العائلي: استبيان وإطار تكاليف.",
+  "Bereiten Sie Ihr Bauvorhaben in Ruhe vor: Kosten überschlagen, Fragen beantworten, als PDF sichern oder direkt anfragen — ohne Anmeldung, nichts wird gespeichert.":
+    "حضّر مشروع البناء على مهل: قدّر التكاليف، وأجب عن الأسئلة، واحفظها بصيغة PDF أو أرسل طلبك مباشرة — دون تسجيل، ولا يُحفظ شيء.",
+  "Fragenkatalog Einfamilienhaus":
+    "استبيان البيت العائلي",
 };

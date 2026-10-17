@@ -116,6 +116,22 @@ export const SEITEN = [
       ar: 'BIT-PDF: محرِّر PDF مجاني ومحمول — تحرير وتنظيم وتحويل وتوقيع وحجب، محلياً بالكامل مع التعرف الضوئي دون اتصال. في المتصفح ولأنظمة Windows وmacOS.',
     },
   },
+  {
+    // Questionnaire for private builders (single-family house): own content in
+    // tools/seiten/anfrage.html, cost frame calculator, nothing leaves the browser.
+    ordner: 'anfrage',
+    inhalt: true,
+    titel: 'Fragenkatalog Einfamilienhaus — BIT-ATELIER',
+    h1: 'Ihr Einfamilienhaus: Fragenkatalog und Kostenrahmen.',
+    intro: 'Bereiten Sie Ihr Bauvorhaben in Ruhe vor: Kosten überschlagen, Fragen beantworten, als PDF sichern oder direkt anfragen — ohne Anmeldung, nichts wird gespeichert.',
+    herkunft: 'Fragenkatalog EFH',
+    prioritaet: 0.7,
+    beschreibung: {
+      de: 'Fragenkatalog für Bauherren eines Einfamilienhauses mit Kostenrahmen nach DIN 276: Baukosten je m² überschlagen, Grundlagen klären, als PDF sichern und ein verbindliches Architektenangebot anfragen. Raum Nürnberg.',
+      en: 'Questionnaire for clients building a single-family house, with a DIN 276 cost frame: estimate building costs per m², clarify the basics, save as PDF and request a binding architect\'s offer. Nuremberg area.',
+      ar: 'استبيان لأصحاب مشاريع البيوت العائلية مع إطار تكاليف وفق DIN 276: تقدير تكلفة البناء لكل متر مربع، وتوضيح الأساسيات، والحفظ بصيغة PDF، وطلب عرض ملزم من المعماري. منطقة نورنبرغ.',
+    },
+  },
 ];
 
 /**

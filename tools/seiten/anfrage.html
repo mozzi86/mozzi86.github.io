@@ -1,0 +1,350 @@
+  <!-- Topic page "Anfrage Einfamilienhaus" (questionnaire for private builders).
+       Content fragment for tools/unterseiten-erzeugen.mjs — German only; EN/AR
+       through the dictionaries. Nothing is sent or stored on a server: answers
+       live in this browser (localStorage, best effort) until the visitor prints,
+       saves or hands a short version to the enquiry builder below.
+       Prices are orientation values incl. 19 % VAT (PAngV: consumers see gross
+       prices); the planning fee is deliberately not quoted here — the HOAI
+       calculator on the home page does that, the binding offer follows the answers. -->
+  <style>
+  .fk-kopfdaten{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.9rem;margin-bottom:1.2rem}
+  .fk-rechner{background:var(--bg-raise);border:1px solid var(--line);padding:clamp(1.2rem,2.6vw,2rem);margin:0 0 clamp(2rem,4vw,3rem)}
+  .fk-rechner h3{margin:0 0 .3rem;font-size:1.15rem}
+  .fk-rechner__raster{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.9rem;margin-top:1rem}
+  .fk-rechner__ergebnis{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin-top:1.2rem}
+  .fk-rechner__ergebnis div{background:var(--bg);padding:1rem 1.1rem}
+  .fk-rechner__ergebnis strong{display:block;font-family:var(--display);font-size:clamp(1.35rem,3vw,1.8rem);letter-spacing:-.01em;margin-top:.2rem}
+  .fk-rechner__ergebnis .fk-haupt strong{color:var(--accent)}
+  .fk-rechner__tabelle{width:100%;border-collapse:collapse;margin-top:1.2rem;font-size:.86rem}
+  .fk-rechner__tabelle th,.fk-rechner__tabelle td{text-align:left;padding:.55rem .6rem;border-bottom:1px solid var(--line)}
+  .fk-rechner__tabelle th{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:400}
+  .fk-rechner__tabelle td:nth-child(3){color:var(--accent);font-weight:600}
+  .fk-klein{color:var(--muted);font-size:.8rem;font-weight:300;margin:.8rem 0 0;max-width:80ch}
+  .fk-teil{margin-top:clamp(2rem,4vw,3rem)}
+  .fk-teil__kopf{border-left:3px solid var(--accent);padding-left:1rem;margin-bottom:1rem}
+  .fk-teil__kopf h3{margin:.1rem 0 .2rem;font-size:1.3rem}
+  .fk-teil__kopf p:last-child{margin:0;color:var(--muted);font-weight:300}
+  .fk-teil__kopf .mono{color:var(--accent);margin:0}
+  .fk-block{border:1px solid var(--line);background:var(--bg-raise);margin:0 0 1rem;padding:1rem clamp(1rem,2.4vw,1.6rem) 1.2rem;min-width:0}
+  .fk-block>legend{font-weight:600;padding:0 .4rem;display:flex;gap:.6rem;align-items:baseline}
+  .fk-block>legend .mono{display:inline;margin:0;color:var(--accent)}
+  .fk-frage{display:grid;grid-template-columns:minmax(0,1fr) 15rem;gap:.3rem 1.4rem;padding:.75rem 0;border-bottom:1px solid var(--line)}
+  .fk-frage:last-child{border-bottom:0}
+  .fk-frage__feld{min-width:0;border:0;margin:0;padding:0}
+  .fk-frage__feld legend{padding:0;margin-bottom:.45rem}
+  .fk-frage__feld .fk-frage__text,.fk-frage__feld legend{font-size:.92rem;letter-spacing:0;text-transform:none;color:var(--ink)}
+  .fk-frage__nr{font-family:var(--mono);font-size:.72rem;color:var(--muted);margin-right:.6rem}
+  .fk-frage__warum{margin:0;color:var(--muted);font-size:.8rem;font-weight:300;align-self:center}
+  .fk-checks{display:flex;flex-wrap:wrap;gap:.4rem 1.2rem;font-size:.9rem}
+  .fk-checks label{display:inline-flex;gap:.4rem;align-items:center;cursor:pointer}
+  .fk-checks input{accent-color:var(--accent);width:1rem;height:1rem}
+  .fk-aktionen{position:sticky;bottom:0;z-index:5;display:flex;flex-wrap:wrap;gap:.7rem;align-items:center;
+    background:var(--bg);border-top:1px solid var(--line);padding:1rem 0;margin-top:1.5rem}
+  .fk-aktionen .btn{margin-top:0}
+  .fk-stand{color:var(--muted);font-size:.8rem;margin-left:auto}
+  @media (max-width:720px){.fk-aktionen{position:static}.fk-frage{grid-template-columns:1fr}.fk-frage__warum{align-self:start}.fk-stand{margin-left:0;width:100%}}
+  #fk-druck{display:none}
+  @media print{
+    body.druckt-fk>*:not(#fk-druck){display:none!important}
+    body.druckt-fk{background:#fff;color:#000}
+    body.druckt-fk #fk-druck{display:block;font:9.5pt/1.4 Montserrat,system-ui,sans-serif;color:#000}
+    #fk-druck h1{font-size:15pt;margin:0 0 .2rem}
+    #fk-druck h2{font-size:11pt;margin:1rem 0 .3rem;padding:.25rem .4rem;background:#0c1117;color:#fff;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    #fk-druck h3{font-size:10pt;margin:.7rem 0 .2rem;border-left:3px solid #2dd4bf;padding-left:.4rem}
+    #fk-druck table{width:100%;border-collapse:collapse}
+    #fk-druck td{border-bottom:1px solid #ccd;padding:.25rem .3rem;vertical-align:top}
+    #fk-druck td:first-child{width:3.2rem;color:#555}
+    #fk-druck td:nth-child(2){width:55%}
+    #fk-druck p{margin:0 0 .2rem}
+  }
+  </style>
+
+  <section class="abschnitt abschnitt--hoch" id="fragenkatalog">
+    <div class="mitte">
+      <div class="kopfzeile">
+        <p class="auge">Bauherren · Einfamilienhaus</p>
+        <h2>Erst die Fragen, <em>dann der Plan</em>.</h2>
+        <p class="unter">Mit diesem Fragenkatalog bereiten Sie Ihr Bauvorhaben vor. Teil A brauche ich für ein verbindliches Honorarangebot, Teil B für die Planung. „Weiß ich noch nicht“ ist auch eine gute Antwort – dann klären wir den Punkt gemeinsam.</p>
+      </div>
+
+      <div class="fk-rechner" id="kostenrahmen">
+        <p class="mono">Kostenrahmen · DIN 276</p>
+        <h3>Was kostet Ihr Haus ungefähr?</h3>
+        <p class="anfrage__unter" style="margin:0">Richtwerte für einen Neubau im Raum Nürnberg, Stand 2026, inkl. 19 % MwSt., ohne Grundstück. Die genaue Zahl liefert die Kostenschätzung in der Vorplanung.</p>
+        <div class="fk-rechner__raster">
+          <label class="anfrage__feld"><span>Wohnfläche in m²</span><input id="fk-r-flaeche" type="number" min="60" max="600" step="5" value="150" inputmode="numeric"></label>
+          <label class="anfrage__feld"><span>Standard</span>
+            <select id="fk-r-standard"><option value="einfach">einfach</option><option value="mittel" selected>mittel</option><option value="gehoben">gehoben</option></select></label>
+          <label class="anfrage__feld"><span>Keller</span>
+            <select id="fk-r-keller"><option value="0">kein Keller</option><option value="1">mit Keller</option></select></label>
+        </div>
+        <div class="fk-rechner__ergebnis" aria-live="polite">
+          <div><span class="mono">Nur das Haus</span><strong id="fk-r-haus">–</strong></div>
+          <div class="fk-haupt"><span class="mono">Alles in allem</span><strong id="fk-r-gesamt">–</strong></div>
+          <div><span class="mono">Je m² Wohnfläche</span><strong id="fk-r-qm">–</strong></div>
+        </div>
+        <table class="fk-rechner__tabelle">
+          <thead><tr><th>Standard</th><th>Nur das Haus je m²</th><th>Alles in allem je m²</th><th>Beispiel</th></tr></thead>
+          <tbody>
+            <tr><td>einfach</td><td>ca. 2.700 €</td><td>ca. 3.400 €</td><td>Standardgrundriss, einfache Bäder, Luft-Wärmepumpe</td></tr>
+            <tr><td>mittel</td><td>ca. 3.300 €</td><td>ca. 4.200 €</td><td>Fliesen/Parkett, Fußbodenheizung, PV-Anlage</td></tr>
+            <tr><td>gehoben</td><td>ca. 4.200 €</td><td>ca. 5.300 €</td><td>große Glasflächen, Lüftungsanlage, Naturstein</td></tr>
+          </tbody>
+        </table>
+        <p class="fk-klein">„Alles in allem“ = Haus (KG 300 + 400) + Hausanschlüsse (KG 200) + Außenanlagen (KG 500) + Küche/Ausstattung (KG 600) + Planung, Statik, Gutachten, Gebühren (KG 700). Keller zusätzlich ca. 70.000–110.000 €, bei Grundwasser mehr. Unverbindliche Richtwerte, Abweichungen von ±15 % sind üblich. Das Planungshonorar überschlagen Sie mit dem <a href="../#honorarrechner">HOAI-Honorarrechner</a>.</p>
+        <div style="margin-top:1rem"><button class="btn btn--geist btn--klein" type="button" id="fk-r-uebernehmen">Werte in den Fragenkatalog übernehmen</button></div>
+      </div>
+
+      <form id="fk-form" autocomplete="on" onsubmit="return false">
+        <div class="fk-kopfdaten">
+          <label class="anfrage__feld"><span>Name</span><input id="fk-name" data-fk="Name" type="text" autocomplete="name"></label>
+          <label class="anfrage__feld"><span>Telefon</span><input id="fk-telefon" data-fk="Telefon" type="tel" autocomplete="tel"></label>
+          <label class="anfrage__feld"><span>E-Mail</span><input id="fk-email" data-fk="E-Mail" type="email" autocomplete="email"></label>
+        </div>
+      <div class="fk-teil" data-fk-teil="A">
+        <div class="fk-teil__kopf"><p class="mono">Teil A</p><h3>Für ein verbindliches Honorarangebot</h3><p>Diese Angaben brauche ich, um Ihnen ein verbindliches Angebot zu schreiben.</p></div>
+        <fieldset class="fk-block" data-fk-block="A1">
+          <legend><span class="mono">A1</span>Vorhaben und Umfang</legend>
+          <div class="fk-frage"><label class="anfrage__feld fk-frage__feld" for="fk-A1.1" data-fk-label="Was soll gebaut werden?"><span class="fk-frage__text"><span class="fk-frage__nr">A1.1</span>Was soll gebaut werden?</span><select id="fk-A1.1" data-fk="A1.1"><option value="">bitte wählen</option><option value="Neubau Einfamilienhaus">Neubau Einfamilienhaus</option><option value="Neubau Doppelhaushälfte">Neubau Doppelhaushälfte</option><option value="Haus mit Einliegerwohnung">Haus mit Einliegerwohnung</option><option value="Umbau oder Anbau an Bestand">Umbau oder Anbau an Bestand</option><option value="noch offen">noch offen</option></select></label><p class="fk-frage__warum">Leistungsbild; bei Umbau gilt ein Umbauzuschlag</p></div>
+          <div class="fk-frage"><label class="anfrage__feld fk-frage__feld" for="fk-A1.2" data-fk-label="Ungefähre Wohnfläche in m² oder Anzahl der Zimmer"><span class="fk-frage__text"><span class="fk-frage__nr">A1.2</span>Ungefähre Wohnfläche in m² oder Anzahl der Zimmer</span><input id="fk-A1.2" data-fk="A1.2" type="text"></label><p class="fk-frage__warum">Grundlage der anrechenbaren Kosten</p></div>
+          <div class="fk-frage"><label class="anfrage__feld fk-frage__feld" for="fk-A1.3" data-fk-label="Keller?"><span class="fk-frage__text"><span class="fk-frage__nr">A1.3</span>Keller?</span><select id="fk-A1.3" data-fk="A1.3"><option value="">bitte wählen</option><option value="kein Keller (Bodenplatte)">kein Keller (Bodenplatte)</option><option value="Teilkeller">Teilkeller</option><option value="Vollkeller">Vollkeller</option><option value="noch offen">noch offen</option></select></label><p class="fk-frage__warum">Größter einzelner Kostentreiber</p></div>
+          <div class="fk-frage"><label class="anfrage__feld fk-frage__feld" for="fk-A1.4" data-fk-label="Garage, Carport oder offener Stellplatz? Wie viele Autos?"><span class="fk-frage__text"><span class="fk-frage__nr">A1.4</span>Garage, Carport oder offener Stellplatz? Wie viele Autos?</span><input id="fk-A1.4" data-fk="A1.4" type="text"></label><p class="fk-frage__warum">Stellplatznachweis, Kosten</p></div>
+          <div class="fk-frage"><label class="anfrage__feld fk-frage__feld" for="fk-A1.5" data-fk-label="Ausstattungsstandard"><span class="fk-frage__text"><span class="fk-frage__nr">A1.5</span>Ausstattungsstandard</span><select id="fk-A1.5" data-fk="A1.5"><option value="">bitte wählen</option><option value="einfach">einfach</option><option value="mittel">mittel</option><option value="gehoben">gehoben</option><option value="noch offen">noch offen</option></select></label><p class="fk-frage__warum">Baukosten je m²</p></div>
+        </fieldset>
+        <fieldset class="fk-block" data-fk-block="A2">
+          <legend><span class="mono">A2</span>Budget</legend>
+          <div class="fk-frage"><label class="anfrage__feld fk-frage__feld" for="fk-A2.1" data-fk-label="Budget für das Haus selbst (Rohbau, Ausbau, Haustechnik), ohne Grundstück"><span class="fk-frage__text"><span class="fk-frage__nr">A2.1</span>Budget für das Haus selbst (Rohbau, Ausbau, Haustechnik), ohne Grundstück</span><input id="fk-A2.1" data-fk="A2.1" type="text"></label><p class="fk-frage__warum">Das Honorar richtet sich nach den Baukosten</p></div>
+          <div class="fk-frage"><label class="anfrage__feld fk-frage__feld" for="fk-A2.2" data-fk-label="Gesamtbudget (zusätzlich Außenanlagen, Küche, Gebühren, Planung)"><span class="fk-frage__text"><span class="fk-frage__nr">A2.2</span>Gesamtbudget (zusätzlich Außenanlagen, Küche, Gebühren, Planung)</span><input id="fk-A2.2" data-fk="A2.2" type="text"></label><p class="fk-frage__warum">Kostenrahmen und Kostenkontrolle</p></div>
+          <div class="fk-frage"><label class="anfrage__feld fk-frage__feld" for="fk-A2.3" data-fk-label="Ist die Finanzierung mit der Bank geklärt?"><span class="fk-frage__text"><span class="fk-frage__nr">A2.3</span>Ist die Finanzierung mit der Bank geklärt?</span><select id="fk-A2.3" data-fk="A2.3"><option value="">bitte wählen</option><option value="ja, bestätigt">ja, bestätigt</option><option value="in Klärung">in Klärung</option><option value="noch nicht">noch nicht</option></select></label><p class="fk-frage__warum">Zeitplan und Planungssicherheit</p></div>
+        </fieldset>
+        <fieldset class="fk-block" data-fk-block="A3">
+          <legend><span class="mono">A3</span>Grundstück und Baurecht</legend>
+          <div class="fk-frage"><label class="anfrage__feld fk-frage__feld" for="fk-A3.1" data-fk-label="Ort bzw. Adresse, Gemarkung und Flurnummer"><span class="fk-frage__text"><span class="fk-frage__nr">A3.1</span>Ort bzw. Adresse, Gemarkung und Flurnummer</span><input id="fk-A3.1" data-fk="A3.1" type="text"></label><p class="fk-frage__warum">Baurecht prüfen, Anfahrt</p></div>
+          <div class="fk-frage"><label class="anfrage__feld fk-frage__feld" for="fk-A3.2" data-fk-label="Gibt es einen Bebauungsplan?"><span class="fk-frage__text"><span class="fk-frage__nr">A3.2</span>Gibt es einen Bebauungsplan?</span><select id="fk-A3.2" data-fk="A3.2"><option value="">bitte wählen</option><option value="ja, Bebauungsplan vorhanden">ja, Bebauungsplan vorhanden</option><option value="nein, Bebauung nach Umgebung (§ 34 BauGB)">nein, Bebauung nach Umgebung (§ 34 BauGB)</option><option value="weiß ich nicht">weiß ich nicht</option></select></label><p class="fk-frage__warum">Bauantrag oder Genehmigungsfreistellung</p></div>
+          <div class="fk-frage"><label class="anfrage__feld fk-frage__feld" for="fk-A3.3" data-fk-label="Ist das Grundstück eben? Steht ein Altbau darauf, der abgerissen werden muss?"><span class="fk-frage__text"><span class="fk-frage__nr">A3.3</span>Ist das Grundstück eben? Steht ein Altbau darauf, der abgerissen werden muss?</span><input id="fk-A3.3" data-fk="A3.3" type="text"></label><p class="fk-frage__warum">Zusatzleistungen</p></div>
+          <div class="fk-frage"><label class="anfrage__feld fk-frage__feld" for="fk-A3.4" data-fk-label="Ist mit Grundwasser oder Schichtenwasser zu rechnen (Bodengutachten, Erfahrung der Nachbarn)?"><span class="fk-frage__text"><span class="fk-frage__nr">A3.4</span>Ist mit Grundwasser oder Schichtenwasser zu rechnen (Bodengutachten, Erfahrung der Nachbarn)?</span><select id="fk-A3.4" data-fk="A3.4"><option value="">bitte wählen</option><option value="nein">nein</option><option value="ja">ja</option><option value="weiß ich nicht">weiß ich nicht</option></select></label><p class="fk-frage__warum">Keller als weiße Wanne: ca. 15.000–25.000 € mehr</p></div>
+        </fieldset>
+        <fieldset class="fk-block" data-fk-block="A4">
+          <legend><span class="mono">A4</span>Gewünschte Leistungen</legend>
+          <div class="fk-frage"><label class="anfrage__feld fk-frage__feld" for="fk-A4.1" data-fk-label="Welchen Leistungsumfang wünschen Sie?"><span class="fk-frage__text"><span class="fk-frage__nr">A4.1</span>Welchen Leistungsumfang wünschen Sie?</span><select id="fk-A4.1" data-fk="A4.1"><option value="">bitte wählen</option><option value="Planung bis zur Ausführungsplanung (LPH 1–5)">Planung bis zur Ausführungsplanung (LPH 1–5)</option><option value="nur bis zum Bauantrag (LPH 1–4)">nur bis zum Bauantrag (LPH 1–4)</option><option value="komplett mit Ausschreibung und Bauleitung (LPH 1–8)">komplett mit Ausschreibung und Bauleitung (LPH 1–8)</option><option value="noch offen, bitte beraten">noch offen, bitte beraten</option></select></label><p class="fk-frage__warum">Leistungsumfang nach HOAI</p></div>
+          <div class="fk-frage"><fieldset class="fk-frage__feld" data-fk="A4.2" data-fk-label="Zusätzlich gewünscht?"><legend><span class="fk-frage__nr">A4.2</span>Zusätzlich gewünscht?</legend><div class="fk-checks" data-fk-gruppe="A4.2"><label><input type="checkbox" value="3D-Visualisierung"> 3D-Visualisierung</label><label><input type="checkbox" value="Bauvoranfrage"> Bauvoranfrage</label><label><input type="checkbox" value="KfW-Förderantrag"> KfW-Förderantrag</label><label><input type="checkbox" value="Wohnflächenberechnung"> Wohnflächenberechnung</label><label><input type="checkbox" value="Entwässerungsplan"> Entwässerungsplan</label><label><input type="checkbox" value="Freiflächenplan"> Freiflächenplan</label></div></fieldset><p class="fk-frage__warum">Besondere Leistungen, gesondert bepreist</p></div>
+          <div class="fk-frage"><label class="anfrage__feld fk-frage__feld" for="fk-A4.3" data-fk-label="Wie viele Entwurfsvarianten erwarten Sie zu Beginn? (Standard: ein Konzept und eine Überarbeitung)"><span class="fk-frage__text"><span class="fk-frage__nr">A4.3</span>Wie viele Entwurfsvarianten erwarten Sie zu Beginn? (Standard: ein Konzept und eine Überarbeitung)</span><input id="fk-A4.3" data-fk="A4.3" type="text"></label><p class="fk-frage__warum">Aufwand der Vorplanung</p></div>
+        </fieldset>
+        <fieldset class="fk-block" data-fk-block="A5">
+          <legend><span class="mono">A5</span>Schnittstellen</legend>
+          <div class="fk-frage"><label class="anfrage__feld fk-frage__feld" for="fk-A5.1" data-fk-label="Steht das Bauunternehmen schon fest? Welche Gewerke übernimmt es (nur Rohbau oder schlüsselfertig)?"><span class="fk-frage__text"><span class="fk-frage__nr">A5.1</span>Steht das Bauunternehmen schon fest? Welche Gewerke übernimmt es (nur Rohbau oder schlüsselfertig)?</span><textarea id="fk-A5.1" data-fk="A5.1" rows="2"></textarea></label><p class="fk-frage__warum">Abgrenzung der Planungsleistung</p></div>
+          <div class="fk-frage"><label class="anfrage__feld fk-frage__feld" for="fk-A5.2" data-fk-label="Wer übernimmt die Bauleitung vor Ort?"><span class="fk-frage__text"><span class="fk-frage__nr">A5.2</span>Wer übernimmt die Bauleitung vor Ort?</span><input id="fk-A5.2" data-fk="A5.2" type="text"></label><p class="fk-frage__warum">Haftungsabgrenzung</p></div>
+          <div class="fk-frage"><label class="anfrage__feld fk-frage__feld" for="fk-A5.3" data-fk-label="Wer erstellt Statik und Energienachweis (GEG)?"><span class="fk-frage__text"><span class="fk-frage__nr">A5.3</span>Wer erstellt Statik und Energienachweis (GEG)?</span><select id="fk-A5.3" data-fk="A5.3"><option value="">bitte wählen</option><option value="das Bauunternehmen">das Bauunternehmen</option><option value="bitte über BIT-ATELIER koordinieren">bitte über BIT-ATELIER koordinieren</option><option value="noch offen">noch offen</option></select></label><p class="fk-frage__warum">Für den Bauantrag nötig</p></div>
+        </fieldset>
+        <fieldset class="fk-block" data-fk-block="A6">
+          <legend><span class="mono">A6</span>Termine und Vertrag</legend>
+          <div class="fk-frage"><label class="anfrage__feld fk-frage__feld" for="fk-A6.1" data-fk-label="Bis wann soll der Bauantrag eingereicht sein, wann ist Baubeginn geplant?"><span class="fk-frage__text"><span class="fk-frage__nr">A6.1</span>Bis wann soll der Bauantrag eingereicht sein, wann ist Baubeginn geplant?</span><input id="fk-A6.1" data-fk="A6.1" type="text"></label><p class="fk-frage__warum">Kapazität und Zahlungsplan</p></div>
+          <div class="fk-frage"><label class="anfrage__feld fk-frage__feld" for="fk-A6.2" data-fk-label="Vertragspartner: Privatperson oder Firma (mit Anschrift)?"><span class="fk-frage__text"><span class="fk-frage__nr">A6.2</span>Vertragspartner: Privatperson oder Firma (mit Anschrift)?</span><input id="fk-A6.2" data-fk="A6.2" type="text"></label><p class="fk-frage__warum">Angebot und Rechnung</p></div>
+        </fieldset>
+      </div>
+      <div class="fk-teil" data-fk-teil="B">
+        <div class="fk-teil__kopf"><p class="mono">Teil B</p><h3>Für die Planung</h3><p>Diese Punkte können wir auch im ersten Gespräch klären.</p></div>
+        <fieldset class="fk-block" data-fk-block="B1">
+          <legend><span class="mono">B1</span>Bewohner und Raumprogramm</legend>
+          <div class="fk-frage"><label class="anfrage__feld fk-frage__feld" for="fk-B1.1" data-fk-label="Wer wird im Haus wohnen (Erwachsene, Kinder, Alter, später ggf. Eltern)?"><span class="fk-frage__text"><span class="fk-frage__nr">B1.1</span>Wer wird im Haus wohnen (Erwachsene, Kinder, Alter, später ggf. Eltern)?</span><input id="fk-B1.1" data-fk="B1.1" type="text"></label><p class="fk-frage__warum">Raumprogramm</p></div>
+          <div class="fk-frage"><label class="anfrage__feld fk-frage__feld" for="fk-B1.2" data-fk-label="Wie viele Geschosse (nur EG, EG + OG, EG + OG + Dach)?"><span class="fk-frage__text"><span class="fk-frage__nr">B1.2</span>Wie viele Geschosse (nur EG, EG + OG, EG + OG + Dach)?</span><input id="fk-B1.2" data-fk="B1.2" type="text"></label></div>
+          <div class="fk-frage"><label class="anfrage__feld fk-frage__feld" for="fk-B1.3" data-fk-label="Wie viele Schlafzimmer bzw. Kinderzimmer?"><span class="fk-frage__text"><span class="fk-frage__nr">B1.3</span>Wie viele Schlafzimmer bzw. Kinderzimmer?</span><input id="fk-B1.3" data-fk="B1.3" type="text"></label></div>
+          <div class="fk-frage"><label class="anfrage__feld fk-frage__feld" for="fk-B1.4" data-fk-label="Wie viele Bäder und WCs (z. B. Gäste-WC im EG, Familienbad, eigenes Elternbad)?"><span class="fk-frage__text"><span class="fk-frage__nr">B1.4</span>Wie viele Bäder und WCs (z. B. Gäste-WC im EG, Familienbad, eigenes Elternbad)?</span><input id="fk-B1.4" data-fk="B1.4" type="text"></label></div>
+          <div class="fk-frage"><label class="anfrage__feld fk-frage__feld" for="fk-B1.5" data-fk-label="Küche offen zum Wohnen oder abgetrennt? Speisekammer?"><span class="fk-frage__text"><span class="fk-frage__nr">B1.5</span>Küche offen zum Wohnen oder abgetrennt? Speisekammer?</span><input id="fk-B1.5" data-fk="B1.5" type="text"></label></div>
+          <div class="fk-frage"><label class="anfrage__feld fk-frage__feld" for="fk-B1.6" data-fk-label="Weitere Räume (Arbeitszimmer, Gästezimmer, Hauswirtschaftsraum, Sauna)?"><span class="fk-frage__text"><span class="fk-frage__nr">B1.6</span>Weitere Räume (Arbeitszimmer, Gästezimmer, Hauswirtschaftsraum, Sauna)?</span><input id="fk-B1.6" data-fk="B1.6" type="text"></label></div>
+          <div class="fk-frage"><label class="anfrage__feld fk-frage__feld" for="fk-B1.7" data-fk-label="Barrierefrei oder ein Schlafzimmer im Erdgeschoss gewünscht?"><span class="fk-frage__text"><span class="fk-frage__nr">B1.7</span>Barrierefrei oder ein Schlafzimmer im Erdgeschoss gewünscht?</span><input id="fk-B1.7" data-fk="B1.7" type="text"></label></div>
+          <div class="fk-frage"><label class="anfrage__feld fk-frage__feld" for="fk-B1.8" data-fk-label="Terrasse, Balkon, Garten: was ist Ihnen wichtig?"><span class="fk-frage__text"><span class="fk-frage__nr">B1.8</span>Terrasse, Balkon, Garten: was ist Ihnen wichtig?</span><input id="fk-B1.8" data-fk="B1.8" type="text"></label></div>
+        </fieldset>
+        <fieldset class="fk-block" data-fk-block="B2">
+          <legend><span class="mono">B2</span>Grundstück im Detail</legend>
+          <div class="fk-frage"><label class="anfrage__feld fk-frage__feld" for="fk-B2.1" data-fk-label="Grundstücksgröße in m² und Maße (Breite zur Straße × Tiefe)"><span class="fk-frage__text"><span class="fk-frage__nr">B2.1</span>Grundstücksgröße in m² und Maße (Breite zur Straße × Tiefe)</span><input id="fk-B2.1" data-fk="B2.1" type="text"></label></div>
+          <div class="fk-frage"><label class="anfrage__feld fk-frage__feld" for="fk-B2.2" data-fk-label="Große Bäume, Leitungen, Dienstbarkeiten, Absprachen mit Nachbarn?"><span class="fk-frage__text"><span class="fk-frage__nr">B2.2</span>Große Bäume, Leitungen, Dienstbarkeiten, Absprachen mit Nachbarn?</span><input id="fk-B2.2" data-fk="B2.2" type="text"></label></div>
+          <div class="fk-frage"><label class="anfrage__feld fk-frage__feld" for="fk-B2.3" data-fk-label="Welche Unterlagen liegen vor (Lageplan, Katasterauszug, Bodengutachten, Kaufvertrag)?"><span class="fk-frage__text"><span class="fk-frage__nr">B2.3</span>Welche Unterlagen liegen vor (Lageplan, Katasterauszug, Bodengutachten, Kaufvertrag)?</span><input id="fk-B2.3" data-fk="B2.3" type="text"></label><p class="fk-frage__warum">Bitte mitschicken</p></div>
+          <div class="fk-frage"><label class="anfrage__feld fk-frage__feld" for="fk-B2.4" data-fk-label="Sind Wasser, Abwasser, Strom und ggf. Fernwärme am Grundstück vorhanden?"><span class="fk-frage__text"><span class="fk-frage__nr">B2.4</span>Sind Wasser, Abwasser, Strom und ggf. Fernwärme am Grundstück vorhanden?</span><input id="fk-B2.4" data-fk="B2.4" type="text"></label><p class="fk-frage__warum">Erschließung</p></div>
+        </fieldset>
+        <fieldset class="fk-block" data-fk-block="B3">
+          <legend><span class="mono">B3</span>Gestaltung und Technik</legend>
+          <div class="fk-frage"><label class="anfrage__feld fk-frage__feld" for="fk-B3.1" data-fk-label="Stil und Dachform (Satteldach, Flachdach, Pultdach, offen)?"><span class="fk-frage__text"><span class="fk-frage__nr">B3.1</span>Stil und Dachform (Satteldach, Flachdach, Pultdach, offen)?</span><input id="fk-B3.1" data-fk="B3.1" type="text"></label></div>
+          <div class="fk-frage"><label class="anfrage__feld fk-frage__feld" for="fk-B3.2" data-fk-label="Bauweise: massiv (Ziegel, Kalksandstein), Holz oder offen?"><span class="fk-frage__text"><span class="fk-frage__nr">B3.2</span>Bauweise: massiv (Ziegel, Kalksandstein), Holz oder offen?</span><input id="fk-B3.2" data-fk="B3.2" type="text"></label></div>
+          <div class="fk-frage"><label class="anfrage__feld fk-frage__feld" for="fk-B3.3" data-fk-label="Heizung (Wärmepumpe, Fernwärme, andere)? Fußbodenheizung?"><span class="fk-frage__text"><span class="fk-frage__nr">B3.3</span>Heizung (Wärmepumpe, Fernwärme, andere)? Fußbodenheizung?</span><input id="fk-B3.3" data-fk="B3.3" type="text"></label></div>
+          <div class="fk-frage"><label class="anfrage__feld fk-frage__feld" for="fk-B3.4" data-fk-label="Photovoltaik mit Speicher, Lüftungsanlage, Kamin, Smart Home?"><span class="fk-frage__text"><span class="fk-frage__nr">B3.4</span>Photovoltaik mit Speicher, Lüftungsanlage, Kamin, Smart Home?</span><input id="fk-B3.4" data-fk="B3.4" type="text"></label></div>
+          <div class="fk-frage"><label class="anfrage__feld fk-frage__feld" for="fk-B3.5" data-fk-label="Energiestandard: gesetzliches Minimum (GEG) oder Förderhaus (KfW)?"><span class="fk-frage__text"><span class="fk-frage__nr">B3.5</span>Energiestandard: gesetzliches Minimum (GEG) oder Förderhaus (KfW)?</span><input id="fk-B3.5" data-fk="B3.5" type="text"></label></div>
+          <div class="fk-frage"><label class="anfrage__feld fk-frage__feld" for="fk-B3.6" data-fk-label="Geplante Eigenleistungen?"><span class="fk-frage__text"><span class="fk-frage__nr">B3.6</span>Geplante Eigenleistungen?</span><input id="fk-B3.6" data-fk="B3.6" type="text"></label></div>
+          <div class="fk-frage"><label class="anfrage__feld fk-frage__feld" for="fk-B3.7" data-fk-label="Bilder, Skizzen oder Häuser, die Ihnen gefallen (bitte per Mail mitschicken)?"><span class="fk-frage__text"><span class="fk-frage__nr">B3.7</span>Bilder, Skizzen oder Häuser, die Ihnen gefallen (bitte per Mail mitschicken)?</span><input id="fk-B3.7" data-fk="B3.7" type="text"></label></div>
+        </fieldset>
+      </div>
+        <div class="fk-teil">
+          <label class="anfrage__feld"><span>Ergänzungen / Sonstiges</span><textarea id="fk-sonstiges" data-fk="Sonstiges" rows="3"></textarea></label>
+        </div>
+      </form>
+
+      <div class="fk-aktionen">
+        <button class="btn" type="button" id="fk-uebernehmen">Kurzfassung in die Anfrage übernehmen</button>
+        <button class="btn btn--geist" type="button" id="fk-drucken">Drucken / als PDF sichern</button>
+        <button class="btn btn--geist" type="button" id="fk-speichern">Als Textdatei speichern</button>
+        <button class="btn btn--geist btn--klein" type="button" id="fk-leeren">Eingaben löschen</button>
+        <span class="fk-stand" id="fk-stand">Ihre Eingaben bleiben nur in diesem Browser.</span>
+      </div>
+      <p class="anfrage__hinweis">Es wird nichts übertragen und nichts auf einem Server gespeichert. Den vollständigen Katalog schicken Sie als PDF oder Textdatei mit Ihrer Anfrage-Mail; die Kurzfassung landet im Anfrage-Text unten.</p>
+    </div>
+  </section>
+
+  <script>
+  (function () {
+    'use strict';
+    const wort = (s) => (window.bitHud ? window.bitHud(s) : s);
+    const $ = (id) => document.getElementById(id);
+    const SPEICHER = 'bit-fragenkatalog-v1';
+    const BAU = { einfach: 2700, mittel: 3300, gehoben: 4200 };      // KG 300+400 per m2, gross
+    const GESAMT = { einfach: 3400, mittel: 4200, gehoben: 5300 };   // KG 200-700 per m2, gross
+    const KELLER = [70000, 110000];
+    const form = $('fk-form');
+    if (!form) return;
+
+    const euro = (x) => (Math.round(x / 5000) * 5000).toLocaleString('de-DE') + ' €';
+
+    function rechne() {
+      const m2 = Math.max(0, Number($('fk-r-flaeche').value) || 0);
+      const st = $('fk-r-standard').value;
+      const keller = $('fk-r-keller').value === '1';
+      const k = keller ? KELLER : [0, 0];
+      const haus = m2 * BAU[st], ges = m2 * GESAMT[st];
+      $('fk-r-haus').textContent = m2 ? (keller ? euro(haus + k[0]) + ' – ' + euro(haus + k[1]) : 'ca. ' + euro(haus)) : '–';
+      $('fk-r-gesamt').textContent = m2 ? (keller ? euro(ges + k[0]) + ' – ' + euro(ges + k[1]) : 'ca. ' + euro(ges)) : '–';
+      $('fk-r-qm').textContent = 'ca. ' + GESAMT[st].toLocaleString('de-DE') + ' €';
+    }
+    ['fk-r-flaeche', 'fk-r-standard', 'fk-r-keller'].forEach((id) => $(id).addEventListener('input', rechne));
+    rechne();
+
+    /* All answers in document order: [{nr, frage, antwort}] (empty answers included). */
+    function antworten() {
+      const liste = [];
+      form.querySelectorAll('[data-fk]').forEach((el) => {
+        const nr = el.dataset.fk;
+        const huelle = el.closest('[data-fk-label]');
+        const frage = huelle && huelle !== el.closest('.fk-kopfdaten') ? huelle.dataset.fkLabel : nr;
+        let antwort;
+        if (el.tagName === 'FIELDSET') {
+          antwort = [...el.querySelectorAll('input:checked')].map((c) => c.value).join(', ');
+        } else antwort = (el.value || '').trim();
+        liste.push({ nr, frage: el.closest('.fk-kopfdaten') || nr === 'Sonstiges' ? '' : frage, antwort });
+      });
+      return liste;
+    }
+
+    function speichern() {
+      const daten = {};
+      form.querySelectorAll('[data-fk]').forEach((el) => {
+        daten[el.dataset.fk] = el.tagName === 'FIELDSET'
+          ? [...el.querySelectorAll('input:checked')].map((c) => c.value) : el.value;
+      });
+      try { localStorage.setItem(SPEICHER, JSON.stringify(daten)); } catch (e) { /* private mode: no draft */ }
+    }
+
+    function laden() {
+      let daten;
+      try { daten = JSON.parse(localStorage.getItem(SPEICHER) || 'null'); } catch (e) { daten = null; }
+      if (!daten) return;
+      form.querySelectorAll('[data-fk]').forEach((el) => {
+        const v = daten[el.dataset.fk];
+        if (v == null) return;
+        if (el.tagName === 'FIELDSET') el.querySelectorAll('input').forEach((c) => { c.checked = v.includes(c.value); });
+        else el.value = v;
+      });
+      $('fk-stand').textContent = wort('Entwurf aus diesem Browser wiederhergestellt.');
+    }
+    form.addEventListener('input', speichern);
+    form.addEventListener('change', speichern);
+    laden();
+
+    function alsText() {
+      const z = [wort('Fragenkatalog Einfamilienhaus – BIT-ATELIER'), new Date().toLocaleDateString('de-DE'), ''];
+      antworten().forEach((a) => {
+        if (!a.frage) { if (a.antwort) z.push(a.nr + ': ' + a.antwort); return; }
+        z.push(a.nr + '  ' + a.frage, '      ' + (a.antwort || '–'));
+      });
+      return z.join('\n');
+    }
+
+    $('fk-speichern').addEventListener('click', () => {
+      const blob = new Blob([alsText()], { type: 'text/plain;charset=utf-8' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'Fragenkatalog-Einfamilienhaus.txt';
+      document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+    });
+
+    $('fk-drucken').addEventListener('click', () => {
+      let blatt = $('fk-druck');
+      if (!blatt) {
+        blatt = document.createElement('section');
+        blatt.id = 'fk-druck';
+        blatt.setAttribute('data-nicht-uebersetzen', '');
+        document.body.appendChild(blatt);
+      }
+      blatt.innerHTML = '';
+      const add = (tag, text) => { const n = document.createElement(tag); n.textContent = text; blatt.appendChild(n); return n; };
+      add('h1', wort('Fragenkatalog Einfamilienhaus'));
+      add('p', 'BIT-ATELIER · Mohamed Elmokadem, Architekt · bit-atelier.de · ' + new Date().toLocaleDateString('de-DE'));
+      const alle = antworten();
+      alle.filter((a) => !a.frage && a.nr !== 'Sonstiges').forEach((a) => add('p', a.nr + ': ' + (a.antwort || '________________')));
+      form.querySelectorAll('.fk-teil[data-fk-teil]').forEach((teil) => {
+        add('h2', teil.querySelector('.mono').textContent + ' – ' + teil.querySelector('h3').textContent);
+        teil.querySelectorAll('.fk-block').forEach((block) => {
+          add('h3', block.querySelector('legend').textContent);
+          const tab = document.createElement('table');
+          alle.filter((a) => a.frage && a.nr.startsWith(block.dataset.fkBlock + '.')).forEach((a) => {
+            const tr = tab.insertRow();
+            tr.insertCell().textContent = a.nr;
+            tr.insertCell().textContent = a.frage;
+            tr.insertCell().textContent = a.antwort;
+          });
+          blatt.appendChild(tab);
+        });
+      });
+      const sonst = alle.find((a) => a.nr === 'Sonstiges');
+      if (sonst && sonst.antwort) { add('h3', wort('Ergänzungen')); add('p', sonst.antwort); }
+      document.body.classList.add('druckt-fk');
+      addEventListener('afterprint', () => document.body.classList.remove('druckt-fk'), { once: true });
+      print();
+    });
+
+    /* Hands a short version of part A to the enquiry builder (#kontakt). mailto
+       carries about 1,500 characters, so only answered questions go in. */
+    $('fk-uebernehmen').addEventListener('click', () => {
+      const alle = antworten();
+      const z = [];
+      alle.filter((a) => !a.frage && a.antwort && a.nr !== 'Sonstiges').forEach((a) => z.push(a.nr + ': ' + a.antwort));
+      alle.filter((a) => a.frage && a.antwort && a.nr.startsWith('A')).forEach((a) => z.push(a.nr + ' ' + a.frage.replace(/\s*\(.*?\)\s*/g, ' ').trim() + ': ' + a.antwort));
+      z.push('', wort('Den vollständigen Fragenkatalog sende ich als Anhang mit.'));
+      const text = $('a-text');
+      if (text) {
+        text.value = z.join('\n').slice(0, 1100);
+        const art = $('a-art'); if (art) art.value = 'Planung (LPH 1–9)';
+        const modelle = $('a-modelle'); if (modelle) modelle.value = 'noch keine';
+        const termin = $('a-termin'); const t = alle.find((a) => a.nr === 'A6.1');
+        if (termin && t && t.antwort) termin.value = t.antwort.slice(0, 80);
+        const weg = $('a-weg'); const tel = alle.find((a) => a.nr === 'Telefon');
+        if (weg && tel && tel.antwort) weg.selectedIndex = 1;
+        [text, art, modelle, termin, weg].forEach((el) => el && el.dispatchEvent(new Event('input', { bubbles: true })));
+        [art, modelle, weg].forEach((el) => el && el.dispatchEvent(new Event('change', { bubbles: true })));
+        const ziel = $('kontakt'); if (ziel) ziel.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+
+    $('fk-leeren').addEventListener('click', () => {
+      if (!confirm(wort('Alle Eingaben im Fragenkatalog löschen?'))) return;
+      form.reset();
+      try { localStorage.removeItem(SPEICHER); } catch (e) { /* nothing stored */ }
+      $('fk-stand').textContent = wort('Ihre Eingaben bleiben nur in diesem Browser.');
+    });
+
+    $('fk-r-uebernehmen').addEventListener('click', () => {
+      $('fk-A1.2').value = $('fk-r-flaeche').value + ' m²';
+      const st = $('fk-A1.5'); st.value = $('fk-r-standard').value;
+      speichern();
+      $('fk-A1.2').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+  })();
+  </script>
