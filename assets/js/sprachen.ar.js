@@ -836,4 +836,303 @@
     "حضّر مشروع البناء على مهل: قدّر التكاليف، وأجب عن الأسئلة، واحفظها بصيغة PDF أو أرسل طلبك مباشرة — دون تسجيل، ولا يُحفظ شيء.",
   "Fragenkatalog Einfamilienhaus":
     "استبيان البيت العائلي",
+  // Questionnaire page /anfrage/: body, options, script texts
+  "Bauherren · Einfamilienhaus":
+    "أصحاب المشاريع · بيت عائلي",
+  "Erst die Fragen, <em>dann der Plan</em>.":
+    "الأسئلة أولاً، <em>ثم المخطط</em>.",
+  "Mit diesem Fragenkatalog bereiten Sie Ihr Bauvorhaben vor. Teil A brauche ich für ein verbindliches Honorarangebot, Teil B für die Planung. „Weiß ich noch nicht“ ist auch eine gute Antwort – dann klären wir den Punkt gemeinsam.":
+    "بهذا الاستبيان تُحضّر لمشروع البناء. أحتاج الجزء (أ) لتقديم عرض أتعاب ملزم، والجزء (ب) للتصميم. «لا أعرف بعد» إجابة مقبولة تماماً — عندها نوضّح النقطة معاً.",
+  "Kostenrahmen · DIN 276":
+    "إطار التكاليف · DIN 276",
+  "Was kostet Ihr Haus ungefähr?":
+    "كم يكلّف بيتك تقريباً؟",
+  "Richtwerte für einen Neubau im Raum Nürnberg, Stand 2026, inkl. 19 % MwSt., ohne Grundstück. Die genaue Zahl liefert die Kostenschätzung in der Vorplanung.":
+    "قيم استرشادية لبناء جديد في منطقة نورنبرغ، أسعار 2026، شاملة ضريبة القيمة المضافة 19 %، دون قطعة الأرض. الرقم الدقيق يأتي من تقدير التكاليف في مرحلة التصميم الأولي.",
+  "Wohnfläche in m²":
+    "المساحة السكنية بالمتر المربع",
+  "Standard":
+    "مستوى التشطيب",
+  "Keller":
+    "القبو",
+  "Nur das Haus":
+    "البيت فقط",
+  "Alles in allem":
+    "الإجمالي الشامل",
+  "Je m² Wohnfläche":
+    "لكل متر مربع سكني",
+  "Nur das Haus je m²":
+    "البيت فقط لكل م²",
+  "Alles in allem je m²":
+    "الإجمالي الشامل لكل م²",
+  "Beispiel":
+    "مثال",
+  "einfach":
+    "بسيط",
+  "mittel":
+    "متوسط",
+  "gehoben":
+    "فاخر",
+  "ca. 2.700 €":
+    "حوالي 2.700 €",
+  "ca. 3.300 €":
+    "حوالي 3.300 €",
+  "ca. 3.400 €":
+    "حوالي 3.400 €",
+  "ca. 4.200 €":
+    "حوالي 4.200 €",
+  "ca. 5.300 €":
+    "حوالي 5.300 €",
+  "Standardgrundriss, einfache Bäder, Luft-Wärmepumpe":
+    "مسقط قياسي، حمّامات بسيطة، مضخة حرارية هوائية",
+  "Fliesen/Parkett, Fußbodenheizung, PV-Anlage":
+    "بلاط/باركيه، تدفئة أرضية، منظومة طاقة شمسية",
+  "große Glasflächen, Lüftungsanlage, Naturstein":
+    "واجهات زجاجية كبيرة، نظام تهوية، حجر طبيعي",
+  "„Alles in allem“ = Haus (KG 300 + 400) + Hausanschlüsse (KG 200) + Außenanlagen (KG 500) + Küche/Ausstattung (KG 600) + Planung, Statik, Gutachten, Gebühren (KG 700). Keller zusätzlich ca. 70.000–110.000 €, bei Grundwasser mehr. Unverbindliche Richtwerte, Abweichungen von ±15 % sind üblich. Das Planungshonorar überschlagen Sie mit dem <a href=\"../#honorarrechner\">HOAI-Honorarrechner</a>.":
+    "«الإجمالي الشامل» = البيت (KG 300 + 400) + توصيلات المرافق (KG 200) + الأعمال الخارجية (KG 500) + المطبخ والتجهيزات (KG 600) + التصميم والحسابات الإنشائية والتقارير والرسوم (KG 700). القبو إضافي بحوالي 70.000–110.000 €، وأكثر عند وجود مياه جوفية. قيم استرشادية غير ملزمة، والانحراف بنسبة ±15 % أمر معتاد. يمكنك تقدير أتعاب التصميم عبر <a href=\"../#honorarrechner\">حاسبة أتعاب HOAI</a>.",
+  "Werte in den Fragenkatalog übernehmen":
+    "نقل القيم إلى الاستبيان",
+  "Name":
+    "الاسم",
+  "Teil A":
+    "الجزء (أ)",
+  "Für ein verbindliches Honorarangebot":
+    "لعرض أتعاب ملزم",
+  "Diese Angaben brauche ich, um Ihnen ein verbindliches Angebot zu schreiben.":
+    "أحتاج هذه المعلومات لأقدّم لك عرضاً ملزماً.",
+  "Vorhaben und Umfang":
+    "المشروع ونطاقه",
+  "Leistungsbild; bei Umbau gilt ein Umbauzuschlag":
+    "نطاق الخدمات؛ أعمال التحويل تخضع لعلاوة",
+  "Grundlage der anrechenbaren Kosten":
+    "أساس التكاليف المحتسبة",
+  "Größter einzelner Kostentreiber":
+    "أكبر عامل منفرد في التكلفة",
+  "Stellplatznachweis, Kosten":
+    "إثبات مواقف السيارات، التكاليف",
+  "Baukosten je m²":
+    "تكلفة البناء لكل م²",
+  "Budget":
+    "الميزانية",
+  "Das Honorar richtet sich nach den Baukosten":
+    "تُحتسب الأتعاب على أساس تكلفة البناء",
+  "Kostenrahmen und Kostenkontrolle":
+    "إطار التكاليف ومراقبتها",
+  "Zeitplan und Planungssicherheit":
+    "الجدول الزمني ووضوح التخطيط",
+  "Grundstück und Baurecht":
+    "قطعة الأرض وقانون البناء",
+  "Baurecht prüfen, Anfahrt":
+    "التحقق من قانون البناء، المسافة",
+  "Bauantrag oder Genehmigungsfreistellung":
+    "طلب ترخيص بناء أو إعفاء من الترخيص",
+  "Zusatzleistungen":
+    "خدمات إضافية",
+  "Keller als weiße Wanne: ca. 15.000–25.000 € mehr":
+    "قبو من الخرسانة الكتيمة: حوالي 15.000–25.000 € إضافية",
+  "Gewünschte Leistungen":
+    "الخدمات المطلوبة",
+  "Leistungsumfang nach HOAI":
+    "نطاق الخدمات وفق HOAI",
+  "3D-Visualisierung":
+    "تصور ثلاثي الأبعاد",
+  "Bauvoranfrage":
+    "استعلام مسبق عن البناء",
+  "KfW-Förderantrag":
+    "طلب دعم KfW",
+  "Wohnflächenberechnung":
+    "حساب المساحة السكنية",
+  "Entwässerungsplan":
+    "مخطط الصرف",
+  "Freiflächenplan":
+    "مخطط المساحات الخارجية",
+  "Besondere Leistungen, gesondert bepreist":
+    "خدمات خاصة، تُسعَّر بشكل منفصل",
+  "Aufwand der Vorplanung":
+    "حجم العمل في التصميم الأولي",
+  "Schnittstellen":
+    "نقاط التداخل",
+  "Abgrenzung der Planungsleistung":
+    "تحديد حدود أعمال التصميم",
+  "Haftungsabgrenzung":
+    "تحديد المسؤولية",
+  "Für den Bauantrag nötig":
+    "مطلوب لطلب الترخيص",
+  "Termine und Vertrag":
+    "المواعيد والعقد",
+  "Kapazität und Zahlungsplan":
+    "القدرة الاستيعابية وجدول الدفعات",
+  "Angebot und Rechnung":
+    "العرض والفاتورة",
+  "Teil B":
+    "الجزء (ب)",
+  "Für die Planung":
+    "للتصميم",
+  "Diese Punkte können wir auch im ersten Gespräch klären.":
+    "يمكننا توضيح هذه النقاط أيضاً في اللقاء الأول.",
+  "Bewohner und Raumprogramm":
+    "السكان وبرنامج الغرف",
+  "Raumprogramm":
+    "برنامج الغرف",
+  "Grundstück im Detail":
+    "تفاصيل قطعة الأرض",
+  "Bitte mitschicken":
+    "يُرجى إرسالها معاً",
+  "Erschließung":
+    "توصيل المرافق",
+  "Gestaltung und Technik":
+    "التصميم والتجهيزات الفنية",
+  "Ergänzungen / Sonstiges":
+    "إضافات / أخرى",
+  "Kurzfassung in die Anfrage übernehmen":
+    "نقل الملخص إلى الطلب",
+  "Als Textdatei speichern":
+    "حفظ كملف نصي",
+  "Eingaben löschen":
+    "مسح الإدخالات",
+  "Ihre Eingaben bleiben nur in diesem Browser.":
+    "تبقى إدخالاتك في هذا المتصفح فقط.",
+  "Es wird nichts übertragen und nichts auf einem Server gespeichert. Den vollständigen Katalog schicken Sie als PDF oder Textdatei mit Ihrer Anfrage-Mail; die Kurzfassung landet im Anfrage-Text unten.":
+    "لا يُرسل شيء ولا يُحفظ شيء على أي خادم. أرسل الاستبيان كاملاً كملف PDF أو ملف نصي مع بريد طلبك؛ أما الملخص فيُدرج في نص الطلب أدناه.",
+  "Entwurf aus diesem Browser wiederhergestellt.":
+    "تمت استعادة المسودة من هذا المتصفح.",
+  "Alle Eingaben im Fragenkatalog löschen?":
+    "هل تريد مسح جميع إدخالات الاستبيان؟",
+  "Den vollständigen Fragenkatalog sende ich als Anhang mit.":
+    "أرفقت الاستبيان كاملاً.",
+  "Fragenkatalog Einfamilienhaus – BIT-ATELIER":
+    "استبيان البيت العائلي – BIT-ATELIER",
+  "Ergänzungen":
+    "إضافات",
+  "kein Keller":
+    "بدون قبو",
+  "mit Keller":
+    "مع قبو",
+  "bitte wählen":
+    "يُرجى الاختيار",
+  "Neubau Einfamilienhaus":
+    "بيت عائلي جديد",
+  "Neubau Doppelhaushälfte":
+    "نصف منزل مزدوج جديد",
+  "Haus mit Einliegerwohnung":
+    "بيت مع شقة ملحقة",
+  "Umbau oder Anbau an Bestand":
+    "تحويل أو توسعة مبنى قائم",
+  "noch offen":
+    "لم يُحدَّد بعد",
+  "kein Keller (Bodenplatte)":
+    "بدون قبو (بلاطة أرضية)",
+  "Teilkeller":
+    "قبو جزئي",
+  "Vollkeller":
+    "قبو كامل",
+  "ja, bestätigt":
+    "نعم، مؤكد",
+  "in Klärung":
+    "قيد التوضيح",
+  "noch nicht":
+    "ليس بعد",
+  "ja, Bebauungsplan vorhanden":
+    "نعم، يوجد مخطط تنظيمي",
+  "nein, Bebauung nach Umgebung (§ 34 BauGB)":
+    "لا، البناء وفق المحيط (§ 34 BauGB)",
+  "weiß ich nicht":
+    "لا أعرف",
+  "nein":
+    "لا",
+  "ja":
+    "نعم",
+  "Planung bis zur Ausführungsplanung (LPH 1–5)":
+    "التصميم حتى المخططات التنفيذية (LPH 1–5)",
+  "nur bis zum Bauantrag (LPH 1–4)":
+    "حتى طلب الترخيص فقط (LPH 1–4)",
+  "komplett mit Ausschreibung und Bauleitung (LPH 1–8)":
+    "كاملاً مع المناقصات والإشراف على التنفيذ (LPH 1–8)",
+  "noch offen, bitte beraten":
+    "لم يُحدَّد بعد، أرجو المشورة",
+  "das Bauunternehmen":
+    "شركة المقاولات",
+  "bitte über BIT-ATELIER koordinieren":
+    "يُرجى التنسيق عبر BIT-ATELIER",
+  "<span class=\"fk-frage__nr\">A1.1</span>Was soll gebaut werden?":
+    "<span class=\"fk-frage__nr\">A1.1</span>ماذا تريد أن تبني؟",
+  "<span class=\"fk-frage__nr\">A1.2</span>Ungefähre Wohnfläche in m² oder Anzahl der Zimmer":
+    "<span class=\"fk-frage__nr\">A1.2</span>المساحة السكنية التقريبية بالمتر المربع أو عدد الغرف",
+  "<span class=\"fk-frage__nr\">A1.3</span>Keller?":
+    "<span class=\"fk-frage__nr\">A1.3</span>قبو؟",
+  "<span class=\"fk-frage__nr\">A1.4</span>Garage, Carport oder offener Stellplatz? Wie viele Autos?":
+    "<span class=\"fk-frage__nr\">A1.4</span>مرآب أو مظلة سيارات أو موقف مكشوف؟ كم سيارة؟",
+  "<span class=\"fk-frage__nr\">A1.5</span>Ausstattungsstandard":
+    "<span class=\"fk-frage__nr\">A1.5</span>مستوى التشطيب",
+  "<span class=\"fk-frage__nr\">A2.1</span>Budget für das Haus selbst (Rohbau, Ausbau, Haustechnik), ohne Grundstück":
+    "<span class=\"fk-frage__nr\">A2.1</span>ميزانية البيت نفسه (الهيكل والتشطيب والتجهيزات الفنية)، دون قطعة الأرض",
+  "<span class=\"fk-frage__nr\">A2.2</span>Gesamtbudget (zusätzlich Außenanlagen, Küche, Gebühren, Planung)":
+    "<span class=\"fk-frage__nr\">A2.2</span>الميزانية الإجمالية (إضافة إلى الأعمال الخارجية والمطبخ والرسوم والتصميم)",
+  "<span class=\"fk-frage__nr\">A2.3</span>Ist die Finanzierung mit der Bank geklärt?":
+    "<span class=\"fk-frage__nr\">A2.3</span>هل تم ترتيب التمويل مع البنك؟",
+  "<span class=\"fk-frage__nr\">A3.1</span>Ort bzw. Adresse, Gemarkung und Flurnummer":
+    "<span class=\"fk-frage__nr\">A3.1</span>الموقع أو العنوان، والمنطقة العقارية ورقم القطعة",
+  "<span class=\"fk-frage__nr\">A3.2</span>Gibt es einen Bebauungsplan?":
+    "<span class=\"fk-frage__nr\">A3.2</span>هل يوجد مخطط تنظيمي؟",
+  "<span class=\"fk-frage__nr\">A3.3</span>Ist das Grundstück eben? Steht ein Altbau darauf, der abgerissen werden muss?":
+    "<span class=\"fk-frage__nr\">A3.3</span>هل الأرض مستوية؟ هل يوجد عليها مبنى قديم يجب هدمه؟",
+  "<span class=\"fk-frage__nr\">A3.4</span>Ist mit Grundwasser oder Schichtenwasser zu rechnen (Bodengutachten, Erfahrung der Nachbarn)?":
+    "<span class=\"fk-frage__nr\">A3.4</span>هل يُتوقع وجود مياه جوفية أو مياه طبقية (تقرير التربة، تجربة الجيران)؟",
+  "<span class=\"fk-frage__nr\">A4.1</span>Welchen Leistungsumfang wünschen Sie?":
+    "<span class=\"fk-frage__nr\">A4.1</span>ما نطاق الخدمات الذي تريده؟",
+  "<span class=\"fk-frage__nr\">A4.2</span>Zusätzlich gewünscht?":
+    "<span class=\"fk-frage__nr\">A4.2</span>هل تريد خدمات إضافية؟",
+  "<span class=\"fk-frage__nr\">A4.3</span>Wie viele Entwurfsvarianten erwarten Sie zu Beginn? (Standard: ein Konzept und eine Überarbeitung)":
+    "<span class=\"fk-frage__nr\">A4.3</span>كم بديلاً تصميمياً تتوقع في البداية؟ (المعتاد: مفهوم واحد ومراجعة واحدة)",
+  "<span class=\"fk-frage__nr\">A5.1</span>Steht das Bauunternehmen schon fest? Welche Gewerke übernimmt es (nur Rohbau oder schlüsselfertig)?":
+    "<span class=\"fk-frage__nr\">A5.1</span>هل تم اختيار شركة المقاولات؟ ما الأعمال التي ستتولاها (الهيكل فقط أم تسليم مفتاح)؟",
+  "<span class=\"fk-frage__nr\">A5.2</span>Wer übernimmt die Bauleitung vor Ort?":
+    "<span class=\"fk-frage__nr\">A5.2</span>من سيتولى الإشراف على الموقع؟",
+  "<span class=\"fk-frage__nr\">A5.3</span>Wer erstellt Statik und Energienachweis (GEG)?":
+    "<span class=\"fk-frage__nr\">A5.3</span>من سيُعدّ الحسابات الإنشائية وشهادة الطاقة (GEG)؟",
+  "<span class=\"fk-frage__nr\">A6.1</span>Bis wann soll der Bauantrag eingereicht sein, wann ist Baubeginn geplant?":
+    "<span class=\"fk-frage__nr\">A6.1</span>متى يجب تقديم طلب الترخيص، ومتى يُخطط لبدء البناء؟",
+  "<span class=\"fk-frage__nr\">A6.2</span>Vertragspartner: Privatperson oder Firma (mit Anschrift)?":
+    "<span class=\"fk-frage__nr\">A6.2</span>الطرف المتعاقد: شخص أم شركة (مع العنوان)؟",
+  "<span class=\"fk-frage__nr\">B1.1</span>Wer wird im Haus wohnen (Erwachsene, Kinder, Alter, später ggf. Eltern)?":
+    "<span class=\"fk-frage__nr\">B1.1</span>من سيسكن البيت (بالغون، أطفال، الأعمار، وربما الوالدان لاحقاً)؟",
+  "<span class=\"fk-frage__nr\">B1.2</span>Wie viele Geschosse (nur EG, EG + OG, EG + OG + Dach)?":
+    "<span class=\"fk-frage__nr\">B1.2</span>كم طابقاً (أرضي فقط، أرضي + علوي، أرضي + علوي + سطح)؟",
+  "<span class=\"fk-frage__nr\">B1.3</span>Wie viele Schlafzimmer bzw. Kinderzimmer?":
+    "<span class=\"fk-frage__nr\">B1.3</span>كم غرفة نوم أو غرفة أطفال؟",
+  "<span class=\"fk-frage__nr\">B1.4</span>Wie viele Bäder und WCs (z. B. Gäste-WC im EG, Familienbad, eigenes Elternbad)?":
+    "<span class=\"fk-frage__nr\">B1.4</span>كم حماماً ودورة مياه (مثلاً حمام ضيوف في الأرضي، حمام عائلي، حمام خاص للوالدين)؟",
+  "<span class=\"fk-frage__nr\">B1.5</span>Küche offen zum Wohnen oder abgetrennt? Speisekammer?":
+    "<span class=\"fk-frage__nr\">B1.5</span>مطبخ مفتوح على المعيشة أم منفصل؟ مخزن مؤن؟",
+  "<span class=\"fk-frage__nr\">B1.6</span>Weitere Räume (Arbeitszimmer, Gästezimmer, Hauswirtschaftsraum, Sauna)?":
+    "<span class=\"fk-frage__nr\">B1.6</span>غرف أخرى (مكتب، غرفة ضيوف، غرفة غسيل، ساونا)؟",
+  "<span class=\"fk-frage__nr\">B1.7</span>Barrierefrei oder ein Schlafzimmer im Erdgeschoss gewünscht?":
+    "<span class=\"fk-frage__nr\">B1.7</span>هل تريد تصميماً خالياً من العوائق أو غرفة نوم في الطابق الأرضي؟",
+  "<span class=\"fk-frage__nr\">B1.8</span>Terrasse, Balkon, Garten: was ist Ihnen wichtig?":
+    "<span class=\"fk-frage__nr\">B1.8</span>التراس، الشرفة، الحديقة: ما المهم بالنسبة لك؟",
+  "<span class=\"fk-frage__nr\">B2.1</span>Grundstücksgröße in m² und Maße (Breite zur Straße × Tiefe)":
+    "<span class=\"fk-frage__nr\">B2.1</span>مساحة الأرض بالمتر المربع وأبعادها (الواجهة على الشارع × العمق)",
+  "<span class=\"fk-frage__nr\">B2.2</span>Große Bäume, Leitungen, Dienstbarkeiten, Absprachen mit Nachbarn?":
+    "<span class=\"fk-frage__nr\">B2.2</span>أشجار كبيرة، خطوط مرافق، حقوق ارتفاق، اتفاقات مع الجيران؟",
+  "<span class=\"fk-frage__nr\">B2.3</span>Welche Unterlagen liegen vor (Lageplan, Katasterauszug, Bodengutachten, Kaufvertrag)?":
+    "<span class=\"fk-frage__nr\">B2.3</span>ما المستندات المتوفرة (مخطط الموقع، مستخرج السجل العقاري، تقرير التربة، عقد الشراء)؟",
+  "<span class=\"fk-frage__nr\">B2.4</span>Sind Wasser, Abwasser, Strom und ggf. Fernwärme am Grundstück vorhanden?":
+    "<span class=\"fk-frage__nr\">B2.4</span>هل تتوفر المياه والصرف والكهرباء وربما التدفئة المركزية عند الأرض؟",
+  "<span class=\"fk-frage__nr\">B3.1</span>Stil und Dachform (Satteldach, Flachdach, Pultdach, offen)?":
+    "<span class=\"fk-frage__nr\">B3.1</span>الطراز وشكل السقف (جملوني، مسطح، أحادي الميل، غير محدد)؟",
+  "<span class=\"fk-frage__nr\">B3.2</span>Bauweise: massiv (Ziegel, Kalksandstein), Holz oder offen?":
+    "<span class=\"fk-frage__nr\">B3.2</span>طريقة البناء: مصمت (طوب، حجر جيري رملي)، خشب أم غير محدد؟",
+  "<span class=\"fk-frage__nr\">B3.3</span>Heizung (Wärmepumpe, Fernwärme, andere)? Fußbodenheizung?":
+    "<span class=\"fk-frage__nr\">B3.3</span>التدفئة (مضخة حرارية، تدفئة مركزية، غير ذلك)؟ تدفئة أرضية؟",
+  "<span class=\"fk-frage__nr\">B3.4</span>Photovoltaik mit Speicher, Lüftungsanlage, Kamin, Smart Home?":
+    "<span class=\"fk-frage__nr\">B3.4</span>طاقة شمسية مع تخزين، نظام تهوية، مدفأة، منزل ذكي؟",
+  "<span class=\"fk-frage__nr\">B3.5</span>Energiestandard: gesetzliches Minimum (GEG) oder Förderhaus (KfW)?":
+    "<span class=\"fk-frage__nr\">B3.5</span>معيار الطاقة: الحد الأدنى القانوني (GEG) أم بيت مدعوم (KfW)؟",
+  "<span class=\"fk-frage__nr\">B3.6</span>Geplante Eigenleistungen?":
+    "<span class=\"fk-frage__nr\">B3.6</span>هل تخطط لتنفيذ أعمال بنفسك؟",
+  "<span class=\"fk-frage__nr\">B3.7</span>Bilder, Skizzen oder Häuser, die Ihnen gefallen (bitte per Mail mitschicken)?":
+    "<span class=\"fk-frage__nr\">B3.7</span>صور أو رسومات أو بيوت تعجبك (يُرجى إرسالها بالبريد)؟",
+  "ca.":
+    "حوالي",
 };

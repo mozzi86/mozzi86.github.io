@@ -833,4 +833,303 @@
     "Prepare your building project at your own pace: estimate costs, answer the questions, save as PDF or send an enquiry — no sign-up, nothing is stored.",
   "Fragenkatalog Einfamilienhaus":
     "Single-family house questionnaire",
+  // Questionnaire page /anfrage/: body, options, script texts
+  "Bauherren · Einfamilienhaus":
+    "Private clients · single-family house",
+  "Erst die Fragen, <em>dann der Plan</em>.":
+    "Questions first, <em>then the plan</em>.",
+  "Mit diesem Fragenkatalog bereiten Sie Ihr Bauvorhaben vor. Teil A brauche ich für ein verbindliches Honorarangebot, Teil B für die Planung. „Weiß ich noch nicht“ ist auch eine gute Antwort – dann klären wir den Punkt gemeinsam.":
+    "Use this questionnaire to prepare your building project. I need part A for a binding fee offer and part B for the design. “I don’t know yet” is a perfectly good answer — we will then clarify the point together.",
+  "Kostenrahmen · DIN 276":
+    "Cost frame · DIN 276",
+  "Was kostet Ihr Haus ungefähr?":
+    "Roughly what will your house cost?",
+  "Richtwerte für einen Neubau im Raum Nürnberg, Stand 2026, inkl. 19 % MwSt., ohne Grundstück. Die genaue Zahl liefert die Kostenschätzung in der Vorplanung.":
+    "Guide values for a new build in the Nuremberg area, as of 2026, incl. 19 % VAT, excluding the plot. The exact figure comes from the cost estimate in the preliminary design.",
+  "Wohnfläche in m²":
+    "Living area in m²",
+  "Standard":
+    "Standard",
+  "Keller":
+    "Basement",
+  "Nur das Haus":
+    "House only",
+  "Alles in allem":
+    "All in",
+  "Je m² Wohnfläche":
+    "Per m² living area",
+  "Nur das Haus je m²":
+    "House only per m²",
+  "Alles in allem je m²":
+    "All in per m²",
+  "Beispiel":
+    "Example",
+  "einfach":
+    "basic",
+  "mittel":
+    "medium",
+  "gehoben":
+    "high-end",
+  "ca. 2.700 €":
+    "approx. €2,700",
+  "ca. 3.300 €":
+    "approx. €3,300",
+  "ca. 3.400 €":
+    "approx. €3,400",
+  "ca. 4.200 €":
+    "approx. €4,200",
+  "ca. 5.300 €":
+    "approx. €5,300",
+  "Standardgrundriss, einfache Bäder, Luft-Wärmepumpe":
+    "standard floor plan, simple bathrooms, air-source heat pump",
+  "Fliesen/Parkett, Fußbodenheizung, PV-Anlage":
+    "tiles/parquet, underfloor heating, PV system",
+  "große Glasflächen, Lüftungsanlage, Naturstein":
+    "large glazing, ventilation system, natural stone",
+  "„Alles in allem“ = Haus (KG 300 + 400) + Hausanschlüsse (KG 200) + Außenanlagen (KG 500) + Küche/Ausstattung (KG 600) + Planung, Statik, Gutachten, Gebühren (KG 700). Keller zusätzlich ca. 70.000–110.000 €, bei Grundwasser mehr. Unverbindliche Richtwerte, Abweichungen von ±15 % sind üblich. Das Planungshonorar überschlagen Sie mit dem <a href=\"../#honorarrechner\">HOAI-Honorarrechner</a>.":
+    "“All in” = house (KG 300 + 400) + utility connections (KG 200) + external works (KG 500) + kitchen/fittings (KG 600) + design, structural engineering, surveys, fees (KG 700). Basement extra approx. €70,000–110,000, more with groundwater. Non-binding guide values; deviations of ±15 % are common. Estimate the design fee with the <a href=\"../#honorarrechner\">HOAI fee calculator</a>.",
+  "Werte in den Fragenkatalog übernehmen":
+    "Copy values into the questionnaire",
+  "Name":
+    "Name",
+  "Teil A":
+    "Part A",
+  "Für ein verbindliches Honorarangebot":
+    "For a binding fee offer",
+  "Diese Angaben brauche ich, um Ihnen ein verbindliches Angebot zu schreiben.":
+    "I need this information to write you a binding offer.",
+  "Vorhaben und Umfang":
+    "Project and scope",
+  "Leistungsbild; bei Umbau gilt ein Umbauzuschlag":
+    "Scope of services; conversions carry a surcharge",
+  "Grundlage der anrechenbaren Kosten":
+    "Basis of the eligible costs",
+  "Größter einzelner Kostentreiber":
+    "Largest single cost driver",
+  "Stellplatznachweis, Kosten":
+    "Parking requirement, costs",
+  "Baukosten je m²":
+    "Building costs per m²",
+  "Budget":
+    "Budget",
+  "Das Honorar richtet sich nach den Baukosten":
+    "The fee is based on the building costs",
+  "Kostenrahmen und Kostenkontrolle":
+    "Cost frame and cost control",
+  "Zeitplan und Planungssicherheit":
+    "Schedule and planning certainty",
+  "Grundstück und Baurecht":
+    "Plot and planning law",
+  "Baurecht prüfen, Anfahrt":
+    "Check planning law, travel",
+  "Bauantrag oder Genehmigungsfreistellung":
+    "Building application or exemption from permit",
+  "Zusatzleistungen":
+    "Additional services",
+  "Keller als weiße Wanne: ca. 15.000–25.000 € mehr":
+    "Watertight concrete basement: approx. €15,000–25,000 extra",
+  "Gewünschte Leistungen":
+    "Services required",
+  "Leistungsumfang nach HOAI":
+    "Scope of services under HOAI",
+  "3D-Visualisierung":
+    "3D visualisation",
+  "Bauvoranfrage":
+    "Preliminary planning enquiry",
+  "KfW-Förderantrag":
+    "KfW funding application",
+  "Wohnflächenberechnung":
+    "Living area calculation",
+  "Entwässerungsplan":
+    "Drainage plan",
+  "Freiflächenplan":
+    "Landscaping plan",
+  "Besondere Leistungen, gesondert bepreist":
+    "Special services, priced separately",
+  "Aufwand der Vorplanung":
+    "Effort of the preliminary design",
+  "Schnittstellen":
+    "Interfaces",
+  "Abgrenzung der Planungsleistung":
+    "Scope boundary of the design work",
+  "Haftungsabgrenzung":
+    "Liability boundary",
+  "Für den Bauantrag nötig":
+    "Required for the building application",
+  "Termine und Vertrag":
+    "Dates and contract",
+  "Kapazität und Zahlungsplan":
+    "Capacity and payment schedule",
+  "Angebot und Rechnung":
+    "Offer and invoice",
+  "Teil B":
+    "Part B",
+  "Für die Planung":
+    "For the design",
+  "Diese Punkte können wir auch im ersten Gespräch klären.":
+    "We can also clarify these points in our first meeting.",
+  "Bewohner und Raumprogramm":
+    "Occupants and room schedule",
+  "Raumprogramm":
+    "Room schedule",
+  "Grundstück im Detail":
+    "The plot in detail",
+  "Bitte mitschicken":
+    "Please send along",
+  "Erschließung":
+    "Utility connections",
+  "Gestaltung und Technik":
+    "Design and building services",
+  "Ergänzungen / Sonstiges":
+    "Additions / other",
+  "Kurzfassung in die Anfrage übernehmen":
+    "Copy summary into the enquiry",
+  "Als Textdatei speichern":
+    "Save as text file",
+  "Eingaben löschen":
+    "Clear entries",
+  "Ihre Eingaben bleiben nur in diesem Browser.":
+    "Your entries stay in this browser only.",
+  "Es wird nichts übertragen und nichts auf einem Server gespeichert. Den vollständigen Katalog schicken Sie als PDF oder Textdatei mit Ihrer Anfrage-Mail; die Kurzfassung landet im Anfrage-Text unten.":
+    "Nothing is transmitted and nothing is stored on a server. Send the full questionnaire as a PDF or text file with your enquiry email; the summary goes into the enquiry text below.",
+  "Entwurf aus diesem Browser wiederhergestellt.":
+    "Draft restored from this browser.",
+  "Alle Eingaben im Fragenkatalog löschen?":
+    "Clear all entries in the questionnaire?",
+  "Den vollständigen Fragenkatalog sende ich als Anhang mit.":
+    "I am attaching the full questionnaire.",
+  "Fragenkatalog Einfamilienhaus – BIT-ATELIER":
+    "Single-family house questionnaire – BIT-ATELIER",
+  "Ergänzungen":
+    "Additions",
+  "kein Keller":
+    "no basement",
+  "mit Keller":
+    "with basement",
+  "bitte wählen":
+    "please choose",
+  "Neubau Einfamilienhaus":
+    "new single-family house",
+  "Neubau Doppelhaushälfte":
+    "new semi-detached house",
+  "Haus mit Einliegerwohnung":
+    "house with granny flat",
+  "Umbau oder Anbau an Bestand":
+    "conversion or extension of an existing building",
+  "noch offen":
+    "not decided yet",
+  "kein Keller (Bodenplatte)":
+    "no basement (slab on grade)",
+  "Teilkeller":
+    "partial basement",
+  "Vollkeller":
+    "full basement",
+  "ja, bestätigt":
+    "yes, confirmed",
+  "in Klärung":
+    "being clarified",
+  "noch nicht":
+    "not yet",
+  "ja, Bebauungsplan vorhanden":
+    "yes, a development plan exists",
+  "nein, Bebauung nach Umgebung (§ 34 BauGB)":
+    "no, based on the surroundings (§ 34 BauGB)",
+  "weiß ich nicht":
+    "I don’t know",
+  "nein":
+    "no",
+  "ja":
+    "yes",
+  "Planung bis zur Ausführungsplanung (LPH 1–5)":
+    "design up to construction drawings (LPH 1–5)",
+  "nur bis zum Bauantrag (LPH 1–4)":
+    "only up to the building application (LPH 1–4)",
+  "komplett mit Ausschreibung und Bauleitung (LPH 1–8)":
+    "complete incl. tendering and site supervision (LPH 1–8)",
+  "noch offen, bitte beraten":
+    "not decided, please advise",
+  "das Bauunternehmen":
+    "the building contractor",
+  "bitte über BIT-ATELIER koordinieren":
+    "please coordinate through BIT-ATELIER",
+  "<span class=\"fk-frage__nr\">A1.1</span>Was soll gebaut werden?":
+    "<span class=\"fk-frage__nr\">A1.1</span>What do you want to build?",
+  "<span class=\"fk-frage__nr\">A1.2</span>Ungefähre Wohnfläche in m² oder Anzahl der Zimmer":
+    "<span class=\"fk-frage__nr\">A1.2</span>Approximate living area in m² or number of rooms",
+  "<span class=\"fk-frage__nr\">A1.3</span>Keller?":
+    "<span class=\"fk-frage__nr\">A1.3</span>Basement?",
+  "<span class=\"fk-frage__nr\">A1.4</span>Garage, Carport oder offener Stellplatz? Wie viele Autos?":
+    "<span class=\"fk-frage__nr\">A1.4</span>Garage, carport or open parking space? How many cars?",
+  "<span class=\"fk-frage__nr\">A1.5</span>Ausstattungsstandard":
+    "<span class=\"fk-frage__nr\">A1.5</span>Level of finish",
+  "<span class=\"fk-frage__nr\">A2.1</span>Budget für das Haus selbst (Rohbau, Ausbau, Haustechnik), ohne Grundstück":
+    "<span class=\"fk-frage__nr\">A2.1</span>Budget for the house itself (shell, fit-out, building services), excluding the plot",
+  "<span class=\"fk-frage__nr\">A2.2</span>Gesamtbudget (zusätzlich Außenanlagen, Küche, Gebühren, Planung)":
+    "<span class=\"fk-frage__nr\">A2.2</span>Total budget (plus external works, kitchen, fees, design)",
+  "<span class=\"fk-frage__nr\">A2.3</span>Ist die Finanzierung mit der Bank geklärt?":
+    "<span class=\"fk-frage__nr\">A2.3</span>Is the financing settled with the bank?",
+  "<span class=\"fk-frage__nr\">A3.1</span>Ort bzw. Adresse, Gemarkung und Flurnummer":
+    "<span class=\"fk-frage__nr\">A3.1</span>Location or address, cadastral district and plot number",
+  "<span class=\"fk-frage__nr\">A3.2</span>Gibt es einen Bebauungsplan?":
+    "<span class=\"fk-frage__nr\">A3.2</span>Is there a development plan?",
+  "<span class=\"fk-frage__nr\">A3.3</span>Ist das Grundstück eben? Steht ein Altbau darauf, der abgerissen werden muss?":
+    "<span class=\"fk-frage__nr\">A3.3</span>Is the plot level? Is there an old building on it that has to be demolished?",
+  "<span class=\"fk-frage__nr\">A3.4</span>Ist mit Grundwasser oder Schichtenwasser zu rechnen (Bodengutachten, Erfahrung der Nachbarn)?":
+    "<span class=\"fk-frage__nr\">A3.4</span>Is groundwater or perched water to be expected (soil survey, neighbours’ experience)?",
+  "<span class=\"fk-frage__nr\">A4.1</span>Welchen Leistungsumfang wünschen Sie?":
+    "<span class=\"fk-frage__nr\">A4.1</span>Which scope of services do you need?",
+  "<span class=\"fk-frage__nr\">A4.2</span>Zusätzlich gewünscht?":
+    "<span class=\"fk-frage__nr\">A4.2</span>Anything else you need?",
+  "<span class=\"fk-frage__nr\">A4.3</span>Wie viele Entwurfsvarianten erwarten Sie zu Beginn? (Standard: ein Konzept und eine Überarbeitung)":
+    "<span class=\"fk-frage__nr\">A4.3</span>How many design options do you expect at the start? (Standard: one concept and one revision)",
+  "<span class=\"fk-frage__nr\">A5.1</span>Steht das Bauunternehmen schon fest? Welche Gewerke übernimmt es (nur Rohbau oder schlüsselfertig)?":
+    "<span class=\"fk-frage__nr\">A5.1</span>Is the building contractor already chosen? Which trades will it take on (shell only or turnkey)?",
+  "<span class=\"fk-frage__nr\">A5.2</span>Wer übernimmt die Bauleitung vor Ort?":
+    "<span class=\"fk-frage__nr\">A5.2</span>Who will supervise the site?",
+  "<span class=\"fk-frage__nr\">A5.3</span>Wer erstellt Statik und Energienachweis (GEG)?":
+    "<span class=\"fk-frage__nr\">A5.3</span>Who will provide the structural calculations and the energy certificate (GEG)?",
+  "<span class=\"fk-frage__nr\">A6.1</span>Bis wann soll der Bauantrag eingereicht sein, wann ist Baubeginn geplant?":
+    "<span class=\"fk-frage__nr\">A6.1</span>When should the building application be submitted, and when is construction to start?",
+  "<span class=\"fk-frage__nr\">A6.2</span>Vertragspartner: Privatperson oder Firma (mit Anschrift)?":
+    "<span class=\"fk-frage__nr\">A6.2</span>Contracting party: private individual or company (with address)?",
+  "<span class=\"fk-frage__nr\">B1.1</span>Wer wird im Haus wohnen (Erwachsene, Kinder, Alter, später ggf. Eltern)?":
+    "<span class=\"fk-frage__nr\">B1.1</span>Who will live in the house (adults, children, ages, possibly parents later)?",
+  "<span class=\"fk-frage__nr\">B1.2</span>Wie viele Geschosse (nur EG, EG + OG, EG + OG + Dach)?":
+    "<span class=\"fk-frage__nr\">B1.2</span>How many storeys (ground floor only, GF + upper floor, GF + UF + attic)?",
+  "<span class=\"fk-frage__nr\">B1.3</span>Wie viele Schlafzimmer bzw. Kinderzimmer?":
+    "<span class=\"fk-frage__nr\">B1.3</span>How many bedrooms or children’s rooms?",
+  "<span class=\"fk-frage__nr\">B1.4</span>Wie viele Bäder und WCs (z. B. Gäste-WC im EG, Familienbad, eigenes Elternbad)?":
+    "<span class=\"fk-frage__nr\">B1.4</span>How many bathrooms and WCs (e.g. guest WC on the ground floor, family bathroom, en-suite)?",
+  "<span class=\"fk-frage__nr\">B1.5</span>Küche offen zum Wohnen oder abgetrennt? Speisekammer?":
+    "<span class=\"fk-frage__nr\">B1.5</span>Kitchen open to the living area or separate? Pantry?",
+  "<span class=\"fk-frage__nr\">B1.6</span>Weitere Räume (Arbeitszimmer, Gästezimmer, Hauswirtschaftsraum, Sauna)?":
+    "<span class=\"fk-frage__nr\">B1.6</span>Other rooms (study, guest room, utility room, sauna)?",
+  "<span class=\"fk-frage__nr\">B1.7</span>Barrierefrei oder ein Schlafzimmer im Erdgeschoss gewünscht?":
+    "<span class=\"fk-frage__nr\">B1.7</span>Step-free access or a bedroom on the ground floor?",
+  "<span class=\"fk-frage__nr\">B1.8</span>Terrasse, Balkon, Garten: was ist Ihnen wichtig?":
+    "<span class=\"fk-frage__nr\">B1.8</span>Terrace, balcony, garden: what matters to you?",
+  "<span class=\"fk-frage__nr\">B2.1</span>Grundstücksgröße in m² und Maße (Breite zur Straße × Tiefe)":
+    "<span class=\"fk-frage__nr\">B2.1</span>Plot size in m² and dimensions (street frontage × depth)",
+  "<span class=\"fk-frage__nr\">B2.2</span>Große Bäume, Leitungen, Dienstbarkeiten, Absprachen mit Nachbarn?":
+    "<span class=\"fk-frage__nr\">B2.2</span>Large trees, utility lines, easements, agreements with neighbours?",
+  "<span class=\"fk-frage__nr\">B2.3</span>Welche Unterlagen liegen vor (Lageplan, Katasterauszug, Bodengutachten, Kaufvertrag)?":
+    "<span class=\"fk-frage__nr\">B2.3</span>Which documents do you have (site plan, cadastral extract, soil survey, purchase contract)?",
+  "<span class=\"fk-frage__nr\">B2.4</span>Sind Wasser, Abwasser, Strom und ggf. Fernwärme am Grundstück vorhanden?":
+    "<span class=\"fk-frage__nr\">B2.4</span>Are water, sewage, electricity and possibly district heating available at the plot?",
+  "<span class=\"fk-frage__nr\">B3.1</span>Stil und Dachform (Satteldach, Flachdach, Pultdach, offen)?":
+    "<span class=\"fk-frage__nr\">B3.1</span>Style and roof shape (pitched, flat, mono-pitch, open)?",
+  "<span class=\"fk-frage__nr\">B3.2</span>Bauweise: massiv (Ziegel, Kalksandstein), Holz oder offen?":
+    "<span class=\"fk-frage__nr\">B3.2</span>Construction: masonry (brick, sand-lime), timber or open?",
+  "<span class=\"fk-frage__nr\">B3.3</span>Heizung (Wärmepumpe, Fernwärme, andere)? Fußbodenheizung?":
+    "<span class=\"fk-frage__nr\">B3.3</span>Heating (heat pump, district heating, other)? Underfloor heating?",
+  "<span class=\"fk-frage__nr\">B3.4</span>Photovoltaik mit Speicher, Lüftungsanlage, Kamin, Smart Home?":
+    "<span class=\"fk-frage__nr\">B3.4</span>PV with battery storage, ventilation system, fireplace, smart home?",
+  "<span class=\"fk-frage__nr\">B3.5</span>Energiestandard: gesetzliches Minimum (GEG) oder Förderhaus (KfW)?":
+    "<span class=\"fk-frage__nr\">B3.5</span>Energy standard: legal minimum (GEG) or subsidised efficiency house (KfW)?",
+  "<span class=\"fk-frage__nr\">B3.6</span>Geplante Eigenleistungen?":
+    "<span class=\"fk-frage__nr\">B3.6</span>Any work you plan to do yourself?",
+  "<span class=\"fk-frage__nr\">B3.7</span>Bilder, Skizzen oder Häuser, die Ihnen gefallen (bitte per Mail mitschicken)?":
+    "<span class=\"fk-frage__nr\">B3.7</span>Pictures, sketches or houses you like (please send them by email)?",
+  "ca.":
+    "approx.",
 };
