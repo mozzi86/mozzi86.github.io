@@ -1,0 +1,13 @@
+# Security headers for bit-atelier.de (Cloudflare Pages reads this file; GitHub Pages ignores it).
+# The site is static: no server code, no form submission, no third-party scripts, fonts or requests.
+# 'unsafe-inline' for scripts/styles is needed for now (3 inline scripts, inline event handlers and style
+# attributes); everything else is locked to the own origin. Tighten once the inline handlers are moved
+# into assets/js.
+/*
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; media-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()
+  Cross-Origin-Opener-Policy: same-origin
