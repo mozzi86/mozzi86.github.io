@@ -238,8 +238,8 @@
     'SHA-256 of the ZIP:',
   'Prüfsumme der aktuellen Fassung als Datei':
     'Checksum of the current version as a file',
-  'Danach läuft die App unter <code dir="ltr">http://localhost:3001</code>, später über die Verknüpfung „BIT-Atelier“. Neue Versionen meldet die App selbst und installiert sie auf Knopfdruck.':
-    'The app then runs at <code dir="ltr">http://localhost:3001</code>, later via the "BIT-Atelier" shortcut. The app reports new versions itself and installs them at the push of a button.',
+  'Nach Installer oder ZIP läuft die App unter <code dir="ltr">http://localhost:3001</code>, später über die Verknüpfung „BIT-Atelier“; diese Fassung meldet neue Versionen selbst und installiert sie auf Knopfdruck. Die Desktop-App kann das noch nicht – neue Fassungen von hier herunterladen und installieren.':
+    'After the installer or the ZIP the app runs at <code dir="ltr">http://localhost:3001</code>, later via the "BIT-Atelier" shortcut; this edition reports new versions itself and installs them at the push of a button. The desktop app cannot do that yet – download new versions here and install them.',
   'Bitte den Befehl markieren und kopieren':
     'Please select the command and copy it',
   'Installer, ZIP, Fassung und Prüfsumme stehen an einer Stelle — im Abschnitt Open Source.':
@@ -829,8 +829,8 @@
     "Single-family house questionnaire — BIT-ATELIER",
   "Ihr Einfamilienhaus: Fragenkatalog und Kostenrahmen.":
     "Your single-family house: questionnaire and cost frame.",
-  "Bereiten Sie Ihr Bauvorhaben in Ruhe vor: Kosten überschlagen, Fragen beantworten, als PDF sichern oder direkt anfragen — ohne Anmeldung, nichts wird gespeichert.":
-    "Prepare your building project at your own pace: estimate costs, answer the questions, save as PDF or send an enquiry — no sign-up, nothing is stored.",
+  "Bereiten Sie Ihr Bauvorhaben in Ruhe vor: Kosten überschlagen, Fragen beantworten, als PDF sichern oder direkt anfragen — ohne Anmeldung, nichts wird übertragen.":
+    "Prepare your building project at your own pace: estimate costs, answer the questions, save as PDF or send an enquiry — no sign-up, nothing is transmitted.",
   "Fragenkatalog Einfamilienhaus":
     "Single-family house questionnaire",
   // Questionnaire page /anfrage/: body, options, script texts
@@ -990,8 +990,8 @@
     "Clear entries",
   "Ihre Eingaben bleiben nur in diesem Browser.":
     "Your entries stay in this browser only.",
-  "Es wird nichts übertragen und nichts auf einem Server gespeichert. Den vollständigen Katalog schicken Sie als PDF oder Textdatei mit Ihrer Anfrage-Mail; die Kurzfassung landet im Anfrage-Text unten.":
-    "Nothing is transmitted and nothing is stored on a server. Send the full questionnaire as a PDF or text file with your enquiry email; the summary goes into the enquiry text below.",
+  "Es wird nichts übertragen. Ihre Antworten bleiben als Entwurf nur in diesem Browser – ohne Name, Telefon und E-Mail, höchstens 30 Tage; „Eingaben löschen“ entfernt sie sofort. Den vollständigen Katalog schicken Sie als PDF oder Textdatei mit Ihrer Anfrage-Mail; die Kurzfassung landet im Anfrage-Text unten.":
+    "Nothing is transmitted. Your answers stay as a draft in this browser only – without name, phone and email, for 30 days at most; “Clear entries” removes them at once. Send the full questionnaire as a PDF or text file with your enquiry email; the summary goes into the enquiry text below.",
   "Entwurf aus diesem Browser wiederhergestellt.":
     "Draft restored from this browser.",
   "Alle Eingaben im Fragenkatalog löschen?":

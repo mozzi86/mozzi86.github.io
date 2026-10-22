@@ -806,15 +806,16 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
     <div class="mitte">
       <p class="auge">BIT-ATELIER</p>
       <h1>Your single-family house: questionnaire and cost frame.</h1>
-      <p class="unter">Prepare your building project at your own pace: estimate costs, answer the questions, save as PDF or send an enquiry — no sign-up, nothing is stored.</p>
+      <p class="unter">Prepare your building project at your own pace: estimate costs, answer the questions, save as PDF or send an enquiry — no sign-up, nothing is transmitted.</p>
     </div>
   </section>
 
   <!-- Topic page "Anfrage Einfamilienhaus" (questionnaire for private builders).
        Content fragment for tools/unterseiten-erzeugen.mjs — German only; EN/AR
-       through the dictionaries. Nothing is sent or stored on a server: answers
-       live in this browser (localStorage, best effort) until the visitor prints,
-       saves or hands a short version to the enquiry builder below.
+       through the dictionaries. Nothing is sent: answers live in this browser as a draft
+       (localStorage, best effort) until the visitor prints, saves or hands a short version to the
+       enquiry builder below — WITHOUT name/phone/email and for at most 30 days (register no. 204,
+       22.10.2026: the page promised "nothing is stored" while it kept contact data indefinitely).
        Prices are orientation values incl. 19 % VAT (PAngV: consumers see gross
        prices); the planning fee is deliberately not quoted here — the HOAI
        calculator on the home page does that, the binding offer follows the answers. -->
@@ -997,7 +998,7 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
         <button class="btn btn--geist btn--klein" type="button" id="fk-leeren">Clear entries</button>
         <span class="fk-stand" id="fk-stand">Your entries stay in this browser only.</span>
       </div>
-      <p class="anfrage__hinweis">Nothing is transmitted and nothing is stored on a server. Send the full questionnaire as a PDF or text file with your enquiry email; the summary goes into the enquiry text below.</p>
+      <p class="anfrage__hinweis">Nothing is transmitted. Your answers stay as a draft in this browser only – without name, phone and email, for 30 days at most; “Clear entries” removes them at once. Send the full questionnaire as a PDF or text file with your enquiry email; the summary goes into the enquiry text below.</p>
     </div>
   </section>
 
@@ -1007,6 +1008,9 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
     const wort = (s) => (window.bitHud ? window.bitHud(s) : s);
     const $ = (id) => document.getElementById(id);
     const SPEICHER = 'bit-fragenkatalog-v1';
+    // Contact fields never go into the draft; a draft older than 30 days is dropped (register no. 204).
+    const NIE_SPEICHERN = new Set(['Name', 'Telefon', 'E-Mail']);
+    const HOECHSTENS_MS = 30 * 24 * 60 * 60 * 1000;
     const BAU = { einfach: 2700, mittel: 3300, gehoben: 4200 };      // KG 300+400 per m2, gross
     const GESAMT = { einfach: 3400, mittel: 4200, gehoben: 5300 };   // KG 200-700 per m2, gross
     const KELLER = [70000, 110000];
@@ -1060,15 +1064,22 @@ code{font-family:var(--mono);font-size:.9em;color:var(--ink);overflow-wrap:anywh
     function speichern() {
       const daten = {};
       form.querySelectorAll('[data-fk]').forEach((el) => {
+        if (NIE_SPEICHERN.has(el.dataset.fk)) return;
         daten[el.dataset.fk] = el.tagName === 'FIELDSET'
           ? [...el.querySelectorAll('input:checked')].map((c) => c.value) : el.value;
       });
-      try { localStorage.setItem(SPEICHER, JSON.stringify(daten)); } catch (e) { /* private mode: no draft */ }
+      try { localStorage.setItem(SPEICHER, JSON.stringify({ gespeichert_am: Date.now(), daten })); } catch (e) { /* private mode: no draft */ }
     }
 
     function laden() {
       let daten;
       try { daten = JSON.parse(localStorage.getItem(SPEICHER) || 'null'); } catch (e) { daten = null; }
+      // Old drafts (before 22.10.2026, no time stamp, may hold contact data) and drafts older than 30 days go.
+      if (daten && (!daten.gespeichert_am || Date.now() - daten.gespeichert_am > HOECHSTENS_MS)) {
+        try { localStorage.removeItem(SPEICHER); } catch (e) { /* nothing stored */ }
+        daten = null;
+      }
+      daten = daten && daten.daten;
       if (!daten) return;
       form.querySelectorAll('[data-fk]').forEach((el) => {
         const v = daten[el.dataset.fk];

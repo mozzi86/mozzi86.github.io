@@ -241,8 +241,8 @@
     'SHA-256 لملف ZIP:',
   'Prüfsumme der aktuellen Fassung als Datei':
     'المجموع الاختباري للإصدار الحالي كملف',
-  'Danach läuft die App unter <code dir="ltr">http://localhost:3001</code>, später über die Verknüpfung „BIT-Atelier“. Neue Versionen meldet die App selbst und installiert sie auf Knopfdruck.':
-    'بعد ذلك يعمل التطبيق على <code dir="ltr">http://localhost:3001</code>، ولاحقاً عبر الاختصار „BIT-Atelier“. يُبلغ التطبيق نفسه عن الإصدارات الجديدة ويثبِّتها بضغطة زر.',
+  'Nach Installer oder ZIP läuft die App unter <code dir="ltr">http://localhost:3001</code>, später über die Verknüpfung „BIT-Atelier“; diese Fassung meldet neue Versionen selbst und installiert sie auf Knopfdruck. Die Desktop-App kann das noch nicht – neue Fassungen von hier herunterladen und installieren.':
+    'بعد المثبّت أو ملف ZIP يعمل التطبيق على <code dir="ltr">http://localhost:3001</code>، ولاحقاً عبر الاختصار „BIT-Atelier“؛ وهذا الإصدار يُبلغ بنفسه عن الإصدارات الجديدة ويثبّتها بضغطة زر. أما تطبيق سطح المكتب فلا يفعل ذلك بعد – نزّل الإصدارات الجديدة من هنا وثبّتها.',
   'Bitte den Befehl markieren und kopieren':
     'يُرجى تحديد الأمر ونسخه',
   'Installer, ZIP, Fassung und Prüfsumme stehen an einer Stelle — im Abschnitt Open Source.':
@@ -832,8 +832,8 @@
     "استبيان البيت العائلي — BIT-ATELIER",
   "Ihr Einfamilienhaus: Fragenkatalog und Kostenrahmen.":
     "بيتك العائلي: استبيان وإطار تكاليف.",
-  "Bereiten Sie Ihr Bauvorhaben in Ruhe vor: Kosten überschlagen, Fragen beantworten, als PDF sichern oder direkt anfragen — ohne Anmeldung, nichts wird gespeichert.":
-    "حضّر مشروع البناء على مهل: قدّر التكاليف، وأجب عن الأسئلة، واحفظها بصيغة PDF أو أرسل طلبك مباشرة — دون تسجيل، ولا يُحفظ شيء.",
+  "Bereiten Sie Ihr Bauvorhaben in Ruhe vor: Kosten überschlagen, Fragen beantworten, als PDF sichern oder direkt anfragen — ohne Anmeldung, nichts wird übertragen.":
+    "حضّر مشروع البناء على مهل: قدّر التكاليف، وأجب عن الأسئلة، واحفظها بصيغة PDF أو أرسل طلبك مباشرة — دون تسجيل، ولا يُرسَل أي شيء.",
   "Fragenkatalog Einfamilienhaus":
     "استبيان البيت العائلي",
   // Questionnaire page /anfrage/: body, options, script texts
@@ -993,8 +993,8 @@
     "مسح الإدخالات",
   "Ihre Eingaben bleiben nur in diesem Browser.":
     "تبقى إدخالاتك في هذا المتصفح فقط.",
-  "Es wird nichts übertragen und nichts auf einem Server gespeichert. Den vollständigen Katalog schicken Sie als PDF oder Textdatei mit Ihrer Anfrage-Mail; die Kurzfassung landet im Anfrage-Text unten.":
-    "لا يُرسل شيء ولا يُحفظ شيء على أي خادم. أرسل الاستبيان كاملاً كملف PDF أو ملف نصي مع بريد طلبك؛ أما الملخص فيُدرج في نص الطلب أدناه.",
+  "Es wird nichts übertragen. Ihre Antworten bleiben als Entwurf nur in diesem Browser – ohne Name, Telefon und E-Mail, höchstens 30 Tage; „Eingaben löschen“ entfernt sie sofort. Den vollständigen Katalog schicken Sie als PDF oder Textdatei mit Ihrer Anfrage-Mail; die Kurzfassung landet im Anfrage-Text unten.":
+    "لا يُرسَل أي شيء. تبقى إجاباتك مسودةً في هذا المتصفح فقط – دون الاسم والهاتف والبريد الإلكتروني، ولمدة 30 يوماً كحد أقصى؛ ويحذفها زر „حذف الإدخالات“ فوراً. أرسل الاستبيان كاملاً كملف PDF أو ملف نصي مع بريد طلبك؛ أما الملخص فيُضاف إلى نص الطلب أدناه.",
   "Entwurf aus diesem Browser wiederhergestellt.":
     "تمت استعادة المسودة من هذا المتصفح.",
   "Alle Eingaben im Fragenkatalog löschen?":

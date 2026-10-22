@@ -123,7 +123,7 @@ export const SEITEN = [
     inhalt: true,
     titel: 'Fragenkatalog Einfamilienhaus — BIT-ATELIER',
     h1: 'Ihr Einfamilienhaus: Fragenkatalog und Kostenrahmen.',
-    intro: 'Bereiten Sie Ihr Bauvorhaben in Ruhe vor: Kosten überschlagen, Fragen beantworten, als PDF sichern oder direkt anfragen — ohne Anmeldung, nichts wird gespeichert.',
+    intro: 'Bereiten Sie Ihr Bauvorhaben in Ruhe vor: Kosten überschlagen, Fragen beantworten, als PDF sichern oder direkt anfragen — ohne Anmeldung, nichts wird übertragen.',
     herkunft: 'Fragenkatalog EFH',
     prioritaet: 0.7,
     beschreibung: {
